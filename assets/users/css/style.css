@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+* { box-sizing: border-box; }
+html, body { margin: 0px; height: 100%; font-family: 'Poppins', sans-serif; }
+.wrapper { min-height: 100%; -webkit-transition: all 1s; transition: all 1s; }
+.footer { margin-top: 50px; background-color: #343434; border: 1px solid #343434; }
+
+.header-container
+{
+	background-color: #343434;
+	border: 1px solid #343434;
+}
+.navbar-light .navbar-nav .nav-link
+{
+	color: #FFFFFF;
+}
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover
+{
+	color: #f1c40f;
+}
+.nav-link
+{
+	font-size: 16px;
+}
+.navbar-light .navbar-toggler
+{
+	border-color: rgb(255,255,255,1);
+}
+.fa-bars
+{
+	color: white;
+}
+.navbar-toggler-icon
+{
+	color: rgb(0,0,0,1);
+}
+button { outline: none; }
+.this-is-active { color: #f1c40f; border-bottom: 2px solid #f1c40f; }
+
+/* Extra small devices (portrait phones, less than 576px) */
+/* No media query for `xs` since this is the default in Bootstrap */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 1px)
+{
+
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px)
+{
+
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px)
+{
+
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px)
+{
+
+}
