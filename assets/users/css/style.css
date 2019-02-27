@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 
-* { box-sizing: border-box; }
+* { box-sizing: border-box; -webkit-transition: all 1s ease-in-out; transition: all 1s ease-in-out; }
 html, body { margin: 0px; height: 100%; font-family: 'Poppins', sans-serif; }
 .wrapper { min-height: 100%; -webkit-transition: all 1s; transition: all 1s; }
 .footer { margin-top: 50px; background-color: #343434; border: 1px solid #343434; }
@@ -36,6 +36,8 @@ html, body { margin: 0px; height: 100%; font-family: 'Poppins', sans-serif; }
 }
 button { outline: none; }
 .this-is-active { color: #f1c40f; border-bottom: 2px solid #f1c40f; }
+a.slinks { color: white; }
+a.slinks:hover { text-decoration: none; color: #f1c40f; }
 
 /* Extra small devices (portrait phones, less than 576px) */
 /* No media query for `xs` since this is the default in Bootstrap */
