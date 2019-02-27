@@ -1,5 +1,5 @@
 			<!-- Follow Us -->
-				<p style="color: white;">
+				<p style="color: #898989;">
 					<strong>
 						Follow Us : 
 					</strong>

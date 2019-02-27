@@ -52,30 +52,31 @@
 					</h3>
 				</div>
 				<div class="col-lg-4 col-sm-12 pt-4 pb-4">
-					<div class="card">
-						<div class="card-title">
-							<label id=""></label>
+					<div class="content-widget animated fadeIn">
+						<div class="content-image">
+							<img class="ratio rounded-circle" src="" style="background-image: url(https://airdrops.io/wp-content/uploads/2019/02/Cryptomood-logo.png);">
 						</div>
-						<div class="card-body">
+						<div class="content-details">
 							body
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-4 col-sm-12 pt-4 pb-4">
-					<div class="card">
-						<div class="card-title">
-							title
+					<div class="content-widget animated fadeIn">
+						<div class="content-image">
+							<img class="ratio rounded-circle" src="" style="background-image: url(https://airdrops.io/wp-content/uploads/2019/02/Cryptomood-logo.png);">
 						</div>
-						<div class="card-body">
+						<div class="content-details">
 							body
 						</div>
-					</div>				</div>
+					</div>
+				</div>
 				<div class="col-lg-4 col-sm-12 pt-4 pb-4">
-					<div class="card">
-						<div class="card-title">
-							title
+					<div class="content-widget animated fadeIn">
+						<div class="content-image">
+							<img class="ratio rounded-circle" src="" style="background-image: url(https://airdrops.io/wp-content/uploads/2019/02/Cryptomood-logo.png);">
 						</div>
-						<div class="card-body">
+						<div class="content-details">
 							body
 						</div>
 					</div>
