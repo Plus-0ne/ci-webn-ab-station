@@ -80,24 +80,19 @@
 					<div class="login-container">
 						<form action="#" method="POST">
 							<div class="input-holder">
-								<input class="form-control" type="email" name="" placeholder="Email Address" required="">
+								<input class="form-control" type="text" name="" placeholder="First Name*" required="">
 							</div>
 							<div class="input-holder">
-								<input class="form-control" type="password" name="" placeholder="Password" required="">
+								<input class="form-control" type="text" name="" placeholder="Last Name*" required="">
+							</div>
+							<div class="input-holder">
+								<input class="form-control" type="email" name="" placeholder="Email Address*" required="">
+							</div>
+							<div class="input-holder">
+								<input class="form-control" type="password" name="" placeholder="Password*" required="">
 							</div>
 							<div class="submit-holder">
-								<input class="btn btn-primary btn-submit" type="submit" name="" value="Login">
-							</div>
-							<div class="signup-holder text-center">
-								<p>
-									<a href="#"> Forgot password ? </a>
-								</p>
-							</div>
-							<br>
-							<div class="signup-holder text-center">
-								<p>
-									<label> Not registered ?</label><a href="<?=base_url()?>Sign-Up"> Sign-up</a> now.
-								</p>
+								<input class="btn btn-primary btn-submit" type="submit" name="" value="Register">
 							</div>
 						</form>
 					</div>
