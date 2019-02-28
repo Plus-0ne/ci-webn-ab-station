@@ -54,3 +54,4 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['Home'] = 'Home_Controller/home';
+$route['Login'] = 'Login_Controller/login';
