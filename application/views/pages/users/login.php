@@ -78,15 +78,15 @@
 			<div class="row">
 				<div class="col-md-12 col-lg-5 m-auto p-5">
 					<div class="login-container">
-						<form action="#" method="POST">
+						<form action="<?=base_url()?>Login_Validation" method="POST">
 							<div class="input-holder">
-								<input class="form-control" type="email" name="" placeholder="Email Address" required="">
+								<input class="form-control" type="email" name="Email_Address" placeholder="Email Address" required="">
 							</div>
 							<div class="input-holder">
-								<input class="form-control" type="password" name="" placeholder="Password" required="">
+								<input class="form-control" type="password" name="Password" placeholder="Password" required="">
 							</div>
 							<div class="submit-holder">
-								<input class="btn btn-primary btn-submit" type="submit" name="" value="Login">
+								<input class="btn btn-primary btn-submit" type="submit" name="SubmitLogin" value="Login">
 							</div>
 							<div class="signup-holder text-center">
 								<p>

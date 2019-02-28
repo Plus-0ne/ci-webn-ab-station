@@ -78,21 +78,21 @@
 			<div class="row">
 				<div class="col-md-12 col-lg-5 m-auto p-5">
 					<div class="login-container">
-						<form action="#" method="POST">
+						<form action="<?=base_url()?>submit_form_signup" method="POST">
 							<div class="input-holder">
-								<input class="form-control" type="text" name="" placeholder="First Name*" required="">
+								<input class="form-control" type="text" name="First_Name" placeholder="First Name*" required="">
 							</div>
 							<div class="input-holder">
-								<input class="form-control" type="text" name="" placeholder="Last Name*" required="">
+								<input class="form-control" type="text" name="Last_Name" placeholder="Last Name*" required="">
 							</div>
 							<div class="input-holder">
-								<input class="form-control" type="email" name="" placeholder="Email Address*" required="">
+								<input class="form-control" type="email" name="Email_Address" placeholder="Email Address*" required="">
 							</div>
 							<div class="input-holder">
-								<input class="form-control" type="password" name="" placeholder="Password*" required="">
+								<input class="form-control" type="password" name="Password" placeholder="Password*" required="">
 							</div>
 							<div class="submit-holder">
-								<input class="btn btn-primary btn-submit" type="submit" name="" value="Register">
+								<input class="btn btn-primary btn-submit" type="submit" name="Sign_Up" value="Register">
 							</div>
 						</form>
 					</div>

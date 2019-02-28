@@ -53,8 +53,15 @@ $route['default_controller'] = 'Home_Controller';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-// Users
+// Users Login
 $route['Login'] = 'Login_Controller/login';
+$route['Login_Validation'] = 'Login_Controller/Login_Validation';
+
+// User Signup
 $route['Sign-Up'] = 'Signup_Controller/Sign_up';
+$route['submit_form_signup'] = 'Signup_Controller/submit_form_signup';
+
+
+
 $route['Home'] = 'Home_Controller/home';
 
