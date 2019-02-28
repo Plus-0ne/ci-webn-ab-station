@@ -47,9 +47,56 @@
 			</div>
 			<div class="row mt-5">
 				<div class="col-lg-12 title-page-here">
-					<h3 class="text-center">
-						Top Rated
-					</h3>
+					<h4 class="text-center">
+						TOP RATED
+					</h4>
+				</div>
+				<div class="col-lg-3 col-sm-12 pt-4 pb-4">
+					<div class="content-widget animated fadeIn">
+						<div class="content-image">
+							<img class="ratio rounded-circle" src="" style="background-image: url(https://airdrops.io/wp-content/uploads/2019/02/Cryptomood-logo.png);">
+						</div>
+						<div class="content-details">
+							Ferum Network
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-12 pt-4 pb-4">
+					<div class="content-widget animated fadeIn">
+						<div class="content-image">
+							<img class="ratio rounded-circle" src="" style="background-image: url(https://airdrops.io/wp-content/uploads/2019/02/Cryptomood-logo.png);">
+						</div>
+						<div class="content-details">
+							WEBN Token
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-12 pt-4 pb-4">
+					<div class="content-widget animated fadeIn">
+						<div class="content-image">
+							<img class="ratio rounded-circle" src="" style="background-image: url(https://airdrops.io/wp-content/uploads/2019/02/Cryptomood-logo.png);">
+						</div>
+						<div class="content-details">
+							body
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-12 pt-4 pb-4">
+					<div class="content-widget animated fadeIn">
+						<div class="content-image">
+							<img class="ratio rounded-circle" src="" style="background-image: url(https://airdrops.io/wp-content/uploads/2019/02/Cryptomood-logo.png);">
+						</div>
+						<div class="content-details">
+							body
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row mt-5">
+				<div class="col-lg-12 title-page-here">
+					<h4 class="text-center">
+						LATEST AIRDROP
+					</h4>
 				</div>
 				<div class="col-lg-4 col-sm-12 pt-4 pb-4">
 					<div class="content-widget animated fadeIn">
@@ -84,45 +131,9 @@
 			</div>
 			<div class="row mt-5">
 				<div class="col-lg-12 title-page-here">
-					<h3 class="text-center">
-						Latest Airdrops
-					</h3>
-				</div>
-				<div class="col-lg-4 col-sm-12 pt-4 pb-4">
-					<div class="card">
-						<div class="card-title">
-							<label id=""></label>
-						</div>
-						<div class="card-body">
-							body
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-12 pt-4 pb-4">
-					<div class="card">
-						<div class="card-title">
-							title
-						</div>
-						<div class="card-body">
-							body
-						</div>
-					</div>				</div>
-				<div class="col-lg-4 col-sm-12 pt-4 pb-4">
-					<div class="card">
-						<div class="card-title">
-							title
-						</div>
-						<div class="card-body">
-							body
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row mt-5">
-				<div class="col-lg-12 title-page-here">
-					<h3 class="text-center">
-						Latest Bounty
-					</h3>
+					<h4 class="text-center">
+						LATEST BOUNTY
+					</h4>
 				</div>
 				<div class="col-lg-4 col-sm-12 pt-4 pb-4">
 					<div class="card">
