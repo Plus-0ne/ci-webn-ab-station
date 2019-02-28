@@ -77,6 +77,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 col-lg-5 m-auto p-5">
+					
 					<div class="login-container">
 						<form action="<?=base_url()?>Login_Validation" method="POST">
 							<div class="input-holder">

@@ -79,6 +79,13 @@
 				<div class="col-md-12 col-lg-5 m-auto p-5">
 					<div class="login-container">
 						<form action="<?=base_url()?>submit_form_signup" method="POST">
+							<div class="signup-holder text-center">
+								<p>
+									
+								</p>
+							</div>
+							<br>
+
 							<div class="input-holder">
 								<input class="form-control" type="text" name="First_Name" placeholder="First Name*" required="">
 							</div>
@@ -93,6 +100,12 @@
 							</div>
 							<div class="submit-holder">
 								<input class="btn btn-primary btn-submit" type="submit" name="Sign_Up" value="Register">
+							</div>
+							<br>
+							<div class="signup-holder text-center">
+								<p>
+									<label> Already registered ?</label><a href="<?=base_url()?>Login"> Sign-in </a>
+								</p>
 							</div>
 						</form>
 					</div>

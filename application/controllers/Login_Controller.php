@@ -7,6 +7,8 @@ class Login_Controller extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Model_Login');
+		$this->load->helper('security');
+
 	}
 	public function index()
 	{
@@ -25,15 +27,18 @@ class Login_Controller extends CI_Controller {
 	{
 		if ($this->input->post('SubmitLogin',true))
 		{
+			$Passwords = $this->input->post('Password',true);
+			$Password = do_hash($Passwords, 'md5');
+
 			$data = array
 			(
 				'Email_Address' => $this->input->post('Email_Address',true),
-				'Password' => $this->input->post('Password',true),
+				'Password' => $Password,
 			);
 			$result = $this->Model_Login->check_user($data);
 			if ($result == true) {
-				echo $result->Email_Address;
-				echo $result->Password;
+				echo '<h1>'.$result->Hydro_ID.'</h1>';
+				echo "OK";
 			}
 			else
 			{
