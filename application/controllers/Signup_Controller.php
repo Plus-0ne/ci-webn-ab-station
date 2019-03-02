@@ -7,7 +7,10 @@ class Signup_Controller extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Model_Signup');
+		$this->load->database();
+		
 		$this->load->helper('security');
+
 	}
 	public function index()
 	{
@@ -24,29 +27,27 @@ class Signup_Controller extends CI_Controller {
 	}
 	public function submit_form_signup()
 	{
-		$Passwords = $this->input->post('Password',true);
 
-		$Password = do_hash($Passwords, 'md5');
+		$Password = do_hash($this->input->post('Password',true), 'md5');
 
-		if ($this->input->post('Sign_Up',true)) {
-			$data = array
+		$data = array
 			(
 				'First_Name' => $this->input->post('First_Name',true),
 				'Last_Name' => $this->input->post('Last_Name',true),
 				'Email_Address' => $this->input->post('Email_Address',true),
 				'Password' => $Password,
+				'Hydro_ID' => "0",
+				'Active_Status' => "0",
+				'Account_Status' => "1",
 			);
+		$result = $this->Model_Signup->register_user($data);
 
-			$result = $this->Model_Signup->register_user($data);
-
-			if ($result == true) {
-				// redirect to page saved
-			}
-			else
-			{
-				// redirect to page error
-			}
-
-		}
+		// if ($result == true) {
+		// 	// redirect to page saved
+		// }
+		// else
+		// {
+		// 	// redirect to page error
+		// }
 	}
 }

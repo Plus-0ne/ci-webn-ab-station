@@ -10,10 +10,10 @@
 				            <a class="nav-link" href="<?=base_url()?>Home"> Home <span class="sr-only">(current)</span></a>
 				        </li>
 				        <li class="nav-item">
-				            <a class="nav-link" href="#"> Airdrops </a>
+				            <a class="nav-link" href="<?=base_url()?>Airdrops"> Airdrops </a>
 				        </li>
 				        <li class="nav-item">
-				            <a class="nav-link" href="#"> Bounty </a>
+				            <a class="nav-link" href="<?=base_url()?>Bounties"> Bounty </a>
 				        </li>
 				        <li class="nav-item">
 				            <a class="nav-link" href="#"> List Your Coin/Token </a>
@@ -25,7 +25,10 @@
 					        <a class="nav-link" href="#"> Contact </a>
 					    </li>
 					    <li class="nav-item">
-					        <a class="nav-link" href="#"> FAQs </a>
+					        <a class="nav-link" href="<?=base_url()?>FAQs"> FAQs </a>
+					    </li>
+					    <li class="nav-item">
+					        <a class="nav-link" href="<?=base_url()?>Login"> Login </a>
 					    </li>
 					</ul>
 				</div>

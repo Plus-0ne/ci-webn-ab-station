@@ -64,4 +64,8 @@ $route['submit_form_signup'] = 'Signup_Controller/submit_form_signup';
 
 
 $route['Home'] = 'Home_Controller/home';
+$route['Airdrops'] = 'Airdrops_Controller/airdrops';
+$route['Bounties'] = 'Bounties_Controller/bounties';
+
+$route['FAQs'] = 'Faqs_Controller/faqs';
 

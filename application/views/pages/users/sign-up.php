@@ -1,67 +1,5 @@
 <?php $user_header;?>
-<style type="text/css">
-	body
-	{
-		background: #FFFFFF;
-	}
-	.login-header img
-	{
-
-	}
-	.input-holder
-	{
-		width: 100%;
-		border: 1px solid #A4A4A4;
-		margin: 16px;
-	}
-	.input-holder .form-control:focus
-	{
-		
-	}
-	.submit-holder
-	{
-		width: 100%;
-		margin: 16px;
-	}
-	.signup-holder
-	{
-		width: 100%;
-		margin: 16px;
-	}
-	.form-control
-	{
-		padding: 25px;
-		width: 100%;
-		border: none;
-		background-color: transparent;
-		border-radius: 1px;
-		font-size: 16px;
-	}
-	.form-control:focus
-	{
-		outline: none;
-		box-shadow: none;
-		border-botom: 1px solid #000000;
-		background-color: transparent;
-	}
-	.btn-submit
-	{
-		width: 100%;
-		padding: 12px;
-		border-radius: 1px;
-	}
-	.btn-sign
-	{
-		width: 100%;
-		padding: 12px;
-		border-radius: 1px;
-	}
-	.linediv
-	{
-		width:  100%;
-		border-bottom: 1px solid #DADADA;
-	}
-</style>
+<?php $this->load->view('pages/users/_template/_login_style');?>
 <body>
 	<div class="wrapper">
 		<div class="login-header">
@@ -81,7 +19,6 @@
 						<form action="<?=base_url()?>submit_form_signup" method="POST">
 							<div class="signup-holder text-center">
 								<p>
-									
 								</p>
 							</div>
 							<br>
@@ -99,7 +36,7 @@
 								<input class="form-control" type="password" name="Password" placeholder="Password*" required="">
 							</div>
 							<div class="submit-holder">
-								<input class="btn btn-primary btn-submit" type="submit" name="Sign_Up" value="Register">
+								<input class="btn btn-primary btn-submit" type="submit" value="Register">
 							</div>
 							<br>
 							<div class="signup-holder text-center">

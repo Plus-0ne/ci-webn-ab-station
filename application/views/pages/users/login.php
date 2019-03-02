@@ -1,67 +1,5 @@
 <?php $user_header;?>
-<style type="text/css">
-	body
-	{
-		background: #FFFFFF;
-	}
-	.login-header img
-	{
-
-	}
-	.input-holder
-	{
-		width: 100%;
-		border: 1px solid #A4A4A4;
-		margin: 16px;
-	}
-	.input-holder .form-control:focus
-	{
-		
-	}
-	.submit-holder
-	{
-		width: 100%;
-		margin: 16px;
-	}
-	.signup-holder
-	{
-		width: 100%;
-		margin: 16px;
-	}
-	.form-control
-	{
-		padding: 25px;
-		width: 100%;
-		border: none;
-		background-color: transparent;
-		border-radius: 1px;
-		font-size: 16px;
-	}
-	.form-control:focus
-	{
-		outline: none;
-		box-shadow: none;
-		border-botom: 1px solid #000000;
-		background-color: transparent;
-	}
-	.btn-submit
-	{
-		width: 100%;
-		padding: 12px;
-		border-radius: 1px;
-	}
-	.btn-sign
-	{
-		width: 100%;
-		padding: 12px;
-		border-radius: 1px;
-	}
-	.linediv
-	{
-		width:  100%;
-		border-bottom: 1px solid #DADADA;
-	}
-</style>
+<?php $this->load->view('pages/users/_template/_login_style');?>
 <body>
 	<div class="wrapper">
 		<div class="login-header">
@@ -77,17 +15,26 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 col-lg-5 m-auto p-5">
-					
+<!-- 					<?php
+					 $ph = password_hash('rasmuslerdorf', PASSWORD_ARGON2I);
+					 echo $ph;
+					 if (password_verify('rasmuslerdor', $ph)) {
+						    echo 'Password is valid!';
+
+						} else {
+						    echo 'Invalid password.';
+						}
+					?> -->
 					<div class="login-container">
 						<form action="<?=base_url()?>Login_Validation" method="POST">
 							<div class="input-holder">
-								<input class="form-control" type="email" name="Email_Address" placeholder="Email Address" required="">
+								<input id="Email_Address" class="form-control" type="Email" name="Email_Address" placeholder="Email Address" value="">
 							</div>
 							<div class="input-holder">
-								<input class="form-control" type="password" name="Password" placeholder="Password" required="">
+								<input id="Password" class="form-control" type="password" name="Password" placeholder="Password" value="">
 							</div>
 							<div class="submit-holder">
-								<input class="btn btn-primary btn-submit" type="submit" name="SubmitLogin" value="Login">
+								<input id="submit" class="btn btn-primary btn-submit" type="submit" value="Login">
 							</div>
 							<div class="signup-holder text-center">
 								<p>
@@ -106,6 +53,7 @@
 			</div>
 		</div>
 	</div>
-
+<div id="message" style="position: fixed; top: 5px;right: 55px; -webkit-transition: all 0.5s ease-in-out;">
+</div>
 <?php $user_jsscripts;?>
 </body>
