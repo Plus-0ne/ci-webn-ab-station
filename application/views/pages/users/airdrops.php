@@ -26,7 +26,7 @@
 			<div class="row mt-5">
 				<div class="col-lg-12 title-page-here">
 					<h4 class="text-center">
-						<i class="fas fa-align-justify"></i> &nbsp Airdrops
+						<i class="fas fa-parachute-box" style="color: green;"></i> &nbsp Airdrops
 					</h4>
 				</div>
 				<div class="col-lg-3 col-sm-12 pt-4 pb-4">

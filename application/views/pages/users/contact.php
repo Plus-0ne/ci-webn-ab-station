@@ -26,7 +26,7 @@
 			<div class="row mt-5">
 				<div class="col-lg-12 title-page-here">
 					<h4 class="text-center">
-						<i class="fas fa-question" style="color: #EA861B;"></i> &nbsp Frequently Asked Questions
+						<i class="fas fa-phone" style="color: #1BDDE4;"></i> &nbsp Contact US
 					</h4>
 					<br>
 					<div id="accordion" role="tablist">

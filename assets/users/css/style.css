@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 
 * { box-sizing: border-box; }
-html, body { margin: 0px; height: 100%; font-family: 'Poppins', sans-serif; color: #343434;  }
+html, body { margin: 0px; height: 100%; font-family: 'Poppins', sans-serif; color: #343434; background-color: #FFFFFF; }
 .wrapper { min-height: 100%; -webkit-transition: all 1s; transition: all 1s; }
-.footer { margin-top: 50px; background-color: #343434; border: 1px solid #343434; }
+.footer { margin-top: 50px; background-color: #102026; border: 1px solid #102026; color: #898989; }
 div {  -webkit-transition: all 1s ease-in-out; transition: all 1s ease-in-out;  }
 .header-container
 {
-	background-color: #343434;
-	border: 1px solid #343434;
+	background-color: #102026;
+	border: 1px solid #102026;
 }
 .navbar-light .navbar-nav .nav-link
 {
@@ -16,7 +16,7 @@ div {  -webkit-transition: all 1s ease-in-out; transition: all 1s ease-in-out;  
 }
 .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover
 {
-	color: #f1c40f;
+	color: rgb(241, 196, 15);
 }
 .nav-link
 {
@@ -54,6 +54,12 @@ a.slinks:hover { text-decoration: none; color: #f1c40f; }
   }   
 #toglepanel.collapsed:after {
   transform: rotate(0deg) ;
+}
+
+.navbar-nav .dropdown-menu
+{
+
+	border-radius: 1px;
 }
 /* Extra small devices (portrait phones, less than 576px) */
 /* No media query for `xs` since this is the default in Bootstrap */

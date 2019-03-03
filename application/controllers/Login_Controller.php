@@ -8,7 +8,6 @@ class Login_Controller extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Model_Login');
 		$this->load->database();
-		
 		$this->load->helper('security');
 
 	}
@@ -37,12 +36,34 @@ class Login_Controller extends CI_Controller {
 			'Password' => $Password,
 		);
 		$result = $this->Model_Login->check_user($data);
+
+
 		if ($result == true) {
+			$userdata = array(
+				'Fname' => $result->First_Name, 
+				'Lname' => $result->Last_Name, 
+				'Email' => $result->Email_Address, 
+				'Hydro_ID' => $result->Hydro_ID, 
+				'isActive' => 1,
+			);
+			$this->session->set_userdata($userdata);
+
 			echo "OK";
 		}
 		else
 		{
 			echo "ERROR";
+		}
+	}
+	public function logout()
+	{
+		if ($this->session->userdata('isActive') == 1) {
+			$this->session->sess_destroy();
+			redirect('Login');
+		}
+		else
+		{
+			redirect('Login');
 		}
 	}
 }
