@@ -39,7 +39,7 @@
 								          <a class="dropdown-item" href="#"><i class="fas fa-cog" style="color: #2A7AF3;"></i> Settings </a>
 								          
 								          <div class="dropdown-divider"></div>
-								          <a class="dropdown-item" href="'.base_url().'Logout"><i class="fas fa-sign-out-alt" style="color: #FF0000;"></i> Log-out</a>
+								          <a class="dropdown-item" href="'.base_url().'Logout"><i class="fas fa-sign-out-alt" style="color: #FF5A00;"></i> Log-out</a>
 								        </div>
 								      </li>';
 					    	}

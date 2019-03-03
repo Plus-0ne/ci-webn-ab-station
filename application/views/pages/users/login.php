@@ -53,7 +53,7 @@
 			</div>
 		</div>
 	</div>
-<div id="message" style="position: fixed; top: 5px;right: 55px; -webkit-transition: all 0.5s ease-in-out;">
+<div id="message" class="message">
 </div>
 <?php $user_jsscripts;?>
 </body>

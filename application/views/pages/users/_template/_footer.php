@@ -70,10 +70,18 @@
 			</div>
 		</div>
 		<div class="row">
+			<div class="col-12">
+				&copy; 2019 WEBN Airdrops And Bounty Station.
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12 mb-5" style="border-bottom: 1px solid #727272;"></div>
+		</div>
+		<div class="row">
 			<div class="col-lg-12 pb-2">
 				<?php
 					$ch = curl_init();
-					curl_setopt($ch, CURLOPT_URL, 'https://api.coinmarketcap.com/v1/ticker/');
+					curl_setopt($ch, CURLOPT_URL, 'https://api.coinmarketcap.com/v1/ticker/bitcoin/');
 					curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 					$json_object= curl_exec($ch);
 					curl_close($ch);
@@ -102,10 +110,57 @@
 					    	echo '<span style="font-size:14px;"><i class="fas fa-angle-right"></i> Market Cap : '.$val.' </span>';
 					    }
 					    if ($key == 'percent_change_1h') {
-					    	echo '<span style="font-size:14px;"><i class="fas fa-angle-right"></i> Change : '.$val.'% </span>';
+					    	if ($val > 0) {
+					    		echo '<span style="font-size:14px;"><i class="fas fa-angle-right"></i> Exchange : <b style="color: #41BA11;">'.$val.'%</b> </span>';
+					    	}
+					    	else
+					    	{
+					    		echo '<span style="font-size:14px;"><i class="fas fa-angle-right"></i> Exchange : <b style="color: #FD380A;">'.$val.'%</b> </span>';
+					    	}
 					    }
 					}
-					?> 
+				?>
+				<?php
+					$ch = curl_init();
+					curl_setopt($ch, CURLOPT_URL, 'https://api.coinmarketcap.com/v1/ticker/ethereum/');
+					curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+					$json_object= curl_exec($ch);
+					curl_close($ch);
+
+					$json_decoded = json_decode($json_object,true);
+
+					$assocArray= new RecursiveIteratorIterator(
+				    new RecursiveArrayIterator($json_decoded),
+				    RecursiveIteratorIterator::LEAVES_ONLY);
+
+					
+				    foreach ($assocArray as $key => $val) {
+				    	if ($key == 'symbol') {
+					    	echo '<h4>'.$val.'</h4>';
+					    }
+					    if ($key == 'rank') {
+					    	echo '<span style="font-size:14px;"><i class="fas fa-angle-right"></i> Rank : '.$val.' </span>';
+					    }
+					    if ($key == 'price_usd') {
+					    	echo '<span style="font-size:14px;"><i class="fas fa-angle-right"></i> USD : '.$val.' </span>';
+					    }
+					    if ($key == '24h_volume_usd') {
+					    	echo '<span style="font-size:14px;"><i class="fas fa-angle-right"></i> 24h Volume : '.$val.' </span>';
+					    }
+					    if ($key == 'market_cap_usd') {
+					    	echo '<span style="font-size:14px;"><i class="fas fa-angle-right"></i> Market Cap : '.$val.' </span>';
+					    }
+					    if ($key == 'percent_change_1h') {
+					    	if ($val > 0) {
+					    		echo '<span style="font-size:14px;"><i class="fas fa-angle-right"></i> Exchange : <b style="color: #41BA11;">'.$val.'%</b> </span>';
+					    	}
+					    	else
+					    	{
+					    		echo '<span style="font-size:14px;"><i class="fas fa-angle-right"></i> Exchange : <b style="color: #FD380A;">'.$val.'%</b> </span>';
+					    	}
+					    }
+					}
+				?>
 			</div>
 		</div>
 	</div>

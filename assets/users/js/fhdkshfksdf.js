@@ -7,7 +7,7 @@ $(document).ready(function(){
             if(Email_Address==""||Password=="")
             {
 
-               var response = $('<div class="alert alert-warning alert-dismissible fade show" role="alert"><strong>Holy guacamole!</strong> You should check in on some of those fields below.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+               var response = $('<div class="alert alert-warning alert-dismissible fade show animated bounceInDown" role="alert"><strong> Opsss! </strong> Input Email and Password! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                                         $("#message").html(response).show();
   
             }
@@ -23,13 +23,13 @@ $(document).ready(function(){
                             {
                                 if (result == 'OK')
                                 {
-                                   var response = $('<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Holy guacamole!</strong> You should check in on some of those fields below.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                                   var response = $('<div class="alert alert-success alert-dismissible fade animated bounceInDown show" role="alert"><strong> Yesss! </strong> User exist. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                                         $("#message").html(response).show();
                                     window.location.replace("Home");
                                 }
                                 else
                                 {
-	                                   var response = $('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Holy guacamole!</strong> You should check in on some of those fields below.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+	                                   var response = $('<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Awww!</strong> Wrong credentials. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                                         $("#message").html(response).show();
                                 }
                             }
