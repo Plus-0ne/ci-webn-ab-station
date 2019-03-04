@@ -68,6 +68,7 @@
 	</div>
 </div>
 <?php $this->load->view('pages/users/_template/_footer'); ?>
-<?php $user_jsscripts;?>
+<?php $this->load->view('pages/users/_template/_jsscripts'); ?>
+
 </body>
 </html>

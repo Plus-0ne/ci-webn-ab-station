@@ -39,6 +39,7 @@
 								<input class="btn btn-primary btn-submit" type="submit" value="Register">
 							</div>
 							<br>
+							<a href="https://t.me/joinchat/AAAAAFTK0rkJxVaEK7rn_Q">dd</a>
 							<div class="signup-holder text-center">
 								<p>
 									<label> Already registered ?</label><a href="<?=base_url()?>Login"> Sign-in </a>
@@ -50,6 +51,5 @@
 			</div>
 		</div>
 	</div>
-
-<?php $user_jsscripts;?>
+<?php $this->load->view('pages/users/_template/_jsscripts'); ?>
 </body>

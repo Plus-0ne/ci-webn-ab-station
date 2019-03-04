@@ -51,7 +51,7 @@
 					    	<div class="card-header" role="tab" id="headingOne">
 					      		<h5 class="mb-0">
 					      	  		<a id="toglepanel" data-toggle="collapse" href="#c2" aria-expanded="true" aria-controls="c2">
-					      	  			What is Bounties ? 
+					      	  			What is Bounties ?
 					      	  		</a>
 					     	 	</h5>
 							</div>
@@ -85,6 +85,6 @@
 	</div>
 </div>
 <?php $this->load->view('pages/users/_template/_footer'); ?>
-<?php $user_jsscripts;?>
+<?php $this->load->view('pages/users/_template/_jsscripts'); ?>
 </body>
 </html>

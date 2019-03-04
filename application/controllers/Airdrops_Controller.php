@@ -17,7 +17,6 @@ class Airdrops_Controller extends CI_Controller {
 		$title['title'] = "Airdrops | WEBN Airdrops and Bounty Station";
 		$data = array(
 			'user_header' => $this->load->view('pages/users/_template/_header',$title), 
-			'user_jsscripts' => $this->load->view('pages/users/_template/_jsscripts'),
 		);
 		$this->load->view('pages/users/airdrops',$data);
 	}

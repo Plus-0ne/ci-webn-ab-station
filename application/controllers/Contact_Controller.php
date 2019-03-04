@@ -17,7 +17,6 @@ class Contact_Controller extends CI_Controller {
 		$title['title'] = "Contact us | WEBN Airdrops and Bounty Station";
 		$data = array(
 			'user_header' => $this->load->view('pages/users/_template/_header',$title), 
-			'user_jsscripts' => $this->load->view('pages/users/_template/_jsscripts'),
 		);
 		$this->load->view('pages/users/contact',$data);
 	}

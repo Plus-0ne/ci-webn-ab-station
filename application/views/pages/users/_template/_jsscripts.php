@@ -4,6 +4,7 @@
 <script type="text/javascript" src="<?=base_url()?>assets/users/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?=base_url()?>assets/users/js/navigation.js"></script>
 <script type="text/javascript" src="<?=base_url()?>assets/users/js/jquery-3.3.1.min.js"></script>
+<?php $this->load->view('pages/users/_template/_modals'); ?>
 <script type="text/javascript" src="<?=base_url()?>assets/users/js/fhdkshfksdf.js"></script>
 
 
@@ -15,9 +16,16 @@
 	        }, 600);
 	        return false;
 	    });
+
+
+	    $('.newdt , .newdm').mouseenter(function () {
+	    	$('.newdm').addClass('zoomIn');
+	        $('.newdm').addClass('show');
+	    });
+	    $('.newdt , .newdm').mouseleave(function () {
+	    	$('.newdm').removeClass('show');
+	    });
 	});
-	
-</script>
-<script type="text/javascript">
+
 	
 </script>

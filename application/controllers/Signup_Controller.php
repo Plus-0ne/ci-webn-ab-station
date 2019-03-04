@@ -21,33 +21,37 @@ class Signup_Controller extends CI_Controller {
 		$title['title'] = "Sign-Up | WEBN Airdrops and Bounty Station";
 		$data = array(
 			'user_header' => $this->load->view('pages/users/_template/_header',$title), 
-			'user_jsscripts' => $this->load->view('pages/users/_template/_jsscripts'),
 		);
 		$this->load->view('pages/users/sign-up',$data);
 	}
 	public function submit_form_signup()
 	{
+		if ($this->session->userdata('isActive') == 1) {
+			redirect('Home');
+		}
+		else
+		{
+			$Password = do_hash($this->input->post('Password',true), 'md5');
 
-		$Password = do_hash($this->input->post('Password',true), 'md5');
+			$data = array
+				(
+					'First_Name' => $this->input->post('First_Name',true),
+					'Last_Name' => $this->input->post('Last_Name',true),
+					'Email_Address' => $this->input->post('Email_Address',true),
+					'Password' => $Password,
+					'Hydro_ID' => "0",
+					'Active_Status' => "0",
+					'Account_Status' => "1",
+				);
+			$result = $this->Model_Signup->register_user($data);
 
-		$data = array
-			(
-				'First_Name' => $this->input->post('First_Name',true),
-				'Last_Name' => $this->input->post('Last_Name',true),
-				'Email_Address' => $this->input->post('Email_Address',true),
-				'Password' => $Password,
-				'Hydro_ID' => "0",
-				'Active_Status' => "0",
-				'Account_Status' => "1",
-			);
-		$result = $this->Model_Signup->register_user($data);
-
-		// if ($result == true) {
-		// 	// redirect to page saved
-		// }
-		// else
-		// {
-		// 	// redirect to page error
-		// }
+			if ($result == true) {
+				redirect('Login');
+			}
+			else
+			{
+				redirect('Sign-Up');
+			}
+		}
 	}
 }

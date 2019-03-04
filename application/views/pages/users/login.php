@@ -15,16 +15,6 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 col-lg-5 m-auto p-5">
-<!-- 					<?php
-					 $ph = password_hash('rasmuslerdorf', PASSWORD_ARGON2I);
-					 echo $ph;
-					 if (password_verify('rasmuslerdor', $ph)) {
-						    echo 'Password is valid!';
-
-						} else {
-						    echo 'Invalid password.';
-						}
-					?> -->
 					<div class="login-container">
 						<form action="<?=base_url()?>Login_Validation" method="POST">
 							<div class="input-holder">
@@ -53,7 +43,7 @@
 			</div>
 		</div>
 	</div>
-<div id="message" class="message">
+<div id="loginMessage" class="message">
 </div>
-<?php $user_jsscripts;?>
+<?php $this->load->view('pages/users/_template/_jsscripts'); ?>
 </body>
