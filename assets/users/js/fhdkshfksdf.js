@@ -1,9 +1,11 @@
 $(document).ready(function(){
     $("#submit").click(function(){
+
+
         var Email_Address = $('#Email_Address').val();
         var Password = $('#Password').val();
-        
-        var dataString = 'Email_Address1='+ Email_Address + '&Password1='+ Password ;
+        var csrf = $("input[name=csrf_test_name]").val();
+        // var dataString = 'Email_Address1='+ Email_Address + '&Password1='+ Password ;
             if(Email_Address==""||Password=="")
             {
 
@@ -16,7 +18,11 @@ $(document).ready(function(){
                         {
                             type: "POST",
                             url: 'Login_Validation',
-                            data: dataString,
+                            data: {
+                                Email_Address1 : Email_Address ,
+                                Password1 : Password ,
+                                'csrf_test_name' : csrf
+                            },
                             cache: false,
                             success: function(result)
                             {
@@ -28,8 +34,9 @@ $(document).ready(function(){
                                 }
                                 else
                                 {
-	                                   var response = $('<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Awww!</strong> Wrong credentials. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                                       var response = $('<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Awww!</strong> Wrong credentials. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                                         $("#loginMessage").html(response).show();
+                                        window.location.reload();
                                 }
                             }
                         });

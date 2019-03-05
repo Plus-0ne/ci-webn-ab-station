@@ -1,5 +1,6 @@
 <?php $user_header;?>
 <?php $this->load->view('pages/users/_template/_login_style');?>
+
 <body>
 	<div class="wrapper">
 		<div class="login-header">
@@ -16,7 +17,7 @@
 			<div class="row">
 				<div class="col-md-12 col-lg-5 m-auto p-5">
 					<div class="login-container">
-						<form action="<?=base_url()?>Login_Validation" method="POST">
+							<?php echo form_open(base_url().'Login_Validation', 'method="POST"');?>
 							<div class="input-holder">
 								<input id="Email_Address" class="form-control" type="Email" name="Email_Address" placeholder="Email Address" value="">
 							</div>
@@ -37,7 +38,7 @@
 									<label> Not registered ?</label><a href="<?=base_url()?>Sign-Up"> Sign-up</a> now.
 								</p>
 							</div>
-						</form>
+						<?php form_close()?>
 					</div>
 				</div>
 			</div>

@@ -14,8 +14,8 @@
 								Airdrops
 							</a>
 							<div id="dropdown-menu" class="newdm dropdown-menu zoomIn animated faster" aria-labelledby="navbarDropdown" style="margin-top: -2px;">
-								<a class="dropdown-item" href="#"><i class="fas fa-fire-alt" style="color: red;"></i> Hot </a>
-								<a class="dropdown-item" href="<?=base_url()?>Airdrops"><i class="fas fa-parachute-box" style="color: green;"></i> Latest </a>
+								<a class="dropdown-item" href="<?=base_url()?>HOT"><i class="fas fa-fire-alt" style="color: red;"></i> Hot </a>
+								<a class="dropdown-item" href="<?=base_url()?>LATEST"><i class="fas fa-parachute-box" style="color: green;"></i> Latest </a>
 								    
 							</div>
 						</li>
@@ -77,8 +77,8 @@
 														$chkStatus = $getUserData['result']['status'];
 
 														if ($chkID == $idid && $chkStatus == "member") {
-															echo '<a class="dropdown-item" href="#">
-								          					<i class="fab fa-telegram-plane" style="color: #247CDF;"></i> Verified </a>';
+															echo '<a class="dropdown-item">
+								          					<i class="fab fa-telegram-plane" style="color: #247CDF;"></i> Verified <i class="fas fa-check" style="color: #5EC830;"></i></a>';
 														}
 														elseif ($chkID == $idid && $chkStatus == "left") {
 															echo '<a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalJoinTelegram">

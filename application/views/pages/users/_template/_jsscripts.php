@@ -26,6 +26,4 @@
 	    	$('.newdm').removeClass('show');
 	    });
 	});
-
-	
 </script>

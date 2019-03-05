@@ -7,7 +7,7 @@ class Login_Controller extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Model_Login');
-		$this->load->database();
+
 		$this->load->helper('security');
 
 	}
@@ -31,8 +31,8 @@ class Login_Controller extends CI_Controller {
 		}
 		else
 		{
-			$Email_Address = $this->input->post('Email_Address1');
-			$Password = do_hash($this->input->post('Password1'), 'md5'); 
+			$Email_Address = $this->input->post('Email_Address1',true);
+			$Password = do_hash($this->input->post('Password1'), 'md5',true); 
 
 			$data = array
 			(

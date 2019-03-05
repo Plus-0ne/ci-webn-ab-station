@@ -60,60 +60,17 @@
             }
             elseif ($chkID == $idid && $chkStatus == "left") {
                 echo '<div class="modal fade animated zoomIn faster" id="modalJoinTelegram" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                          <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle"> Join our Telegram Channel </h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                              <div class="modal-body">
-                                <form action="<?=base_url()?>BOT/getUserinChannel" method="POST">
-                                  <div>
-                                    <a href="https://t.me/WEBN_Airdrop_Station" target="_blank">
-                                      CLICK ME <i class="far fa-smile-beam"></i>
-                                    </a>
-                                  </div>
-                                  <p>
-                                    <div>
-                                      To get your Telgram ID forward a message to Nadam\'s Userinfobot.
-                                    </div>
-                                  </p>
-                                  <div>
-                                    Telegram ID : 
-                                  </div>
-                                  <div>
-                                    <input id="user_id" type="text" name="user_id">
-                                  </div>
-                                  <br>
-                                  <input id="telesubmit" type="submit" name="" value="Send Message">
-                                </form>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                              </div>
-                            </div>
-                          </div>
-                          <div id="message" class="message">
-                        </div>
-                        </div>';
-            }
-          }
-          else
-          {
-              echo '<div class="modal fade animated zoomIn faster" id="modalJoinTelegram" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLongTitle"> Join our Telegram Channel </h5>
+                          <h5 class="modal-title" id="exampleModalLongTitle"> Join in our Telegram Channel </h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
-                        <div class="modal-body">
-                          <form action="<?=base_url()?>BOT/getUserinChannel" method="POST">
-                            <div>
+                        <div class="modal-body">';
+                          echo form_open(base_url().'BOT/getUserinChannel', 'method="POST"');
+                          echo '<div>
                               <a href="https://t.me/WEBN_Airdrop_Station" target="_blank">
                                 CLICK ME <i class="far fa-smile-beam"></i>
                               </a>
@@ -130,9 +87,52 @@
                               <input id="user_id" type="text" name="user_id">
                             </div>
                             <br>
-                            <input id="telesubmit" type="submit" name="" value="Send Message">
-                          </form>
+                            <input id="telesubmit" type="submit" name="" value="Verify">';
+                          echo form_close();
+                        echo '</div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
+                      </div>
+                    </div>
+                    <div id="message" class="message">
+                  </div>
+                  </div>';
+            }
+          }
+          else
+          {
+              echo '<div class="modal fade animated zoomIn faster" id="modalJoinTelegram" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLongTitle"> Join in our Telegram Channel </h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">';
+                          echo form_open(base_url().'BOT/getUserinChannel', 'method="POST"');
+                          echo '<div>
+                              <a href="https://t.me/WEBN_Airdrop_Station" target="_blank">
+                                CLICK ME <i class="far fa-smile-beam"></i>
+                              </a>
+                            </div>
+                            <p>
+                              <div>
+                                To get your Telgram ID forward a message to Nadam\'s Userinfobot.
+                              </div>
+                            </p>
+                            <div>
+                              Telegram ID : 
+                            </div>
+                            <div>
+                              <input id="user_id" type="text" name="user_id">
+                            </div>
+                            <br>
+                            <input id="telesubmit" type="submit" name="" value="Verify">';
+                          echo form_close();
+                        echo '</div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
@@ -155,13 +155,15 @@
   $(document).ready(function(){
     $("#telesubmit").click(function(){
         var User_Idto = $('#user_id').val();
+        var csrf = $("input[name=csrf_test_name]").val();
 
-        var dataString = 'User_ID='+ User_Idto ;
+        // var dataString = 'User_ID='+ User_Idto ;
             if(User_Idto=="")
             {
 
                var response = $('<div class="alert alert-warning alert-dismissible fade show animated bounceInDown" role="alert"><strong> Opsss! </strong> Please! We need your telegram ID. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
               $("#message").html(response).show();
+              window.location.reload();
   
             }
             else
@@ -170,7 +172,10 @@
                 {
                   type: "POST",
                   url: 'BOT/getUserinChannel',
-                  data: dataString,
+                  data: {
+                    User_ID : User_Idto,
+                    'csrf_test_name' : csrf
+                  },
                   cache: false,
                   success: function(result)
                   {
@@ -184,6 +189,7 @@
                     {
                       var response = $('<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Awww!</strong> Not a Member. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                       $("#message").html(response).show();
+                      window.location.reload();
                     }
                   }
               });

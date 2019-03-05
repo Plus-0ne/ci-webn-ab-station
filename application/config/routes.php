@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'Home_Controller';
-$route['404_override'] = '';
+$route['404_override'] = 'PageNotFound';
 $route['translate_uri_dashes'] = FALSE;
 
 // Users Login
@@ -64,7 +64,10 @@ $route['submit_form_signup'] = 'Signup_Controller/submit_form_signup';
 
 
 $route['Home'] = 'Home_Controller/home';
-$route['Airdrops'] = 'Airdrops_Controller/airdrops';
+
+$route['LATEST'] = 'Airdrops_Controller/airdrops';
+$route['HOT'] = 'HotAirdrops_Controller/hot_airdrops';
+
 $route['Bounties'] = 'Bounties_Controller/bounties';
 $route['Contact'] = 'Contact_Controller/contact';
 $route['FAQs'] = 'Faqs_Controller/faqs';

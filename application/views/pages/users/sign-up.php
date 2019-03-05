@@ -16,9 +16,10 @@
 			<div class="row">
 				<div class="col-md-12 col-lg-5 m-auto p-5">
 					<div class="login-container">
-						<form action="<?=base_url()?>submit_form_signup" method="POST">
+						<?php echo form_open(base_url().'submit_form_signup','method="POST"');?>
 							<div class="signup-holder text-center">
 								<p>
+									<?php echo $this->session->flashdata('promptInfo');?>
 								</p>
 							</div>
 							<br>
@@ -39,13 +40,12 @@
 								<input class="btn btn-primary btn-submit" type="submit" value="Register">
 							</div>
 							<br>
-							<a href="https://t.me/joinchat/AAAAAFTK0rkJxVaEK7rn_Q">dd</a>
 							<div class="signup-holder text-center">
 								<p>
 									<label> Already registered ?</label><a href="<?=base_url()?>Login"> Sign-in </a>
 								</p>
 							</div>
-						</form>
+						<?php echo form_close()?>
 					</div>
 				</div>
 			</div>
