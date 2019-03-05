@@ -8,10 +8,12 @@ class Home_Controller extends CI_Controller {
 		parent::__construct();
 		
 	}
+	// ---------------- REDIRECT TO HOME VIEW
 	public function index()
 	{
 		redirect('Home');
 	}
+	// ---------------- LOAD VIEW HOME
 	public function home()
 	{
 		$title['title'] = "Home | WEBN Airdrops and Bounty Station";

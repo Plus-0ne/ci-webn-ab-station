@@ -8,10 +8,13 @@ class Airdrops_Controller extends CI_Controller {
 		parent::__construct();
 		
 	}
+
+	// ---------------- REDIRECT TO AIRDROPS
 	public function index()
 	{
-		redirect('Airdrops');
+		redirect('LATEST');
 	}
+	// ---------------- LATEST AIRDROPS VIEW
 	public function airdrops()
 	{
 		$title['title'] = "Latest Airdops | WEBN Airdrops and Bounty Station";

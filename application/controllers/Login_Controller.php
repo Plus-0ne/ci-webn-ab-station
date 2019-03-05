@@ -7,14 +7,15 @@ class Login_Controller extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Model_Login');
-
 		$this->load->helper('security');
 
 	}
+	// ---------------- REDIRECT TO LOGIN
 	public function index()
 	{
-		redirect('Home');
+		redirect('Login');
 	}
+	// ---------------- LOAD LOGIN VIEW
 	public function login()
 	{
 		$title['title'] = "Welcome | WEBN Airdrops and Bounty Station";
@@ -24,6 +25,7 @@ class Login_Controller extends CI_Controller {
 		);
 		$this->load->view('pages/users/login',$data);
 	}
+	// ---------------- VALIDATE USER LOGIN
 	public function Login_Validation()
 	{
 		if ($this->session->userdata('isActive') == 1) {
@@ -32,30 +34,32 @@ class Login_Controller extends CI_Controller {
 		else
 		{
 			$Email_Address = $this->input->post('Email_Address1',true);
-			$Password = do_hash($this->input->post('Password1'), 'md5',true); 
+			$UserPass = $this->input->post('Password1',true);
 
-			$data = array
-			(
-				'Email_Address' => $Email_Address,
-				'Password' => $Password,
-			);
-			$result = $this->Model_Login->check_user($data);
+
+			$result = $this->Model_Login->get_email_add($Email_Address);
+
 			if ($result == true) {
-				$userdata = array(
-					'UserNo' => $result->User_No,
-					'Fname' => $result->First_Name, 
-					'Lname' => $result->Last_Name, 
-					'Email' => $result->Email_Address,
-					'Is_Telegram_Member' => $result->Is_Telegram_Member, 
-					'Is_Subscriber' => $result->Is_Subscriber,  
-					'Hydro_ID' => $result->Hydro_ID,
-					'Active_Status' => $result->Active_Status,
-					'Account_Status' => $result->Account_Status, 
-					'isActive' => 1,
-				);
-				$this->session->set_userdata($userdata);
+				if (password_verify($UserPass,$result->Password)) {
+				    $userdata = array(
+							'UserNo' => $result->User_No,
+							'Fname' => $result->First_Name, 
+							'Lname' => $result->Last_Name, 
+							'Email' => $result->Email_Address,
+							'Is_Telegram_Member' => $result->Is_Telegram_Member, 
+							'Is_Subscriber' => $result->Is_Subscriber,  
+							'Hydro_ID' => $result->Hydro_ID,
+							'Active_Status' => $result->Active_Status,
+							'Account_Status' => $result->Account_Status, 
+							'isActive' => 1,
+						);
+						$this->session->set_userdata($userdata);
 
-				echo "OK";
+						echo "OK";
+				}
+				else {
+				    echo "ERROR";
+				} 
 			}
 			else
 			{
@@ -63,6 +67,7 @@ class Login_Controller extends CI_Controller {
 			}
 		}
 	}
+	// ---------------- LOGOUT
 	public function logout()
 	{
 		if ($this->session->userdata('isActive') == 1) {

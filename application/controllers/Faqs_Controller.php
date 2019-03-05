@@ -8,10 +8,12 @@ class Faqs_Controller extends CI_Controller {
 		parent::__construct();
 		
 	}
+	// ---------------- REDIRECT TO FREQUENTLY ASKED QUESTION
 	public function index()
 	{
 		redirect('FAQs');
 	}
+	// ---------------- LOAD FAQS VIEW
 	public function faqs()
 	{
 		$title['title'] = "Frequently Asked Questions | WEBN Airdrops and Bounty Station";

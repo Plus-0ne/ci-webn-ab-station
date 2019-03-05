@@ -8,10 +8,12 @@ class HotAirdrops_Controller extends CI_Controller {
 		parent::__construct();
 		
 	}
+	// ---------------- REDIRECT TO HOT AIRDROPS
 	public function index()
 	{
-		redirect('Airdrops');
+		redirect('HOT');
 	}
+	// ---------------- HOT AIRDROPS VIEW
 	public function hot_airdrops()
 	{
 		$title['title'] = "Hot Airdrops for you | WEBN Airdrops and Bounty Station";

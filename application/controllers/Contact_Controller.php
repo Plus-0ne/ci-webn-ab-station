@@ -8,10 +8,12 @@ class Contact_Controller extends CI_Controller {
 		parent::__construct();
 		
 	}
+	// ---------------- REDIRECT TO CONTACTS
 	public function index()
 	{
 		redirect('Contact');
 	}
+	// ---------------- LOAD VIEW CONTACTS
 	public function contact()
 	{
 		$title['title'] = "Contact us | WEBN Airdrops and Bounty Station";

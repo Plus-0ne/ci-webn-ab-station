@@ -8,10 +8,12 @@ class Bounties_Controller extends CI_Controller {
 		parent::__construct();
 		
 	}
+	// ---------------- REDIRECT TO BOUNTIES
 	public function index()
 	{
 		redirect('Bounties');
 	}
+	// ---------------- LOAD BOUNTY VIEWS
 	public function bounties()
 	{
 		$title['title'] = "Bounties | WEBN Airdrops and Bounty Station";
