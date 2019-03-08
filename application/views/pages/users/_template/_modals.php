@@ -11,13 +11,13 @@
       <div class="modal-body">
         <p>
           Subscribe to Webn Innovation
-        <button>
-          Subscribe
-        </button>
+          <button>
+            Subscribe
+          </button>
         </p>
         <a href="https://t.me/joinchat/AAAAAFTK0rkJxVaEK7rn_Q" target="_blank">
-            Join in our Telegram Channel
-          </a>
+          Join in our Telegram Channel
+        </a>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -154,47 +154,47 @@
 <script type="text/javascript">
   $(document).ready(function(){
     $("#telesubmit").click(function(){
-        var User_Idto = $('#user_id').val();
-        var csrf = $("input[name=csrf_test_name]").val();
+      var User_Idto = $('#user_id').val();
+      var csrf = $("input[name=csrf_test_name]").val();
 
         // var dataString = 'User_ID='+ User_Idto ;
-            if(User_Idto=="")
-            {
+        if(User_Idto=="")
+        {
 
-               var response = $('<div class="alert alert-warning alert-dismissible fade show animated bounceInDown" role="alert"><strong> Opsss! </strong> Please! We need your telegram ID. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+         var response = $('<div class="alert alert-warning alert-dismissible fade show animated bounceInDown" role="alert"><strong> Opsss! </strong> Please! We need your telegram ID. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+         $("#message").html(response).show();
+         window.location.reload();
+         
+       }
+       else
+       {
+        $.ajax(
+        {
+          type: "POST",
+          url: 'BOT/getUserinChannel',
+          data: {
+            User_ID : User_Idto,
+            'csrf_test_name' : csrf
+          },
+          cache: false,
+          success: function(result)
+          {
+            if (result == 'MEMBER')
+            {
+              var response = $('<div class="alert alert-success alert-dismissible fade animated bounceInDown show" role="alert"><strong> Verified Member! </strong>. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
               $("#message").html(response).show();
               window.location.reload();
-  
             }
             else
             {
-              $.ajax(
-                {
-                  type: "POST",
-                  url: 'BOT/getUserinChannel',
-                  data: {
-                    User_ID : User_Idto,
-                    'csrf_test_name' : csrf
-                  },
-                  cache: false,
-                  success: function(result)
-                  {
-                    if (result == 'MEMBER')
-                    {
-                        var response = $('<div class="alert alert-success alert-dismissible fade animated bounceInDown show" role="alert"><strong> Verified Member! </strong>. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                        $("#message").html(response).show();
-                        window.location.reload();
-                    }
-                    else
-                    {
-                      var response = $('<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Awww!</strong> Not a Member. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                      $("#message").html(response).show();
-                      window.location.reload();
-                    }
-                  }
-              });
+              var response = $('<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Awww!</strong> Not a Member. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+              $("#message").html(response).show();
+              window.location.reload();
+            }
           }
+        });
+      }
       return false;
     });
-});
+  });
 </script>

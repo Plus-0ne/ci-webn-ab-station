@@ -10,20 +10,39 @@
 
 <script type="text/javascript">
 	$(document).ready(function () {
-	    $('#btt-scrolltop').click(function () {
-	        $("html, body").animate({
-	            scrollTop: 0
-	        }, 600);
-	        return false;
-	    });
+		$('#btt-scrolltop').click(function () {
+			$("html, body").animate({
+				scrollTop: 0
+			}, 600);
+			return false;
+		});
 
 
-	    $('.newdt , .newdm').mouseenter(function () {
-	    	$('.newdm').addClass('zoomIn');
-	        $('.newdm').addClass('show');
-	    });
-	    $('.newdt , .newdm').mouseleave(function () {
-	    	$('.newdm').removeClass('show');
-	    });
+		$('.newdt , .newdm').mouseenter(function () {
+			$('.newdm').addClass('zoomIn');
+			$('.newdm').addClass('show');
+		});
+		$('.newdt , .newdm').mouseleave(function () {
+			$('.newdm').removeClass('show');
+		});
+
+		var userScroll = $(document).scrollTop();
+		$(window).on('scroll', function() {
+			var newScroll = $(document).scrollTop();
+			if(userScroll - newScroll > 0 || newScroll - userScroll > 0)
+			{
+				$('#header-container').addClass('sticky-top');
+				$('#cccc').removeClass('pt-5 pb-5');
+				
+			}
+			else
+			{
+				$('#header-container').removeClass('sticky-top');
+				$('#cccc').addClass('pt-5 pb-5');
+			}
+		});
+
+		
 	});
+
 </script>

@@ -7,8 +7,6 @@ class Signup_Controller extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Model_Signup');
-		$this->load->database();
-
 		$this->load->helper('security');
 	}
 
@@ -37,21 +35,21 @@ class Signup_Controller extends CI_Controller {
 		}
 		else
 		{
+			if ($this->input->post('Password',true) == $this->input->post('rePassword',true) || $this->input->post('rePassword',true) == $this->input->post('Password',true)) {
 
-			$Email_Add = $this->input->post('Email_Address',true);
+				$Email_Add = $this->input->post('Email_Address',true);
+				$EmailCheck = $this->Model_Signup->Check_EmailAdd($Email_Add);
 
-			$EmailCheck = $this->Model_Signup->Check_EmailAdd($Email_Add);
-
-			if ($EmailCheck->Email_Address == $Email_Add) {
-				$this->session->set_flashdata('promptInfo', '<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Opppsss!</strong> Email Address exist. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-				redirect('Sign-Up');
-			}
-			else
-			{
-				$hashed = $this->input->post('Password',true);
-				$Password = password_hash($hashed, PASSWORD_BCRYPT);
-				
-				$data = array
+				if ($EmailCheck->Email_Address == $Email_Add) {
+					$this->session->set_flashdata('promptInfo', '<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Opppsss!</strong> Email Address exist. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+					redirect('Sign-Up');
+				}
+				else
+				{
+					$hashed = $this->input->post('rePassword',true);
+					$Password = password_hash($hashed, PASSWORD_BCRYPT);
+					
+					$data = array
 					(
 						'First_Name' => $this->input->post('First_Name',true),
 						'Last_Name' => $this->input->post('Last_Name',true),
@@ -63,19 +61,28 @@ class Signup_Controller extends CI_Controller {
 						'Active_Status' => "0",
 						'Account_Status' => "1",
 					);
-				$result = $this->Model_Signup->register_user($data);
+					$result = $this->Model_Signup->register_user($data);
 
-				if ($result == true) {
+					if ($result == true) {
 
-					$this->session->set_flashdata('promptInfo', '<div class="alert alert-success alert-dismissible fade animated bounceInDown show" role="alert"><strong> Registration Success! </strong> Login using your email and password. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-					redirect('Sign-Up');
-				}
-				else
-				{
-					$this->session->set_flashdata('promptInfo', '<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Awww!</strong> Somesthings wrong. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-					redirect('Sign-Up');
+						$this->session->set_flashdata('promptInfo', '<div class="alert alert-success alert-dismissible fade animated bounceInDown show" role="alert"><strong> Registration Success! </strong> Login using your email and password. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+						redirect('Sign-Up');
+					}
+					else
+					{
+						$this->session->set_flashdata('promptInfo', '<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Awww!</strong> Somesthings wrong. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+						redirect('Sign-Up');
+					}
 				}
 			}
+			else
+			{
+				$this->session->set_flashdata('promptInfo', '<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Opppsss!</strong> Password didn\'t match. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+				redirect('Sign-Up');
+			}
+
+
+			
 			
 		}
 	}

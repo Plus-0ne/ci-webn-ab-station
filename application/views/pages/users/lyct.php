@@ -26,7 +26,7 @@
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
 						<h4 class="text-center">
-							<i class="fas fa-exclamation" style="color: #EA251B;"></i> &nbsp Opsssss! &nbsp Page not found.
+							<i class="fab fa-btc" style="color: #EA861B;"></i> &nbsp List your Coin / Token
 						</h4>
 						<br>
 					</div>

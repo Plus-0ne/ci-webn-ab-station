@@ -16,40 +16,43 @@
 			<div class="row">
 				<div class="col-md-12 col-lg-5 m-auto p-5">
 					<div class="login-container">
-						<?php echo form_open(base_url().'submit_form_signup','method="POST"');?>
-							<div class="signup-holder text-center">
-								<p>
-									<?php echo $this->session->flashdata('promptInfo');?>
-								</p>
-							</div>
-							<br>
+						<?php echo form_open(base_url().'submit_form_signup','method="POST"','id="sform"');?>
+						<div class="signup-holder text-center">
+							<p>
+								<?php echo $this->session->flashdata('promptInfo');?>
+							</p>
+						</div>
+						<br>
 
-							<div class="input-holder">
-								<input class="form-control" type="text" name="First_Name" placeholder="First Name*" required="">
-							</div>
-							<div class="input-holder">
-								<input class="form-control" type="text" name="Last_Name" placeholder="Last Name*" required="">
-							</div>
-							<div class="input-holder">
-								<input class="form-control" type="email" name="Email_Address" placeholder="Email Address*" required="">
-							</div>
-							<div class="input-holder">
-								<input class="form-control" type="password" name="Password" placeholder="Password*" required="">
-							</div>
-							<div class="submit-holder">
-								<input class="btn btn-primary btn-submit" type="submit" value="Register">
-							</div>
-							<br>
-							<div class="signup-holder text-center">
-								<p>
-									<label> Already registered ?</label><a href="<?=base_url()?>Login"> Sign-in </a>
-								</p>
-							</div>
+						<div class="input-holder">
+							<input class="form-control" type="text" name="First_Name" placeholder="First Name*" required="">
+						</div>
+						<div class="input-holder">
+							<input class="form-control" type="text" name="Last_Name" placeholder="Last Name*" required="">
+						</div>
+						<div class="input-holder">
+							<input class="form-control" type="email" name="Email_Address" placeholder="Email Address*" required="">
+						</div>
+						<div class="input-holder">
+							<input id="password" class="form-control" type="password" name="Password" placeholder="Password*" required="">
+						</div>
+						<div class="input-holder">
+							<input id="repassword" class="form-control" type="password" name="rePassword" placeholder="Re-type Password*" required="">
+						</div>
+						<div class="submit-holder">
+							<input class="btn btn-primary btn-submit" type="submit" value="Register">
+						</div>
+						<br>
+						<div class="signup-holder text-center">
+							<p>
+								<label> Already registered ?</label><a href="<?=base_url()?>Login"> Sign-in </a>
+							</p>
+						</div>
 						<?php echo form_close()?>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-<?php $this->load->view('pages/users/_template/_jsscripts'); ?>
+	<?php $this->load->view('pages/users/_template/_jsscripts'); ?>
 </body>

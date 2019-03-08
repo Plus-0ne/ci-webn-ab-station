@@ -41,6 +41,7 @@ class Login_Controller extends CI_Controller {
 
 			if ($result == true) {
 				if (password_verify($UserPass,$result->Password)) {
+				    
 				    $userdata = array(
 							'UserNo' => $result->User_No,
 							'Fname' => $result->First_Name, 
@@ -58,12 +59,12 @@ class Login_Controller extends CI_Controller {
 						echo "OK";
 				}
 				else {
-				    echo "ERROR";
-				} 
+				    echo "WRONG PASSWORD";
+				}
 			}
 			else
 			{
-				echo "ERROR";
+				echo "EMAIL NOT FOUND";
 			}
 		}
 	}

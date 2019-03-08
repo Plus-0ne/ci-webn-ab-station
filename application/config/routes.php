@@ -53,23 +53,24 @@ $route['default_controller'] = 'Home_Controller';
 $route['404_override'] = 'PageNotFound';
 $route['translate_uri_dashes'] = FALSE;
 
-// Users Login
+// USER LOGIN
 $route['Login'] = 'Login_Controller/login';
 $route['Login_Validation'] = 'Login_Controller/Login_Validation';
 
-// User Signup
+// USER SIGNUP
 $route['Sign-Up'] = 'Signup_Controller/Sign_up';
 $route['submit_form_signup'] = 'Signup_Controller/submit_form_signup';
 
-
-
+// WEB NAVIGATION
 $route['Home'] = 'Home_Controller/home';
-
 $route['LATEST'] = 'Airdrops_Controller/airdrops';
 $route['HOT'] = 'HotAirdrops_Controller/hot_airdrops';
-
 $route['Bounties'] = 'Bounties_Controller/bounties';
+$route['List-Your-Coin-Token'] = 'LYCT_Controller/lyct_view';
+$route['BuyWEBN_Token'] = 'BuyWebnToken_Controller/buywebn_token';
 $route['Contact'] = 'Contact_Controller/contact';
 $route['FAQs'] = 'Faqs_Controller/faqs';
 $route['Logout'] = 'Login_Controller/logout';
+
+
 

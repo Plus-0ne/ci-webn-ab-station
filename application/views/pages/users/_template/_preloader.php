@@ -1,5 +1,5 @@
 <style type="text/css">
-   .loader,
+.loader,
 .loader:before,
 .loader:after {
   border-radius: 50%;

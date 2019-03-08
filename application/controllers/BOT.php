@@ -6,23 +6,23 @@ class BOT extends CI_Controller {
 	public function __construct() 
 	{
 		parent::__construct();
-		$this->load->model('Model_Update');
+		$this->load->model(array('Model_Update','Model_Select'));
 	}
 	public function index()
 	{
 		$ch = curl_init();
-					curl_setopt($ch, CURLOPT_URL, 'https://api.telegram.org/bot600810082:AAEUjCkkz8-ExUtIxS7jlslOhhUqVEX3J1I/getMe');
-					curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-					$json_object= curl_exec($ch);
-					curl_close($ch);
+		curl_setopt($ch, CURLOPT_URL, 'https://api.telegram.org/bot600810082:AAEUjCkkz8-ExUtIxS7jlslOhhUqVEX3J1I/getMe');
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		$json_object= curl_exec($ch);
+		curl_close($ch);
 
 		$update = json_decode($json_object ,true);
 
 		$assocArray= new RecursiveIteratorIterator(
-				    new RecursiveArrayIterator($update),
-				    RecursiveIteratorIterator::LEAVES_ONLY);
+			new RecursiveArrayIterator($update),
+			RecursiveIteratorIterator::LEAVES_ONLY);
 
-					
+		
 		foreach ($assocArray as $key => $value) {
 			if ($key == 'id') {
 				$id = $value;
@@ -42,8 +42,8 @@ class BOT extends CI_Controller {
 		$chatId='-1001489662009';  //Receiver Chat Id 
 		
 		$params=[
-		    'chat_id'=>$chatId,
-		    'user_id'=>$idid,
+			'chat_id'=>$chatId,
+			'user_id'=>$idid,
 		];
 
 		$ch = curl_init($website . '/getChatMember?');
@@ -54,7 +54,6 @@ class BOT extends CI_Controller {
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		$result = curl_exec($ch);
 		
-
 		$getUserData = json_decode($result ,true);
 
 		if (is_array($getUserData)) {
@@ -68,7 +67,7 @@ class BOT extends CI_Controller {
 
 					$this->Model_Update->update_telegram_id($verifiedid,$User_No);
 
-					$get_userdata = $this->Model_Update->get_userdata($User_No);
+					$get_userdata = $this->Model_Select->get_userdata($User_No);
 
 					$this->session->unset_userdata('Is_Telegram_Member');
 
