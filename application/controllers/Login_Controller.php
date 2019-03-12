@@ -28,7 +28,7 @@ class Login_Controller extends CI_Controller {
 	// ---------------- VALIDATE USER LOGIN
 	public function Login_Validation()
 	{
-		if ($this->session->userdata('isActive') == 1) {
+		if ($this->session->userdata('isActive')) {
 			redirect('Home');
 		}
 		else
@@ -52,7 +52,7 @@ class Login_Controller extends CI_Controller {
 							'Hydro_ID' => $result->Hydro_ID,
 							'Active_Status' => $result->Active_Status,
 							'Account_Status' => $result->Account_Status, 
-							'isActive' => 1,
+							'isActive' => $result->Account_Status,
 						);
 						$this->session->set_userdata($userdata);
 

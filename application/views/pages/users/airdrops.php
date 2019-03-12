@@ -29,86 +29,20 @@
 							<i class="fas fa-parachute-box" style="color: green;"></i> &nbsp LATEST Airdrops
 						</h4>
 					</div>
-					<div class="col-lg-3 col-sm-12 pt-4 pb-4">
-						<div class="content-widget animated fadeIn">
-							<div class="content-image">
-								<img class="ratio rounded-circle" src="" style="background-image: url('');">
-							</div>
-							<div class="content-details">
-								Ferum Network
-							</div>
+					<?php foreach ($GetAirdrops->result() as $row) { ?>
+						<div class="col-lg-3 col-sm-12 pt-4 pb-4">
+							<a href="<?=base_url()?>Airdrop_Details?aide=<?php echo $row->airdrop_id;?>" style="text-decoration: none;">
+								<div class="content-widget animated fadeIn">
+									<div class="content-image">
+										<img class="ratio rounded-circle" src="" style="background-image: url('<?php echo $row->TokenImage;?>')">
+									</div>
+									<div class="content-details"">
+										<?php echo $row->ProjectName;?>
+									</div>
+								</div>
+							</a>
 						</div>
-					</div>
-					<div class="col-lg-3 col-sm-12 pt-4 pb-4">
-						<div class="content-widget animated fadeIn">
-							<div class="content-image">
-								<img class="ratio rounded-circle" src="" style="background-image: url('');">
-							</div>
-							<div class="content-details">
-								WEBN Token
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-sm-12 pt-4 pb-4">
-						<div class="content-widget animated fadeIn">
-							<div class="content-image">
-								<img class="ratio rounded-circle" src="" style="background-image: url('');">
-							</div>
-							<div class="content-details">
-								body
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-sm-12 pt-4 pb-4">
-						<div class="content-widget animated fadeIn">
-							<div class="content-image">
-								<img class="ratio rounded-circle" src="" style="background-image: url('');">
-							</div>
-							<div class="content-details">
-								body
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-sm-12 pt-4 pb-4">
-						<div class="content-widget animated fadeIn">
-							<div class="content-image">
-								<img class="ratio rounded-circle" src="" style="background-image: url('');">
-							</div>
-							<div class="content-details">
-								Ferum Network
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-sm-12 pt-4 pb-4">
-						<div class="content-widget animated fadeIn">
-							<div class="content-image">
-								<img class="ratio rounded-circle" src="" style="background-image: url('');">
-							</div>
-							<div class="content-details">
-								WEBN Token
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-sm-12 pt-4 pb-4">
-						<div class="content-widget animated fadeIn">
-							<div class="content-image">
-								<img class="ratio rounded-circle" src="" style="background-image: url('');">
-							</div>
-							<div class="content-details">
-								body
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-sm-12 pt-4 pb-4">
-						<div class="content-widget animated fadeIn">
-							<div class="content-image">
-								<img class="ratio rounded-circle" src="" style="background-image: url('');">
-							</div>
-							<div class="content-details">
-								body
-							</div>
-						</div>
-					</div>
+					<?php } ?>
 				</div>
 			</div>
 		</div>

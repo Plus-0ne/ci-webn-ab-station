@@ -6,7 +6,7 @@ class HotAirdrops_Controller extends CI_Controller {
 	public function __construct() 
 	{
 		parent::__construct();
-		
+		// $Model_Select = $this->load->model('Model_Select');
 	}
 	// ---------------- REDIRECT TO HOT AIRDROPS
 	public function index()
@@ -23,6 +23,7 @@ class HotAirdrops_Controller extends CI_Controller {
 		$data = array(
 			'user_header' => $this->load->view('pages/users/_template/_header',$navdata), 
 		);
+		$data['HotAirdrops'] = $this->Model_Select->getHotairdrops();
 		$this->load->view('pages/users/hot_airdrops',$data);
 	}
 }

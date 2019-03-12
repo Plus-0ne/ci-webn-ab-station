@@ -119,12 +119,19 @@ a.slinks:hover { text-decoration: none; color: #f1c40f; }
 		bottom: 0px;
 		text-align: center;
 	}
+	.mid-img
+	{
+		text-align: center;
+	}
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px)
 {
-
+	.mid-img
+	{
+		text-align: all;
+	}
 }
 
 /* Large devices (desktops, 992px and up) */

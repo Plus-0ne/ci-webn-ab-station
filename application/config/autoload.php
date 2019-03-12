@@ -132,7 +132,7 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array();
+$autoload['model'] = array('Model_Select' => 'Model_Select','Model_Insert' => 'Model_Insert','Model_Update' => 'Model_Update',);
 
 # Load the template library when the spark is loaded
 # $autoload['libraries'] = array('curl');

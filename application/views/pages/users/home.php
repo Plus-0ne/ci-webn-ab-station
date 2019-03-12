@@ -26,46 +26,80 @@
 							<i class="fas fa-fire-alt" style="color: red;"></i> &nbsp HOT AIRDROPS
 						</h4>
 					</div>
-					<div class="col-lg-3 col-sm-12 pt-4 pb-4">
-						<div class="content-widget animated fadeIn">
-							<div class="content-image">
-								<img class="ratio rounded-circle" src="" style="background-image: url('');">
-							</div>
-							<div class="content-details">
-								Ferum Network
-							</div>
+					<?php foreach ($GetAirdropsHot->result() as $row) { ?>
+						<div class="col-lg-3 col-sm-12 pt-4 pb-4">
+							<a href="<?=base_url()?>Airdrop_Details?aide=<?php echo $row->airdrop_id;?>" style="text-decoration: none; color: #323232;">
+								<div class="content-widget animated fadeIn">
+									<div class="content-image">
+										<img class="ratio rounded-circle" src="" style="background-image: url('<?php echo $row->TokenImage;?>');">
+									</div>
+									<div class="content-details">
+										<?php echo $row->ProjectName;?>
+										<br>
+										<?php 
+										if ($row->Rate == 1) {	
+											echo ' 
+												<span id="star1" class="fa fa-star" style="color: #FF8400;"></span>
+												<span id="star2" class="fa fa-star"></span>
+												<span id="star3" class="fa fa-star"></span>
+												<span id="star4" class="fa fa-star"></span>
+												<span id="star5" class="fa fa-star"></span>
+												';
+										}
+										elseif ($row->Rate == 2) {
+											echo ' 
+												<span class="fa fa-star" style="color: #FF8400;"></span>
+												<span class="fa fa-star" style="color: #FF8400;"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												';
+										}
+										elseif ($row->Rate == 3) {
+											echo ' 
+												<span class="fa fa-star" style="color: #FF8400;"></span>
+												<span class="fa fa-star" style="color: #FF8400;"></span>
+												<span class="fa fa-star" style="color: #FF8400;"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												';
+										}
+										elseif ($row->Rate == 4) {
+											echo ' 
+												<span class="fa fa-star" style="color: #FF8400;"></span>
+												<span class="fa fa-star" style="color: #FF8400;"></span>
+												<span class="fa fa-star" style="color: #FF8400;"></span>
+												<span class="fa fa-star" style="color: #FF8400;"></span>
+												<span class="fa fa-star"></span>
+												';
+										}
+										elseif ($row->Rate == 5) {
+											echo ' 
+												<span class="fa fa-star" style="color: #FF8400;"></span>
+												<span class="fa fa-star" style="color: #FF8400;"></span>
+												<span class="fa fa-star" style="color: #FF8400;"></span>
+												<span class="fa fa-star" style="color: #FF8400;"></span>
+												<span class="fa fa-star" style="color: #FF8400;"></span>
+												';
+										}
+										else
+										{
+											
+											echo 'Not Rated';
+											echo '&nbsp 
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												';
+										}
+										?>
+									</div>
+								</div>
+							</a>
 						</div>
-					</div>
-					<div class="col-lg-3 col-sm-12 pt-4 pb-4">
-						<div class="content-widget animated fadeIn">
-							<div class="content-image">
-								<img class="ratio rounded-circle" src="" style="background-image: url('');">
-							</div>
-							<div class="content-details">
-								WEBN Token
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-sm-12 pt-4 pb-4">
-						<div class="content-widget animated fadeIn">
-							<div class="content-image">
-								<img class="ratio rounded-circle" src="" style="background-image: url('');">
-							</div>
-							<div class="content-details">
-								body
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-sm-12 pt-4 pb-4">
-						<div class="content-widget animated fadeIn">
-							<div class="content-image">
-								<img class="ratio rounded-circle" src="" style="background-image: url('');">
-							</div>
-							<div class="content-details">
-								body
-							</div>
-						</div>
-					</div>
+					<?php } ?>
 				</div>
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
@@ -73,46 +107,22 @@
 							<i class="fas fa-parachute-box" style="color: green;"></i> &nbsp LATEST AIRDROP
 						</h4>
 					</div>
-					<div class="col-lg-3 col-sm-12 pt-4 pb-4">
-						<div class="content-widget animated fadeIn">
-							<div class="content-image">
-								<img class="ratio rounded-circle" src="" style="background-image: url('');">
-							</div>
-							<div class="content-details">
-								Ferum Network
-							</div>
+					<?php foreach ($GetAirdropsLatest->result() as $row) { ?>
+						<div class="col-lg-3 col-sm-12 pt-4 pb-4">
+							<a href="<?=base_url()?>Airdrop_Details?aide=<?php echo $row->airdrop_id;?>" style="text-decoration: none; color: #323232;">
+								<div class="content-widget animated fadeIn">
+									<div class="content-image">
+										<img class="ratio rounded-circle" src="" style="background-image: url('<?php echo $row->TokenImage;?>');">
+									</div>
+									<div class="content-details">
+										<?php echo $row->ProjectName;?>
+										<br>
+										<i class="far fa-calendar-check"></i> <?php echo $row->DateAdded;?>
+									</div>
+								</div>
+							</a>
 						</div>
-					</div>
-					<div class="col-lg-3 col-sm-12 pt-4 pb-4">
-						<div class="content-widget animated fadeIn">
-							<div class="content-image">
-								<img class="ratio rounded-circle" src="" style="background-image: url('');">
-							</div>
-							<div class="content-details">
-								WEBN Token
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-sm-12 pt-4 pb-4">
-						<div class="content-widget animated fadeIn">
-							<div class="content-image">
-								<img class="ratio rounded-circle" src="" style="background-image: url('');">
-							</div>
-							<div class="content-details">
-								body
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-sm-12 pt-4 pb-4">
-						<div class="content-widget animated fadeIn">
-							<div class="content-image">
-								<img class="ratio rounded-circle" src="" style="background-image: url('');">
-							</div>
-							<div class="content-details">
-								body
-							</div>
-						</div>
-					</div>
+					<?php } ?>
 				</div>
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">

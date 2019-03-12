@@ -22,9 +22,20 @@
 				<li class="nav-item">
 					<a class="nav-link" href="<?=base_url()?>Bounties"> Bounty </a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="<?=base_url()?>List-Your-Coin-Token"> List Your Coin/Token </a>
-				</li>
+				<?php
+					if ($this->session->userdata('isActive') == 1) {
+						echo "";
+					}
+					elseif ($this->session->userdata('isActive') == 2) {
+						echo "";
+					}
+					elseif ($this->session->userdata('isActive') == 3) {
+						echo '<li class="nav-item">
+								<a class="nav-link" href="'.base_url().'List-Your-Coin-Token"> List Your Coin/Token </a>
+							</li>';
+					}
+				?>
+				
 				<li class="nav-item">
 					<a class="nav-link" href="<?=base_url()?>BuyWEBN_Token"> Buy WEBN token </a>
 				</li>
@@ -37,7 +48,7 @@
 
 				<?php
 
-				if ($this->session->userdata('isActive') == 1) {
+				if ($this->session->userdata('isActive')) {
 					echo '<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<i class="fas fa-user"></i> &nbsp'.$this->session->userdata('Fname').'
