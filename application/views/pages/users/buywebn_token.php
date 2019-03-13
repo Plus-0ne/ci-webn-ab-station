@@ -29,56 +29,16 @@
 							<img src="<?=base_url()?>assets/users/img/3744.png" width="28">  &nbsp Buy WEBN Token
 						</h4>
 						<br>
-						<div id="accordion1" role="tablist">
-							<div class="card">
-								<div class="card-header" role="tab" id="headingOne">
-									<h5 class="mb-0">
-										<a id="toglepanel" data-toggle="collapse" href="#c1" aria-expanded="true" aria-controls="c1">
-											What is Airdrops ?
-										</a>
-									</h5>
-								</div>
-								<div id="c1" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion1">
-									<div class="card-body">
-										What Is Airdrop in Crypto World? An airdrop for a cryptocurrency is a procedure of distributing new tokens/coins by awarding them in a certain proportion to existing holders of a particular blockchain currency, such as Bitcoin or Ethereum etc.
-									</div>
-								</div>
-							</div>
-						</div>
-						<br>
-						<div id="accordion2" role="tablist">
-							<div class="card">
-								<div class="card-header" role="tab" id="headingOne">
-									<h5 class="mb-0">
-										<a id="toglepanel" data-toggle="collapse" href="#c2" aria-expanded="true" aria-controls="c2">
-											What is Bounties ?
-										</a>
-									</h5>
-								</div>
-								<div id="c2" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion2">
-									<div class="card-body">
-										Bounty programs are incentives offered to an array of participants for various activities associated with an initial coin offering
-									</div>
-								</div>
-							</div>
-						</div>
-						<br>
-						<div id="accordion3" role="tablist">
-							<div class="card">
-								<div class="card-header" role="tab" id="headingOne">
-									<h5 class="mb-0">
-										<a id="toglepanel" data-toggle="collapse" href="#c3" aria-expanded="true" aria-controls="c2">
-											What is Bounties ? 
-										</a>
-									</h5>
-								</div>
-								<div id="c3" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion3">
-									<div class="card-body">
-										Bounty programs are incentives offered to an array of participants for various activities associated with an initial coin offering
-									</div>
-								</div>
-							</div>
-						</div>
+					</div>
+					<div class="col-sm-12 col-md-6 p-5">
+						<a href="https://www.hotbit.io/register?ref=19499">
+							<img src="https://www.altilly.com/assets/img/altilly_new_white2.png">
+						</a>
+					</div>
+					<div class="col-sm-12 col-md-6 p-5">
+						<a href="https://www.altilly.com/?a=f8a81">
+							&nbsp&nbsp&nbsp&nbsp&nbsp ss
+						</a>
 					</div>
 				</div>
 			</div>

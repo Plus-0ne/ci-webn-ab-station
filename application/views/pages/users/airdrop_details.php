@@ -199,7 +199,7 @@
 					</div>
 					<div class="col-sm-12 col-md-4 pt-5 pb-5 text-center">
 						<h3>
-							<i class="fas fa-dollar-sign style="color: #F1C245;""></i> Token to be distributed
+							<i class="fas fa-dollar-sign style="color: #F1C245;"></i> Token to be distributed
 							<br>
 							<br>
 							<?php echo $ai_details->ToBeDistributed;?>

@@ -77,5 +77,4 @@ $route['Logout'] = 'Login_Controller/logout';
 
 // FUNCTIONS
 $route['Postthisrate'] = 'Airdrops_Controller/Post_this_rate';
-
-
+$route['RequestForListing'] = 'LYCT_Controller/RequestForListing';

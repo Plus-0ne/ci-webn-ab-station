@@ -31,9 +31,13 @@
 				<li class="f-nav-item">
 					<a class="f-nav-link" href="<?=base_url()?>Bounties"><i class="fas fa-angle-right"></i> Bounty </a>
 				</li>
-				<li class="f-nav-item">
-					<a class="f-nav-link" href="#"><i class="fas fa-angle-right"></i> List Your Coin/Token </a>
-				</li>
+				<?php
+				if ($this->session->userdata('isActive') == 3) {
+					echo '<li class="f-nav-item">
+							<a class="f-nav-link" href="#"><i class="fas fa-angle-right"></i> List Your Coin/Token </a>
+						</li>';
+				}
+				?>
 				<li class="f-nav-item">
 					<a class="f-nav-link" href="#"><i class="fas fa-angle-right"></i> Buy WEBN token </a>
 				</li>
@@ -49,7 +53,7 @@
 				else
 				{
 					echo '<li class="f-nav-item">
-					<a class="f-nav-link" href="<?=base_url()?>Login"><i class="fas fa-angle-right"></i> Login </a>
+					<a class="f-nav-link" href="'.base_url().'Login"><i class="fas fa-angle-right"></i> Login </a>
 					</li>';
 				}
 				?>
@@ -59,7 +63,7 @@
 				else
 				{
 					echo '<li class="f-nav-item">
-					<a class="f-nav-link" href="<?=base_url()?>Sign-Up"><i class="fas fa-angle-right"></i> Sign-up </a>
+					<a class="f-nav-link" href="'.base_url().'Sign-Up"><i class="fas fa-angle-right"></i> Sign-up </a>
 					</li>';
 				}
 				?>

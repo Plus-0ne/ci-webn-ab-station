@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Hydro_Raindrop extends CI_Controller {
 
+
 	public function __construct() 
 	{
 		parent::__construct();
@@ -21,6 +22,29 @@ class Hydro_Raindrop extends CI_Controller {
 		}
 		
 				
+	}
+	public function CreateToken()
+	{
+		require_once APPPATH."/../vendor/autoload.php";
+
+		$clientId = 'suurpxpucsm6mg2f3vmv243n6g';
+		$clientSecret = 'ocv1281prxvikoqbjocmmrbnge';
+		$applicationId = '0161df87-3b3a-4005-a2c7-7c34a6764552';
+
+		$settings = new \Adrenth\Raindrop\ApiSettings(
+		    $clientId,
+		    $clientSecret,
+		    new \Adrenth\Raindrop\Environment\SandboxEnvironment
+		);
+
+		// Create token storage for storing the API's access token.
+		$tokenStorage = new \Adrenth\Raindrop\TokenStorage\FileTokenStorage(__DIR__.'/token.txt');
+
+		$client = new \Adrenth\Raindrop\Client($settings, $tokenStorage, $applicationId);
+
+		$message = $client->generateMessage();
+		echo $message;
+
 	}
 	function get_web_page($url)
 	{

@@ -36,7 +36,7 @@
 									<div class="content-image">
 										<img class="ratio rounded-circle" src="" style="background-image: url('<?php echo $row->TokenImage;?>')">
 									</div>
-									<div class="content-details"">
+									<div class="content-details">
 										<?php echo $row->ProjectName;?>
 									</div>
 								</div>

@@ -3,13 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Model_Insert extends CI_Model {
 	
-	// public function SaveRate($userid,$ratepoints,$ratepostid)
-	// {
-	// 	extract($dataa);
-	// 	$sql = "UPDATE ab_airdrops SET Rate = ? WHERE airdrop_id = ?";
-	// 	$result = $this->db->query($sql);
-	// 	return $result;
-	// }
+	public function RequestForList($dataa)
+	{
+		extract($dataa);
+
+		$sql = "INSERT INTO ab_airdrops(TokenImage, ProjectName, Description, DateStart, DateEnd, Link, WebsiteUrl, MaxParticipants, ToBeDistributed, RewardQuantity, CompleteInstruction, DateAdded, AddedBy ,Rate,RequestStatus) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		$result = $this->db->query($sql,array($TokenImage, $ProjectName, $Description, $DateStart, $DateEnd, $AirdropsLink, $WebsiteSource, $MaxParticipants, $ToBeDistributed, $RewardQuantity, $CompleteInstruction, $DateAdded, $AddedBy,$Rate,$RequestStatus));
+		return $result;
+	}
 
 	public function SaveRate($userid,$ratepoints,$ratepostid)
 	{

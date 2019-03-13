@@ -5,25 +5,25 @@ class Model_Select extends CI_Model {
 	
 	public function GetAirdropsHot()
 	{
-		$sql = "SELECT * FROM ab_airdrops ORDER BY Rate DESC LIMIT 4";
+		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus ='Approved' ORDER BY Rate DESC LIMIT 4";
 		$result = $this->db->query($sql);
 		return $result;
 	}
 	public function GetAirdropsLatest()
 	{
-		$sql = "SELECT * FROM ab_airdrops ORDER BY DateAdded DESC LIMIT 4";
+		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus ='Approved' ORDER BY DateAdded DESC LIMIT 4";
 		$result = $this->db->query($sql);
 		return $result;
 	}
 	public function getHotairdrops()
 	{
-		$sql = "SELECT * FROM ab_airdrops ORDER BY Rate DESC";
+		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus ='Approved' ORDER BY Rate DESC";
 		$sqlres = $this->db->query($sql);
 		return $sqlres;
 	}
 	public function GetAirdrops()
 	{
-		$sql = "SELECT * FROM ab_airdrops";
+		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus ='Approved' ORDER BY DateAdded DESC";
 		$sqlres = $this->db->query($sql);
 		return $sqlres;
 	}

@@ -4,6 +4,7 @@
 <script type="text/javascript" src="<?=base_url()?>assets/users/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?=base_url()?>assets/users/js/navigation.js"></script>
 <script type="text/javascript" src="<?=base_url()?>assets/users/js/jquery-3.3.1.min.js"></script>
+
 <?php $this->load->view('pages/users/_template/_modals'); ?>
 <script type="text/javascript" src="<?=base_url()?>assets/users/js/fhdkshfksdf.js"></script>
 
@@ -25,25 +26,20 @@
 		$('.newdt , .newdm').mouseleave(function () {
 			$('.newdm').removeClass('show');
 		});
-
-		var userScroll = $(document).scrollTop();
-		$(window).on('scroll', function() {
-			var newScroll = $(document).scrollTop();
-			if(userScroll - newScroll > 0 || newScroll - userScroll > 0)
-			{
-				$('#header-container').addClass('sticky-top');
-				$('#cccc').removeClass('pt-5 pb-5');
-				
-			}
-			else
-			{
-
-				$('#header-container').removeClass('sticky-top');
-				$('#cccc').addClass('pt-5 pb-5');
-			}
-		});
-
-		
+		function readURL(input) {
+	        if (input.files && input.files[0]) {
+	            var reader = new FileReader();
+	            
+	            reader.onload = function (e) {
+	                $('#img-preview').attr('src', e.target.result);
+	            }
+	            
+	            reader.readAsDataURL(input.files[0]);
+	        }
+	    }
+	    $("#image-input").change(function(){
+	        readURL(this);
+	    });
 	});
 
 </script>

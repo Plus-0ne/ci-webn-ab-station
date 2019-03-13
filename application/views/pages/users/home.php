@@ -117,7 +117,7 @@
 									<div class="content-details">
 										<?php echo $row->ProjectName;?>
 										<br>
-										<i class="far fa-calendar-check"></i> <?php echo $row->DateAdded;?>
+										<i class="far fa-calendar-check" style="color: #1BBC1F;"></i>&nbsp <?php echo $row->DateAdded;?>
 									</div>
 								</div>
 							</a>
