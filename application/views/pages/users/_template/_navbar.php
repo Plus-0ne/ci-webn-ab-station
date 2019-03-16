@@ -49,12 +49,12 @@
 				<?php
 
 				if ($this->session->userdata('isActive')) {
-					echo '<li class="nav-item dropdown">
+					echo '<li class="dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<i class="fas fa-user"></i> &nbsp'.$this->session->userdata('Fname').'
 					</a>
 					<div id="dropdown-menu" class="dropdown-menu zoomIn animated faster" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="#">
+					<a class="dropdown-item" href="'.base_url().'AccountSettings">
 					<i class="fas fa-cog" style="color: #2A7AF3;"></i> Account Settings </a>';
 
 					echo '<div class="dropdown-divider"></div>

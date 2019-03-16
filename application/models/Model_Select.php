@@ -61,4 +61,18 @@ class Model_Select extends CI_Model {
 		$result = $this->db->query($sql);
 		return $result->row();
 	}
+
+	public function getHydroID($UserNo)
+	{
+		$sql = "SELECT * FROM ab_users WHERE User_No = '$UserNo'";
+		$result = $this->db->query($sql);
+		return $result->row();
+	}
+	
+	public function GetUserData($UserNo)
+	{
+		$sql = "SELECT * FROM ab_users WHERE User_No = '$UserNo'";
+		$result = $this->db->query($sql);
+		return $result->row();
+	}
 }

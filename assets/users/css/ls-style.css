@@ -5,7 +5,8 @@ body
 	}
 	.login-header
 	{
-
+		background-color: #102026;
+		height: 260px;
 	}
 	.login-container
 	{
@@ -18,12 +19,14 @@ body
 		padding-left: 30px;
 		padding-right: 30px;
 		border-radius: 20px;
+
 	}
 	.input-holder
 	{
 		width: 100%;
-		margin-top: 18px;
-		border: 1px solid #A4A4A4;
+		margin-top: 25px;
+		margin-bottom: 25px;
+		border-bottom: 1px solid #A4A4A4;
 	}
 	.input-holder .form-control:focus
 	{

@@ -9,18 +9,18 @@
 		<div class="login-header">
 			<div class="col-sm-12 p-5 text-center">
 				<div class="" style="color: white;">
-					<a href="<?=base_url()?>/Home">
-						<img class="logo" src="<?=base_url()?>assets/users/img/logo.png"></a>
+					<a href="<?=base_url()?>Home">
+						<img class="logo" src="<?=base_url()?>assets/users/img/logo.png" width="350"></a>
 					</a>
 				</div>
 			</div>
 		</div>
-		<div class="linediv mt-5 mb-5"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 col-lg-5 m-auto">
 					<div class="login-container">
 						<div id="loginMessage" class="messages">
+							<?php echo $this->session->flashdata('LoginResponse');?>
 						</div>
 						<?php echo form_open(base_url().'Login_Validation', 'method="POST"');?>
 						<div class="input-holder">

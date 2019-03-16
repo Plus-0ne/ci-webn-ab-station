@@ -23,7 +23,7 @@
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
 						<h4 class="">
-							<i class="fas fa-fire-alt" style="color: red;"></i> &nbsp HOT AIRDROPS
+							<i class="fas fa-fire-alt" style="color: red;"></i> &nbsp HOT AIRDROPS <?php echo $this->session->userdata('Fname');?>
 						</h4>
 					</div>
 					<?php foreach ($GetAirdropsHot->result() as $row) { ?>

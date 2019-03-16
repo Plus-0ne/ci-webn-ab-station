@@ -23,4 +23,11 @@ class Model_Login extends CI_Model {
 		$result = $this->db->query($query,$admin_username,$admin_password);
 		return $result;
 	}
+
+	public function GetUserData($UserNo)
+	{
+		$query = "SELECT * FROM ab_users WHERE User_No = ?";
+		$result = $this->db->query($query,$UserNo);
+		return $result->row();
+	}
 }

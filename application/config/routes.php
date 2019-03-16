@@ -56,12 +56,13 @@ $route['translate_uri_dashes'] = FALSE;
 // USER LOGIN
 $route['Login'] = 'Login_Controller/login';
 $route['Login_Validation'] = 'Login_Controller/Login_Validation';
+$route['HydroAuthentication'] = 'Login_Controller/HydroAuthentication';
 
 // USER SIGNUP
 $route['Sign-Up'] = 'Signup_Controller/Sign_up';
 $route['submit_form_signup'] = 'Signup_Controller/submit_form_signup';
 
-// WEB NAVIGATION
+// NAVIGATION
 $route['Home'] = 'Home_Controller/home';
 $route['LATEST'] = 'Airdrops_Controller/airdrops';
 
@@ -73,8 +74,20 @@ $route['List-Your-Coin-Token'] = 'LYCT_Controller/lyct_view';
 $route['BuyWEBN_Token'] = 'BuyWebnToken_Controller/buywebn_token';
 $route['Contact'] = 'Contact_Controller/contact';
 $route['FAQs'] = 'Faqs_Controller/faqs';
+$route['AccountSettings'] = 'AccountSettings_Controller/Account_Settings';
+
 $route['Logout'] = 'Login_Controller/logout';
+
+$route['LoadHydroMessage'] = 'HydroMessage_Controller/LoadHydroMessage';
+$route['RegisterHydroVerify'] = 'HydroMessage_Controller/RegisterHydroVerify';
 
 // FUNCTIONS
 $route['Postthisrate'] = 'Airdrops_Controller/Post_this_rate';
 $route['RequestForListing'] = 'LYCT_Controller/RequestForListing';
+$route['SubmitHydroID'] = 'AccountSettings_Controller/SubmitHydroID';
+$route['UnregisterHydro'] = 'AccountSettings_Controller/UnregisterHydro';
+$route['VerifyHydroAuth'] = 'AccountSettings_Controller/VerifyHydroAuth';
+
+// ERROR
+$route['Error_Expired'] = 'Error_PageController/Error_Expired';
+$route['Client_Error'] = 'Error_PageController/Client_Error';

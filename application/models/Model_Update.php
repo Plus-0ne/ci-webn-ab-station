@@ -16,4 +16,22 @@ class Model_Update extends CI_Model {
 		$sqlres = $this->db->query($sql);
 		return $sqlres;
 	}
+	public function HydroIDUpdate($HydroID,$UserNo)
+	{
+		$sql = "UPDATE ab_users SET Hydro_ID='$HydroID' WHERE User_No='$UserNo'";
+		$result = $this->db->query($sql);
+		return $result;
+	}
+	public function hydroautup($UserNo)
+	{
+		$sql = "UPDATE ab_users SET Hydro_Auth= 1 WHERE User_No='$UserNo'";
+		$result = $this->db->query($sql);
+		return $result;
+	}
+	public function updateUSerLogin($UserNo)
+	{
+		$sql = "UPDATE ab_users SET Hydro_Auth= '1' , Account_Status = '3' WHERE User_No='$UserNo'";
+		$result = $this->db->query($sql);
+		return $result;
+	}
 }

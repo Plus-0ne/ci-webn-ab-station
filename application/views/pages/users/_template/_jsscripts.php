@@ -6,7 +6,7 @@
 <script type="text/javascript" src="<?=base_url()?>assets/users/js/jquery-3.3.1.min.js"></script>
 
 <?php $this->load->view('pages/users/_template/_modals'); ?>
-<script type="text/javascript" src="<?=base_url()?>assets/users/js/fhdkshfksdf.js"></script>
+<!-- <script type="text/javascript" src="<?=base_url()?>assets/users/js/fhdkshfksdf.js"></script> -->
 
 
 <script type="text/javascript">
@@ -39,6 +39,9 @@
 	    }
 	    $("#image-input").change(function(){
 	        readURL(this);
+	    });
+		$("#hydrocheck").change(function(){
+	        $("#hydroform").submit();
 	    });
 	});
 
