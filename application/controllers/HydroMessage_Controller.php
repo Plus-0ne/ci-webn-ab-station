@@ -62,16 +62,11 @@ class HydroMessage_Controller extends CI_Controller {
 
 		$client = new \Adrenth\Raindrop\Client($settings, $tokenStorage, $applicationId);
 
-
-		
-
 		$UserNo = $this->session->userdata('UserNo');
 
 		$getHydroID = $this->Model_Select->getHydroID($UserNo);
 
 		$data = array(
-			'UserNo' => $getHydroID->User_No,
-			'Hydro_ID' => $getHydroID->Hydro_ID,
 			'hydromessage' => $client->generateMessage(),
 			 );
 		

@@ -28,9 +28,7 @@
 				<li class="f-nav-item">
 					<a class="f-nav-link" href="<?=base_url()?>LATEST"><i class="fas fa-angle-right"></i> Latest </a>
 				</li>
-				<li class="f-nav-item">
-					<a class="f-nav-link" href="<?=base_url()?>Bounties"><i class="fas fa-angle-right"></i> Bounty </a>
-				</li>
+				
 				<?php
 				if ($this->session->userdata('isActive') == 3) {
 					echo '<li class="f-nav-item">
@@ -47,7 +45,7 @@
 				<li class="f-nav-item">
 					<a class="f-nav-link" href="<?=base_url()?>FAQs"><i class="fas fa-angle-right"></i> FAQs </a>
 				</li>
-				<?php if ($this->session->userdata('isActive') == 1) {
+				<?php if ($this->session->userdata('isActive')) {
 
 				}
 				else
@@ -57,7 +55,7 @@
 					</li>';
 				}
 				?>
-				<?php if ($this->session->userdata('isActive') == 1) {
+				<?php if ($this->session->userdata('isActive')) {
 
 				}
 				else

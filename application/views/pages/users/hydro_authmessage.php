@@ -31,8 +31,6 @@
 	<div class="row">
 		<div class="col-sm-12 col-md-4 m-auto p-5 text-center">
 			<?php echo form_open(base_url().'HydroAuthentication', 'method="POST"');?>
-			<input type="hidden" name="UserNo" value="<?php echo $UserNo;?>">
-			<input type="hidden" name="hyrdroid" value="<?php echo $hyrdroid;?>">
 			<input type="hidden" name="hydromessage" value="<?php echo $hydromessage;?>">
 			<input class="btn btn-primary" type="submit" name="ha" value="Authenticate" style="font-size: 24px; padding: 16px;">
 			<?php echo form_close()?>

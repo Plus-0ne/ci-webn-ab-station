@@ -58,8 +58,10 @@ class Signup_Controller extends CI_Controller {
 						'Is_Telegram_Member' => "0",
 						'Is_Subscriber' => "0",
 						'Hydro_ID' => "0",
+						'Hydro_Auth' => "0",
 						'Active_Status' => "0",
 						'Account_Status' => "1",
+						'isICO' => "no",
 					);
 					$result = $this->Model_Signup->register_user($data);
 

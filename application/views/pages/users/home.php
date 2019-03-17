@@ -23,7 +23,7 @@
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
 						<h4 class="">
-							<i class="fas fa-fire-alt" style="color: red;"></i> &nbsp HOT AIRDROPS <?php echo $this->session->userdata('Fname');?>
+							<i class="fas fa-fire-alt" style="color: red;"></i> &nbsp HOT AIRDROPS
 						</h4>
 					</div>
 					<?php foreach ($GetAirdropsHot->result() as $row) { ?>
@@ -123,53 +123,6 @@
 							</a>
 						</div>
 					<?php } ?>
-				</div>
-				<div class="row mt-5">
-					<div class="col-lg-12 title-page-here">
-						<h4 class="">
-							<i class="fas fa-coins" style="color: gold;"></i> &nbsp LATEST BOUNTY
-						</h4>
-					</div>
-					<div class="col-lg-3 col-sm-12 pt-4 pb-4">
-						<div class="content-widget animated fadeIn">
-							<div class="content-image">
-								<img class="ratio rounded-circle" src="" style="background-image: url('');">
-							</div>
-							<div class="content-details">
-								Ferum Network
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-sm-12 pt-4 pb-4">
-						<div class="content-widget animated fadeIn">
-							<div class="content-image">
-								<img class="ratio rounded-circle" src="" style="background-image: url('');">
-							</div>
-							<div class="content-details">
-								WEBN Token
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-sm-12 pt-4 pb-4">
-						<div class="content-widget animated fadeIn">
-							<div class="content-image">
-								<img class="ratio rounded-circle" src="" style="background-image: url('');">
-							</div>
-							<div class="content-details">
-								body
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-sm-12 pt-4 pb-4">
-						<div class="content-widget animated fadeIn">
-							<div class="content-image">
-								<img class="ratio rounded-circle" src="" style="background-image: url('');">
-							</div>
-							<div class="content-details">
-								body
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>

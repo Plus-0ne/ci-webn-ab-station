@@ -19,17 +19,11 @@
 
 					</div>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="<?=base_url()?>Bounties"> Bounty </a>
-				</li>
+				<!-- <li class="nav-item">
+					<a class="nav-link" href=""> Bounty </a>
+				</li> -->
 				<?php
-					if ($this->session->userdata('isActive') == 1) {
-						echo "";
-					}
-					elseif ($this->session->userdata('isActive') == 2) {
-						echo "";
-					}
-					elseif ($this->session->userdata('isActive') == 3) {
+					if ($this->session->userdata('isICO') == 'yes') {
 						echo '<li class="nav-item">
 								<a class="nav-link" href="'.base_url().'List-Your-Coin-Token"> List Your Coin/Token </a>
 							</li>';

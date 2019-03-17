@@ -1,10 +1,6 @@
 <?php $user_header;?>
 <?php $this->load->view('pages/users/_template/_login_style');?>
-
 <body>
-	<div class="spinner-border" role="status">
-		<span class="sr-only">Loading...</span>
-	</div>
 	<div class="wrapper">
 		<div class="login-header">
 			<div class="col-sm-12 p-5 text-center">
@@ -51,3 +47,6 @@
 	</div>
 	<?php $this->load->view('pages/users/_template/_jsscripts'); ?>
 </body>
+<script type="text/javascript">
+
+</script>

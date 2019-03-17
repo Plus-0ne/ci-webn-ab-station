@@ -6,7 +6,6 @@ class Home_Controller extends CI_Controller {
 	public function __construct() 
 	{
 		parent::__construct();
-		// $Model_Select = $this->load->model('Model_Select');
 	}
 	// ---------------- REDIRECT TO HOME VIEW
 	public function index()

@@ -1,23 +1,21 @@
 <!-- Subscribe -->
-<div class="modal fade animated zoomIn faster" id="modalSubscribe" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade animated fadeInDownBig faster" id="modalSubscribe" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Account Settings (Incomplete Registration)</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle"> Subscribe </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <p>
-          Subscribe to Webn Innovation
-          <button>
-            Subscribe
-          </button>
+          Subscribe to Web Innovation PH INC.
+          <br>
+          <a class="" href="#" target="_blank">
+            Click Me <i class="fas fa-external-link-alt"></i>
+          </a>
         </p>
-        <a href="https://t.me/joinchat/AAAAAFTK0rkJxVaEK7rn_Q" target="_blank">
-          Join in our Telegram Channel
-        </a>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -59,11 +57,11 @@
               echo '';
             }
             elseif ($chkID == $idid && $chkStatus == "left") {
-                echo '<div class="modal fade animated zoomIn faster" id="modalJoinTelegram" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                echo '<div class="modal fade animated fadeInDownBig faster" id="modalJoinTelegram" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLongTitle"> Join in our Telegram Channel </h5>
+                          <h5 class="modal-title" id="exampleModalLongTitle"> Join our Telegram Channel </h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
@@ -72,7 +70,7 @@
                           echo form_open(base_url().'BOT/getUserinChannel', 'method="POST"');
                           echo '<div>
                               <a href="https://t.me/WEBN_Airdrop_Station" target="_blank">
-                                CLICK ME <i class="far fa-smile-beam"></i>
+                                Click Me <i class="fas fa-external-link-alt"></i>
                               </a>
                             </div>
                             <p>
@@ -80,14 +78,12 @@
                                 To get your Telgram ID forward a message to Nadam\'s Userinfobot.
                               </div>
                             </p>
-                            <div>
-                              Telegram ID : 
-                            </div>
-                            <div>
+                            <div class="form-group">
+                            <label>Telegram ID</label>
                               <input id="user_id" type="text" name="user_id">
                             </div>
                             <br>
-                            <input id="telesubmit" type="submit" name="" value="Verify">';
+                            <input id="telesubmit" type="submit" name="" class="btn btn-primary" value="Verify">';
                           echo form_close();
                         echo '</div>
                         <div class="modal-footer">
@@ -102,11 +98,11 @@
           }
           else
           {
-              echo '<div class="modal fade animated zoomIn faster" id="modalJoinTelegram" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              echo '<div class="modal fade animated fadeInDownBig faster" id="modalJoinTelegram" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLongTitle"> Join in our Telegram Channel </h5>
+                          <h5 class="modal-title" id="exampleModalLongTitle"><i class="fab fa-telegram-plane" style="color: #247CDF;"></i> Join our Telegram Channel </h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
@@ -115,7 +111,7 @@
                           echo form_open(base_url().'BOT/getUserinChannel', 'method="POST"');
                           echo '<div>
                               <a href="https://t.me/WEBN_Airdrop_Station" target="_blank">
-                                CLICK ME <i class="far fa-smile-beam"></i>
+                                Click Me <i class="fas fa-external-link-alt"></i>
                               </a>
                             </div>
                             <p>
@@ -123,14 +119,12 @@
                                 To get your Telgram ID forward a message to Nadam\'s Userinfobot.
                               </div>
                             </p>
-                            <div>
-                              Telegram ID : 
-                            </div>
-                            <div>
-                              <input id="user_id" type="text" name="user_id">
+                            <div class="form-group">
+                              <label>Telegram ID</label>
+                              <input id="user_id" type="text" name="user_id" class="form-control">
                             </div>
                             <br>
-                            <input id="telesubmit" type="submit" name="" value="Verify">';
+                            <input id="telesubmit" type="submit" name="" class="btn btn-primary" value="Verify">';
                           echo form_close();
                         echo '</div>
                         <div class="modal-footer">

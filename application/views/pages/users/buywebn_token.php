@@ -30,15 +30,19 @@
 						</h4>
 						<br>
 					</div>
-					<div class="col-sm-12 col-md-6 p-5">
-						<a href="https://www.hotbit.io/register?ref=19499">
-							<img src="https://www.altilly.com/assets/img/altilly_new_white2.png">
-						</a>
+					<div class="col-sm-12 col-md-6 p-5 text-center">
+						<div class="img-holder">
+							<a href="https://www.hotbit.io/register?ref=19499" target="_blank">
+								<img class="buy-webn-img" src="<?=base_url()?>assets/users/img/hobit-logo.png">
+							</a>
+						</div>
 					</div>
-					<div class="col-sm-12 col-md-6 p-5">
-						<a href="https://www.altilly.com/?a=f8a81">
-							&nbsp&nbsp&nbsp&nbsp&nbsp ss
-						</a>
+					<div class="col-sm-12 col-md-6 p-5 text-center">
+						<div class="img-holder">
+							<a href="https://www.altilly.com/?a=f8a81" target="_blank">
+								<img class="buy-webn-img" src="<?=base_url()?>assets/users/img/altilly-logo.png">
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>

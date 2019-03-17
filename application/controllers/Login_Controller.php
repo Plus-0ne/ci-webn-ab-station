@@ -7,17 +7,13 @@ class Login_Controller extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Model_Login');
-		$this->load->helper('security');
-
 	}
-	// ---------------- REDIRECT TO LOGIN
-	public function index()
-	{
-		redirect('Login');
-	}
-	// ---------------- LOAD LOGIN VIEW
+	/*
+		Load login page
+	 */
 	public function login()
 	{
+		$this->session->sess_destroy();
 		$title['title'] = "Welcome | WEBN Airdrops and Bounty Station";
 		$data = array(
 			'user_header' => $this->load->view('pages/users/_template/_header',$title), 
@@ -25,7 +21,9 @@ class Login_Controller extends CI_Controller {
 		);
 		$this->load->view('pages/users/login',$data);
 	}
-	// ---------------- VALIDATE USER LOGIN
+	/*
+		Validate User 
+	 */
 	public function Login_Validation()
 	{
 		if ($this->session->userdata('isActive')) {
@@ -60,7 +58,8 @@ class Login_Controller extends CI_Controller {
 								'Hydro_ID' => $result->Hydro_ID,
 								'Hydro_Auth' => $result->Hydro_Auth,
 								'Active_Status' => $result->Active_Status,
-								'Account_Status' => $result->Account_Status, 
+								'Account_Status' => $result->Account_Status,
+								'isICO' => $result->isICO,
 								'isActive' => $result->Account_Status,
 							);
 							$this->session->set_userdata($userdata);
@@ -92,11 +91,14 @@ class Login_Controller extends CI_Controller {
 			}
 		}
 	}
+	/*
+		Hydro authentication for user 3
+	 */
 	public function HydroAuthentication()
 	{
 		if ($this->input->post('ha',true) == 'Authenticate') {
-			$UserNo = $this->input->post('UserNo',TRUE);
-			$hyrdroid = $this->input->post('hyrdroid',TRUE);
+			$UserNo = $this->session->userdata('UserNo');
+			$hyrdroid = $this->session->userdata('Hydro_ID');
 			$hydromessage = $this->input->post('hydromessage',TRUE);
 
 			require_once APPPATH."/../vendor/autoload.php";
@@ -138,6 +140,7 @@ class Login_Controller extends CI_Controller {
 						'Hydro_Auth' => $result->Hydro_Auth,
 						'Active_Status' => $result->Active_Status,
 						'Account_Status' => $result->Account_Status, 
+						'isICO' => $result->isICO,
 						'isActive' => $result->Account_Status,
 					);
 
@@ -147,12 +150,15 @@ class Login_Controller extends CI_Controller {
 				}
 				else
 				{
+					$this->session->sess_destroy();
 					redirect('Login');
 				}
 			}
 		}
 	}
-	// ---------------- LOGOUT
+	/*
+		User Logout
+	 */
 	public function logout()
 	{
 		if ($this->session->userdata('isActive')) {

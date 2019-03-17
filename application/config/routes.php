@@ -87,7 +87,11 @@ $route['RequestForListing'] = 'LYCT_Controller/RequestForListing';
 $route['SubmitHydroID'] = 'AccountSettings_Controller/SubmitHydroID';
 $route['UnregisterHydro'] = 'AccountSettings_Controller/UnregisterHydro';
 $route['VerifyHydroAuth'] = 'AccountSettings_Controller/VerifyHydroAuth';
+$route['ChangePassword'] = 'AccountSettings_Controller/ChangeNewPassword';
+$route['UpdateInformation'] = 'AccountSettings_Controller/UpdateInformation';
+$route['UpdateCompany'] = 'AccountSettings_Controller/UpdateCompany';
 
 // ERROR
 $route['Error_Expired'] = 'Error_PageController/Error_Expired';
 $route['Client_Error'] = 'Error_PageController/Client_Error';
+$route['UnregisterNotUser'] = 'Error_PageController/UnregisterNotUser';
