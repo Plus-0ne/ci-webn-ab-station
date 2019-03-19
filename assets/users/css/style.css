@@ -9,7 +9,6 @@ div {  -webkit-transition: all 1s ease-in-out; transition: all 1s ease-in-out;-m
 {
 	background-color: #102026;
 	border: 1px solid #102026;
-	
 }
 .cccc
 {
@@ -137,7 +136,16 @@ a.slinks:hover { text-decoration: none; color: #f1c40f; }
 	outline: #102026;
 	box-shadow: none;
 	border: 1px solid #f1c40f;
-	
+}
+.contact-img
+{
+	-webkit-transition: 0.3s all ease-in;
+	-moz-transition: 0.3s all ease-in;
+	transition: 0.3s all ease-in;
+}
+.contact-img:hover
+{
+	opacity: 0.7;	
 }
 /* Extra small devices (portrait phones, less than 576px) */
 /* No media query for `xs` since this is the default in Bootstrap */

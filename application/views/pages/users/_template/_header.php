@@ -13,5 +13,4 @@
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/users/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/users/css/animate.css">
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/users/css/style.css">
-
 </head>

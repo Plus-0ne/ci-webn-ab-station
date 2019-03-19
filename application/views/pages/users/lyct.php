@@ -36,13 +36,13 @@
 							<img id="img-preview" src="<?=base_url()?>assets/users/img/3744.png" style="padding: 13px; border: 1px solid #E2E2E2; width: 150px; height: 150px;"/>
 							<br>
 							<br>
-							<input class="" id="image-input" class="" type="file" placeholder="" name="TokenImage">
+							<input id="image-input" type="file" name="TokenImage">
 							<label>Recomended size (500 X 500)</label>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-sm-12 col-md-4">
 								<label for="ProjectName">Project Name</label>
-								<input type="text" class="form-control" id="ProjectName" aria-describedby="" placeholder="" name="ProjectName">
+								<input type="text" class="form-control" id="ProjectName" name="ProjectName">
 							</div>
 						</div>
 						<div class="form-row">
@@ -74,15 +74,15 @@
 						<div class="form-row">
 							<div class="form-group col-sm-12 col-md-3">
 								<label for="MaxParticipants">Max Participants</label>
-								<input type="number" class="form-control" id="MaxParticipants" aria-describedby="" placeholder="" name="MaxParticipant">
+								<input type="number" class="form-control" id="MaxParticipants" name="MaxParticipant">
 							</div>
 							<div class="form-group col-sm-12 col-md-3">
 								<label for="TotalAirdroptoken">Total Airdrop token</label>
-								<input type="number" class="form-control" id="TotalAirdroptoken" aria-describedby="" placeholder="" name="ToBeDistributed">
+								<input type="number" class="form-control" id="TotalAirdroptoken" name="ToBeDistributed">
 							</div>
 							<div class="form-group col-sm-12 col-md-3">
 								<label for="TokenRewardQuantity">Token Reward Quantity</label>
-								<input type="number" class="form-control" id="TokenRewardQuantity" aria-describedby="" placeholder="" name="RewardQuantity">
+								<input type="number" class="form-control" id="TokenRewardQuantity" name="RewardQuantity">
 							</div>
 						</div>
 						<div class="form-row">
@@ -93,7 +93,7 @@
 						</div>
 						<div class="form-row">
 							<div class="form-group col-sm-12 col-md-9">
-								<input type="submit" name="" class="btn btn-primary" value="Request for Listing">
+								<input type="submit" class="btn btn-primary" value="Request for Listing">
 							</div>
 						</div>
 						<?php echo form_close();?>

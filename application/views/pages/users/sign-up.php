@@ -1,17 +1,19 @@
 <?php $user_header;?>
 <?php $this->load->view('pages/users/_template/_login_style');?>
+<style type="text/css">
+	.form-control:focus { border: none; }
+</style>
 <body>
 	<div class="wrapper">
 		<div class="login-header">
 			<div class="col-sm-12 p-5 text-center">
-				<div class="" style="color: white;">
+				<div style="color: white;">
 					<a href="<?=base_url()?>/Home">
 						<img class="logo" src="<?=base_url()?>assets/users/img/logo.png"></a>
 					</a>
 				</div>
 			</div>
 		</div>
-		
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 col-lg-5 m-auto p-5">
@@ -53,5 +55,6 @@
 			</div>
 		</div>
 	</div>
+	<?php $this->load->view('pages/users/_template/_footer'); ?>
 	<?php $this->load->view('pages/users/_template/_jsscripts'); ?>
 </body>

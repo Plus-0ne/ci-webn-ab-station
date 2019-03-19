@@ -38,42 +38,42 @@
 								<li class="li-contacts">
 									<h1 class="li-heading">
 										<a href="https://www.facebook.com/webnproject/" target="_blank" data-toggle="tooltip" title="Like us on Facebook" data-placement="top">
-											<i id="facebookt" class="fab fa-facebook-square" style="color: #4267b2;"></i>
+											<i class="fab fa-facebook-square contact-img" style="color: #4267b2;"></i>
 										</a>
 									</h1>
 								</li>
 								<li class="li-contacts">
 									<h1 class="li-heading">
 										<a href="https://twitter.com/WebnProject" target="_blank" data-toggle="tooltip" title="Like us on Facebook" data-placement="top">
-											<i class="fab fa-twitter-square" style="color: #1da1f2;"></i>
+											<i class="fab fa-twitter-square contact-img" style="color: #1da1f2;"></i>
 										</a>
 									</h1>
 								</li>
 								<li class="li-contacts">
 									<h1 class="li-heading">
 										<a href="https://github.com/Webinnovationph" data-toggle="tooltip" title="Like us on Facebook" data-placement="top">
-											<i class="fab fa-github-square" style="color: #000000;"></i>
+											<i class="fab fa-github-square contact-img" style="color: #000000;"></i>
 										</a>
 									</h1>
 								</li>
 								<li class="li-contacts">
 									<h1 class="li-heading">
 										<a href="https://discordapp.com/invite/NkBtY4X" data-toggle="tooltip" title="Like us on Facebook" data-placement="top">
-											<i class="fab fa-discord" style="color: #7289da;"></i>
+											<i class="fab fa-discord contact-img" style="color: #7289da;"></i>
 										</a>
 									</h1>
 								</li>
 								<li class="li-contacts">
 									<h1 class="li-heading">
 										<a href="https://bitcointalk.org/index.php?topic=4640928.0" data-toggle="tooltip" title="Like us on Facebook" data-placement="top">
-											<i class="fab fa-bitcoin" style="color: #ffb629;"></i>
+											<i class="fab fa-bitcoin contact-img" style="color: #ffb629;"></i>
 										</a>
 									</h1>
 								</li>
 								<li class="li-contacts">
 									<h1 class="li-heading">
 										<a href="https://t.me/WEBN_EngOfficial_GroupChat" data-toggle="tooltip" title="Like us on Facebook" data-placement="top">
-											<i class="fab fa-telegram" style="color: #37aee2;"></i>
+											<i class="fab fa-telegram contact-img" style="color: #37aee2;"></i>
 										</a>
 									</h1>
 								</li>
