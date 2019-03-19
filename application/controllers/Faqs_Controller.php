@@ -24,6 +24,8 @@ class Faqs_Controller extends CI_Controller {
 		$data = array(
 			'user_header' => $this->load->view('pages/users/_template/_header',$navdata), 
 		);
+
+		$data['GetAllfaqs'] = $this->Model_Select->GetAllfaqs();
 		$this->load->view('pages/users/faqs',$data);
 	}
 }

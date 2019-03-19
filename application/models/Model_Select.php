@@ -81,4 +81,10 @@ class Model_Select extends CI_Model {
 		$result = $this->db->query($sql);
 		return $result->row();
 	}
+	public function GetAllfaqs()
+	{
+		$sql = "SELECT * FROM ab_faqs";
+		$result = $this->db->query($sql);
+		return $result;
+	}
 }

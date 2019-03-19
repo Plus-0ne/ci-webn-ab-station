@@ -11,7 +11,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="linediv mt-5 mb-5"></div>
+		
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 col-lg-5 m-auto p-5">
@@ -23,7 +23,6 @@
 							</p>
 						</div>
 						<br>
-
 						<div class="input-holder">
 							<input class="form-control" type="text" name="First_Name" placeholder="First Name*" required="">
 						</div>
