@@ -1,3 +1,4 @@
+// Global Script
 $(document).ready(function () {
 	$('#btt-scrolltop').click(function () {
 		$("html, body").animate({
