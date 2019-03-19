@@ -25,9 +25,9 @@
 				</div>
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
-						<h4 class="text-center">
-							<i class="fas fa-parachute-box" style="color: green;"></i> &nbsp LATEST Airdrops
-						</h4>
+						<h3 class="text-center pb-4">
+							<i class="fas fa-parachute-box" style="color: green;"></i> &nbsp Latest Airdrops
+						</h3>
 					</div>
 					<?php foreach ($GetAirdrops->result() as $row) { ?>
 						<div class="col-lg-3 col-sm-12 pt-4 pb-4">

@@ -12,19 +12,18 @@
 		</div>
 		<div class="ads-container">
 			<div class="container">
-
+				
 			</div>
 		</div>
 		<div class="content-container">
 			<div class="container">
 				<div class="row">
-					
 				</div>
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
-						<h4 class="">
-							<i class="fas fa-fire-alt" style="color: red;"></i> &nbsp HOT AIRDROPS
-						</h4>
+						<h3 class="pb-4">
+							<i class="fas fa-fire-alt" style="color: red;"></i> &nbsp Hot Airdrops
+						</h3>
 					</div>
 					<?php foreach ($GetAirdropsHot->result() as $row) { ?>
 						<div class="col-lg-3 col-sm-12 pt-4 pb-4">
@@ -103,8 +102,8 @@
 				</div>
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
-						<h4 class="">
-							<i class="fas fa-parachute-box" style="color: green;"></i> &nbsp LATEST AIRDROP
+						<h4 class="pb-4">
+							<i class="fas fa-parachute-box" style="color: green;"></i> &nbsp Latest Airdrops
 						</h4>
 					</div>
 					<?php foreach ($GetAirdropsLatest->result() as $row) { ?>

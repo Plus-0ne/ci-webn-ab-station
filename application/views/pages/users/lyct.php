@@ -25,19 +25,19 @@
 				</div>
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
-						<h4 class="text-center">
+						<h4 class="text-center pb-4">
 							<i class="fab fa-btc" style="color: #EA861B;"></i> &nbsp List your Coin / Token
 						</h4>
-						<br>
 					</div>
 					<div class="col-sm-12 p-5">
 						<?php echo $this->session->flashdata('promptInfo');?>
                         <?php echo form_open_multipart(base_url().'RequestForListing', 'method="POST"');?>
 						<div class="form-group col-sm-12 col-md-4">
-							<img id="img-preview" src="<?=base_url()?>assets/users/img/3744.png" style="padding: 13px; border: 1px solid #A0A0A0; width: 150px; height: 150px;"/>
+							<img id="img-preview" src="<?=base_url()?>assets/users/img/3744.png" style="padding: 13px; border: 1px solid #E2E2E2; width: 150px; height: 150px;"/>
 							<br>
 							<br>
 							<input class="" id="image-input" class="" type="file" placeholder="" name="TokenImage">
+							<label>Recomended size (500 X 500)</label>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-sm-12 col-md-4">
@@ -47,7 +47,7 @@
 						</div>
 						<div class="form-row">
 							<div class="form-group col-sm-12 col-md-6">
-								<label for="ShortDescription">Short Description</label>
+								<label for="ShortDescription">Description</label>
 								<textarea class="form-control" id="ShortDescription" rows="6" name="Description"></textarea>
 							</div>
 						</div>
@@ -64,11 +64,11 @@
 						<div class="form-row">
 							<div class="form-group col-sm-12 col-md-4">
 								<label for="ShortDescription">Link</label>
-								<input class="form-control" type="url" name="Link">
+								<input class="form-control" type="url" name="Link" placeholder="Paste URL">
 							</div>
 							<div class="form-group col-sm-12 col-md-4">
 								<label for="ShortDescription">Website</label>
-								<input class="form-control" type="url" name="Website">
+								<input class="form-control" type="url" name="Website" placeholder="Paste URL">
 							</div>
 						</div>
 						<div class="form-row">

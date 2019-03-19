@@ -25,9 +25,9 @@
 				</div>
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
-						<h4 class="text-center">
+						<h3 class="text-center">
 							<i class="fas fa-user-circle" style="color: #1821D7;"></i> &nbsp Account Settings
-						</h4>
+						</h3>
 						<br>
 					</div>
 					<div class="col-md-12 m-auto" style="border-bottom: 2px solid #4F4E4E;">
@@ -65,7 +65,12 @@
 										<strong>Company Name</strong>  &nbsp  
 									</td>
 									<td>
-										 &nbsp <?php echo $this->session->userdata('CompanyName'); ?>
+										 &nbsp <?php if ($this->session->userdata('CompanyName') == 0) {
+										 	echo "Not Set";
+										 }
+										 else{
+										 	echo $this->session->userdata('CompanyName');
+										 } ?>
 									</td>
 								</tr>
 								<tr>
@@ -73,7 +78,12 @@
 										<strong>Company Address</strong>  &nbsp 
 									</td>
 									<td>
-										 &nbsp <?php echo $this->session->userdata('CompanyAddress');?>
+										 &nbsp <?php if ($this->session->userdata('CompanyAddress') == 0) {
+										 	echo "Not Set";
+										 }
+										 else{
+										 	echo $this->session->userdata('CompanyAddress');
+										 } ?>
 									</td>
 								</tr>
 								<tr>

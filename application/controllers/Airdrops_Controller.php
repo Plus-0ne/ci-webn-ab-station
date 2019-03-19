@@ -57,27 +57,16 @@ class Airdrops_Controller extends CI_Controller {
 
 		$UserHasRate = $this->Model_Select->UserHasRate($userid,$ratepostid);
 		if ($UserHasRate == TRUE) {
-
 			echo "HASRATE";
 		}
 		else
 		{
-			// SAVE RATE
 			$SaveRate = $this->Model_Insert->SaveRate($userid,$ratepoints,$ratepostid);
-			// GET AVG
 			$avgRate = $this->Model_Select->GetAVGrate($ratepostid);
 			$total = round($avgRate->avg_rate);
-			// UPDATE TOTAL RATE
 			$UpdateRate = $this->Model_Update->UpdateRate($total,$ratepostid);
 
-			if ($UpdateRate == TRUE) {
-				echo "RATED";
-			}
-			else
-			{
-				echo "ERROR";
-			}
-
+			echo "RATED";
 		}
 		
 	}

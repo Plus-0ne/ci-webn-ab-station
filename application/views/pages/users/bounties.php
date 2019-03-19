@@ -25,9 +25,9 @@
 				</div>
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
-						<h4 class="text-center">
+						<h3 class="text-center">
 							<i class="fas fa-coins" style="color: gold;"></i> &nbsp Bounties
-						</h4>
+						</h3>
 					</div>
 					<div class="col-lg-3 col-sm-12 pt-4 pb-4">
 						<div class="content-widget animated fadeIn">

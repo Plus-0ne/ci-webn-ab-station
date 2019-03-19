@@ -25,43 +25,65 @@
 				</div>
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
-						<h4 class="text-center">
-							<i class="fas fa-phone" style="color: #1BDDE4;"></i> &nbsp Contact US
-						</h4>
-						<br>
-						<div id="accordion" role="tablist">
-							<div class="card">
-								<div class="card-header" role="tab" id="headingOne">
-									<h5 class="mb-0">
-										<a id="toglepanel" data-toggle="collapse" href="#c1" aria-expanded="true" aria-controls="c1">
-											What is Airdrops ?
+						<h3 class="text-center pb-4">
+							<i class="fas fa-phone" style="color: #1BDDE4;"></i> &nbsp Contact us
+						</h3>
+						<style type="text/css">
+							.ul-contacts > .li-contacts { display: inline-block; padding: 20px; text-decoration: none; }
+							.li-heading > a > i { font-size: 80px; }
+							.li-contacts { padding: 10px; }
+						</style>
+						<div class="text-center">
+							<ul class="ul-contacts">
+								<li class="li-contacts">
+									<h1 class="li-heading">
+										<a href="https://www.facebook.com/webnproject/" target="_blank" data-toggle="tooltip" title="Like us on Facebook" data-placement="top">
+											<i id="facebookt" class="fab fa-facebook-square" style="color: #4267b2;"></i>
 										</a>
-									</h5>
-								</div>
-								<div id="c1" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-									<div class="card-body">
-										What Is Airdrop in Crypto World? An airdrop for a cryptocurrency is a procedure of distributing new tokens/coins by awarding them in a certain proportion to existing holders of a particular blockchain currency, such as Bitcoin or Ethereum etc.
-									</div>
-								</div>
-							</div>
-						</div>
-						<br>
-						<div id="accordion" role="tablist">
-							<div class="card">
-								<div class="card-header" role="tab" id="headingOne">
-									<h5 class="mb-0">
-										<a id="toglepanel" data-toggle="collapse" href="#c2" aria-expanded="true" aria-controls="c2">
-											What is Bounties ? 
+									</h1>
+								</li>
+								<li class="li-contacts">
+									<h1 class="li-heading">
+										<a href="https://twitter.com/WebnProject" target="_blank" data-toggle="tooltip" title="Like us on Facebook" data-placement="top">
+											<i class="fab fa-twitter-square" style="color: #1da1f2;"></i>
 										</a>
-									</h5>
-								</div>
-								<div id="c2" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-									<div class="card-body">
-										Bounty programs are incentives offered to an array of participants for various activities associated with an initial coin offering
-									</div>
-								</div>
-							</div>
+									</h1>
+								</li>
+								<li class="li-contacts">
+									<h1 class="li-heading">
+										<a href="https://github.com/Webinnovationph" data-toggle="tooltip" title="Like us on Facebook" data-placement="top">
+											<i class="fab fa-github-square" style="color: #000000;"></i>
+										</a>
+									</h1>
+								</li>
+								<li class="li-contacts">
+									<h1 class="li-heading">
+										<a href="https://discordapp.com/invite/NkBtY4X" data-toggle="tooltip" title="Like us on Facebook" data-placement="top">
+											<i class="fab fa-discord" style="color: #7289da;"></i>
+										</a>
+									</h1>
+								</li>
+								<li class="li-contacts">
+									<h1 class="li-heading">
+										<a href="https://bitcointalk.org/index.php?topic=4640928.0" data-toggle="tooltip" title="Like us on Facebook" data-placement="top">
+											<i class="fab fa-bitcoin" style="color: #ffb629;"></i>
+										</a>
+									</h1>
+								</li>
+								<li class="li-contacts">
+									<h1 class="li-heading">
+										<a href="https://t.me/WEBN_EngOfficial_GroupChat" data-toggle="tooltip" title="Like us on Facebook" data-placement="top">
+											<i class="fab fa-telegram" style="color: #37aee2;"></i>
+										</a>
+									</h1>
+								</li>
+							</ul>
 						</div>
+						<blockquote class="blockquote text-center">
+							<p class="pb-1">Company Address : 19/F Marco Polo Ortigas Manila, Sapphire Road, Ortigas Center, Pasig City, 1600 Metro Manila</p>
+							<p class="pb-1">Email Address : info@webinnovationph.com</p>
+							<p class="pb-1">Tel. # : (02) 240 8841</p>
+						</blockquote>
 					</div>
 				</div>
 			</div>
@@ -69,6 +91,5 @@
 	</div>
 	<?php $this->load->view('pages/users/_template/_footer'); ?>
 	<?php $this->load->view('pages/users/_template/_jsscripts'); ?>
-
 </body>
 </html>

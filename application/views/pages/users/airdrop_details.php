@@ -30,9 +30,9 @@
 				</div>
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
-						<h4 class="text-center">
+						<h3 class="text-center">
 							<i class="fas fa-info" style="color: #195CCB;"></i> &nbsp Details
-						</h4>
+						</h3>
 						<br>
 					</div>
 					<div class="col-sm-12 col-md-5 pt-5 pb-5">
@@ -213,15 +213,23 @@
 							<?php echo $ai_details->RewardQuantity;?>
 						</h3>
 					</div>
-					<div class="col-sm-12 col-md-12 pt-5 pb-5 text-justify">
-						<h3>
-							Instruction
-						</h3>
-						<?php echo $ai_details->CompleteInstruction;?>
-					</div>
-					<div class="col-sm-12 col-md-12 pt-5 pb-5">
-						
-					</div>
+					<?php if ($this->session->userdata('isActive') == false) {
+						echo '<div class="col-sm-12 col-md-12 text-center">
+								<h2>
+									<a href="'.base_url().'Login" style="text-decoration: none; color: #4C4C4C;">
+										Login to learn How
+									</>
+								</h2>
+							</div>';
+					} else {
+						echo '<div class="col-sm-12 col-md-12 pt-5 pb-5 text-justify">
+								<h3 class="pb-4">
+									How to join <i class="fas fa-question-circle"></i>
+								</h3>
+								<p>
+								'.$ai_details->CompleteInstruction.'<p>
+							</div>';
+					} ?>
 				</div>
 			</div>
 		</div>
@@ -230,7 +238,6 @@
 	<?php $this->load->view('pages/users/_template/_jsscripts'); ?>
 <script type="text/javascript">
 $(document).ready(function() {
-
     $('#rate').on('change', function() {
       var rate = $(this).val();
       var postid = <?php echo $ai_details->airdrop_id;?>;
@@ -242,13 +249,13 @@ $(document).ready(function() {
         data: {'rate' : rate , 'postid' : postid , 'csrf_test_name' : csrf },
         success: function(data)
         {
-          if (data == 'RATED') 
+          if (data == "RATED") 
           {
-          	var response = $('<div class="alert alert-success alert-dismissible fade show animated bounceInDown" role="alert"><strong> Opsss! </strong> You rate this Airdrop <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+          	var response = $('<div class="alert alert-success alert-dismissible fade show animated bounceInDown" role="alert"><strong> Success! </strong> You rate this Airdrop <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 	        $("#message").html(response).show();
 	        window.location.reload();
           }
-          else if (data == 'HASRATE') 
+          else if (data == "HASRATE") 
           {
           	var response = $('<div class="alert alert-warning alert-dismissible fade show animated bounceInDown" role="alert"><strong> Opsss! </strong> You rated this airdrop <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 	        $("#message").html(response).show();
@@ -256,9 +263,11 @@ $(document).ready(function() {
           }
           else
           {
+          	var response = $('<div class="alert alert-success alert-dismissible fade show animated bounceInDown" role="alert"><strong> Success! </strong> Airdrop Rated <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+	        $("#message").html(response).show();
           	window.location.reload();
           }
-        },
+        }
       });
     });
 });
