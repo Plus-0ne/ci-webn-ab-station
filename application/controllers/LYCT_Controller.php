@@ -3,12 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class LYCT_Controller extends CI_Controller {
 
-	public function __construct() 
-	{
-		parent::__construct();
-		
-	}
-
 	// ---------------- REDIRECT TO SIGN UP VIEW
 	public function index()
 	{
