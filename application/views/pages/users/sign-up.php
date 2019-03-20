@@ -14,7 +14,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="container">
+		<div class="container animated fadeIn">
 			<div class="row">
 				<div class="col-md-12 col-lg-5 m-auto p-5">
 					<div class="login-container">

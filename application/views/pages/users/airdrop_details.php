@@ -16,13 +16,10 @@
 			</div>
 		</div>
 		<div class="content-container">
-			<div class="container">
+			<div class="container animated fadeIn">
 				<div class="row">
 					<div class="col-lg-12 col-sm-12 p-5">
 
-						<?php
-							
-						?>
 					</div>
 				</div>
 				<div id="message">
@@ -48,14 +45,25 @@
 							<?php echo $ai_details->Description;?>
 						</p>
 					</div>
-					<div class="col-sm-12 col-md-11 pt-5 pb-5">
-						<table>
+					<style type="text/css">
+						.tableairdrops
+						{
+							width: 100%;
+						}
+						.tableairdrops > tr > td
+						{
+							text-overflow: ellipsis;
+							word-wrap: break-word;
+						}
+					</style>
+					<div class="col-sm-12 col-md-12 pt-5 pb-5">
+						<table class="table tableairdrops">
 							<tr>
 								<td>
 									Rate
 								</td>
 								<td>
-									&nbsp:&nbsp 
+									&nbsp<i class="fas fa-chevron-right"></i>&nbsp 
 									<?php if ($ai_details->Rate == 1) {	
 										echo '&nbsp 
 											<span id="star1" class="fa fa-star" style="color: red;"></span>
@@ -114,10 +122,8 @@
 											';
 									}
 									?>
-									&nbsp
-								</td>
-								<td>
-									<?php echo form_open(base_url().'Postthisrate','method="POST"','id="sform"');?>
+									&nbsp 
+									<?php echo form_open(base_url().'Postthisrate','method="POST"','id="rateform"');?>
 										&nbsp<select id="rate">
 											<option selected="" hidden="" disabled="" value="">Rate</option>
 											<option value="1">1 Star</option>
@@ -134,7 +140,7 @@
 									Date Start
 								</td>
 								<td>
-									&nbsp:&nbsp <?php echo $ai_details->DateStart;?>
+									&nbsp<i class="fas fa-chevron-right"></i>&nbsp <?php echo $ai_details->DateStart;?>
 								</td>
 							</tr>
 							<tr>
@@ -142,7 +148,7 @@
 									Date End
 								</td>
 								<td>
-									&nbsp:&nbsp <?php echo $ai_details->DateEnd;?>
+									&nbsp<i class="fas fa-chevron-right"></i>&nbsp <?php echo $ai_details->DateEnd;?>
 								</td>
 							</tr>
 							<tr>
@@ -150,7 +156,7 @@
 									Link
 								</td>
 								<td>
-									&nbsp:&nbsp <a href="<?php echo $ai_details->Link;?>"> <?php echo $ai_details->Link;?> </a>
+									&nbsp<i class="fas fa-chevron-right"></i>&nbsp <a href="<?php echo $ai_details->Link;?>"> <?php echo $ai_details->Link;?> </a>
 								</td>
 							</tr>
 							<tr>
@@ -158,7 +164,7 @@
 									Website
 								</td>
 								<td>
-									&nbsp:&nbsp <a href="<?php echo $ai_details->WebsiteUrl;?>"> <?php echo $ai_details->WebsiteUrl;?> </a>
+									&nbsp<i class="fas fa-chevron-right"></i>&nbsp <a href="<?php echo $ai_details->WebsiteUrl;?>"> <?php echo $ai_details->WebsiteUrl;?> </a>
 								</td>
 							</tr>
 							<tr>
@@ -177,11 +183,11 @@
 										$difference = $datetime1->diff($datetime2);
 
 										if ($datetime2 < $datetime1) {
-											echo '&nbsp:&nbsp <span style="color: red;"><strong> Expired </strong></span>';
+											echo '&nbsp<i class="fas fa-chevron-right"></i>&nbsp <span style="color: red;"><strong> Expired </strong></span>';
 										}
 										else
 										{
-											echo '&nbsp:&nbsp '.$difference->days;
+											echo '&nbsp<i class="fas fa-chevron-right"></i>&nbsp '.$difference->days;
 										}
 									?>
 									 
@@ -215,11 +221,9 @@
 					</div>
 					<?php if ($this->session->userdata('isActive') == false) {
 						echo '<div class="col-sm-12 col-md-12 text-center">
-								<h2>
-									<a href="'.base_url().'Login" style="text-decoration: none; color: #4C4C4C;">
-										Login to learn How
-									</>
-								</h2>
+								<a href="'.base_url().'Login" class="btn btn-primary" style="text-decoration: none; color: #FFFFFF; font-size: 26px;">
+								Login to learn How
+								</a>
 							</div>';
 					} else {
 						echo '<div class="col-sm-12 col-md-12 pt-5 pb-5 text-justify">
