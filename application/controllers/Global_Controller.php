@@ -3,11 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Global_Controller extends CI_Controller {
 
-	public function __construct() 
-	{
-		parent::__construct();
-		
-	}
 	public function CheckTelegramStatus()
 	{
 		$idid = $this->session->userdata('Is_Telegram_Member');

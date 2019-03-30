@@ -3,17 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class LYCT_Controller extends CI_Controller {
 
-	// ---------------- REDIRECT TO SIGN UP VIEW
-	public function index()
-	{
-		redirect('List-Your-Coin-Token');
-	}
-
 	// ---------------- LOAD SIGNUP VIEW
 	public function lyct_view()
 	{
 
-		if ($this->session->userdata('isActive') == 3) {
+		if (isset($_SESSION['isActive']) AND $_SESSION['Hydro_Auth'] == 1 AND $_SESSION['VerifyStatus'] == 1) {
 			$navdata['title'] = "List your Coin / Token | WEBN Airdrops and Bounty Station";
 			$navdata['bot_token'] = '600810082:AAEUjCkkz8-ExUtIxS7jlslOhhUqVEX3J1I';
 			$navdata['chat_id'] = '-1001489662009';
@@ -33,7 +27,7 @@ class LYCT_Controller extends CI_Controller {
 	// ---------------- REQUEST FOR LISTING
 	public function RequestForListing()
 	{
-		if ($this->session->userdata('isActive') == 3) {
+		if (isset($_SESSION['isActive']) AND $_SESSION['Hydro_Auth'] == 1 AND $_SESSION['VerifyStatus'] == 1) {
 
 			// $TokenImage = $this->input->post('TokenImage',true);
 			$ProjectName = $this->input->post('ProjectName',true);
@@ -46,10 +40,22 @@ class LYCT_Controller extends CI_Controller {
 			$ToBeDistributed = $this->input->post('ToBeDistributed',true);
 			$RewardQuantity = $this->input->post('RewardQuantity',true);
 			$CompleteInstruction = $this->input->post('CompleteInstruction',true);
+			$PaymentDetails = $this->input->post('PaymentDetails',true);
+			if ($this->input->post('ListAsHot',true) == null) {
+				$ListAsHot = 'latest';
+			}
+			else
+			{
+				$ListAsHot = $this->input->post('ListAsHot',true);
+			}
 
 			if ($ProjectName == "" ||$Description == "" ||$DateStart == "" ||$DateEnd == "" ||$AirdropsLink == "" ||$WebsiteSource == "" ||$MaxParticipant == "" ||$ToBeDistributed == "" ||$RewardQuantity == "" ||$CompleteInstruction == "") {
-				$this->session->set_flashdata('promptInfo', '<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Opppsss!</strong> All Fields are required. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-				redirect('List-Your-Coin-Token',location);
+				$this->session->set_flashdata('promptInfo', '<div class="prompt-warning"><i class="fas fa-exclamation-circle"></i> All fields are required! </div>');
+				redirect('List-Your-Coin-Token');
+			}
+			elseif ($PaymentDetails == null) {
+				$this->session->set_flashdata('promptInfo', '<div class="prompt-warning"><i class="fas fa-exclamation-circle"></i> Select Payment </div>');
+				redirect('List-Your-Coin-Token');
 			}
 			else
 			{
@@ -63,8 +69,8 @@ class LYCT_Controller extends CI_Controller {
 
                 if ( ! $this->upload->do_upload('TokenImage'))
                 {
-                        $this->session->set_flashdata('promptInfo', '<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Opppsss!</strong> '.$this->upload->display_errors().'. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                        redirect('List-Your-Coin-Token',location);
+                        $this->session->set_flashdata('promptInfo', '<div class="prompt-error"><i class="fas fa-times-circle"></i> '.$this->upload->display_errors().'</div>');
+                        redirect('List-Your-Coin-Token');
                 }
                 else
                 {
@@ -85,24 +91,90 @@ class LYCT_Controller extends CI_Controller {
 						'RewardQuantity' => $RewardQuantity ,
 						'CompleteInstruction' => $CompleteInstruction ,
 						'DateAdded' => $today ,
-						'AddedBy' => 'AddedBy' ,
-						'Rate' => '0' ,
+						'AddedBy' => $_SESSION['Email'] ,
+						'Rate' => '4' ,
 						'RequestStatus' => 'For Approval' ,
+						'PaymentDetails' => $PaymentDetails ,
+						'PostPrio' => $ListAsHot ,
+
 					);
 
 					$RequestForListResult = $this->Model_Insert->RequestForList($dataa);
 					
 					if ($RequestForListResult == true) {
-						$this->session->set_flashdata('promptInfo', '<div class="alert alert-success alert-dismissible fade animated bounceInDown show" role="alert"><strong>Success !</strong> New Airdrop has been posted. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-						redirect('List-Your-Coin-Token',location);
+						$data = array(
+							'AirdropID' => $RequestForListResult,
+							'TxID' => '',
+							'EmailAddress' => $_SESSION['Email'],
+							'PaymentDetails' => $PaymentDetails,
+							'ListAsHot' => $ListAsHot,
+							'Date' => $today,
+							 );
+						$addTopayment = $this->Model_Insert->addTopayment($data);
+
+						if ($addTopayment == true) {
+
+							$this->session->set_userdata('ses_paymentid',$RequestForListResult);
+							$this->session->set_flashdata('showModalPayment', 'true');
+							redirect('List-Your-Coin-Token');
+						}
+						else
+						{
+							$this->session->set_flashdata('promptInfo', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Error saving payment</div>');
+							redirect('List-Your-Coin-Token');
+						}
 					}
 					else
 					{
-						$this->session->set_flashdata('promptInfo', '<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Opppsss!</strong> Error saving. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-						redirect('List-Your-Coin-Token',location);
+						$this->session->set_flashdata('promptInfo', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Error sending request</div>');
+						redirect('List-Your-Coin-Token');
 					}
                 }
 			}
+		}
+	}
+	public function SendtxidForApporval()
+	{
+		if (isset($_SESSION['isActive']) AND $_SESSION['Hydro_Auth'] == 1 AND $_SESSION['VerifyStatus'] == 1) {
+			if ($this->input->post('submitrequest',true) == '45was45yg5hf45x') {
+				$ses_paymentid = $_SESSION['ses_paymentid'];
+				$EmailAddress = $_SESSION['Email'];
+				$txid = $this->input->post('txid', true);
+
+				if ($txid == null) {
+					$this->session->set_flashdata('promptInfo', '<div class="prompt-error"><i class="fas fa-times-circle"></i> TxID Empty </div>');
+					redirect('List-Your-Coin-Token');
+				}
+				else
+				{
+					$data = array(
+						'AirdropID' => $ses_paymentid,
+						'EmailAddress' => $EmailAddress,
+						'TxID' => $txid,
+						 );
+					$savePayment = $this->Model_Insert->savePayment($data);
+					if ($savePayment == true) {
+						$this->session->set_flashdata('promptInfo', '<div class="prompt-success"><i class="fas fa-check-circle"></i> Waiting for Schedule </div>');
+						$this->session->unset('ses_paymentid');
+						redirect('List-Your-Coin-Token');
+					}
+					else
+					{
+						$this->session->set_flashdata('promptInfo', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Error saving </div>');
+						redirect('List-Your-Coin-Token');
+					}
+				}
+
+			}
+			else
+			{
+				$this->session->set_flashdata('promptInfo', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Somethings wrong</div>');
+				redirect('List-Your-Coin-Token');
+			}
+		}
+		else
+		{
+			redirect('Home');
 		}
 	}
 

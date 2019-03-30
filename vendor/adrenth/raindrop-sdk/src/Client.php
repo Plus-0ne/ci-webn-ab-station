@@ -75,11 +75,12 @@ class Client extends ApiBase
             if ($e->getResponse()->getStatusCode() === 400) {
                 switch ($e->getMessage()) {
                     case 'The user is already mapped to this application.':
+                        // redirect('AlredyMappedUser');
                         redirect('RegisterHydroVerify');
                         //throw UserAlreadyMappedToApplication::withHydroId($hydroId, $e->getMessage());
                     case 'The given username does not exist.':
                         //throw UsernameDoesNotExist::withHydroId($hydroId, $e->getMessage());
-                        redirect('AccountSettings');
+                        redirect('NoUserExist');
                 }
             }
 
@@ -162,16 +163,18 @@ class Client extends ApiBase
             // throw VerifySignatureFailed::withHydroId($hydroId, $e->getMessage(), $e); 
             redirect('Client_Error');
         } catch (InvalidArgumentException $e) {
-            throw VerifySignatureFailed::withHydroId($hydroId, $e->getMessage(), $e);
+            // throw VerifySignatureFailed::withHydroId($hydroId, $e->getMessage(), $e);
+            redirect('Client_Error');
         } catch (GuzzleException $e) {
-            throw VerifySignatureFailed::withHydroId($hydroId, $e->getMessage(), $e);
+            //throw VerifySignatureFailed::withHydroId($hydroId, $e->getMessage(), $e);
+            redirect('Client_Error');
         } catch (ApiRequestFailed $e) {
             // throw VerifySignatureFailed::withHydroId($hydroId, $e->getMessage(), $e);
             switch ($e->getMessage()) {
                 case 'The signature for this user has expired.':
                     redirect('Error_Expired');
                 default:
-                    redirect('Error_Expired');
+                    redirect('Client_Error');
             }
         }
 

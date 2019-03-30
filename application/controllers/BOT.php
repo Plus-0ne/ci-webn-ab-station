@@ -61,7 +61,9 @@ class BOT extends CI_Controller {
 
 				$chkID = $getUserData['result']['user']['id'];
 				$chkStatus = $getUserData['result']['status'];
-				if ($chkID == $idid && $chkStatus = 'member') {
+
+				if ($chkID == $idid AND $chkStatus == 'member') {
+
 					$verifiedid = $getUserData['result']['user']['id'];
 					$User_No = $this->session->userdata('UserNo');
 
@@ -69,25 +71,18 @@ class BOT extends CI_Controller {
 
 					$get_userdata = $this->Model_Select->get_userdata($User_No);
 
-					$this->session->unset_userdata('Is_Telegram_Member');
-
 					$this->session->set_userdata('Is_Telegram_Member',$get_userdata->Is_Telegram_Member);
 
-					echo "MEMBER";
+					echo "member";
+				}
+				elseif ($chkID == $idid AND $chkStatus == 'left') {
+					echo "left";
 				}
 				else
 				{
 					echo "ERROR";
 				}
 			}
-			else
-			{
-				echo "ERROR";
-			}
-		}
-		else
-		{
-			echo "ERROR";
 		}
 
 		curl_close($ch);

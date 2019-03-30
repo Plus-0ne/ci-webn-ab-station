@@ -1,5 +1,40 @@
+<?php if ($this->session->userdata('VerifyStatus') == 0) { ?>
+  <!-- Verify Email -->
+<div class="modal fade animated fadeInUp faster" id="modalVerifyEmail" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"> Verify Email Address </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <a href="<?=base_url()?>ResendCode" class="btn btn-warning" style="color: white;"><i class="far fa-paper-plane"></i>&nbsp Resend Code </a>
+        <?php echo form_open(base_url().'VerifyUserEmail', 'method="POST"'); ?>
+        <p>
+          <div>
+            Check your Email Address for your Verification Code.
+          </div>
+        </p>
+        <br><br>
+        <div class="form-group">
+          <label>CODE</label>
+          <input id="email_vcode" class="form-control" type="text" name="email_vcode" placeholder="Paste Code">
+        </div>
+        <br>
+        <input type="submit" name="VerifyEmail" class="btn btn-primary" value="Verify">
+        <?php echo form_close(); ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<?php } ?>
 <!-- Subscribe -->
-<div class="modal fade animated fadeInDownBig faster" id="modalSubscribe" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade animated fadeInUp faster" id="modalSubscribe" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -56,7 +91,7 @@
               echo '';
             }
             elseif ($chkID == $idid && $chkStatus == "left") {
-                echo '<div class="modal fade animated fadeInDownBig faster" id="modalJoinTelegram" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                echo '<div class="modal fade animated fadeInUp faster" id="modalJoinTelegram" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -79,7 +114,7 @@
                             </p>
                             <div class="form-group">
                             <label>Telegram ID</label>
-                              <input id="user_id" type="text" name="user_id">
+                              <input id="user_id" type="text" name="user_id" class="form-control">
                             </div>
                             <br>
                             <input id="telesubmit" type="submit" name="" class="btn btn-primary" value="Verify">';
@@ -97,7 +132,7 @@
           }
           else
           {
-              echo '<div class="modal fade animated fadeInDownBig faster" id="modalJoinTelegram" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              echo '<div class="modal fade animated fadeInUp faster" id="modalJoinTelegram" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -172,9 +207,15 @@
           cache: false,
           success: function(result)
           {
-            if (result == 'MEMBER')
+            if (result == 'member')
             {
               var response = $('<div class="alert alert-success alert-dismissible fade animated bounceInDown show" role="alert"><strong> Verified Member! </strong>. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+              $("#message").html(response).show();
+              window.location.reload();
+            }
+            else if (result == 'left') 
+            {
+              var response = $('<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Awww!</strong> You Left the Channel. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
               $("#message").html(response).show();
               window.location.reload();
             }

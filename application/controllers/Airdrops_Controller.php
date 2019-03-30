@@ -19,7 +19,7 @@ class Airdrops_Controller extends CI_Controller {
 	// ---------------- LATEST AIRDROPS VIEW
 	public function airdrops()
 	{
-		$navdata['title'] = "Airdrop Details | WEBN Airdrops and Bounty Station";
+		$navdata['title'] = "Latest Airdrops | WEBN Airdrops and Bounty Station";
 		$navdata['bot_token'] = '600810082:AAEUjCkkz8-ExUtIxS7jlslOhhUqVEX3J1I';
 		$navdata['chat_id'] = '-1001489662009';
 		
@@ -32,7 +32,7 @@ class Airdrops_Controller extends CI_Controller {
 	// ---------------- AIRDROPS DETAILS VIEW
 	public function airdrops_details()
 	{
-		$navdata['title'] = "Latest Airdops | WEBN Airdrops and Bounty Station";
+		$navdata['title'] = "Airdrop Information | WEBN Airdrops and Bounty Station";
 		$navdata['bot_token'] = '600810082:AAEUjCkkz8-ExUtIxS7jlslOhhUqVEX3J1I';
 		$navdata['chat_id'] = '-1001489662009';
 		
@@ -42,31 +42,54 @@ class Airdrops_Controller extends CI_Controller {
 
 		$airdrop_id = $this->input->get('aide');
 		$data['ai_details'] = $this->Model_Select->ai_details($airdrop_id);
-		
+
 		$this->load->view('pages/users/airdrop_details',$data);
 	}
 	// ---------------- AIRDROPS RATE IT
 	public function Post_this_rate()
 	{
-		
-		$userid = $this->session->userdata('UserNo');
-		$ratepoints = $this->input->post('rate');
-		$ratepostid = $this->input->post('postid');
+		if (isset($_SESSION['isActive'])) {
+			$userid = $this->session->userdata('UserNo');
+			$ratepoints = $this->input->post('rate');
+			$ratepostid = $this->input->post('postid');
 
-		$AirdropDetails = $this->Model_Select->getTotalrating($ratepostid);
+			$AirdropDetails = $this->Model_Select->getTotalrating($ratepostid);
 
-		$UserHasRate = $this->Model_Select->UserHasRate($userid,$ratepostid);
-		if ($UserHasRate == TRUE) {
-			echo "HASRATE";
+			$UserHasRate = $this->Model_Select->UserHasRate($userid,$ratepostid);
+			if ($UserHasRate->num_rows() == 1) {
+				echo "HASRATE";
+			}
+			else
+			{
+				$SaveRate = $this->Model_Insert->SaveRate($userid,$ratepoints,$ratepostid);
+				$avgRate = $this->Model_Select->GetAVGrate($ratepostid);
+				$total = round($avgRate->avg_rate);
+				$UpdateRate = $this->Model_Update->UpdateRate($total,$ratepostid);
+
+				echo "RATED";
+			}
 		}
 		else
 		{
-			$SaveRate = $this->Model_Insert->SaveRate($userid,$ratepoints,$ratepostid);
-			$avgRate = $this->Model_Select->GetAVGrate($ratepostid);
-			$total = round($avgRate->avg_rate);
-			$UpdateRate = $this->Model_Update->UpdateRate($total,$ratepostid);
+			$userid = $this->input->ip_address();
+			$ratepoints = $this->input->post('rate');
+			$ratepostid = $this->input->post('postid');
 
-			echo "RATED";
+			$AirdropDetails = $this->Model_Select->getTotalrating($ratepostid);
+
+			$UserHasRate = $this->Model_Select->UserHasRate($userid,$ratepostid);
+			if ($UserHasRate->num_rows() == 1) {
+				echo "HASRATE";
+			}
+			else
+			{
+				$SaveRate = $this->Model_Insert->SaveRate($userid,$ratepoints,$ratepostid);
+				$avgRate = $this->Model_Select->GetAVGrate($ratepostid);
+				$total = round($avgRate->avg_rate);
+				$UpdateRate = $this->Model_Update->UpdateRate($total,$ratepostid);
+
+				echo "RATED";
+			}
 		}
 		
 	}

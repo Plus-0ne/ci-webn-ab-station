@@ -31,15 +31,15 @@
 						<br>
 						<?php foreach ($GetAllfaqs->result() as $result) { ?>
 							<div id="accordion<?php echo $result->FaqNo; ?>" role="tablist">
-								<div class="card">
-									<a id="toglepanel" data-toggle="collapse" href="#c<?php echo $result->FaqNo; ?>" aria-expanded="true" aria-controls="c<?php echo $result->FaqNo; ?>" style="text-decoration: none;color: #343434;">
+								<div class="card card-custom">
+									<a id="toglepanel" class="toglepanel-custom" data-toggle="collapse" href="#c<?php echo $result->FaqNo; ?>" aria-expanded="true" aria-controls="c<?php echo $result->FaqNo; ?>">
 										<div class="card-header" role="tab" id="headingOne">
 											<h5 class="mb-0">
 												<?php echo $result->Question; ?>
 											</h5>
 										</div>
 									</a>
-									<div id="c<?php echo $result->FaqNo; ?>" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion<?php echo $result->FaqNo; ?>">
+									<div id="c<?php echo $result->FaqNo; ?>" class="collapse custom-collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion<?php echo $result->FaqNo; ?>">
 										<div class="card-body">
 											<?php echo $result->Answer; ?>
 										</div>

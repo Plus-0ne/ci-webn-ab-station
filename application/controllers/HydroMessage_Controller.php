@@ -47,9 +47,9 @@ class HydroMessage_Controller extends CI_Controller {
 	{
 		require_once APPPATH."/../vendor/autoload.php";
 
-		$clientId = 'suurpxpucsm6mg2f3vmv243n6g';
-		$clientSecret = 'ocv1281prxvikoqbjocmmrbnge';
-		$applicationId = '0161df87-3b3a-4005-a2c7-7c34a6764552';
+		$clientId = $this->config->item('clientId');
+		$clientSecret = $this->config->item('clientSecret');
+		$applicationId = $this->config->item('applicationId');
 
 		$settings = new \Adrenth\Raindrop\ApiSettings(
 			$clientId,

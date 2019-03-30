@@ -3,16 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Bounties_Controller extends CI_Controller {
 
-	public function __construct() 
-	{
-		parent::__construct();
-		
-	}
-	// ---------------- REDIRECT TO BOUNTIES
-	public function index()
-	{
-		redirect('Bounties');
-	}
 	// ---------------- LOAD BOUNTY VIEWS
 	public function bounties()
 	{

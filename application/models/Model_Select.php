@@ -5,13 +5,13 @@ class Model_Select extends CI_Model {
 	
 	public function GetAirdropsHot()
 	{
-		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus ='Approved' ORDER BY Rate DESC LIMIT 4";
+		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus ='Approved' ORDER BY Rate DESC LIMIT 8";
 		$result = $this->db->query($sql);
 		return $result;
 	}
 	public function GetAirdropsLatest()
 	{
-		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus ='Approved' ORDER BY DateAdded DESC LIMIT 4";
+		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus ='Approved' ORDER BY DateAdded DESC LIMIT 8";
 		$result = $this->db->query($sql);
 		return $result;
 	}
@@ -52,7 +52,7 @@ class Model_Select extends CI_Model {
 	{
 		$sql = "SELECT * FROM ab_rates WHERE userid = '$userid' AND ratepostid = '$ratepostid'";
 		$result = $this->db->query($sql);
-		return $result->row();
+		return $result;
 	}
 
 	public function GetAVGrate($ratepostid)
@@ -85,6 +85,29 @@ class Model_Select extends CI_Model {
 	{
 		$sql = "SELECT * FROM ab_faqs";
 		$result = $this->db->query($sql);
+		return $result;
+	}
+	public function getUserCode($data)
+	{
+		extract($data);
+		$sql = "SELECT User_No,Email_Address,VerificationCode FROM ab_users WHERE User_No = '$UserNo' AND Email_Address = '$Email_Address'";
+		$result = $this->db->query($sql);
+		return $result->row();
+	}
+	public function showratebtn($data)
+	{
+		extract($data);
+		$sql = "SELECT * FROM ab_rates WHERE userid = ? AND ratepostid = ?";
+		$result = $this->db->query($sql,array($userid,$ratepostid));
+		return $result;
+	}
+	public function getAirdoprequest($EmailAddress)
+	{
+		$this->db->select('*');
+		$this->db->from('ab_airdrops');
+		$this->db->where('AddedBy',$EmailAddress);
+		$this->db->order_by('airdrop_id DESC');
+		$result = $this->db->get();
 		return $result;
 	}
 }

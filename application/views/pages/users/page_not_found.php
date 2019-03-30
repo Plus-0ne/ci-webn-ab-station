@@ -30,6 +30,13 @@
 						</h4>
 						<br>
 					</div>
+					<div class="col-sm-12 text-center">
+						<a href="<?=base_url()?>Home" class="btn btn-info">
+							<h3>
+								<i class="fas fa-chevron-left"></i> Back
+							</h3>
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -6,11 +6,13 @@
 <body>
 	<div class="wrapper">
 		<div class="login-header">
-			<div class="col-sm-12 p-5 text-center">
-				<div style="color: white;">
-					<a href="<?=base_url()?>/Home">
-						<img class="logo" src="<?=base_url()?>assets/users/img/logo.png"></a>
-					</a>
+			<div class="container">
+				<div class="col-sm-12 p-5 text-center">
+					<div style="color: white;">
+						<a href="<?=base_url()?>/Home">
+							<img class="logo" src="<?=base_url()?>assets/users/img/logo.png"></a>
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -18,33 +20,35 @@
 			<div class="row">
 				<div class="col-md-12 col-lg-5 m-auto p-5">
 					<div class="login-container">
+						<h4 class="text-center">
+							<i class="fas fa-user-plus" style="color: #1C9C16;"></i> &nbsp Register
+						</h4>
+						<br>
 						<?php echo form_open(base_url().'submit_form_signup','method="POST"','id="sform"');?>
 						<div class="signup-holder text-center">
 							<p>
 								<?php echo $this->session->flashdata('promptInfo');?>
 							</p>
-						</div>
-						<br>
-						<div class="input-holder">
-							<input class="form-control" type="text" name="First_Name" placeholder="First Name*" required="">
-						</div>
-						<div class="input-holder">
-							<input class="form-control" type="text" name="Last_Name" placeholder="Last Name*" required="">
+							
 						</div>
 						<div class="input-holder">
 							<input class="form-control" type="email" name="Email_Address" placeholder="Email Address*" required="">
 						</div>
 						<div class="input-holder">
-							<input id="password" class="form-control" type="password" name="Password" placeholder="Password*" required="">
+							<input id="password" class="form-control password1" type="password" name="Password" placeholder="Password*" required="">
 						</div>
+						
 						<div class="input-holder">
-							<input id="repassword" class="form-control" type="password" name="rePassword" placeholder="Re-type Password*" required="">
+							<input id="repassword" class="form-control password2" type="password" name="rePassword" placeholder="Re-type Password*" required="">
 						</div>
+						<div id="passwordprompt" class="text-center" style=""></div>
+						<br>
+						<div class="g-recaptcha" data-sitekey="<?php echo $this->config->item('google_key');?>"></div>
 						<div class="submit-holder">
 							<input class="btn btn-primary btn-submit" type="submit" value="Register">
 						</div>
 						<br>
-						<div class="signup-holder text-center">
+						<div class="signup-holder text-center" style="">
 							<p>
 								<label> Already registered ?</label><a href="<?=base_url()?>Login"> Sign-in </a>
 							</p>
@@ -57,4 +61,5 @@
 	</div>
 	<?php $this->load->view('pages/users/_template/_footer'); ?>
 	<?php $this->load->view('pages/users/_template/_jsscripts'); ?>
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>

@@ -3,34 +3,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class AccountSettings_Controller extends CI_Controller {
 
-	public function __construct() 
-	{
-		parent::__construct();
-	}
-
-	// ---------------- REDIRECT TO AIRDROPS
 	public function index()
 	{
 		redirect('AccountSettings');
 	}
-
 	public function Account_Settings()
 	{
-		if ($this->session->userdata('isActive')) {
+		if (isset($_SESSION['isActive'])) {
 			$navdata['title'] = "Accounts | WEBN Airdrops and Bounty Station";
-			$navdata['bot_token'] = '600810082:AAEUjCkkz8-ExUtIxS7jlslOhhUqVEX3J1I';
-			$navdata['chat_id'] = '-1001489662009';
-			
+
 			$data = array(
 				'user_header' => $this->load->view('pages/users/_template/_header',$navdata), 
 			);
 
-			$bot_token = '600810082:AAEUjCkkz8-ExUtIxS7jlslOhhUqVEX3J1I';
-			$chat_id = '-1001489662009';
+
+			
+			$botToken = $this->config->item('botToken');
+			$chatId=$this->config->item('chatId');
 			$idid = $this->session->userdata('Is_Telegram_Member');
-			$botToken = $bot_token;
+
 			$url="https://api.telegram.org/bot".$botToken;
-			$chatId=$chat_id;  //Receiver Chat Id 
 
 			$params=[
 				'chat_id'=>$chatId,
@@ -48,6 +40,9 @@ class AccountSettings_Controller extends CI_Controller {
 
 			$data['getUserData'] = json_decode($result ,true);
 
+			$EmailAddress = $_SESSION['Email'];
+			$data['getAirdoprequest'] = $this->Model_Select->getAirdoprequest($EmailAddress);
+			
 			$this->load->view('pages/users/account_settings',$data);
 		}
 		else
@@ -57,41 +52,36 @@ class AccountSettings_Controller extends CI_Controller {
 	}
 	public function SubmitHydroID()
 	{
-		if ($this->session->userdata('isActive')) {
+		if (isset($_SESSION['isActive'])) {
 			$HydroID = $this->input->post('HydroID',true);
 			if ($HydroID == false) {
-				$this->session->set_flashdata('promptInfo', '<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Opppsss!</strong> Hydro ID Empty. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-				redirect('AccountSettings',location);
+				$this->session->set_flashdata('promptInfo', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Hydro ID Empty</div>');
+				redirect('AccountSettings');
 			}
 			else
 			{
-				$UserNo = $this->session->userdata('UserNo');
-				$HydroResult = $this->Model_Update->HydroIDUpdate($HydroID,$UserNo);
-				if ($HydroResult == true) {
-					require_once APPPATH."/../vendor/autoload.php";
+				require_once APPPATH."/../vendor/autoload.php";
 
-					$clientId = 'suurpxpucsm6mg2f3vmv243n6g';
-					$clientSecret = 'ocv1281prxvikoqbjocmmrbnge';
-					$applicationId = '0161df87-3b3a-4005-a2c7-7c34a6764552';
+				$clientId = $this->config->item('clientId');
+				$clientSecret = $this->config->item('clientSecret');
+				$applicationId = $this->config->item('applicationId');
 
-					$settings = new \Adrenth\Raindrop\ApiSettings(
-					    $clientId,
-					    $clientSecret,
-					    new \Adrenth\Raindrop\Environment\SandboxEnvironment
-					);
+				$settings = new \Adrenth\Raindrop\ApiSettings(
+					$clientId,
+					$clientSecret,
+					new \Adrenth\Raindrop\Environment\SandboxEnvironment
+				);
 
 					// Create token storage for storing the API's access token.
-					$tokenStorage = new \Adrenth\Raindrop\TokenStorage\FileTokenStorage(__DIR__.'/token.txt');
+				$tokenStorage = new \Adrenth\Raindrop\TokenStorage\FileTokenStorage(__DIR__.'/token.txt');
 
-					$client = new \Adrenth\Raindrop\Client($settings, $tokenStorage, $applicationId);
+				$client = new \Adrenth\Raindrop\Client($settings, $tokenStorage, $applicationId);
 
-					$hydroId = $HydroID;
-					$registerUser = $client->registerUser($hydroId);
+				$hydroId = $HydroID;
+				$registerUser = $client->registerUser($hydroId);
 
-					$this->session->set_userdata('Hydro_ID',$HydroID);
-					redirect('RegisterHydroVerify');
-
-				}
+				$this->session->set_userdata('Hydro_ID',$HydroID);
+				redirect('RegisterHydroVerify');
 			}
 		}
 		else
@@ -99,15 +89,54 @@ class AccountSettings_Controller extends CI_Controller {
 			redirect('Home');
 		}
 	}
-
-	public function UnregisterHydro()
+	public function VerifyHydroAuth()
 	{
-		if ($this->session->userdata('isActive') == 3) {
+		if (isset($_SESSION['isActive'])) {
+			$UserNo = $this->session->userdata('UserNo');
+			$hyrdroid = $this->session->userdata('Hydro_ID');
+			$hydromessage = $this->input->post('hydromessage',TRUE);
+
 			require_once APPPATH."/../vendor/autoload.php";
 
-			$clientId = 'suurpxpucsm6mg2f3vmv243n6g';
-			$clientSecret = 'ocv1281prxvikoqbjocmmrbnge';
-			$applicationId = '0161df87-3b3a-4005-a2c7-7c34a6764552';
+			$clientId = $this->config->item('clientId');
+			$clientSecret = $this->config->item('clientSecret');
+			$applicationId = $this->config->item('applicationId');
+
+			$settings = new \Adrenth\Raindrop\ApiSettings(
+				$clientId,
+				$clientSecret,
+				new \Adrenth\Raindrop\Environment\SandboxEnvironment
+			);
+
+							// Create token storage for storing the API's access token.
+			$tokenStorage = new \Adrenth\Raindrop\TokenStorage\FileTokenStorage(__DIR__.'/token.txt');
+
+			$client = new \Adrenth\Raindrop\Client($settings, $tokenStorage, $applicationId);
+
+			$hydroId = $hyrdroid;
+			$message = $hydromessage;
+			$verifys = $client->verifySignature($hydroId, $message);
+			
+			$HydroID = $hyrdroid;
+			$HydroResult = $this->Model_Update->HydroIDUpdate($HydroID,$UserNo);
+			
+			$this->Model_Update->updateUSerLogin($UserNo);
+			$this->session->set_flashdata('LoginResponse', '<div class="prompt-success"><i class="fas fa-check-circle"></i> Hydro MFA Activated</div>');
+			redirect('Login');
+		}
+		else
+		{
+			redirect('Home');
+		}
+	}
+	public function UnregisterHydro()
+	{
+		if (isset($_SESSION['isActive'])) {
+			require_once APPPATH."/../vendor/autoload.php";
+
+			$clientId = $this->config->item('clientId');
+			$clientSecret = $this->config->item('clientSecret');
+			$applicationId = $this->config->item('applicationId');
 
 			$settings = new \Adrenth\Raindrop\ApiSettings(
 				$clientId,
@@ -124,7 +153,7 @@ class AccountSettings_Controller extends CI_Controller {
 
 			$this->Model_Update->UnregisterHydro($hydroId);
 
-			$this->session->set_flashdata('LoginResponse', '<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>AWWW!</strong> Hydro ID Unregistered. Relogin <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+			$this->session->set_flashdata('LoginResponse', '<div class="prompt-warning"><i class="fas fa-exclamation-circle"></i> Hydro MFA Deactivated</div>');
 			redirect('Login');
 		}
 		else
@@ -132,61 +161,21 @@ class AccountSettings_Controller extends CI_Controller {
 			redirect('Home');
 		}
 	}
-
-	public function VerifyHydroAuth()
-	{
-		if ($this->session->userdata('isActive')) {
-			$UserNo = $this->session->userdata('UserNo');
-			$hyrdroid = $this->session->userdata('Hydro_ID');
-			$hydromessage = $this->input->post('hydromessage',TRUE);
-
-			require_once APPPATH."/../vendor/autoload.php";
-
-			$clientId = 'suurpxpucsm6mg2f3vmv243n6g';
-			$clientSecret = 'ocv1281prxvikoqbjocmmrbnge';
-			$applicationId = '0161df87-3b3a-4005-a2c7-7c34a6764552';
-
-			$settings = new \Adrenth\Raindrop\ApiSettings(
-				$clientId,
-				$clientSecret,
-				new \Adrenth\Raindrop\Environment\SandboxEnvironment
-			);
-
-							// Create token storage for storing the API's access token.
-			$tokenStorage = new \Adrenth\Raindrop\TokenStorage\FileTokenStorage(__DIR__.'/token.txt');
-
-			$client = new \Adrenth\Raindrop\Client($settings, $tokenStorage, $applicationId);
-
-			$hydroId = $hyrdroid;
-			$message = $hydromessage;
-			$verifys = $client->verifySignature($hydroId, $message);
-
-			$this->Model_Update->updateUSerLogin($UserNo);
-
-			$this->session->set_flashdata('LoginResponse', '<div class="alert alert-success alert-dismissible fade animated bounceInDown show" role="alert"><strong>Wow!</strong> Hydro Authentication is activated Login now. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-			redirect('Login');
-		}
-		else
-		{
-			redirect('Home');
-		}
-	}
-
 	public function ChangeNewPassword()
 	{
-		if ($this->session->userdata('isActive')) {
+		if (isset($_SESSION['isActive'])) {
 			if ($this->input->post('cp_submit')) {
 				$cpass = $this->input->post('cpass',true);
 				$npass = $this->input->post('npass',true);
 				$retypepass = $this->input->post('retypepass',true);
 
 				if ($cpass == false || $npass == false || $retypepass == false) {
-					$this->session->set_flashdata('changepassprompt', '<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Opsss!</strong> Empty fields <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-					redirect('AccountSettings',location);
+					$this->session->set_flashdata('changepassprompt', '<div class="prompt-error"><i class="fas fa-times-circle"></i> All fields are required</div>');
+					redirect('AccountSettings');
 				}
 				elseif ($npass != $retypepass || $retypepass != $npass) {
-					$this->session->set_flashdata('changepassprompt', '<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Opsss!</strong> Password Did not match fields <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-					redirect('AccountSettings',location);
+					$this->session->set_flashdata('changepassprompt', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Password did not match</div>');
+					redirect('AccountSettings');
 				}
 				else
 				{
@@ -206,25 +195,25 @@ class AccountSettings_Controller extends CI_Controller {
 
 							$UpdatePassword = $this->Model_Update->UpdatePassword($data);
 							if ($UpdatePassword == true) {
-								$this->session->set_flashdata('changepassprompt', '<div class="alert alert-success alert-dismissible fade animated bounceInDown show" role="alert"><strong>Success!</strong> Password Updated <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-								redirect('AccountSettings',location);
+								$this->session->set_flashdata('changepassprompt', '<div class="prompt-success"><i class="fas fa-check-circle"></i> Password updated</div>');
+								redirect('AccountSettings');
 							}
 							else
 							{
-								$this->session->set_flashdata('changepassprompt', '<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Opsss!</strong> Error updating <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-								redirect('AccountSettings',location);
+								$this->session->set_flashdata('changepassprompt', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Error updating</div>');
+								redirect('AccountSettings');
 							}
 						}
 						else
 						{
-							$this->session->set_flashdata('changepassprompt', '<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Opsss!</strong> Wrong password <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-							redirect('AccountSettings',location);
+							$this->session->set_flashdata('changepassprompt', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Wrong password</div>');
+							redirect('AccountSettings');
 						}
 					}
 					else
 					{
-						$this->session->set_flashdata('changepassprompt', '<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Opsss!</strong> Error user not found <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-						redirect('AccountSettings',location);
+						$this->session->set_flashdata('changepassprompt', '<div class="prompt-error"><i class="fas fa-times-circle"></i> User not found</div>');
+						redirect('AccountSettings');
 					}
 				}
 			}
@@ -237,7 +226,7 @@ class AccountSettings_Controller extends CI_Controller {
 
 	public function UpdateInformation()
 	{
-		if ($this->session->userdata('isActive')) {
+		if (isset($_SESSION['isActive'])) {
 			if ($this->input->post('ui_submit',true)) {
 				$Fname = $this->input->post('Fname',true);
 				$Lname = $this->input->post('Lname',true);
@@ -247,7 +236,7 @@ class AccountSettings_Controller extends CI_Controller {
 
 				if ($Fname == false || $Lname == false || $CompanyName == false || $TelegramID == false || $CompanyAddress == false) {
 					$this->session->set_flashdata('changepassprompt', '<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Opsss!</strong> Empty fields <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-					redirect('AccountSettings',location);
+					redirect('AccountSettings');
 				}
 				else
 				{
@@ -275,12 +264,12 @@ class AccountSettings_Controller extends CI_Controller {
 						$this->session->set_userdata($userdata);
 						
 						$this->session->set_flashdata('changepassprompt', '<div class="alert alert-success alert-dismissible fade animated bounceInDown show" role="alert"><strong>Success!</strong> Information Updated <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-						redirect('AccountSettings',location);
+						redirect('AccountSettings');
 					}
 					else
 					{
 						$this->session->set_flashdata('changepassprompt', '<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Opsss!</strong> Error updating <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-						redirect('AccountSettings',location);
+						redirect('AccountSettings');
 					}
 				}
 			}
@@ -297,14 +286,14 @@ class AccountSettings_Controller extends CI_Controller {
 	
 	public function UpdateCompany()
 	{
-		if ($this->session->userdata('isActive') && $this->session->userdata('Is_Telegram_Member') != 0) {
+		if (isset($_SESSION['isActive']) && $this->session->userdata('Is_Telegram_Member') != 0) {
 			if ($this->input->post('RegisterICO',true)) {
 				$CompanyName = $this->input->post('CompanyName',true);
 				$CompanyAddress = $this->input->post('CompanyAddress',true);
 				$RegisterICO = 'yes';
 				if ($CompanyName == false || $CompanyAddress == false) {
 					$this->session->set_flashdata('changepassprompt', '<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Opsss!</strong> Empty fields <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-					redirect('AccountSettings',location);
+					redirect('AccountSettings');
 				}
 				else
 				{
@@ -324,12 +313,12 @@ class AccountSettings_Controller extends CI_Controller {
 						$this->session->set_userdata($userdata);
 						
 						$this->session->set_flashdata('changepassprompt', '<div class="alert alert-success alert-dismissible fade animated bounceInDown show" role="alert"><strong>Success!</strong> Information Updated <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-						redirect('AccountSettings',location);
+						redirect('AccountSettings');
 					}
 					else
 					{
 						$this->session->set_flashdata('changepassprompt', '<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Opsss!</strong> Register error <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-						redirect('AccountSettings',location);
+						redirect('AccountSettings');
 					}
 				}
 			}
@@ -341,7 +330,89 @@ class AccountSettings_Controller extends CI_Controller {
 		else
 		{
 			$this->session->set_flashdata('changepassprompt', '<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Opsss!</strong> Join our Telegram Channel <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-			redirect('AccountSettings',location);
+			redirect('AccountSettings');
+		}
+	}
+
+	public function GenerateVerificationCode()
+	{
+		$length = 6;    
+		$randomint = substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'),1,$length);
+		return $randomint;
+	}
+
+	public function ResendNewCOde()
+	{
+		if (isset($_SESSION['isActive'])) {
+			$verificationCode = $this->GenerateVerificationCode();
+
+			$data['CODE'] = $verificationCode;
+			$this->email->from('webndrops@gmail.com');
+			$this->email->to($this->session->userdata('Email')); 
+			$this->email->subject('Message from Web Innovation PH INC.');
+			$this->email->set_mailtype('html');
+			$message = $this->load->view('verify_email',$data,TRUE);
+			$this->email->message($message);
+			$emailSent = $this->email->send();
+			if ($emailSent == true) {
+				$data = array(
+					'UserNo' => $this->session->userdata('UserNo'),
+					'Email' => $this->session->userdata('Email'),
+					'VerificationCode' => $verificationCode,
+				);
+
+				$this->Model_Update->UpdateCode($data);
+				$this->session->set_userdata('VerificationCode',$verificationCode);
+				$this->session->set_flashdata('changepassprompt', '<div class="prompt-success"><i class="fas fa-check-circle"></i> New Code has been sent</div>');
+				redirect('AccountSettings');
+			}
+			else
+			{
+				$this->session->set_flashdata('changepassprompt', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Error sending mail</div>');
+				redirect('AccountSettings');
+			}
+		}
+	}
+
+	public function VerifyUserEmail()
+	{
+		if (isset($_SESSION['isActive'])) {
+			$UserNo = $this->session->userdata('UserNo');
+			$Email_Address = $this->session->userdata('Email');
+			$VerificationCode = $this->input->post('email_vcode',true);
+			if ($VerificationCode == false) {
+				$this->session->set_flashdata('changepassprompt', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Code is empty</div>');
+				redirect('AccountSettings');
+			}
+			else
+			{
+				$data = array(
+					'UserNo' => $UserNo,
+					'Email_Address' => $Email_Address,
+					'VerificationCode' => $VerificationCode,
+					 );
+
+				$getUserCode = $this->Model_Select->getUserCode($data);
+
+				if ($VerificationCode == $getUserCode->VerificationCode) {
+					// Update Verify Status
+					$data = array(
+						'UserNo' => $UserNo,
+						'Email_Address' => $Email_Address,
+					);
+					$UpdateVerifyStatus = $this->Model_Update->UpdateVerifyStatus($data);
+					if ($UpdateVerifyStatus == true) {
+						$this->session->set_userdata('VerifyStatus',1);
+						$this->session->set_flashdata('changepassprompt', '<div class="prompt-success"><i class="fas fa-check-circle"></i> Email verified</div>');
+						redirect('AccountSettings');
+					}
+				}
+				else
+				{
+					$this->session->set_flashdata('changepassprompt', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Code not found</div>');
+					redirect('AccountSettings');
+				}
+			}
 		}
 	}
 }

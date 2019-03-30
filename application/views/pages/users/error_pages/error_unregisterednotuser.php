@@ -4,27 +4,43 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>
-		Hydro Authentication Errror
+		Hydro Authentication Error
 	</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<style type="text/css">
+		.btn
+		{
+			border-radius: 1px;
+			padding: 13px;
+		}
+	</style>
 </head>
 <body>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-12 p-5 text-center" style="height: 300px; background-color: #102026;">
 			<div class="" style="color: white;">
-				<a href="<?=base_url()?>Home">
+				<!-- <a href="<?=base_url()?>Home">
 					<img class="logo" src="<?=base_url()?>assets/users/img/logo.png" width="350"></a>
-				</a>
+				</a> -->
 			</div>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-12 col-md-4 m-auto p-5 text-center">
-			<h5>
-				Unregistered Error : Client is not registered.
-			</h5>
+		<div class="col-sm-12 col-md-4 m-auto p-5 text-center" style="color: #C72020;">
+			<h1>
+				<i class="fas fa-exclamation-triangle"></i>
+			</h1>
 			<br>
+			<h3>
+				Hydro ID error : Client is not registered!
+			</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12 col-md-4 m-auto p-5 text-center">
+			<?php echo '<a style="color: #FFFFFF;" class="btn btn-info" href="'.$_SERVER['HTTP_REFERER'].'"><h4><i class="fas fa-chevron-left"></i> Back </h4></a>'; ?>
 		</div>
 	</div>
 </div>

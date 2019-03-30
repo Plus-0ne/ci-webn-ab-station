@@ -521,3 +521,17 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+
+// Google Recaptcha
+$config['google_key'] = '6LemZpkUAAAAAEmE1JW1FpdE6pN_McWOS2rol9kp';
+$config['google_secret'] = '6LemZpkUAAAAAI2a1Q-41PO-5qdxBYVvtRBWsWvA';
+
+// Hydro AUTH
+$config['clientId'] = 'suurpxpucsm6mg2f3vmv243n6g';
+$config['clientSecret'] = 'ocv1281prxvikoqbjocmmrbnge';
+$config['applicationId'] = '0161df87-3b3a-4005-a2c7-7c34a6764552';
+
+// Telegram
+$config['botToken'] = '600810082:AAEUjCkkz8-ExUtIxS7jlslOhhUqVEX3J1I';
+$config['website']="https://api.telegram.org/bot";
+$config['chatId']='-1001489662009';

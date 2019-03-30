@@ -84,14 +84,18 @@ $route['RegisterHydroVerify'] = 'HydroMessage_Controller/RegisterHydroVerify';
 // FUNCTIONS
 $route['Postthisrate'] = 'Airdrops_Controller/Post_this_rate';
 $route['RequestForListing'] = 'LYCT_Controller/RequestForListing';
+$route['SendtxidForApporval'] = 'LYCT_Controller/SendtxidForApporval';
 $route['SubmitHydroID'] = 'AccountSettings_Controller/SubmitHydroID';
 $route['UnregisterHydro'] = 'AccountSettings_Controller/UnregisterHydro';
 $route['VerifyHydroAuth'] = 'AccountSettings_Controller/VerifyHydroAuth';
 $route['ChangePassword'] = 'AccountSettings_Controller/ChangeNewPassword';
 $route['UpdateInformation'] = 'AccountSettings_Controller/UpdateInformation';
 $route['UpdateCompany'] = 'AccountSettings_Controller/UpdateCompany';
-
+$route['ResendCode'] = 'AccountSettings_Controller/ResendNewCOde';
+$route['VerifyUserEmail'] = 'AccountSettings_Controller/VerifyUserEmail';
 // ERROR
 $route['Error_Expired'] = 'Error_PageController/Error_Expired';
 $route['Client_Error'] = 'Error_PageController/Client_Error';
 $route['UnregisterNotUser'] = 'Error_PageController/UnregisterNotUser';
+$route['AlredyMappedUser'] = 'Error_PageController/AlredyMappedUser';
+$route['NoUserExist'] = 'Error_PageController/NoUserExist';

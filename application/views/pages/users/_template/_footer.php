@@ -30,7 +30,7 @@
 				</li>
 				
 				<?php
-				if ($this->session->userdata('isActive') == 3) {
+				if (isset($_SESSION['isActive']) AND $_SESSION['Hydro_Auth'] == 1 AND $_SESSION['VerifyStatus'] == 1) {
 					echo '<li class="f-nav-item">
 							<a class="f-nav-link" href="#"><i class="fas fa-angle-right"></i> List Your Coin/Token </a>
 						</li>';
@@ -45,7 +45,7 @@
 				<li class="f-nav-item">
 					<a class="f-nav-link" href="<?=base_url()?>FAQs"><i class="fas fa-angle-right"></i> FAQs </a>
 				</li>
-				<?php if ($this->session->userdata('isActive')) {
+				<?php if (isset($_SESSION['isActive'])) {
 
 				}
 				else
@@ -55,7 +55,7 @@
 					</li>';
 				}
 				?>
-				<?php if ($this->session->userdata('isActive')) {
+				<?php if (isset($_SESSION['isActive'])) {
 
 				}
 				else
@@ -74,16 +74,16 @@
 			<!-- Follow Us -->
 			<p style="color: #898989;">
 				<strong>
-					Follow Us : 
+					Join Us : 
 				</strong>
 			</p>
 			<h3>
-				<a class="slinks" href=""><i class="fab fa-facebook"></i></a>
-				<a class="slinks" href=""><i class="fab fa-twitter"></i></a>
-				<a class="slinks" href=""><i class="fab fa-github"></i></a>
-				<a class="slinks" href=""><i class="fab fa-discord"></i></a>
-				<a class="slinks" href=""><i class="fab fa-bitcoin"></i></a>
-				<a class="slinks" href=""><i class="fab fa-telegram"></i></a>
+				<a class="slinks" href="https://www.facebook.com/webnproject/"><i class="fab fa-facebook"></i></a>
+				<a class="slinks" href="https://twitter.com/WebnProject"><i class="fab fa-twitter"></i></a>
+				<a class="slinks" href="https://github.com/Webinnovationph"><i class="fab fa-github"></i></a>
+				<a class="slinks" href="https://discordapp.com/invite/NkBtY4X"><i class="fab fa-discord"></i></a>
+				<a class="slinks" href="https://bitcointalk.org/index.php?topic=4640928.0"><i class="fab fa-bitcoin"></i></a>
+				<a class="slinks" href="https://t.me/WEBN_EngOfficial_GroupChat"><i class="fab fa-telegram"></i></a>
 			</h3>
 			<br>
 		</div>

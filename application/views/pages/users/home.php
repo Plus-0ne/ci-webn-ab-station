@@ -18,85 +18,124 @@
 		<div class="content-container">
 			<div class="container">
 				<div class="row">
+					<div class="col-lg-12 col-sm-12 p-5">
+
+
+					</div>
 				</div>
+				
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
 						<h3 class="pb-4">
 							<i class="fas fa-fire-alt" style="color: red;"></i> &nbsp Hot Airdrops
 						</h3>
 					</div>
-					<?php foreach ($GetAirdropsHot->result() as $row) { ?>
-						<div class="col-lg-3 col-sm-12 pt-4 pb-4">
-							<a href="<?=base_url()?>Airdrop_Details?aide=<?php echo $row->airdrop_id;?>" style="text-decoration: none; color: #323232;">
-								<div class="content-widget animated fadeIn">
-									<div class="content-image">
-										<img class="ratio rounded-circle" src="" style="background-image: url('<?php echo $row->TokenImage;?>');">
-									</div>
-									<div class="content-details">
-										<?php echo $row->ProjectName;?>
-										<br>
-										<?php 
-										if ($row->Rate == 1) {	
-											echo ' 
+					<?php if ($GetAirdropsHot->num_rows() != 0) { ?>
+						<?php foreach ($GetAirdropsHot->result() as $row) { ?>
+							<div class="col-lg-3 col-sm-12 pt-4 pb-4">
+								<a href="<?=base_url()?>Airdrop_Details?aide=<?php echo $row->airdrop_id;?>" style="text-decoration: none; color: #323232;">
+									<div class="content-widget animated fadeIn">
+										<?php
+										date_default_timezone_set("Asia/Manila");
+										$today = date("Y-m-d");
+										$endDate = $row->DateEnd;
+										$datetime1 = new DateTime($today);
+
+										$datetime2 = new DateTime($endDate);
+
+										$difference = $datetime1->diff($datetime2);
+
+										if ($datetime2 < $datetime1) {
+											echo '<div style="padding: 9px; position: relative; color: #E52828;"><i class="fas fa-hourglass-end"></i> Expired</div>';
+										}
+										else
+										{
+											echo '<div style="padding: 9px; position: relative; color: #21C415;"><i class="fas fa-hourglass-start"></i> '.$difference->days.' Days left</div>';
+										}
+										?>
+										<div class="content-image">
+											<img class="ratio rounded-circle" src="" style="background-image: url('<?php echo $row->TokenImage;?>');">
+										</div>
+										<div class="content-details">
+											<strong><?php echo $row->ProjectName;?></strong>
+											<br>
+											<?php 
+											if ($row->Rate == 1) {	
+												echo ' 
 												<span id="star1" class="fa fa-star" style="color: #FF8400;"></span>
 												<span id="star2" class="fa fa-star"></span>
 												<span id="star3" class="fa fa-star"></span>
 												<span id="star4" class="fa fa-star"></span>
 												<span id="star5" class="fa fa-star"></span>
 												';
-										}
-										elseif ($row->Rate == 2) {
-											echo ' 
+											}
+											elseif ($row->Rate == 2) {
+												echo ' 
 												<span class="fa fa-star" style="color: #FF8400;"></span>
 												<span class="fa fa-star" style="color: #FF8400;"></span>
 												<span class="fa fa-star"></span>
 												<span class="fa fa-star"></span>
 												<span class="fa fa-star"></span>
 												';
-										}
-										elseif ($row->Rate == 3) {
-											echo ' 
+											}
+											elseif ($row->Rate == 3) {
+												echo ' 
 												<span class="fa fa-star" style="color: #FF8400;"></span>
 												<span class="fa fa-star" style="color: #FF8400;"></span>
 												<span class="fa fa-star" style="color: #FF8400;"></span>
 												<span class="fa fa-star"></span>
 												<span class="fa fa-star"></span>
 												';
-										}
-										elseif ($row->Rate == 4) {
-											echo ' 
+											}
+											elseif ($row->Rate == 4) {
+												echo ' 
 												<span class="fa fa-star" style="color: #FF8400;"></span>
 												<span class="fa fa-star" style="color: #FF8400;"></span>
 												<span class="fa fa-star" style="color: #FF8400;"></span>
 												<span class="fa fa-star" style="color: #FF8400;"></span>
 												<span class="fa fa-star"></span>
 												';
-										}
-										elseif ($row->Rate == 5) {
-											echo ' 
+											}
+											elseif ($row->Rate == 5) {
+												echo ' 
 												<span class="fa fa-star" style="color: #FF8400;"></span>
 												<span class="fa fa-star" style="color: #FF8400;"></span>
 												<span class="fa fa-star" style="color: #FF8400;"></span>
 												<span class="fa fa-star" style="color: #FF8400;"></span>
 												<span class="fa fa-star" style="color: #FF8400;"></span>
 												';
-										}
-										else
-										{
-											
-											echo 'Not Rated';
-											echo '&nbsp 
+											}
+											else
+											{
+												
+												echo 'Not Rated';
+												echo '&nbsp 
 												<span class="fa fa-star"></span>
 												<span class="fa fa-star"></span>
 												<span class="fa fa-star"></span>
 												<span class="fa fa-star"></span>
 												<span class="fa fa-star"></span>
 												';
-										}
-										?>
+											}
+											?>
+											<br>
+											<i class="far fa-calendar-check" style="color: #1BBC1F;"></i>&nbsp <?php echo $row->DateAdded;?>
+										</div>
 									</div>
-								</div>
-							</a>
+								</a>
+							</div>
+						<?php } ?>
+						
+						<div class="col-sm-12 p-4">
+							<h5>
+								<a href="<?=base_url()?>HOT" class="View-All btn btn-info"><i class="fas fa-arrow-alt-circle-right"></i> View All</a>
+							</h5>
+						</div>
+					<?php } else { ?>
+						<div class="col-sm-12 text-center">
+							<h5>
+								No Hot Airdrops
+							</h5>
 						</div>
 					<?php } ?>
 				</div>
@@ -106,20 +145,109 @@
 							<i class="fas fa-parachute-box" style="color: green;"></i> &nbsp Latest Airdrops
 						</h4>
 					</div>
-					<?php foreach ($GetAirdropsLatest->result() as $row) { ?>
-						<div class="col-lg-3 col-sm-12 pt-4 pb-4">
-							<a href="<?=base_url()?>Airdrop_Details?aide=<?php echo $row->airdrop_id;?>" style="text-decoration: none; color: #323232;">
-								<div class="content-widget animated fadeIn">
-									<div class="content-image">
-										<img class="ratio rounded-circle" src="" style="background-image: url('<?php echo $row->TokenImage;?>');">
+					<?php if ($GetAirdropsLatest->num_rows() != 0) { ?>
+						<?php foreach ($GetAirdropsLatest->result() as $row) { ?>
+							<div class="col-lg-3 col-sm-12 pt-4 pb-4">
+								<a href="<?=base_url()?>Airdrop_Details?aide=<?php echo $row->airdrop_id;?>" style="text-decoration: none; color: #323232;">
+									<div class="content-widget animated fadeIn">
+										<?php
+										date_default_timezone_set("Asia/Manila");
+										$today = date("Y-m-d");
+										$endDate = $row->DateEnd;
+										$datetime1 = new DateTime($today);
+
+										$datetime2 = new DateTime($endDate);
+
+										$difference = $datetime1->diff($datetime2);
+
+										if ($datetime2 < $datetime1) {
+											echo '<div style="padding: 9px; position: relative; color: #E52828;"><i class="fas fa-hourglass-end"></i> Expired</div>';
+										}
+										else
+										{
+											echo '<div style="padding: 9px; position: relative; color: #21C415;"><i class="fas fa-hourglass-start"></i> '.$difference->days.' Days left</div>';
+										}
+										?>
+										<div class="content-image">
+											<img class="ratio rounded-circle" src="" style="background-image: url('<?php echo $row->TokenImage;?>');">
+										</div>
+										<div class="content-details">
+											<?php echo $row->ProjectName;?>
+											<br>
+											<?php 
+											if ($row->Rate == 1) {	
+												echo ' 
+												<span id="star1" class="fa fa-star" style="color: #FF8400;"></span>
+												<span id="star2" class="fa fa-star"></span>
+												<span id="star3" class="fa fa-star"></span>
+												<span id="star4" class="fa fa-star"></span>
+												<span id="star5" class="fa fa-star"></span>
+												';
+											}
+											elseif ($row->Rate == 2) {
+												echo ' 
+												<span class="fa fa-star" style="color: #FF8400;"></span>
+												<span class="fa fa-star" style="color: #FF8400;"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												';
+											}
+											elseif ($row->Rate == 3) {
+												echo ' 
+												<span class="fa fa-star" style="color: #FF8400;"></span>
+												<span class="fa fa-star" style="color: #FF8400;"></span>
+												<span class="fa fa-star" style="color: #FF8400;"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												';
+											}
+											elseif ($row->Rate == 4) {
+												echo ' 
+												<span class="fa fa-star" style="color: #FF8400;"></span>
+												<span class="fa fa-star" style="color: #FF8400;"></span>
+												<span class="fa fa-star" style="color: #FF8400;"></span>
+												<span class="fa fa-star" style="color: #FF8400;"></span>
+												<span class="fa fa-star"></span>
+												';
+											}
+											elseif ($row->Rate == 5) {
+												echo ' 
+												<span class="fa fa-star" style="color: #FF8400;"></span>
+												<span class="fa fa-star" style="color: #FF8400;"></span>
+												<span class="fa fa-star" style="color: #FF8400;"></span>
+												<span class="fa fa-star" style="color: #FF8400;"></span>
+												<span class="fa fa-star" style="color: #FF8400;"></span>
+												';
+											}
+											else
+											{
+												echo ' 
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												';
+											}
+											?>
+											<br>
+											<i class="far fa-calendar-check" style="color: #1BBC1F;"></i>&nbsp <?php echo $row->DateAdded;?>
+										</div>
 									</div>
-									<div class="content-details">
-										<?php echo $row->ProjectName;?>
-										<br>
-										<i class="far fa-calendar-check" style="color: #1BBC1F;"></i>&nbsp <?php echo $row->DateAdded;?>
-									</div>
-								</div>
-							</a>
+								</a>
+							</div>
+						<?php } ?>
+						<div class="col-sm-12 p-4">
+							<h5>
+								<a href="<?=base_url()?>LATEST" class="View-All btn btn-info"><i class="fas fa-arrow-alt-circle-right"></i> View All</a>
+							</h5>
+						</div>
+					<?php } else { ?>
+						<div class="col-sm-12 text-center">
+							<h5>
+								No Latest Airdrops
+							</h5>
 						</div>
 					<?php } ?>
 				</div>

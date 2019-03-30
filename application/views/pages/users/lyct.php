@@ -86,18 +86,100 @@
 							</div>
 						</div>
 						<div class="form-row">
-							<div class="form-group col-sm-12 col-md-9">
+							<div class="form-group col-sm-12 col-md-12">
 								<label for="Instruction">Instruction</label>
 								<textarea class="form-control" id="summernote" rows="5" name="CompleteInstruction"></textarea>
+								<p>
+									Powered by : Summernote - Super Simple WYSIWYG editor
+								</p>
 							</div>
 						</div>
+						<input id="input24" type="radio" name="PaymentDetails" value="24hrs">
+						<input id="input48" type="radio" name="PaymentDetails" value="48hrs">
+						<input id="input1w" type="radio" name="PaymentDetails" value="1week">
+						<input id="inputlisthot" type="radio" name="ListAsHot" value="hot">
+					</div>
+					<div class="col-sm-12 col-md-4 p-5">
+						<div id="payment24" class="pricing-card bgcolor-24 text-center">
+							<div class="pricing-header">
+								<h2>
+									<i class="far fa-clock"></i> 24 hrs
+								</h2>
+							</div>
+							<div class="pricingbody">
+								500k WEBN Tokens
+							</div>
+							<div id="checked-icon1" class="checked-payments">
+								<h1>
+									<i class="fas fa-check-circle icon-size"></i>
+								</h1>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-12 col-md-4 p-5">
+						<div id="payment48" class="pricing-card bgcolor-48 text-center">
+							<div class="pricing-header">
+								<h2>
+									<i class="far fa-clock"></i> 48 hrs
+								</h2>
+							</div>
+							<div class="pricingbody">
+								1M WEBN Tokens
+							</div>
+							<div id="checked-icon2" class="checked-payments">
+								<h1>
+									<i class="fas fa-check-circle icon-size"></i>
+								</h1>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-12 col-md-4 p-5">
+						<div id="payment1w" class="pricing-card bgcolor-1w text-center">
+							<div class="pricing-header">
+								<h2>
+									<i class="far fa-calendar-alt"></i> 1 Week
+								</h2>
+							</div>
+							<div class="pricingbody">
+								2M WEBN Tokens
+							</div>
+							<div id="checked-icon3" class="checked-payments">
+								<h1>
+									<i class="fas fa-check-circle icon-size"></i>
+								</h1>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-12 col-md-7 m-auto p-5">
+						<div id="listhot" class="pricing-card bgcolor-hot text-center">
+							<div class="pricing-header">
+								<h2>
+									List as Hot Airdrop
+								</h2>
+							</div>
+							<div class="pricingbody">
+								Additional 500K WEBN Tokens per day (Optional)
+							</div>
+							<div id="checked-icon4" class="checked-payments">
+								<h1>
+									<i class="fas fa-check-circle icon-size"></i>
+								</h1>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-12 p-5" style="border-bottom: 2px solid #D1D1D1"></div>
+					<div class="col-sm-12 p-5">
 						<div class="form-row">
 							<div class="form-group col-sm-12 col-md-9">
-								<input type="submit" class="btn btn-primary" value="Request for Listing">
+								<button type="submit" class="btn btn-primary">
+									<h5>
+										<i class="fas fa-paper-plane"></i> &nbsp Request for Listing
+									</h5>
+								</button>
 							</div>
 						</div>
-						<?php echo form_close();?>
 					</div>
+				<?php echo form_close();?>
 				</div>
 			</div>
 		</div>
@@ -108,12 +190,39 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.js"></script>
 <script>
 $(document).ready(function () {
-	$('#summernote').summernote({
-		placeholder: '',
-		tabsize: 1,
-		height : 200
-	});
+	<?php if($this->session->flashdata('showModalPayment') == 'true'):?>
+		$('#modalpaymentdetails').modal('show');
+	<?php endif;?>
 });
 </script>
+<div class="modal fade animated fadeInUp faster" id="modalpaymentdetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle"> Payment details </h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<?php echo form_open(base_url().'SendtxidForApporval', 'method="POST"');?>
+			<div class="modal-body">
+				<p>
+					Send your WEBN Payment to this Address: 0xc06f5144cd4e0deefc5336f04f8d05ffc47035cb
+				</p>
+				<p>
+					After you send your payment, paste your TXID here for checking:
+				</p>
+				<div class="form-group">
+					<input type="text" name="txid" class="form-control" required="">
+					<input type="hidden" name="submitrequest" value="45was45yg5hf45x">
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-primary">Send TXID</button>
+			</div>
+			<?php echo form_close();?>
+		</div>
+	</div>
+</div>
 </body>
 </html>

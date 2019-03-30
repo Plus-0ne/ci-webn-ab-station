@@ -26,68 +26,59 @@ class Login_Controller extends CI_Controller {
 	 */
 	public function Login_Validation()
 	{
-		if ($this->session->userdata('isActive')) {
-			redirect('Home');
+		$Email_Address = $this->input->post('Email_Address',true);
+		$UserPass = $this->input->post('Password',true);
+
+		if ($Email_Address == false || $UserPass == false) {
+			$this->session->set_flashdata('LoginResponse', '<div class="prompt-error animated heartBeat"><i class="fas fa-times-circle"></i> Error ! Empty Fields</div>');
+			redirect('Login');
 		}
 		else
 		{
-			$Email_Address = $this->input->post('Email_Address',true);
-			$UserPass = $this->input->post('Password',true);
+			$result = $this->Model_Login->get_email_add($Email_Address);
+			if ($result == true) {
+				if (password_verify($UserPass,$result->Password)) {
 
-			if ($Email_Address == false || $UserPass == false) {
-				$this->session->set_flashdata('LoginResponse', '<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Opppsss!</strong>Login Error (Empty Fields). <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-				redirect('Login',location);
+					if ($result->Hydro_Auth == 0) {
+						
+						$userdata = array(
+							'UserNo' => $result->User_No,
+							'Email' => $result->Email_Address,
+							'Is_Telegram_Member' => $result->Is_Telegram_Member, 
+							'Is_Subscriber' => $result->Is_Subscriber,  
+							'Hydro_ID' => $result->Hydro_ID,
+							'Hydro_Auth' => $result->Hydro_Auth,
+							'Active_Status' => $result->Active_Status,
+							'Account_Status' => $result->Account_Status,
+							'VerificationCode' => $result->VerificationCode,
+							'VerifyStatus' => $result->VerifyStatus,
+							'isICO' => $result->isICO,
+							'isActive' => $result->Account_Status,
+						);
+						$this->session->set_userdata($userdata);
+
+						redirect('Home');
+					}
+					else
+					{
+						$data = array(
+							'UserNo' => $result->User_No,
+							'Hydro_ID' => $result->Hydro_ID,
+						);
+						$this->session->set_userdata($data);
+						$this->session->set_flashdata('Step2','Step 2');
+						redirect('LoadHydroMessage');
+					}
+				}
+				else {
+					$this->session->set_flashdata('LoginResponse', '<div class="prompt-error animated heartBeat"><i class="fas fa-times-circle"></i> Error ! Wrong password</div>');
+					redirect('Login');
+				}
 			}
 			else
 			{
-				$result = $this->Model_Login->get_email_add($Email_Address);
-
-				if ($result == true) {
-					if (password_verify($UserPass,$result->Password)) {
-					    
-					    if ($result->Hydro_Auth == 0) {
-					    	$userdata = array(
-								'UserNo' => $result->User_No,
-								'Fname' => $result->First_Name, 
-								'Lname' => $result->Last_Name, 
-								'CompanyName' => $result->CompanyName, 
-								'CompanyAddress' => $result->CompanyAddress, 
-								'Email' => $result->Email_Address,
-								'Is_Telegram_Member' => $result->Is_Telegram_Member, 
-								'Is_Subscriber' => $result->Is_Subscriber,  
-								'Hydro_ID' => $result->Hydro_ID,
-								'Hydro_Auth' => $result->Hydro_Auth,
-								'Active_Status' => $result->Active_Status,
-								'Account_Status' => $result->Account_Status,
-								'isICO' => $result->isICO,
-								'isActive' => $result->Account_Status,
-							);
-							$this->session->set_userdata($userdata);
-
-							redirect('Home');
-					    }
-					    else
-					    {
-					    	$data = array(
-					    		'UserNo' => $result->User_No,
-								'Hydro_ID' => $result->Hydro_ID,
-							);
-					    	$this->session->set_userdata($data);
-					    	$this->session->set_flashdata('Step2','Step 2');
-
-					    	redirect('LoadHydroMessage');
-					    }
-					}
-					else {
-					    $this->session->set_flashdata('LoginResponse', '<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Opppsss!</strong>Wrong Password. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-						redirect('Login',location);
-					}
-				}
-				else
-				{
-					$this->session->set_flashdata('LoginResponse', '<div class="alert alert-danger alert-dismissible fade animated bounceInDown show" role="alert"><strong>Opppsss!</strong> Wrong Email. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-					redirect('Login',location);
-				}
+				$this->session->set_flashdata('LoginResponse', '<div class="prompt-error animated heartBeat"><i class="fas fa-times-circle"></i> Error ! Wrong email</div>');
+				redirect('Login');
 			}
 		}
 	}
@@ -128,18 +119,16 @@ class Login_Controller extends CI_Controller {
 
 				if ($result == TRUE) {
 					$userdata = array(
-						'UserNo' => $result->User_No,
-						'Fname' => $result->First_Name, 
-						'Lname' => $result->Last_Name, 
-						'CompanyName' => $result->CompanyName, 
-						'CompanyAddress' => $result->CompanyAddress, 
+						'UserNo' => $result->User_No, 
 						'Email' => $result->Email_Address,
 						'Is_Telegram_Member' => $result->Is_Telegram_Member, 
 						'Is_Subscriber' => $result->Is_Subscriber,  
 						'Hydro_ID' => $result->Hydro_ID,
 						'Hydro_Auth' => $result->Hydro_Auth,
 						'Active_Status' => $result->Active_Status,
-						'Account_Status' => $result->Account_Status, 
+						'Account_Status' => $result->Account_Status,
+						'VerificationCode' => $result->VerificationCode,
+						'VerifyStatus' => $result->VerifyStatus,
 						'isICO' => $result->isICO,
 						'isActive' => $result->Account_Status,
 					);
@@ -161,7 +150,7 @@ class Login_Controller extends CI_Controller {
 	 */
 	public function logout()
 	{
-		if ($this->session->userdata('isActive')) {
+		if (isset($_SESSION['isActive'])) {
 			$this->session->sess_destroy();
 			redirect('Login');
 		}

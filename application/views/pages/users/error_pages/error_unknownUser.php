@@ -19,7 +19,7 @@
 <body>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-sm-12 p-5 text-center" style="height: 300px; background-color: #102026;">
+		<div class="col-sm-12 p-5 text-center" style="height: 250px; background-color: #102026;">
 			<div class="" style="color: white;">
 				<!-- <a href="<?=base_url()?>Home">
 					<img class="logo" src="<?=base_url()?>assets/users/img/logo.png" width="350"></a>
@@ -34,7 +34,7 @@
 			</h1>
 			<br>
 			<h3>
-				Signature Error : Signature doesn't exist.
+				Hydro ID error : User doesn't exist!
 			</h3>
 		</div>
 	</div>

@@ -34,7 +34,7 @@
 			</h1>
 			<br>
 			<h3>
-				Signature Error : Signature doesn't exist.
+				Hydro ID error : User is already mapped!
 			</h3>
 		</div>
 	</div>

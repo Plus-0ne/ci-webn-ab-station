@@ -30,15 +30,16 @@ class Model_Update extends CI_Model {
 	}
 	public function updateUSerLogin($UserNo)
 	{
-		$sql = "UPDATE ab_users SET Hydro_Auth= 1 , Account_Status = 3 WHERE User_No='$UserNo'";
+		$sql = "UPDATE ab_users SET Hydro_Auth= 1 WHERE User_No='$UserNo'";
 		$result = $this->db->query($sql);
 		return $result;
 	}
 	public function UnregisterHydro($hydroId)
 	{
 		$UserNo = $this->session->userdata('UserNo');
-		$sql = "UPDATE ab_users SET Hydro_Auth= 0 , Account_Status = 2 WHERE User_No=?";
-		$result = $this->db->query($sql,$UserNo);
+		$Hydro_Auth = 0;
+		$sql = "UPDATE ab_users SET Hydro_ID = '$hydroId' , Hydro_Auth = '$Hydro_Auth' WHERE User_No = '$UserNo'";
+		$result = $this->db->query($sql);
 		return $result;
 	}
 	public function UpdatePassword($data)
@@ -63,6 +64,22 @@ class Model_Update extends CI_Model {
 		
 		$sql = "UPDATE ab_users SET CompanyName = ?, CompanyAddress = ? , isICO = ? WHERE User_No=?";
 		$result = $this->db->query($sql,array($CompanyName,$CompanyAddress,$RegisterICO,$UserNo));
+		return $result;
+	}
+	public function UpdateCode($data)
+	{
+		extract($data);
+		
+		$sql = "UPDATE ab_users SET VerificationCode = ? WHERE User_No=? AND Email_Address = ?";
+		$result = $this->db->query($sql,array($VerificationCode,$UserNo,$Email));
+		return $result;
+	}
+	public function UpdateVerifyStatus($data)
+	{
+		extract($data);
+		
+		$sql = "UPDATE ab_users SET VerifyStatus = 1 WHERE User_No=? AND Email_Address = ?";
+		$result = $this->db->query($sql,array($UserNo,$Email_Address));
 		return $result;
 	}
 }

@@ -10,12 +10,6 @@ class BuyWebnToken_Controller extends CI_Controller {
 		$this->load->helper('security');
 	}
 
-	// ---------------- REDIRECT TO SIGN UP VIEW
-	public function index()
-	{
-		redirect('BuyWEBNN_Token');
-	}
-
 	// ---------------- LOAD SIGNUP VIEW
 	public function buywebn_token()
 	{

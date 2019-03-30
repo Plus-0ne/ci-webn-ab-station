@@ -22,9 +22,6 @@
 
 					</div>
 				</div>
-				<div id="message">
-					
-				</div>
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
 						<h3 class="text-center">
@@ -57,6 +54,7 @@
 						}
 					</style>
 					<div class="col-sm-12 col-md-12 pt-5 pb-5">
+						<div id="message"></div>
 						<table class="table tableairdrops">
 							<tr>
 								<td>
@@ -66,73 +64,60 @@
 									&nbsp<i class="fas fa-chevron-right"></i>&nbsp 
 									<?php if ($ai_details->Rate == 1) {	
 										echo '&nbsp 
-											<span id="star1" class="fa fa-star" style="color: red;"></span>
-											<span id="star2" class="fa fa-star"></span>
-											<span id="star3" class="fa fa-star"></span>
-											<span id="star4" class="fa fa-star"></span>
-											<span id="star5" class="fa fa-star"></span>
+											<span id="span1" class="fa fa-star ratebutton" style="color: red;"></span>
+											<span id="span2" class="fa fa-star ratebutton"></span>
+											<span id="span3" class="fa fa-star ratebutton"></span>
+											<span id="span4" class="fa fa-star ratebutton"></span>
+											<span id="span5" class="fa fa-star ratebutton"></span>
 											';
 									}
 									elseif ($ai_details->Rate == 2) {
 										echo '&nbsp 
-											<span class="fa fa-star" style="color: red;"></span>
-											<span class="fa fa-star" style="color: red;"></span>
-											<span class="fa fa-star"></span>
-											<span class="fa fa-star"></span>
-											<span class="fa fa-star"></span>
+											<span id="span1" class="fa fa-star ratebutton" style="color: red;"></span>
+											<span id="span2" class="fa fa-star ratebutton" style="color: red;"></span>
+											<span id="span3" class="fa fa-star ratebutton"></span>
+											<span id="span4" class="fa fa-star ratebutton"></span>
+											<span id="span5" class="fa fa-star ratebutton"></span>
 											';
 									}
 									elseif ($ai_details->Rate == 3) {
 										echo '&nbsp 
-											<span class="fa fa-star" style="color: red;"></span>
-											<span class="fa fa-star" style="color: red;"></span>
-											<span class="fa fa-star" style="color: red;"></span>
-											<span class="fa fa-star"></span>
-											<span class="fa fa-star"></span>
+											<span id="span1" class="fa fa-star ratebutton" style="color: red;"></span>
+											<span id="span2" class="fa fa-star ratebutton" style="color: red;"></span>
+											<span id="span3" class="fa fa-star ratebutton" style="color: red;"></span>
+											<span id="span4" class="fa fa-star ratebutton"></span>
+											<span id="span5" class="fa fa-star ratebutton"></span>
 											';
 									}
 									elseif ($ai_details->Rate == 4) {
 										echo '&nbsp 
-											<span class="fa fa-star" style="color: red;"></span>
-											<span class="fa fa-star" style="color: red;"></span>
-											<span class="fa fa-star" style="color: red;"></span>
-											<span class="fa fa-star" style="color: red;"></span>
-											<span class="fa fa-star"></span>
+											<span id="span1" class="fa fa-star ratebutton" style="color: red;"></span>
+											<span id="span2" class="fa fa-star ratebutton" style="color: red;"></span>
+											<span id="span3" class="fa fa-star ratebutton" style="color: red;"></span>
+											<span id="span4" class="fa fa-star ratebutton" style="color: red;"></span>
+											<span id="span5" class="fa fa-star ratebutton"></span>
 											';
 									}
 									elseif ($ai_details->Rate == 5) {
 										echo '&nbsp 
-											<span class="fa fa-star" style="color: red;"></span>
-											<span class="fa fa-star" style="color: red;"></span>
-											<span class="fa fa-star" style="color: red;"></span>
-											<span class="fa fa-star" style="color: red;"></span>
-											<span class="fa fa-star" style="color: red;"></span>
+											<span id="span1" class="fa fa-star ratebutton" style="color: red;"></span>
+											<span id="span2" class="fa fa-star ratebutton" style="color: red;"></span>
+											<span id="span3" class="fa fa-star ratebutton" style="color: red;"></span>
+											<span id="span4" class="fa fa-star ratebutton" style="color: red;"></span>
+											<span id="span5" class="fa fa-star ratebutton" style="color: red;"></span>
 											';
 									}
 									else
 									{
-										
-										echo 'Not Rated';
 										echo '&nbsp 
-											<span class="fa fa-star"></span>
-											<span class="fa fa-star"></span>
-											<span class="fa fa-star"></span>
-											<span class="fa fa-star"></span>
-											<span class="fa fa-star"></span>
+											<span id="span1" class="fa fa-star ratebutton"></span>
+											<span id="span2" class="fa fa-star ratebutton"></span>
+											<span id="span3" class="fa fa-star ratebutton"></span>
+											<span id="span4" class="fa fa-star ratebutton"></span>
+											<span id="span5" class="fa fa-star ratebutton"></span>
 											';
 									}
 									?>
-									&nbsp 
-									<?php echo form_open(base_url().'Postthisrate','method="POST"','id="rateform"');?>
-										&nbsp<select id="rate">
-											<option selected="" hidden="" disabled="" value="">Rate</option>
-											<option value="1">1 Star</option>
-											<option value="2">2 Star</option>
-											<option value="3">3 Star</option>
-											<option value="4">4 Star</option>
-											<option value="5">5 Star</option>
-										</select>
-									<?php echo form_close();?>
 								</td>
 							</tr>
 							<tr>
@@ -205,7 +190,7 @@
 					</div>
 					<div class="col-sm-12 col-md-4 pt-5 pb-5 text-center">
 						<h3>
-							<i class="fas fa-dollar-sign style="color: #F1C245;"></i> Token to be distributed
+							<i class="fas fa-dollar-sign" style="color: #F1C245;"></i> Token to be distributed
 							<br>
 							<br>
 							<?php echo $ai_details->ToBeDistributed;?>
@@ -219,13 +204,7 @@
 							<?php echo $ai_details->RewardQuantity;?>
 						</h3>
 					</div>
-					<?php if ($this->session->userdata('isActive') == false) {
-						echo '<div class="col-sm-12 col-md-12 text-center">
-								<a href="'.base_url().'Login" class="btn btn-primary" style="text-decoration: none; color: #FFFFFF; font-size: 26px;">
-								Login to learn How
-								</a>
-							</div>';
-					} else {
+					<?php if (isset($_SESSION['isActive']) AND $_SESSION['VerifyStatus'] == 1) {
 						echo '<div class="col-sm-12 col-md-12 pt-5 pb-5 text-justify">
 								<h3 class="pb-4">
 									How to join <i class="fas fa-question-circle"></i>
@@ -234,6 +213,20 @@
 								'.$ai_details->CompleteInstruction.'<p>
 							</div>';
 					} ?>
+					<?php if (!isset($_SESSION['isActive'])) {
+						echo '<div class="col-sm-12 col-md-12 text-center">
+								<a href="'.base_url().'Login" class="btn btn-primary" style="text-decoration: none; color: #FFFFFF; font-size: 19px;">
+								<i class="fas fa-sign-in-alt"></i> Login to learn How
+								</a>
+							</div>';
+					}
+					elseif (isset($_SESSION['isActive']) AND $_SESSION['VerifyStatus'] == 0) {
+						echo '<div class="col-sm-12 col-md-12 text-center">
+								<a href="'.base_url().'AccountSettings" class="btn btn-primary" style="text-decoration: none; color: #FFFFFF; font-size: 19px;">
+								<i class="fas fa-envelope"></i> Verify Email Address
+								</a>
+							</div>';
+					 } ?>
 				</div>
 			</div>
 		</div>
@@ -242,37 +235,160 @@
 	<?php $this->load->view('pages/users/_template/_jsscripts'); ?>
 <script type="text/javascript">
 $(document).ready(function() {
-    $('#rate').on('change', function() {
-      var rate = $(this).val();
-      var postid = <?php echo $ai_details->airdrop_id;?>;
-      var csrf = $("input[name=csrf_test_name]").val();
-
-      $.ajax({
-        url:"<?php echo base_url()?>Postthisrate",
-        type:"POST",
-        data: {'rate' : rate , 'postid' : postid , 'csrf_test_name' : csrf },
-        success: function(data)
-        {
-          if (data == "RATED") 
-          {
-          	var response = $('<div class="alert alert-success alert-dismissible fade show animated bounceInDown" role="alert"><strong> Success! </strong> You rate this Airdrop <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-	        $("#message").html(response).show();
-	        window.location.reload();
-          }
-          else if (data == "HASRATE") 
-          {
-          	var response = $('<div class="alert alert-warning alert-dismissible fade show animated bounceInDown" role="alert"><strong> Opsss! </strong> You rated this airdrop <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-	        $("#message").html(response).show();
-	        window.location.reload();
-          }
-          else
-          {
-          	var response = $('<div class="alert alert-success alert-dismissible fade show animated bounceInDown" role="alert"><strong> Success! </strong> Airdrop Rated <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-	        $("#message").html(response).show();
-          	window.location.reload();
-          }
-        }
-      });
+    $('#span1').on('click', function() {
+    	var rate = '1';
+    	var postid = <?php echo $ai_details->airdrop_id;?>;
+    	var csrf = $("input[name=csrf_test_name]").val();
+    	$.ajax({
+    		url:"<?php echo base_url()?>Postthisrate",
+    		type:"POST",
+    		data: {'rate' : rate , 'postid' : postid , 'csrf_test_name' : csrf },
+    		success: function(data)
+    		{
+    			if (data == "HASRATE") 
+    			{
+    				var response = $('<div class="prompt-warning"><i class="fas fa-exclamation-circle"></i> Airdrop already rated.</div>');
+    				$("#message").html(response).show();
+    				window.location.reload();
+    			}
+    			else if (data == "RATED") 
+    			{
+    				var response = $('<div class="prompt-success"><i class="fas fa-check-circle"></i> Airdrop Rated.</div>');
+    				$("#message").html(response).show();
+    				window.location.reload();
+    			}
+    			else
+    			{
+    				var response = $('<div class="prompt-success"><i class="fas fa-check-circle"></i> Airdrop Rated.</div>');
+    				$("#message").html(response).show();
+    				window.location.reload();
+    			}
+    		}
+    	});
+    });
+    $('#span2').on('click', function() {
+    	var rate = '2';
+    	var postid = <?php echo $ai_details->airdrop_id;?>;
+    	var csrf = $("input[name=csrf_test_name]").val();
+    	$.ajax({
+    		url:"<?php echo base_url()?>Postthisrate",
+    		type:"POST",
+    		data: {'rate' : rate , 'postid' : postid , 'csrf_test_name' : csrf },
+    		success: function(data)
+    		{
+    			if (data == "HASRATE") 
+    			{
+    				var response = $('<div class="prompt-warning"><i class="fas fa-exclamation-circle"></i> Airdrop already rated.</div>');
+    				$("#message").html(response).show();
+    				window.location.reload();
+    			}
+    			else if (data == "RATED") 
+    			{
+    				var response = $('<div class="prompt-success"><i class="fas fa-check-circle"></i> Airdrop Rated.</div>');
+    				$("#message").html(response).show();
+    				window.location.reload();
+    			}
+    			else
+    			{
+    				var response = $('<div class="prompt-success"><i class="fas fa-check-circle"></i> Airdrop Rated.</div>');
+    				$("#message").html(response).show();
+    				window.location.reload();
+    			}
+    		}
+    	});
+    });
+    $('#span3').on('click', function() {
+    	var rate = '3';
+    	var postid = <?php echo $ai_details->airdrop_id;?>;
+    	var csrf = $("input[name=csrf_test_name]").val();
+    	$.ajax({
+    		url:"<?php echo base_url()?>Postthisrate",
+    		type:"POST",
+    		data: {'rate' : rate , 'postid' : postid , 'csrf_test_name' : csrf },
+    		success: function(data)
+    		{
+    			if (data == "HASRATE") 
+    			{
+    				var response = $('<div class="prompt-warning"><i class="fas fa-exclamation-circle"></i> Airdrop already rated.</div>');
+    				$("#message").html(response).show();
+    				window.location.reload();
+    			}
+    			else if (data == "RATED") 
+    			{
+    				var response = $('<div class="prompt-success"><i class="fas fa-check-circle"></i> Airdrop Rated.</div>');
+    				$("#message").html(response).show();
+    				window.location.reload();
+    			}
+    			else
+    			{
+    				var response = $('<div class="prompt-success"><i class="fas fa-check-circle"></i> Airdrop Rated.</div>');
+    				$("#message").html(response).show();
+    				window.location.reload();
+    			}
+    		}
+    	});
+    });
+    $('#span4').on('click', function() {
+    	var rate = '4';
+    	var postid = <?php echo $ai_details->airdrop_id;?>;
+    	var csrf = $("input[name=csrf_test_name]").val();
+    	$.ajax({
+    		url:"<?php echo base_url()?>Postthisrate",
+    		type:"POST",
+    		data: {'rate' : rate , 'postid' : postid , 'csrf_test_name' : csrf },
+    		success: function(data)
+    		{
+    			if (data == "HASRATE") 
+    			{
+    				var response = $('<div class="prompt-warning"><i class="fas fa-exclamation-circle"></i> Airdrop already rated.</div>');
+    				$("#message").html(response).show();
+    				window.location.reload();
+    			}
+    			else if (data == "RATED") 
+    			{
+    				var response = $('<div class="prompt-success"><i class="fas fa-check-circle"></i> Airdrop Rated.</div>');
+    				$("#message").html(response).show();
+    				window.location.reload();
+    			}
+    			else
+    			{
+    				var response = $('<div class="prompt-success"><i class="fas fa-check-circle"></i> Airdrop Rated.</div>');
+    				$("#message").html(response).show();
+    				window.location.reload();
+    			}
+    		}
+    	});
+    });
+    $('#span5').on('click', function() {
+    	var rate = '5';
+    	var postid = <?php echo $ai_details->airdrop_id;?>;
+    	var csrf = $("input[name=csrf_test_name]").val();
+    	$.ajax({
+    		url:"<?php echo base_url()?>Postthisrate",
+    		type:"POST",
+    		data: {'rate' : rate , 'postid' : postid , 'csrf_test_name' : csrf },
+    		success: function(data)
+    		{
+    			if (data == "HASRATE") 
+    			{
+    				var response = $('<div class="prompt-warning"><i class="fas fa-exclamation-circle"></i> Airdrop already rated.</div>');
+    				$("#message").html(response).show();
+    				window.location.reload();
+    			}
+    			else if (data == "RATED") 
+    			{
+    				var response = $('<div class="prompt-success"><i class="fas fa-check-circle"></i> Airdrop Rated.</div>');
+    				$("#message").html(response).show();
+    				window.location.reload();
+    			}
+    			else
+    			{
+    				var response = $('<div class="prompt-success"><i class="fas fa-check-circle"></i> Airdrop Rated.</div>');
+    				$("#message").html(response).show();
+    				window.location.reload();
+    			}
+    		}
+    	});
     });
 });
 </script>

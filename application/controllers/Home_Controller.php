@@ -3,11 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home_Controller extends CI_Controller {
 
-	public function __construct() 
-	{
-		parent::__construct();
-	}
-	// ---------------- REDIRECT TO HOME VIEW
 	public function index()
 	{
 		redirect('Home');

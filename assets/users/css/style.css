@@ -26,7 +26,7 @@ div {  -webkit-transition: all 1s ease-in-out; transition: all 1s ease-in-out;-m
 }
 .nav-link
 {
-	font-size: 15px;
+	font-size: 14px;
 }
 .navbar-light .navbar-toggler
 {
@@ -147,12 +147,136 @@ a.slinks:hover { text-decoration: none; color: #f1c40f; }
 {
 	opacity: 0.7;	
 }
+
+.prompt-error
+{
+	font-size: 18px;
+	padding: 15px;
+	background-color: #fff;
+	border-radius: 4px;
+	color: #D12525;
+}
+.prompt-success
+{
+	font-size: 18px;
+	padding: 15px;
+	background-color: #fff;
+	border-radius: 4px;
+	color: #35CF11;
+}
+.prompt-info
+{
+	font-size: 18px;
+	padding: 15px;
+	background-color: #fff;
+	border-radius: 4px;
+	color: #1173CF;
+}
+.prompt-warning
+{
+	font-size: 18px;
+	padding: 15px;
+	background-color: #fff;
+	border-radius: 4px;
+	color: #EA9B1F;
+}
+.ratebutton
+{
+	cursor: pointer;
+}
+.card-custom
+{
+	-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+	border-radius: 0px;
+	background-color: none;
+}
+.toglepanel-custom
+{
+	text-decoration: none;
+	color: #FFFFFF;
+	background-color: #19313B;
+	border: 1px solid #102026;
+}
+.toglepanel-custom:hover
+{
+	text-decoration: none;
+	color: #FFFFFF;
+}
+.pricing-card
+{
+	border: 1px solid none;
+	padding: 30px;
+	color: #fff;
+	border-radius: 1px;
+	cursor: pointer;
+}
+.bgcolor-24
+{
+	background-color: #B76EE5;
+}
+.bgcolor-48
+{
+	background-color: #41A1A7;
+}
+.bgcolor-1w
+{
+	background-color: #2797DE;
+}
+.bgcolor-hot
+{
+	background-color: #D25B47;
+}
+.price-a
+{
+	text-decoration: none;
+}
+.price-a:hover
+{
+	text-decoration: none;
+}
+.paymentselected
+{
+
+	transition: 0s all ease-in;
+	-webkit-transition: 0s all ease-in;
+	-moz-transition: 0s all ease-in;
+}
+.checked-payments
+{
+	position: relative;
+	top: 5px;
+	left: 5px;
+	transition: 0s all ease-in;
+	-webkit-transition: 0s all ease-in;
+	-moz-transition: 0s all ease-in;
+}
+.checked-payments-colored
+{
+	color: #52CE3D;
+	transition: 0s all ease-in;
+	-webkit-transition: 0s all ease-in;
+	-moz-transition: 0s all ease-in;
+}
+.icon-size
+{
+	font-size: 70px;
+}
 /* Extra small devices (portrait phones, less than 576px) */
 /* No media query for `xs` since this is the default in Bootstrap */
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 1px)
 {
+	.logo
+	{
+		margin-bottom: 50px;
+	}
+	.mid-img
+	{
+		text-align: all;
+	}
 	.ratio {
 		background-position: center center;
 		background-repeat: no-repeat;
@@ -182,15 +306,15 @@ a.slinks:hover { text-decoration: none; color: #f1c40f; }
 		transition: all 0.3s ease-in-out;	
 		border: 1px solid #D9D9D9;
 		border-radius: 1px;
-		background-color: #F2F2F2;
+		background-color: #F5FCFF;
 		
 	}
 	
 	.content-widget:hover
 	{
-		-webkit-box-shadow: 0px 0px 68px -12px rgba(0,0,0,0.3);
-		-moz-box-shadow: 0px 0px 68px -12px rgba(0,0,0,0.3);
-		box-shadow: 0px 0px 68px -12px rgba(0,0,0,0.3);
+		-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 		/*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
 		transition: box-shadow 0.1s ease-in;
 	}
@@ -206,10 +330,6 @@ a.slinks:hover { text-decoration: none; color: #f1c40f; }
 		bottom: 0px;
 		text-align: center;
 	}
-	.mid-img
-	{
-		text-align: center;
-	}
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -218,6 +338,10 @@ a.slinks:hover { text-decoration: none; color: #f1c40f; }
 	.mid-img
 	{
 		text-align: all;
+	}
+	.logo
+	{
+		margin-bottom: 0px;
 	}
 }
 
