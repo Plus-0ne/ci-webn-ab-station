@@ -168,10 +168,14 @@
 													Priority
 												</th>
 												<th>
-													Payments
+													Date/Time Remaining
+												</th>
+												<th>
+													Option
 												</th>
 											</thead>
 											<tbody>
+
 												<?php foreach ($getAirdoprequest->result() as $row) { ?>
 													<tr>
 														<td>
@@ -199,9 +203,40 @@
 															} ?>
 														</td>
 														<td>
-															<a href="">
-																View Payments
+															<?php
+																if ($row->RequestStatus == 'For Approval') {
+																	echo '<span style="color: #DA2525;"> Waiting </span>';
+																} elseif ($row->RequestStatus == 'Approved') {
+																	$data = array(
+																		'AirdropID' => $row->airdrop_id,
+																		'Expiration' => $row->ExpirationDate,
+																		'PaymentDetails' => $row->PaymentDetails,
+																	);
+																	$this->load->view('pages/users/_template/_datetime_remaining',$data);
+																} else if ($row->RequestStatus == 'Expired') {
+																	echo '<span style="color: #DA2525;"> Expired </span>';
+																}
+															?>
+														</td>
+														<td>
+															<a href="<?=base_url()?>Airdrop_Details?aide=<?php echo $row->airdrop_id;?>">
+																View
 															</a>
+															<br>
+															<a href="<?=base_url()?>Payments?aide=<?php echo $row->airdrop_id;?>">
+																Details
+															</a>
+															<br>
+															<?php
+																if ($row->RequestStatus == 'Expired') {
+																	echo '<a href="'.base_url().'ExtendAirdrop?aide='.$row->airdrop_id.'"> Extend </a>';
+																}
+																else
+																{
+																	echo '<a href="'.base_url().'Submit_Txid?aide='.$row->airdrop_id.'">Submit TXID</a>';
+																}
+															?>
+															
 														</td>
 													</tr>
 												<?php } ?>
@@ -215,41 +250,8 @@
 				</div>
 			</div>
 		</div>
-		<?php if (isset($_SESSION['isActive'])) { ?>
-			<!-- Change Password -->
-			<div class="modal fade animated fadeInDownBig faster" id="modalChangepass" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLongTitle"> Change Password </h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body text-center pl-5 pr-5">
-							<?php echo form_open(base_url().'ChangePassword','method="POST"');?>
-							<div class="form-group">
-								<label>Current Password</label>
-								<input class="text-center form-control" type="password" name="cpass" autocomplete="off">
-							</div>
-							<div class="form-group">
-								<label>New Password</label>
-								<input class="text-center form-control" type="password" name="npass" autocomplete="off">
-							</div>
-							<div class="form-group">
-								<label>Re-type Password</label>
-								<input class="text-center form-control" type="password" name="retypepass" autocomplete="off">
-							</div>
-						</div>
-						<div class="modal-footer">
-							<input class="btn btn-primary" type="submit" name="cp_submit" value="Change Password">
-							<?php echo form_close();?>
-						</div>
-					</div>
-				</div>
-			</div>
-		<?php } ?>
 		<?php $this->load->view('pages/users/_template/_footer'); ?>
 		<?php $this->load->view('pages/users/_template/_jsscripts'); ?>
+		<?php $this->load->view('pages/users/_template/_modal_accountSettings'); ?>
 	</body>
 	</html>

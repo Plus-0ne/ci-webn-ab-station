@@ -65,17 +65,18 @@ $route['submit_form_signup'] = 'Signup_Controller/submit_form_signup';
 // NAVIGATION
 $route['Home'] = 'Home_Controller/home';
 $route['LATEST'] = 'Airdrops_Controller/airdrops';
-
 $route['HOT'] = 'HotAirdrops_Controller/hot_airdrops';
 $route['Airdrop_Details'] = 'Airdrops_Controller/airdrops_details';
-
 $route['Bounties'] = 'Bounties_Controller/bounties';
 $route['List-Your-Coin-Token'] = 'LYCT_Controller/lyct_view';
 $route['BuyWEBN_Token'] = 'BuyWebnToken_Controller/buywebn_token';
 $route['Contact'] = 'Contact_Controller/contact';
 $route['FAQs'] = 'Faqs_Controller/faqs';
 $route['AccountSettings'] = 'AccountSettings_Controller/Account_Settings';
-
+$route['Payments'] = 'AccountSettings_Controller/view_payments';
+$route['Submit_Txid'] = 'AccountSettings_Controller/submit_payments';
+$route['SubmitTxidforAirdrop'] = 'AccountSettings_Controller/SubmitTxidforAirdrop';
+$route['ExtendAirdrop'] = 'AccountSettings_Controller/ExtendAirdrop';
 $route['Logout'] = 'Login_Controller/logout';
 
 $route['LoadHydroMessage'] = 'HydroMessage_Controller/LoadHydroMessage';
@@ -93,6 +94,8 @@ $route['UpdateInformation'] = 'AccountSettings_Controller/UpdateInformation';
 $route['UpdateCompany'] = 'AccountSettings_Controller/UpdateCompany';
 $route['ResendCode'] = 'AccountSettings_Controller/ResendNewCOde';
 $route['VerifyUserEmail'] = 'AccountSettings_Controller/VerifyUserEmail';
+$route['submittxidextend'] = 'AccountSettings_Controller/submittxidextend';
+
 // ERROR
 $route['Error_Expired'] = 'Error_PageController/Error_Expired';
 $route['Client_Error'] = 'Error_PageController/Client_Error';

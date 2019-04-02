@@ -11,3 +11,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |	https://codeigniter.com/user_guide/general/hooks.html
 |
 */
+
+$hook['pre_controller'] = function()
+{
+    date_default_timezone_set("Asia/Manila");
+};

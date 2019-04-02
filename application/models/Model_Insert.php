@@ -6,11 +6,6 @@ class Model_Insert extends CI_Model {
 	public function RequestForList($dataa)
 	{
 		extract($dataa);
-
-		// $sql = "INSERT INTO ab_airdrops(TokenImage, ProjectName, Description, DateStart, DateEnd, Link, WebsiteUrl, MaxParticipants, ToBeDistributed, RewardQuantity, CompleteInstruction, DateAdded, AddedBy ,Rate,RequestStatus ,PaymentDetails,PostPrio) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		// $result = $this->db->query($sql,array($TokenImage, $ProjectName, $Description, $DateStart, $DateEnd, $AirdropsLink, $WebsiteSource, $MaxParticipants, $ToBeDistributed, $RewardQuantity, $CompleteInstruction, $DateAdded, $AddedBy,$Rate,$RequestStatus,$PaymentDetails,$PostPrio));
-		// return $result;
-
 		$data = array(
 			'TokenImage' => $TokenImage,
 			'ProjectName' => $ProjectName,
@@ -29,11 +24,11 @@ class Model_Insert extends CI_Model {
 			'RequestStatus' => $RequestStatus,
 			'PaymentDetails' => $PaymentDetails,
 			'PostPrio' => $PostPrio,
+			'ExpirationDate' => $ExpirationDate ,
+			'ApproveDate' => $ApproveDate ,
 			 );
 		$this->db->insert('ab_airdrops', $data);
-
 		$insert_id = $this->db->insert_id();
-
 		return  $insert_id;
 	}
 
@@ -68,6 +63,21 @@ class Model_Insert extends CI_Model {
 
 		$this->db->where(array('AirdropID' => $AirdropID ,'EmailAddress' => $EmailAddress));
 		$result = $this->db->update('ab_payments', $data);
+		return $result;
+	}
+
+	public function AddNewPayment($data)
+	{
+		extract($data);
+		$data = array(
+			'AirdropID' => $AirdropID,
+			'TxID' => $TxID,
+			'EmailAddress' => $EmailAddress,
+			'PaymentDetails' => $PaymentDetails,
+			'ListAsHot' => $ListAsHot,
+			'Date' => $Date,
+			 );
+		$result = $this->db->insert('ab_payments', $data);
 		return $result;
 	}
 }

@@ -94,10 +94,10 @@
 								</p>
 							</div>
 						</div>
-						<input id="input24" type="radio" name="PaymentDetails" value="24hrs">
-						<input id="input48" type="radio" name="PaymentDetails" value="48hrs">
-						<input id="input1w" type="radio" name="PaymentDetails" value="1week">
-						<input id="inputlisthot" type="radio" name="ListAsHot" value="hot">
+						<input id="input24" type="radio" name="PaymentDetails" value="24hrs" style="display: none;">
+						<input id="input48" type="radio" name="PaymentDetails" value="48hrs" style="display: none;">
+						<input id="input1w" type="radio" name="PaymentDetails" value="1week" style="display: none;">
+						<input id="inputlisthot" type="radio" name="ListAsHot" value="hot" style="display: none;">
 					</div>
 					<div class="col-sm-12 col-md-4 p-5">
 						<div id="payment24" class="pricing-card bgcolor-24 text-center">

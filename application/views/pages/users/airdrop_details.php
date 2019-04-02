@@ -159,7 +159,8 @@
 								<td>
 									<?php
 										date_default_timezone_set("Asia/Manila");
-										$today = date("Y-m-d");
+										
+										$today = date("Y-m-d h:i:s a");
 										$endDate = $ai_details->DateEnd;
 										$datetime1 = new DateTime($today);
 

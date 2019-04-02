@@ -50,6 +50,81 @@ class AccountSettings_Controller extends CI_Controller {
 			redirect('Home');
 		}
 	}
+	public function view_payments()
+	{
+		if (isset($_SESSION['isActive'])) {
+			$navdata['title'] = "Payment Details | WEBN Airdrops and Bounty Station";
+
+			$data = array(
+				'user_header' => $this->load->view('pages/users/_template/_header',$navdata), 
+			);
+			
+			// Get Paymets for this airdrop
+			
+			$data = array(
+				'airdropid' => $this->input->get('aide'), 
+				'email_address' => $_SESSION['Email'], 
+			);
+
+			$data['Airdrop_Details'] = $this->Model_Select->GetAirdropFields($data);
+			$data['PaymentFields'] = $this->Model_Select->GetPayments($data);
+			$this->load->view('pages/users/View_Payments',$data);
+		}
+		else
+		{
+			redirect('Home');
+		}
+	}
+	public function submit_payments()
+	{
+		if (isset($_SESSION['isActive'])) {
+			$navdata['title'] = "Submit TXID | WEBN Airdrops and Bounty Station";
+
+			$data = array(
+				'user_header' => $this->load->view('pages/users/_template/_header',$navdata), 
+			);
+			
+			// Get Paymets for this airdrop
+			
+			$data = array(
+				'airdropid' => $this->input->get('aide'), 
+				'email_address' => $_SESSION['Email'], 
+			);
+
+			$data['Airdrop_Details'] = $this->Model_Select->GetAirdropFields($data);
+			$data['PaymentFields'] = $this->Model_Select->GetPayments($data);
+			$this->load->view('pages/users/Submit_Txid',$data);
+		}
+		else
+		{
+			redirect('Home');
+		}
+	}
+	public function ExtendAirdrop()
+	{
+		if (isset($_SESSION['isActive'])) {
+			$navdata['title'] = "Extend your Airdrop | WEBN Airdrops and Bounty Station";
+
+			$data = array(
+				'user_header' => $this->load->view('pages/users/_template/_header',$navdata), 
+			);
+			
+			// Get Paymets for this airdrop
+			
+			$data = array(
+				'airdropid' => $this->input->get('aide'), 
+				'email_address' => $_SESSION['Email'], 
+			);
+
+			$data['Airdrop_Details'] = $this->Model_Select->GetAirdropFields($data);
+			$data['PaymentFields'] = $this->Model_Select->GetPayments($data);
+			$this->load->view('pages/users/extend_airdrop',$data);
+		}
+		else
+		{
+			redirect('Home');
+		}
+	}
 	public function SubmitHydroID()
 	{
 		if (isset($_SESSION['isActive'])) {
@@ -413,6 +488,131 @@ class AccountSettings_Controller extends CI_Controller {
 					redirect('AccountSettings');
 				}
 			}
+		}
+	}
+	public function SubmitTxidforAirdrop()
+	{
+		if (isset($_SESSION['isActive']) AND $_SESSION['Hydro_Auth'] == 1 AND $_SESSION['VerifyStatus'] == 1) {
+			if ($this->input->post('d2s45h7lf',true) == 'ijkyo46tr') {
+
+				$ses_paymentid = $this->input->post('airdropid', true);
+				$EmailAddress = $_SESSION['Email'];
+				$txid = $this->input->post('txid', true);
+
+				if ($txid == null || $ses_paymentid == null) {
+					$this->session->set_flashdata('promptInfo', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Empty fields </div>');
+					redirect($_SERVER['HTTP_REFERER']);
+				}
+				else
+				{
+					$checkPayments = $this->Model_Select->checkPayments($ses_paymentid,$EmailAddress);
+
+					if ($checkPayments->AirdropID == $ses_paymentid AND $checkPayments->TxID == null) {
+
+						// Update
+						$data = array(
+							'AirdropID' => $ses_paymentid,
+							'EmailAddress' => $EmailAddress,
+							'TxID' => $txid,
+						);
+						$savePayment = $this->Model_Update->UpdatePayment($data);
+						if ($savePayment == true) {
+							$this->session->set_flashdata('promptInfo', '<div class="prompt-success"><i class="fas fa-check-circle"></i> Waiting for Schedule </div>');
+							redirect($_SERVER['HTTP_REFERER']);
+						}
+						else
+						{
+							$this->session->set_flashdata('promptInfo', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Error saving </div>');
+							redirect($_SERVER['HTTP_REFERER']);
+						}
+					}
+					else
+					{
+						$this->session->set_flashdata('promptInfo', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Transaction ID exist </div>');
+						redirect($_SERVER['HTTP_REFERER']);
+					}
+				}
+
+			}
+			else
+			{
+				$this->session->set_flashdata('promptInfo', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Somethings wrong</div>');
+				redirect($_SERVER['HTTP_REFERER']);
+			}
+		}
+		else
+		{
+			redirect('Home');
+		}
+	}
+	public function submittxidextend()
+	{
+		if (isset($_SESSION['isActive']) AND $_SESSION['Hydro_Auth'] == 1 AND $_SESSION['VerifyStatus'] == 1) {
+			if ($this->input->post('d2s45h7lf',true) == 'ijkyo46tr') {
+
+				date_default_timezone_set('Asia/Manila');
+				$ses_paymentid = $this->input->post('airdropid', true);
+				$EmailAddress = $_SESSION['Email'];
+				$txid = $this->input->post('txid', true);
+				$PaymentDetails = $this->input->post('PaymentDetails', true);
+				$ListAsHot = $this->input->post('ListAsHot',true);
+
+				$Date = date('Y-m-d h:i:s a');
+
+
+				if ($txid == null || $ses_paymentid == null || $PaymentDetails == null) {
+					$this->session->set_flashdata('promptInfo', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Empty fields </div>');
+					redirect($_SERVER['HTTP_REFERER']);
+				}
+				else
+				{
+					$data = array(
+						'AirdropID' => $ses_paymentid,
+						'TxID' => $txid,
+						'EmailAddress' => $EmailAddress,
+						'PaymentDetails' => $PaymentDetails,
+						'ListAsHot' => $ListAsHot,
+						'Date' => $Date,
+						 );
+					$insertResult = $this->Model_Insert->AddNewPayment($data);
+
+					if ($insertResult == TRUE) {
+						// update airdrop
+						$data = array(
+							'airdrop_id' => $ses_paymentid,
+							'AddedBy' => $EmailAddress,
+							'RequestStatus' => 'For Approval',
+							'PaymentDetails' => $PaymentDetails,
+							'PostPrio' => $ListAsHot,
+						);
+						$UpdateByResult = $this->Model_Update->UpdateExtendAirdrop($data);
+						if ($UpdateByResult == TRUE) {
+							$this->session->set_flashdata('promptInfo', '<div class="prompt-success"><i class="fas fa-check-circle"></i> Waiting for Schedule </div>');
+							redirect($_SERVER['HTTP_REFERER']);
+						}
+						else
+						{
+							$this->session->set_flashdata('promptInfo', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Somethings wrong</div>');
+							redirect($_SERVER['HTTP_REFERER']);
+						}
+					}
+					else
+					{
+						$this->session->set_flashdata('promptInfo', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Somethings wrong</div>');
+						redirect($_SERVER['HTTP_REFERER']);
+					}
+				}
+
+			}
+			else
+			{
+				$this->session->set_flashdata('promptInfo', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Somethings wrong</div>');
+				redirect($_SERVER['HTTP_REFERER']);
+			}
+		}
+		else
+		{
+			redirect('Home');
 		}
 	}
 }

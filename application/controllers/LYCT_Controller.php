@@ -41,6 +41,8 @@ class LYCT_Controller extends CI_Controller {
 			$RewardQuantity = $this->input->post('RewardQuantity',true);
 			$CompleteInstruction = $this->input->post('CompleteInstruction',true);
 			$PaymentDetails = $this->input->post('PaymentDetails',true);
+			$ExpirationDate = 'Not Set';
+			$ApproveDate = 'Not Set';
 			if ($this->input->post('ListAsHot',true) == null) {
 				$ListAsHot = 'latest';
 			}
@@ -75,7 +77,7 @@ class LYCT_Controller extends CI_Controller {
                 else
                 {
                 	date_default_timezone_set("Asia/Manila");
-                	$today = date("Y-m-d");
+                	$today = date("Y-m-d h:i:s a");
 
                     $TokenImage = base_url().'uploads/'.$this->upload->data('file_name');
                     $dataa = array(
@@ -96,6 +98,8 @@ class LYCT_Controller extends CI_Controller {
 						'RequestStatus' => 'For Approval' ,
 						'PaymentDetails' => $PaymentDetails ,
 						'PostPrio' => $ListAsHot ,
+						'ExpirationDate' => $ExpirationDate ,
+						'ApproveDate' => $ApproveDate ,
 
 					);
 
@@ -147,6 +151,7 @@ class LYCT_Controller extends CI_Controller {
 				}
 				else
 				{
+					
 					$data = array(
 						'AirdropID' => $ses_paymentid,
 						'EmailAddress' => $EmailAddress,
@@ -155,7 +160,7 @@ class LYCT_Controller extends CI_Controller {
 					$savePayment = $this->Model_Insert->savePayment($data);
 					if ($savePayment == true) {
 						$this->session->set_flashdata('promptInfo', '<div class="prompt-success"><i class="fas fa-check-circle"></i> Waiting for Schedule </div>');
-						$this->session->unset('ses_paymentid');
+						$this->session->unset_userdata('ses_paymentid');
 						redirect('List-Your-Coin-Token');
 					}
 					else

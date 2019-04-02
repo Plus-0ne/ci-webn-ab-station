@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-xl navbar-light">
-	<a class="navbar-brand" href="#">
+	<a class="navbar-brand" href="<?=base_url()?>Home">
 		<img class="logo" src="<?=base_url()?>assets/users/img/logo.png" width="250"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<i class="fas fa-bars"></i>
@@ -23,11 +23,11 @@
 					<a class="nav-link" href=""> Bounty </a>
 				</li> -->
 				<?php
-					if (isset($_SESSION['isActive']) && $_SESSION['VerifyStatus'] == 1 && $_SESSION['Hydro_Auth'] == 1) {
-						echo '<li class="nav-item">
-								<a class="nav-link" href="'.base_url().'List-Your-Coin-Token"> List Your Coin/Token </a>
-							</li>';
-					}
+				if (isset($_SESSION['isActive']) && $_SESSION['VerifyStatus'] == 1 && $_SESSION['Hydro_Auth'] == 1) {
+					echo '<li class="nav-item">
+					<a class="nav-link" href="'.base_url().'List-Your-Coin-Token"> List Your Coin/Token </a>
+					</li>';
+				}
 				?>
 				
 				<li class="nav-item">
@@ -61,7 +61,7 @@
 					$botToken = $this->config->item('botToken');
 					$url="https://api.telegram.org/bot".$botToken;
 					$chatId = $this->config->item('chatId');
-												
+					
 					$params=[
 						'chat_id'=>$chatId,
 						'user_id'=>$idid,

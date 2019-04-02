@@ -96,10 +96,10 @@ $(document).ready(function () {
 			$('#input24').prop("checked", true);
 			$(this).addClass('paymentselected');
 			$('#checked-icon1').addClass('checked-payments-colored');
-			$('#payment48').removeClass('paymentselected');
-			$('#payment1w').removeClass('paymentselected');
 			$('#checked-icon2').removeClass('checked-payments-colored');
 			$('#checked-icon3').removeClass('checked-payments-colored');
+			$('#payment48').removeClass('paymentselected');
+			$('#payment1w').removeClass('paymentselected');
 		}
 	});
 	$('#payment48').click(function(){
@@ -114,11 +114,12 @@ $(document).ready(function () {
 		{
 			$('#input48').prop("checked", true);
 			$(this).addClass('paymentselected');
+			$('#checked-icon1').removeClass('checked-payments-colored');
 			$('#checked-icon2').addClass('checked-payments-colored');
+			$('#checked-icon3').removeClass('checked-payments-colored');
 			$('#payment24').removeClass('paymentselected');
 			$('#payment1w').removeClass('paymentselected');
-			$('#checked-icon1').removeClass('checked-payments-colored');
-			$('#checked-icon3').removeClass('checked-payments-colored');
+			
 		}
 	});
 	$('#payment1w').click(function(){
@@ -133,11 +134,12 @@ $(document).ready(function () {
 		{
 			$('#input1w').prop("checked", true);
 			$(this).addClass('paymentselected');
+			$('#checked-icon1').removeClass('checked-payments-colored');
+			$('#checked-icon2').removeClass('checked-payments-colored');
 			$('#checked-icon3').addClass('checked-payments-colored');
 			$('#payment24').removeClass('paymentselected');
 			$('#payment48').removeClass('paymentselected');
-			$('#checked-icon1').removeClass('checked-payments-colored');
-			$('#checked-icon2').removeClass('checked-payments-colored');
+			
 
 		}
 	});
@@ -154,5 +156,8 @@ $(document).ready(function () {
     		$(this).addClass('paymentselected');
     		$('#checked-icon4').addClass('checked-payments-colored');
     	}
+    });
+    $('#SubmitPayment').click(function(){
+    	alert('Hello');
     });
 });

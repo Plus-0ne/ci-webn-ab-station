@@ -5,25 +5,25 @@ class Model_Select extends CI_Model {
 	
 	public function GetAirdropsHot()
 	{
-		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus ='Approved' ORDER BY Rate DESC LIMIT 8";
+		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus ='Approved' AND PostPrio ='hot' ORDER BY Rate DESC LIMIT 8";
 		$result = $this->db->query($sql);
 		return $result;
 	}
 	public function GetAirdropsLatest()
 	{
-		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus ='Approved' ORDER BY DateAdded DESC LIMIT 8";
+		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus ='Approved' AND PostPrio ='latest' ORDER BY DateAdded DESC LIMIT 8";
 		$result = $this->db->query($sql);
 		return $result;
 	}
 	public function getHotairdrops()
 	{
-		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus ='Approved' ORDER BY Rate DESC";
+		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus ='Approved' AND PostPrio ='hot' ORDER BY Rate DESC";
 		$sqlres = $this->db->query($sql);
 		return $sqlres;
 	}
 	public function GetAirdrops()
 	{
-		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus ='Approved' ORDER BY DateAdded DESC";
+		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus ='Approved' AND PostPrio ='latest' ORDER BY DateAdded DESC";
 		$sqlres = $this->db->query($sql);
 		return $sqlres;
 	}
@@ -109,5 +109,32 @@ class Model_Select extends CI_Model {
 		$this->db->order_by('airdrop_id DESC');
 		$result = $this->db->get();
 		return $result;
+	}
+	public function GetAirdropFields($data)
+	{
+		extract($data);
+		$this->db->select('*');
+		$this->db->from('ab_airdrops');
+		$this->db->where(array('airdrop_id' => $airdropid,'AddedBy' => $email_address, ));
+		$result = $this->db->get();
+		return $result->row();
+	}
+	public function GetPayments($data)
+	{
+		extract($data);
+		$this->db->select('*');
+		$this->db->from('ab_payments');
+		$this->db->where(array('AirdropID' => $airdropid,'EmailAddress' => $email_address, ));
+		$this->db->order_by('AirdropID DESC');
+		$result = $this->db->get();
+		return $result;
+	}
+	public function checkPayments($ses_paymentid,$EmailAddress)
+	{
+		$this->db->select('*');
+		$this->db->from('ab_payments');
+		$this->db->where(array('AirdropID' => $ses_paymentid,'EmailAddress' => $EmailAddress, ));
+		$result = $this->db->get();
+		return $result->row();
 	}
 }

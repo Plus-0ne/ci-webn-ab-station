@@ -82,4 +82,40 @@ class Model_Update extends CI_Model {
 		$result = $this->db->query($sql,array($UserNo,$Email_Address));
 		return $result;
 	}
+	
+	public function UpdatePayment($data)
+	{
+		extract($data);
+
+		$data = array(
+			'TxID' => $TxID,
+		);
+
+		$this->db->where(array('AirdropID' => $AirdropID ,'EmailAddress' => $EmailAddress));
+		$result = $this->db->update('ab_payments', $data);
+		return $result;
+	}
+	public function ChangetoExpired($AirdropID)
+	{
+		$data = array(
+			'RequestStatus' => 'Expired',
+			 );
+		$this->db->where('airdrop_id' ,$AirdropID);
+		$result = $this->db->update('ab_airdrops', $data);
+		return $result;
+	}
+	public function UpdateExtendAirdrop($data)
+	{
+		extract($data);
+		$data = array(
+			'AddedBy' => $AddedBy,
+			'RequestStatus' => $RequestStatus,
+			'PaymentDetails' => $PaymentDetails,
+			'PostPrio' => $PostPrio,
+			'ExpirationDate' => 'Not Set',
+		);
+		$this->db->where('airdrop_id' ,$airdrop_id);
+		$result = $this->db->update('ab_airdrops', $data);
+		return $result;
+	}
 }

@@ -36,22 +36,12 @@
 								<a href="<?=base_url()?>Airdrop_Details?aide=<?php echo $row->airdrop_id;?>" style="text-decoration: none; color: #323232;">
 									<div class="content-widget animated fadeIn">
 										<?php
-										date_default_timezone_set("Asia/Manila");
-										$today = date("Y-m-d");
-										$endDate = $row->DateEnd;
-										$datetime1 = new DateTime($today);
-
-										$datetime2 = new DateTime($endDate);
-
-										$difference = $datetime1->diff($datetime2);
-
-										if ($datetime2 < $datetime1) {
-											echo '<div style="padding: 9px; position: relative; color: #E52828;"><i class="fas fa-hourglass-end"></i> Expired</div>';
-										}
-										else
-										{
-											echo '<div style="padding: 9px; position: relative; color: #21C415;"><i class="fas fa-hourglass-start"></i> '.$difference->days.' Days left</div>';
-										}
+										$data = array(
+											'AirdropID' => $row->airdrop_id,
+											'Expiration' => $row->ExpirationDate,
+											'PaymentDetails' => $row->PaymentDetails,
+											 );
+										$this->load->view('pages/users/_template/_datetime_remaining',$data);
 										?>
 										<div class="content-image">
 											<img class="ratio rounded-circle" src="" style="background-image: url('<?php echo $row->TokenImage;?>');">
@@ -118,8 +108,12 @@
 												';
 											}
 											?>
-											<br>
-											<i class="far fa-calendar-check" style="color: #1BBC1F;"></i>&nbsp <?php echo $row->DateAdded;?>
+											<?php
+											$data = array(
+												'ApproveDate' => $row->ApproveDate,
+											);
+											$this->load->view('pages/users/_template/_datetime_approved',$data);
+											?>
 										</div>
 									</div>
 								</a>
@@ -151,28 +145,17 @@
 								<a href="<?=base_url()?>Airdrop_Details?aide=<?php echo $row->airdrop_id;?>" style="text-decoration: none; color: #323232;">
 									<div class="content-widget animated fadeIn">
 										<?php
-										date_default_timezone_set("Asia/Manila");
-										$today = date("Y-m-d");
-										$endDate = $row->DateEnd;
-										$datetime1 = new DateTime($today);
-
-										$datetime2 = new DateTime($endDate);
-
-										$difference = $datetime1->diff($datetime2);
-
-										if ($datetime2 < $datetime1) {
-											echo '<div style="padding: 9px; position: relative; color: #E52828;"><i class="fas fa-hourglass-end"></i> Expired</div>';
-										}
-										else
-										{
-											echo '<div style="padding: 9px; position: relative; color: #21C415;"><i class="fas fa-hourglass-start"></i> '.$difference->days.' Days left</div>';
-										}
+										$data = array(
+											'Expiration' => $row->ExpirationDate,
+											'PaymentDetails' => $row->PaymentDetails,
+											 );
+										$this->load->view('pages/users/_template/_datetime_remaining',$data);
 										?>
 										<div class="content-image">
 											<img class="ratio rounded-circle" src="" style="background-image: url('<?php echo $row->TokenImage;?>');">
 										</div>
 										<div class="content-details">
-											<?php echo $row->ProjectName;?>
+											<strong><?php echo $row->ProjectName;?></strong>
 											<br>
 											<?php 
 											if ($row->Rate == 1) {	
@@ -231,8 +214,12 @@
 												';
 											}
 											?>
-											<br>
-											<i class="far fa-calendar-check" style="color: #1BBC1F;"></i>&nbsp <?php echo $row->DateAdded;?>
+											<?php
+											$data = array(
+												'ApproveDate' => $row->ApproveDate,
+												 );
+											$this->load->view('pages/users/_template/_datetime_approved',$data);
+											?>
 										</div>
 									</div>
 								</a>
