@@ -25,6 +25,7 @@
 </div>
 <!-- telegram -->
 <?php
+ //https://api.telegram.org//getChatMember?chat_id=&user_id=842007335
         $idid = $this->session->userdata('Is_Telegram_Member');
         $botToken = '600810082:AAEUjCkkz8-ExUtIxS7jlslOhhUqVEX3J1I';
         $website="https://api.telegram.org/bot".$botToken;

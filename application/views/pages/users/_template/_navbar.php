@@ -1,117 +1,63 @@
 <nav class="navbar navbar-expand-xl navbar-light">
 	<a class="navbar-brand" href="<?=base_url()?>Home">
-		<img class="logo" src="<?=base_url()?>assets/users/img/logo.png" width="250"></a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-			<i class="fas fa-bars"></i>
-		</button>
-		<div class="collapse navbar-collapse" id="navbar1">
-			<ul class="navbar-nav ml-auto"> 
-				<li class="nav-item">
-					<a class="nav-link" href="<?=base_url()?>Home"> Home <span class="sr-only">(current)</span></a>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle newdt" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Airdrops
-					</a>
-					<div id="dropdown-menu" class="dropdown-menu zoomIn animated faster" aria-labelledby="navbarDropdown" style="margin-top: -2px;">
-						<a class="dropdown-item" href="<?=base_url()?>HOT"><i class="fas fa-fire-alt" style="color: red;"></i> Hot </a>
-						<a class="dropdown-item" href="<?=base_url()?>LATEST"><i class="fas fa-parachute-box" style="color: green;"></i> Latest </a>
-
-					</div>
-				</li>
+		<img class="logo" src="<?=base_url()?>assets/users/img/logo.png" width="250">
+	</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		<i class="fas fa-bars"></i>
+	</button>
+	<div class="collapse navbar-collapse" id="navbar1">
+		<ul class="navbar-nav ml-auto"> 
+			<li class="nav-item">
+				<a class="nav-link" href="<?=base_url()?>Home"> Home <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle newdt" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Airdrops
+				</a>
+				<div id="dropdown-menu" class="dropdown-menu zoomIn animated faster" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="<?=base_url()?>HOT"><i class="fas fa-fire-alt" style="color: #FF4E00	; margin-right: 5px;"></i> Hot </a>
+					<a class="dropdown-item" href="<?=base_url()?>LATEST"><i class="fas fa-parachute-box" style="color: #25910C; margin-right: 5px;"></i> Latest </a>
+				</div>
+			</li>
 				<!-- <li class="nav-item">
 					<a class="nav-link" href=""> Bounty </a>
 				</li> -->
-				<?php
-				if (isset($_SESSION['isActive']) && $_SESSION['VerifyStatus'] == 1 && $_SESSION['Hydro_Auth'] == 1) {
-					echo '<li class="nav-item">
-					<a class="nav-link" href="'.base_url().'List-Your-Coin-Token"> List Your Coin/Token </a>
-					</li>';
-				}
-				?>
-				
-				<li class="nav-item">
-					<a class="nav-link" href="<?=base_url()?>BuyWEBN_Token"> Buy WEBN token </a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="https://freewebn.com/" target="_blank"> WEBN faucet </a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="<?=base_url()?>Contact"> Contact </a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="<?=base_url()?>FAQs"> FAQs </a>
-				</li>
-				<?php
-
-				if (isset($_SESSION['isActive'])) {
-					echo '<li class="dropdown">
+			<li class="nav-item">
+				<a class="nav-link" href="<?=base_url()?>ApplyToList"> Apply to list </a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="<?=base_url()?>BuyWEBN_Token"> Buy WEBN token </a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="https://freewebn.com/" target="_blank"> WEBN faucet </a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="<?=base_url()?>Contact"> Contact </a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="<?=base_url()?>FAQs"> FAQs </a>
+			</li>
+			<?php if (isset($_SESSION['isActive'])) { ?>
+				<li class="dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<i class="fas fa-user"></i> &nbsp Account
+						<i class="fas fa-user"></i> &nbsp Account
 					</a>
 					<div id="dropdown-menu" class="dropdown-menu zoomIn animated faster" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="'.base_url().'AccountSettings">
-					<i class="fas fa-cog" style="color: #2A7AF3;"></i> Settings </a>';
-
-					echo '<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalSubscribe">
-					<i class="fab fa-facebook-square"></i>  Subscribe </a>';
-
-					$idid = $this->session->userdata('Is_Telegram_Member');
-					$botToken = $this->config->item('botToken');
-					$url="https://api.telegram.org/bot".$botToken;
-					$chatId = $this->config->item('chatId');
-					
-					$params=[
-						'chat_id'=>$chatId,
-						'user_id'=>$idid,
-					];
-
-					$ch = curl_init($url . '/getChatMember?');
-					curl_setopt($ch, CURLOPT_HEADER, false);
-					curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-					curl_setopt($ch, CURLOPT_POST, 1);
-					curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
-					curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-					$result = curl_exec($ch);
-					$getUserData = json_decode($result ,true);
-
-					if (is_array($getUserData)) {
-						if ($getUserData['ok'] == true) {
-
-							$chkID = $getUserData['result']['user']['id'];
-							$chkStatus = $getUserData['result']['status'];
-
-							if ($chkID == $idid AND $chkStatus == 'member') {
-								echo '';
-							}
-							elseif ($chkID == $idid AND $chkStatus == 'left') {
-								echo '<a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalJoinTelegram">
-								<i class="fab fa-telegram-plane" style="color: #247CDF;"></i> Join Telegram </a>';
-							}
-						}
-						else
-						{
-							echo '<a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalJoinTelegram">
-							<i class="fab fa-telegram-plane" style="color: #247CDF;"></i> Join Telegram </a>';
-						}
-					}
-					curl_close($ch);
-
-					echo '<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="'.base_url().'Logout"><i class="fas fa-sign-out-alt" style="color: #FF5A00;"></i> Log-out</a>
+						<a class="dropdown-item" href="<?=base_url()?>AccountSettings">
+							<i class="fas fa-cog" style="color: #1B58B4; margin-right: 5px;"></i> Settings 
+						</a>
+					<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="<?=base_url()?>Logout">
+							<i class="fas fa-sign-out-alt" style="color: #FF0000; margin-right: 5px;"></i> Logout 
+						</a>
 					</div>
-					</li>';
-				}
-				else
-				{
-					echo '<li class="nav-item">
-					<a class="nav-link" href="'.base_url().'Login"> Login </a>
-					</li>';
-				}
-
-				?>
-			</ul>
-		</div>
-	</nav>
+				</li>
+			<?php } else { ?>
+				<li class="nav-item">
+					<a class="nav-link" href="<?=base_url()?>Login"> Login </a>
+				</li>
+			<?php } ?>
+		</ul>
+	</div>
+</nav>
 

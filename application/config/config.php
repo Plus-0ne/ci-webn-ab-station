@@ -535,3 +535,9 @@ $config['applicationId'] = '0161df87-3b3a-4005-a2c7-7c34a6764552';
 $config['botToken'] = '600810082:AAEUjCkkz8-ExUtIxS7jlslOhhUqVEX3J1I';
 $config['website']="https://api.telegram.org/bot";
 $config['chatId']='-1001489662009';
+
+// WEBN Telegram bot
+
+$config['teleBOt'] = '872531119:AAGj0NvKGg1bTO-jovePbO8c-B553jhS6Ok';
+$config['urlstr']='https://api.telegram.org/bot';
+$config['chat_id']='-1001330658507';

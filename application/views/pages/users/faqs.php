@@ -25,9 +25,9 @@
 				</div>
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
-						<h3 class="text-center pb-4">
+						<h4 class="text-center pb-4">
 							<i class="fas fa-question" style="color: #EA861B;"></i> &nbsp Frequently Asked Questions
-						</h3>
+						</h4>
 						<br>
 						<?php foreach ($GetAllfaqs->result() as $result) { ?>
 							<div id="accordion<?php echo $result->FaqNo; ?>" role="tablist">

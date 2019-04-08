@@ -26,31 +26,23 @@
 				
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
-						<h3 class="pb-4">
-							<i class="fas fa-fire-alt" style="color: red;"></i> &nbsp Hot Airdrops
-						</h3>
+						<h4 class="pb-4">
+							<i class="fas fa-fire-alt" style="color: #FF4E00;"></i> &nbsp Hot Airdrops
+						</h4>
 					</div>
 					<?php if ($GetAirdropsHot->num_rows() != 0) { ?>
-						<?php foreach ($GetAirdropsHot->result() as $row) { ?>
+						<?php foreach ($GetAirdropsHot->result_array() as $row) { ?>
 							<div class="col-lg-3 col-sm-12 pt-4 pb-4">
-								<a href="<?=base_url()?>Airdrop_Details?aide=<?php echo $row->airdrop_id;?>" style="text-decoration: none; color: #323232;">
+								<a href="<?=base_url()?>Airdrop_Details?aide=<?php echo $row['airdrop_id'];?>" style="text-decoration: none; color: #323232;">
 									<div class="content-widget animated fadeIn">
-										<?php
-										$data = array(
-											'AirdropID' => $row->airdrop_id,
-											'Expiration' => $row->ExpirationDate,
-											'PaymentDetails' => $row->PaymentDetails,
-											 );
-										$this->load->view('pages/users/_template/_datetime_remaining',$data);
-										?>
 										<div class="content-image">
-											<img class="ratio rounded-circle" src="" style="background-image: url('<?php echo $row->TokenImage;?>');">
+											<img class="ratio rounded-circle" src="" style="background-image: url('<?php echo $row['TokenImage'];?>');">
 										</div>
 										<div class="content-details">
-											<strong><?php echo $row->ProjectName;?></strong>
+											<strong><?php echo $row['ProjectName'];?></strong>
 											<br>
 											<?php 
-											if ($row->Rate == 1) {	
+											if ($row['Rate'] == 1) {	
 												echo ' 
 												<span id="star1" class="fa fa-star" style="color: #FF8400;"></span>
 												<span id="star2" class="fa fa-star"></span>
@@ -59,7 +51,7 @@
 												<span id="star5" class="fa fa-star"></span>
 												';
 											}
-											elseif ($row->Rate == 2) {
+											elseif ($row['Rate'] == 2) {
 												echo ' 
 												<span class="fa fa-star" style="color: #FF8400;"></span>
 												<span class="fa fa-star" style="color: #FF8400;"></span>
@@ -68,7 +60,7 @@
 												<span class="fa fa-star"></span>
 												';
 											}
-											elseif ($row->Rate == 3) {
+											elseif ($row['Rate'] == 3) {
 												echo ' 
 												<span class="fa fa-star" style="color: #FF8400;"></span>
 												<span class="fa fa-star" style="color: #FF8400;"></span>
@@ -77,7 +69,7 @@
 												<span class="fa fa-star"></span>
 												';
 											}
-											elseif ($row->Rate == 4) {
+											elseif ($row['Rate'] == 4) {
 												echo ' 
 												<span class="fa fa-star" style="color: #FF8400;"></span>
 												<span class="fa fa-star" style="color: #FF8400;"></span>
@@ -86,7 +78,7 @@
 												<span class="fa fa-star"></span>
 												';
 											}
-											elseif ($row->Rate == 5) {
+											elseif ($row['Rate'] == 5) {
 												echo ' 
 												<span class="fa fa-star" style="color: #FF8400;"></span>
 												<span class="fa fa-star" style="color: #FF8400;"></span>
@@ -110,7 +102,7 @@
 											?>
 											<?php
 											$data = array(
-												'ApproveDate' => $row->ApproveDate,
+												'ApproveDate' => $row['ApproveDate'],
 											);
 											$this->load->view('pages/users/_template/_datetime_approved',$data);
 											?>
@@ -127,38 +119,31 @@
 						</div>
 					<?php } else { ?>
 						<div class="col-sm-12 text-center">
-							<h5>
-								No Hot Airdrops
-							</h5>
+							<h6>
+								<strong>No Airdrops Yet</strong>
+							</h6>
 						</div>
 					<?php } ?>
 				</div>
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
 						<h4 class="pb-4">
-							<i class="fas fa-parachute-box" style="color: green;"></i> &nbsp Latest Airdrops
+							<i class="fas fa-parachute-box" style="color: #25910C;"></i> &nbsp Latest Airdrops
 						</h4>
 					</div>
 					<?php if ($GetAirdropsLatest->num_rows() != 0) { ?>
-						<?php foreach ($GetAirdropsLatest->result() as $row) { ?>
+						<?php foreach ($GetAirdropsLatest->result_array() as $row) { ?>
 							<div class="col-lg-3 col-sm-12 pt-4 pb-4">
-								<a href="<?=base_url()?>Airdrop_Details?aide=<?php echo $row->airdrop_id;?>" style="text-decoration: none; color: #323232;">
+								<a href="<?=base_url()?>Airdrop_Details?aide=<?php echo $row['airdrop_id'];?>" style="text-decoration: none; color: #323232;">
 									<div class="content-widget animated fadeIn">
-										<?php
-										$data = array(
-											'Expiration' => $row->ExpirationDate,
-											'PaymentDetails' => $row->PaymentDetails,
-											 );
-										$this->load->view('pages/users/_template/_datetime_remaining',$data);
-										?>
 										<div class="content-image">
-											<img class="ratio rounded-circle" src="" style="background-image: url('<?php echo $row->TokenImage;?>');">
+											<img class="ratio rounded-circle" src="" style="background-image: url('<?php echo $row['TokenImage'];?>');">
 										</div>
 										<div class="content-details">
-											<strong><?php echo $row->ProjectName;?></strong>
+											<strong><?php echo $row['ProjectName'];?></strong>
 											<br>
 											<?php 
-											if ($row->Rate == 1) {	
+											if ($row['Rate'] == 1) {	
 												echo ' 
 												<span id="star1" class="fa fa-star" style="color: #FF8400;"></span>
 												<span id="star2" class="fa fa-star"></span>
@@ -167,7 +152,7 @@
 												<span id="star5" class="fa fa-star"></span>
 												';
 											}
-											elseif ($row->Rate == 2) {
+											elseif ($row['Rate'] == 2) {
 												echo ' 
 												<span class="fa fa-star" style="color: #FF8400;"></span>
 												<span class="fa fa-star" style="color: #FF8400;"></span>
@@ -176,7 +161,7 @@
 												<span class="fa fa-star"></span>
 												';
 											}
-											elseif ($row->Rate == 3) {
+											elseif ($row['Rate'] == 3) {
 												echo ' 
 												<span class="fa fa-star" style="color: #FF8400;"></span>
 												<span class="fa fa-star" style="color: #FF8400;"></span>
@@ -185,7 +170,7 @@
 												<span class="fa fa-star"></span>
 												';
 											}
-											elseif ($row->Rate == 4) {
+											elseif ($row['Rate'] == 4) {
 												echo ' 
 												<span class="fa fa-star" style="color: #FF8400;"></span>
 												<span class="fa fa-star" style="color: #FF8400;"></span>
@@ -194,7 +179,7 @@
 												<span class="fa fa-star"></span>
 												';
 											}
-											elseif ($row->Rate == 5) {
+											elseif ($row['Rate'] == 5) {
 												echo ' 
 												<span class="fa fa-star" style="color: #FF8400;"></span>
 												<span class="fa fa-star" style="color: #FF8400;"></span>
@@ -216,7 +201,7 @@
 											?>
 											<?php
 											$data = array(
-												'ApproveDate' => $row->ApproveDate,
+												'ApproveDate' => $row['ApproveDate'],
 												 );
 											$this->load->view('pages/users/_template/_datetime_approved',$data);
 											?>
@@ -232,9 +217,9 @@
 						</div>
 					<?php } else { ?>
 						<div class="col-sm-12 text-center">
-							<h5>
-								No Latest Airdrops
-							</h5>
+							<h6>
+								<strong>No Airdrops Yet</strong>
+							</h6>
 						</div>
 					<?php } ?>
 				</div>

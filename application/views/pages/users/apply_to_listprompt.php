@@ -26,9 +26,16 @@
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
 						<h4 class="text-center">
-							<i class="fas fa-exclamation" style="color: #EA251B;"></i> &nbsp Opsssss! &nbsp Page not found.
+							<i class="fas fa-exclamation" style="color: #EA251B;"></i> &nbsp Your Account is Limited. &nbsp Check account settings
 						</h4>
 						<br>
+					</div>
+					<div class="col-sm-12 col-md-5 m-auto">
+						<ul>
+							<li> Verify Email Address </li>
+							<li> Activate Hydro MFA (Multi Factor Authentication) </li>
+							<li> Join WEBN Airdrop Telegram Channel </li>
+						</ul>
 					</div>
 					<div class="col-lg-12 col-sm-12 p-5">
 

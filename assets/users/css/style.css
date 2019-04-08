@@ -43,6 +43,7 @@ div {  -webkit-transition: all 1s ease-in-out; transition: all 1s ease-in-out;-m
 button { outline: none; }
 .this-is-active { color: #f1c40f; border-bottom: 2px solid #f1c40f; }
 a.slinks { color: #898989; }
+
 a.slinks:hover { text-decoration: none; color: #f1c40f; }
 
 .navbar-nav .dropdown-menu
@@ -263,6 +264,19 @@ a.slinks:hover { text-decoration: none; color: #f1c40f; }
 {
 	font-size: 70px;
 }
+.f-nav-item
+{
+	list-style: none;
+}
+.f-nav-link
+{
+	color: #898989;
+}
+.f-nav-link:hover
+{
+	text-decoration: none;
+	color: rgb(241, 196, 15);
+}
 /* Extra small devices (portrait phones, less than 576px) */
 /* No media query for `xs` since this is the default in Bootstrap */
 
@@ -330,6 +344,44 @@ a.slinks:hover { text-decoration: none; color: #f1c40f; }
 		bottom: 0px;
 		text-align: center;
 	}
+	.webn-grouplinks
+	{
+		text-align: center;
+	}
+	.f-nav-link > i
+	{
+		display: none;
+	}
+	.copyr-webn
+	{
+		text-align: center;
+	}
+	.infoTitle
+	{
+		text-align: left;
+	}
+	.infoDetails
+	{
+		text-align: center;
+	}
+	.hydroPanel
+	{
+		text-align: center;
+	}
+	.hdyroContainer
+	{
+		text-align: center;
+	}
+	.f-nav-item
+	{
+		list-style: none;
+		text-align: center;
+		margin-left: -40px;
+	}
+	a.slinks > i 
+	{ 
+		font-size: 35px;padding: 4px;
+	}
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -343,6 +395,38 @@ a.slinks:hover { text-decoration: none; color: #f1c40f; }
 	{
 		margin-bottom: 0px;
 	}
+	.f-nav-link > i
+	{
+		display: inline-block;
+	}
+	.infoTitle
+	{
+		text-align: left;
+		
+	}
+	.infoDetails
+	{
+		text-align: left;
+		
+	}
+	.webn-grouplinks
+	{
+		text-align: right;
+	}
+	.copyr-webn
+	{
+		text-align: left;
+	}
+	.hdyroContainer
+	{
+		text-align: left;
+	}
+	.f-nav-item
+	{
+		list-style: none;
+		text-align: left;
+	}
+	a.slinks > i { font-size: 30px;padding: 2px; }
 }
 
 /* Large devices (desktops, 992px and up) */

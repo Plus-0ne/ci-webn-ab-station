@@ -1,5 +1,5 @@
 <?php
-$AirdropID = $AirdropID;
+// $AirdropID = $AirdropID;
 $Expiration = $Expiration;
 $PaymentDetails = $PaymentDetails;
 

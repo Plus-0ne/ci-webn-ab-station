@@ -16,7 +16,7 @@
 			</div>
 		</div>
 		<div class="content-container">
-			<div class="container animated fadeIn">
+			<div class="container">
 				<div class="row">
 					<div class="col-lg-12 col-sm-12 p-5">
 
@@ -25,23 +25,32 @@
 				</div>
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
-						<h4 class="text-center pb-4">
-							<img src="<?=base_url()?>assets/users/img/3744.png" width="28">  &nbsp Buy WEBN Token
+						<h4 class="text-center">
+							<i class="fas fa-exclamation" style="color: #EA251B;"></i> &nbsp You need to Log-in first.
 						</h4>
+						<br>
 					</div>
-					<div class="col-sm-12 col-md-6 p-5 text-center">
-						<div class="img-holder">
-							<a href="https://www.hotbit.io/register?ref=19499" target="_blank">
-								<img class="buy-webn-img" src="<?=base_url()?>assets/users/img/hobit-logo.png">
-							</a>
-						</div>
+					<div class="col-sm-12 col-md-5 m-auto">
+						
 					</div>
-					<div class="col-sm-12 col-md-6 p-5 text-center">
-						<div class="img-holder">
-							<a href="https://www.altilly.com/?a=f8a81" target="_blank">
-								<img class="buy-webn-img" src="<?=base_url()?>assets/users/img/altilly-logo.png">
+					<div class="col-lg-12 col-sm-12 p-5">
+
+
+					</div>
+					<div class="col-sm-12 text-center">
+						<?php if (isset($_SERVER['HTTP_REFERER'])) { ?>
+							<a href="<?php echo $_SERVER['HTTP_REFERER'];?>" class="btn btn-info">
+								<h5>
+									<i class="fas fa-chevron-left"></i> Back
+								</h5>
 							</a>
-						</div>
+						<?php } else { ?>
+							<a href="<?=base_url()?>Home" class="btn btn-info">
+								<h5>
+									<i class="fas fa-chevron-left"></i> Back
+								</h5>
+							</a>
+						<?php } ?>
 					</div>
 				</div>
 			</div>

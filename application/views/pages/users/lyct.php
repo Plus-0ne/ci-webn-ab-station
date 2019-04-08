@@ -15,8 +15,8 @@
 
 			</div>
 		</div>
-		<div class="content-container animated fadeIn">
-			<div class="container">
+		<div class="content-container">
+			<div class="container animated fadeIn">
 				<div class="row">
 					<div class="col-lg-12 col-sm-12 p-5">
 

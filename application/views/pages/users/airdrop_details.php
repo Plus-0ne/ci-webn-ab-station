@@ -24,9 +24,9 @@
 				</div>
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
-						<h3 class="text-center">
+						<h4 class="text-center">
 							<i class="fas fa-info" style="color: #195CCB;"></i> &nbsp Details
-						</h3>
+						</h4>
 						<br>
 					</div>
 					<div class="col-sm-12 col-md-5 pt-5 pb-5">
@@ -162,18 +162,32 @@
 										
 										$today = date("Y-m-d h:i:s a");
 										$endDate = $ai_details->DateEnd;
-										$datetime1 = new DateTime($today);
+										$cdate = new DateTime($today);
 
-										$datetime2 = new DateTime($endDate);
+										$enddate = new DateTime($endDate);
 
-										$difference = $datetime1->diff($datetime2);
+										$interval = $cdate->diff($enddate);
 
-										if ($datetime2 < $datetime1) {
+
+										if ($enddate < $cdate) {
 											echo '&nbsp<i class="fas fa-chevron-right"></i>&nbsp <span style="color: red;"><strong> Expired </strong></span>';
 										}
 										else
 										{
-											echo '&nbsp<i class="fas fa-chevron-right"></i>&nbsp '.$difference->days;
+											if ($interval->d == 0) {
+												$timeremaining = $interval->format('%h : %i : %s remaning');
+												echo '&nbsp<i class="fas fa-chevron-right"></i>&nbsp '.$timeremaining;
+											}
+											else
+											{
+												if ($interval->days == 1) {
+													echo '&nbsp<i class="fas fa-chevron-right"></i>&nbsp '.$interval->days.' day remaining';
+												}
+												else
+												{
+													echo '&nbsp<i class="fas fa-chevron-right"></i>&nbsp '.$interval->days.' days remaining';
+												}
+											}
 										}
 									?>
 									 

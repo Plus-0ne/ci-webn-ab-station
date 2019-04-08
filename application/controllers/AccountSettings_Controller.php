@@ -10,16 +10,14 @@ class AccountSettings_Controller extends CI_Controller {
 	public function Account_Settings()
 	{
 		if (isset($_SESSION['isActive'])) {
-			$navdata['title'] = "Accounts | WEBN Airdrops and Bounty Station";
+			$navdata['title'] = "Account | WEBN Airdrops and Bounty Station";
 
 			$data = array(
 				'user_header' => $this->load->view('pages/users/_template/_header',$navdata), 
 			);
 
-
-			
-			$botToken = $this->config->item('botToken');
-			$chatId=$this->config->item('chatId');
+			$botToken = $this->config->item('teleBOt');
+			$chatId=$this->config->item('chat_id');
 			$idid = $this->session->userdata('Is_Telegram_Member');
 
 			$url="https://api.telegram.org/bot".$botToken;
@@ -39,7 +37,8 @@ class AccountSettings_Controller extends CI_Controller {
 
 
 			$data['getUserData'] = json_decode($result ,true);
-
+			
+			curl_close($ch);
 			$EmailAddress = $_SESSION['Email'];
 			$data['getAirdoprequest'] = $this->Model_Select->getAirdoprequest($EmailAddress);
 			
@@ -555,7 +554,13 @@ class AccountSettings_Controller extends CI_Controller {
 				$EmailAddress = $_SESSION['Email'];
 				$txid = $this->input->post('txid', true);
 				$PaymentDetails = $this->input->post('PaymentDetails', true);
-				$ListAsHot = $this->input->post('ListAsHot',true);
+				if ($this->input->post('ListAsHot',true) == null) {
+					$ListAsHot = 'latest';
+				}
+				else
+				{
+					$ListAsHot = $this->input->post('ListAsHot',true);
+				}
 
 				$Date = date('Y-m-d h:i:s a');
 

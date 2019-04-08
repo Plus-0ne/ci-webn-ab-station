@@ -18,141 +18,137 @@
 		<div class="content-container">
 			<div class="container animated fadeIn">
 				<div class="row">
+					<?php echo $this->session->flashdata('ApplyToListPrompt'); ?>
 					<div class="col-lg-12 col-sm-12 p-5">
 
 
 					</div>
 				</div>
 				<div class="row mt-5">
-					<div class="col-lg-12 title-page-here">
-						<h3 class="text-center">
+					<div class="col-sm-12 col-md-12 title-page-here">
+						<h4 class="text-center">
 							<i class="fas fa-user-circle" style="color: #1821D7;"></i> &nbsp Account Settings
-						</h3>
+						</h4>
 						<br>
 					</div>
-					<style type="text/css">
-						table td
-						{
-							padding: 10px;
-						}
-						strong
-						{
-							color: #4F4F4F;
-						}
-					</style>
 					<?php
 					if (isset($_SESSION['isActive'])) { ?>
-						<div class="col-sm-12 p-5">
-							<h5>
-								<i class="fas fa-table"></i> &nbsp Information
-							</h5>
-							<br>
+						
+						<div class="col-sm-12">
 							<?php echo $this->session->flashdata('changepassprompt'); ?>
-							<table>
-								<tr>
-									<td>
-										<strong>Email Address</strong>  &nbsp 
-									</td>
-									<td>
-										<?php if ($this->session->userdata('VerifyStatus') == 0) { ?>
-											<a style="color: white;" class="btn btn-warning" href="#" data-toggle="modal" data-target="#modalVerifyEmail">
-												<i class="fas fa-envelope"></i>&nbsp Verify Email </a>
-											<?php } else { ?>
-												&nbsp <?php echo $this->session->userdata('Email');?> <i class="fas fa-check" style="color: #5EC830;"></i>
-											<?php } ?>
-										</td>
-									</tr>
-									<?php if (is_array($getUserData)) { ?>
-										<?php if ($getUserData['ok'] == 'true') { 
+							<?php echo $this->session->flashdata('promptInfo');?>
+						</div>
+						<div class="col-sm-4 col-md-4 pl-5 pt-3 infoTitle">
+							<strong>Email Address</strong>
+						</div>
+						<div class="col-sm-8 col-md-8 pl-5 pt-3 infoDetails">
+						<?php if ($this->session->userdata('VerifyStatus') == 0) { ?>
+							<a style="color: white;" class="btn btn-warning" href="#" data-toggle="modal" data-target="#modalVerifyEmail">
+								<i class="fas fa-envelope"></i>&nbsp Verify Email </a>
+							<?php } else { ?>
+								<h5><i class="fas fa-check" style="color: #5EC830;"></i></h5>
+						<?php } ?>
+						</div>
+						<div class="col-sm-4 col-md-4 pl-5 pt-3 infoTitle">
+							<strong>Telegram</strong>
+						</div>
+						<div class="col-sm-8 col-md-8 pl-5 pt-3 infoDetails">
+							<?php if (is_array($getUserData)) { ?>
+								<?php if ($getUserData['ok'] == 'true') { 
 
-											$chkID = $getUserData['result']['user']['id'];
-											$chkStatus = $getUserData['result']['status'];
+									$chkID = $getUserData['result']['user']['id'];
+									$chkStatus = $getUserData['result']['status'];
 
-											if ($chkID == $this->session->userdata('Is_Telegram_Member') && $chkStatus == "member") {
-												echo '<tr><td><strong>Telegram</strong>  &nbsp </td> <td> &nbsp <i class="fas fa-check" style="color: #5EC830;"></i></td></tr>';
-											}
-											elseif ($chkID == $this->session->userdata('Is_Telegram_Member') && $chkStatus == "left") {
-												echo '<tr> <td><strong>Telegram</strong> &nbsp </td> <td> &nbsp <i class="fas fa-times" style="color: #DD4103;"></i></td></tr>';
-											}
-										}
-										else
-										{
-											echo '<tr> <td><strong>Telegram</strong> &nbsp </td> <td> &nbsp <i class="fas fa-times" style="color: #DD4103;"></i></td></tr>';
-										}
-										?>
-									<?php } ?>
-									<?php
-									if ($this->session->userdata('Is_Subscriber') == 1) {
-										echo '<tr><td><strong>WEBN Subscriber</strong> &nbsp </td> <td> &nbsp <i class="fas fa-check" style="color: #5EC830;"></i></td></tr>';
+									if ($chkID == $this->session->userdata('Is_Telegram_Member') && $chkStatus == "member") {
+										echo '<h5><i class="fas fa-check" style="color: #5EC830;"></i></h5>';
 									}
-									else
-									{
-										echo '<tr><td><strong>WEBN Subscriber</strong> &nbsp </td> <td> &nbsp <i class="fas fa-times" style="color: #DD4103;"></i></td></tr>';
+									elseif ($chkID == $this->session->userdata('Is_Telegram_Member') && $chkStatus == "left") {
+										echo '<h5><i class="fas fa-times" style="color: #DD4103;"></i></h5>';
 									}
-									?>
-									<?php
-									if ($this->session->userdata('Hydro_Auth') == 1) {
-										echo '<tr><td><strong>Hydro Authentication</strong> &nbsp </td> <td> &nbsp <i class="fas fa-check" style="color: #5EC830;"></i></td></tr>';
-									}
-									else
-									{
-										echo '<tr><td><strong>Hydro Authentication</strong> &nbsp </td> <td> &nbsp <i class="fas fa-times" style="color: #DD4103;"></i></td></tr>';
-									}
-									?>
-									<tr>
-										<td>
-											<strong>Password</strong>  &nbsp 
-										</td>
-										<td>
-											&nbsp <button style="color: #fff;" class="btn btn-warning" data-toggle="modal" data-target="#modalChangepass">
-												<i class="fas fa-unlock-alt"></i> &nbsp Change Password
-											</button>
-										</td>
-									</tr>
-								</table>
+								}
+								else
+								{
+									echo '<h5><i class="fas fa-times" style="color: #DD4103;"></i></h5>';
+								}
+								?>
+							<?php } ?>
+						</div>
+							<div class="col-sm-4 col-md-4 pl-5 pt-3 infoTitle">
+								<strong>Subscriber</strong>
+							</div>
+							<div class="col-sm-8 col-md-8 pl-5 pt-3 infoDetails">
+								<?php
+								if ($this->session->userdata('Is_Subscriber') == 1) {
+									echo '<h5><i class="fas fa-check" style="color: #5EC830;"></i></h5>';
+								}
+								else
+								{
+									echo '<h5><i class="fas fa-times" style="color: #DD4103;"></i></h5>';
+								}
+								?>
+							</div>
+							<div class="col-sm-4 col-md-4 pl-5 pt-3 infoTitle">
+								<strong> Hydro MFA </strong>
+							</div>
+							<div class="col-sm-8 col-md-8 pl-5 pt-3 infoDetails">
+								<?php
+								if ($this->session->userdata('Hydro_Auth') == 1) {
+									echo '<h5><i class="fas fa-check" style="color: #5EC830;"></i></h5>';
+								}
+								else
+								{
+									echo '<h5><i class="fas fa-times" style="color: #DD4103;"></i></h5>';
+								}
+								?>
+							</div>
+							<div class="col-sm-4 col-md-4 pl-5 pt-3 infoTitle">
+								<strong> Password </strong>
+							</div>
+							<div class="col-sm-8 col-md-8 pl-5 pt-3 infoDetails">
+								<button style="color: #fff;" class="btn btn-warning" data-toggle="modal" data-target="#modalChangepass">
+									<i class="fas fa-unlock-alt"></i> &nbsp Change Password
+								</button>
 							</div>
 						<?php } ?>
-						<div class="col-sm-12 p-5">
 							<?php if ($this->session->userdata('Hydro_Auth') == 0) { ?>
-								<h5>
-									<i class="fas fa-tint" style="color: #1e7ef5;"></i> &nbsp Activate Hydro MFA
-								</h5>
-								<br/>
-								<?php echo form_open(base_url().'SubmitHydroID','method="POST"','id="hydroform"');?>
-								<div class="form-row">
+								<div class="col-sm-12 col-md-4 p-5 hdyroContainer">
+									<h5>
+										<i class="fas fa-tint" style="color: #1e7ef5;"></i> &nbsp Activate Hydro MFA
+									</h5>
+									<br/>
+									<?php echo form_open(base_url().'SubmitHydroID','method="POST"','id="hydroform"');?>
 									<div class="form-group">
-										<input class="form-control" type="text" name="HydroID" placeholder="Hydro ID" autocomplete="off"><?php echo $this->session->flashdata('promptInfo');?>
+										<input class="form-control" type="text" name="HydroID" placeholder="Hydro ID" autocomplete="off">
 										<br>
 										<button class="btn btn-primary" type="submit">
 											<i class="fas fa-link"></i> Link
 										</button>
 									</div>
+									<?php echo form_close()?>
 								</div>
-								<?php echo form_close()?>
 							<?php } else { ?>
-								<?php echo form_open(base_url().'UnregisterHydro','method="POST"','id="hydroform"');?>
-								<h5>
-									<i class="fas fa-tint" style="color: #1e7ef5;"></i> &nbsp Deactivate Hydro MFA
-								</h5>
-								<div class="form-row">
+								<div class="col-sm-12 col-md-4 p-5 hdyroContainer">
+									<?php echo form_open(base_url().'UnregisterHydro','method="POST"','id="hydroform"');?>
+									<h5>
+										<i class="fas fa-tint" style="color: #1e7ef5;"></i> &nbsp Deactivate Hydro MFA
+									</h5>
 									<div class="form-group">
-										<br>
-										<button class="btn btn-danger" type="submit">
-											<i class="fas fa-unlink"></i> Unlink
-										</button>
-									</div>
+											<br>
+											<button class="btn btn-danger" type="submit">
+												<i class="fas fa-unlink"></i> Unlink
+											</button>
+										</div>
+									<?php echo form_close();?>
 								</div>
-								<?php echo form_close();?>
 							<?php } ?>
-						</div>
 						<?php if (isset($_SESSION['isActive']) AND $_SESSION['Hydro_Auth'] == 1 AND $_SESSION['VerifyStatus'] == 1) { ?>
 							<?php if ($getAirdoprequest->num_rows() > 0) { ?>
 								<div class="col-sm-12 p-5">
-									<div class="table-responsive-sm">
-										<h5>
-											<i class="fas fa-boxes" style="color: #59C14B;">&nbsp</i> Airdrop Requests
-										</h5>
-										<br>
+									<h5>
+										<i class="fas fa-boxes" style="color: #59C14B;">&nbsp</i> Airdrop Requests
+									</h5>
+									<br>
+									<div class="table-responsive">
 										<table id="airdroptable" class="table table-bordered">
 											<thead>
 												<th>

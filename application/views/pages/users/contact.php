@@ -25,9 +25,9 @@
 				</div>
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
-						<h3 class="text-center pb-4">
+						<h4 class="text-center pb-4">
 							<i class="fas fa-phone" style="color: #1BDDE4;"></i> &nbsp Contact us
-						</h3>
+						</h4>
 						<style type="text/css">
 							.ul-contacts > .li-contacts { display: inline-block; padding: 20px; text-decoration: none; }
 							.li-heading > a > i { font-size: 80px; }

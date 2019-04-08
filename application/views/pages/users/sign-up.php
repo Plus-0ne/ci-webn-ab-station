@@ -20,16 +20,49 @@
 			<div class="row">
 				<div class="col-md-12 col-lg-5 m-auto p-5">
 					<div class="login-container">
-						<h4 class="text-center">
+						<h4 class="text-center p-5">
 							<i class="fas fa-user-plus" style="color: #1C9C16;"></i> &nbsp Register
 						</h4>
-						<br>
 						<?php echo form_open(base_url().'submit_form_signup','method="POST"','id="sform"');?>
 						<div class="signup-holder text-center">
 							<p>
 								<?php echo $this->session->flashdata('promptInfo');?>
 							</p>
-							
+						</div>
+						<div style="padding: 15px;">
+							<div class="text-center">
+								Like us on Facebook
+							</div>
+							<div class="text-center">
+								<iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fweb.facebook.com%2Fwebnproject&width=93&layout=button_count&action=like&size=large&show_faces=false&share=false&height=21&appId=197327284398293" width="93" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+							</div>
+						</div>
+						<div style="padding: 15px;">
+							<div class="text-center">
+								Follow us on Twitter
+							</div>
+							<div class="text-center">
+								<a href="https://twitter.com/WebnProject?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @WebnProject</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+							</div>
+						</div>
+						<div style="padding: 15px;">
+							<div class="text-center">
+								Join our Telegram Channel
+							</div>
+							<div class="text-center">
+								<a href="https://t.me/joinchat/AAAAAE9QPMta208WboZq0w" target="_blank">&nbsp<i class="fas fa-external-link-square-alt"></i> link</a>
+							</div>
+						</div>
+						<div style="padding: 15px;">
+							<div class="text-center">
+								To get your Telegram ID
+							</div>
+							<div class="text-center">
+								<a href="https://telegram.me/userinfobot" target="_blank">&nbsp<i class="fas fa-external-link-square-alt"></i> link</a>
+							</div>
+						</div>
+						<div class="input-holder">
+							<input class="form-control" type="text" name="TelegramID" placeholder="Telegram ID*" required="">
 						</div>
 						<div class="input-holder">
 							<input class="form-control" type="email" name="Email_Address" placeholder="Email Address*" required="">
