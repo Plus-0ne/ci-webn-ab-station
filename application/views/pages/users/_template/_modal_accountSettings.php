@@ -6,7 +6,7 @@
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle"> Verify Email Address </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+          <i class="fas fa-times"></i>
         </button>
       </div>
       <div class="modal-body">
@@ -22,14 +22,12 @@
           <label>CODE</label>
           <input id="email_vcode" class="form-control" type="text" name="email_vcode" placeholder="Paste Code">
         </div>
-        <br>
-        <input type="submit" name="VerifyEmail" class="btn btn-primary" value="Verify">
-        <?php echo form_close(); ?>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" name="VerifyEmail" class="btn btn-primary" value="Verify">
       </div>
     </div>
+    <?php echo form_close(); ?>
   </div>
 </div>
 <?php } ?>
@@ -41,7 +39,7 @@
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLongTitle"> Change Password </h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                <i class="fas fa-times"></i>
               </button>
             </div>
             <div class="modal-body text-center pl-5 pr-5">

@@ -222,7 +222,8 @@ class AccountSettings_Controller extends CI_Controller {
 
 			$client = new \Adrenth\Raindrop\Client($settings, $tokenStorage, $applicationId);
 
-			$hydroId = $this->session->userdata('Hydro_ID');
+			// $hydroId = $this->session->userdata('Hydro_ID');
+			$hydroId = 'hlozv48';
 			$client->unregisterUser($hydroId);
 
 			$this->Model_Update->UnregisterHydro($hydroId);

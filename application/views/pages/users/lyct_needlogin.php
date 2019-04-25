@@ -26,7 +26,7 @@
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
 						<h4 class="text-center">
-							<i class="fas fa-exclamation" style="color: #EA251B;"></i> &nbsp You need to Log-in first.
+							<i class="fas fa-exclamation" style="color: #EA251B; margin-right: 5px;"></i> You need to Log-in first.
 						</h4>
 						<br>
 					</div>

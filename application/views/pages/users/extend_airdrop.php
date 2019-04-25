@@ -26,7 +26,7 @@
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
 						<h4 class="text-center">
-							<i class="fas fa-money-check" style="color: #18D7BE;"></i> &nbsp Extend Airdrop
+							<i class="fas fa-money-check" style="color: #18D7BE; margin-right: 5px;"></i> Extend Airdrop
 						</h4>
 						<br>
 					</div>

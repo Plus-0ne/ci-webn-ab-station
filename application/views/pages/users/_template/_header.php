@@ -15,5 +15,8 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/fontawesome.css" integrity="sha384-4aon80D8rXCGx9ayDt85LbyUHeMWd3UiBaWliBlJ53yzm9hqN21A+o1pqoyK04h+" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/users/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/users/css/animate.css">
+	<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/users/css/owlcarousel/owl.carousel.min.css">
+	<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/users/css/owlcarousel/owl.theme.default.min.css">
+	<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/users/css/buttons-style.css">
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/users/css/style.css">
 </head>

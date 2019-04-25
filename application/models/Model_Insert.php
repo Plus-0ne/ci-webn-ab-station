@@ -24,20 +24,13 @@ class Model_Insert extends CI_Model {
 			'RequestStatus' => $RequestStatus,
 			'PaymentDetails' => $PaymentDetails,
 			'PostPrio' => $PostPrio,
+			'isFeatured' => $isFeatured,
 			'ExpirationDate' => $ExpirationDate ,
 			'ApproveDate' => $ApproveDate ,
 			 );
 		$this->db->insert('ab_airdrops', $data);
 		$insert_id = $this->db->insert_id();
 		return  $insert_id;
-	}
-
-	public function SaveRate($userid,$ratepoints,$ratepostid)
-	{
-		extract($data);
-		$sql = "INSERT INTO ab_rates(userid,ratepoints,ratepostid) VALUES ('$userid','$ratepoints','$ratepostid')";
-		$result = $this->db->query($sql);
-		return $result;
 	}
 	public function addTopayment($data)
 	{
@@ -48,9 +41,19 @@ class Model_Insert extends CI_Model {
 			'EmailAddress' => $EmailAddress,
 			'PaymentDetails' => $PaymentDetails,
 			'ListAsHot' => $ListAsHot,
+			'Featured' => $Featured,
 			'Date' => $Date,
 			 );
 		$result = $this->db->insert('ab_payments', $data);
+		return $result;
+	}
+
+
+	public function SaveRate($userid,$ratepoints,$ratepostid)
+	{
+		extract($data);
+		$sql = "INSERT INTO ab_rates(userid,ratepoints,ratepostid) VALUES ('$userid','$ratepoints','$ratepostid')";
+		$result = $this->db->query($sql);
 		return $result;
 	}
 	public function savePayment($data)

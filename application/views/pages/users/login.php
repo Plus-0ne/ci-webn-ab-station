@@ -33,17 +33,12 @@
 							<input id="Password" class="form-control" type="password" name="Password" placeholder="Password" value="">
 						</div>
 						<div class="submit-holder">
-							<input id="submit" class="btn btn-primary btn-submit" type="submit" value="Login">
-						</div>
-						<div class="signup-holder text-center">
-							<p>
-								<a href="#"> Forgot password ? </a>
-							</p>
+							<input id="submit" class="butt button-primary fmedium btn-submit" type="submit" value="Login">
 						</div>
 						<br>
 						<div class="signup-holder text-center">
 							<p>
-								<label> Not registered ?</label><a href="<?=base_url()?>Sign-Up"> Sign-up</a> now.
+								<label> Not registered ?</label><a class="cls_weburl" href="<?=base_url()?>Sign-Up"> Sign-up</a> now.
 							</p>
 						</div>
 						<?php form_close()?>

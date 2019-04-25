@@ -65,10 +65,13 @@ $route['submit_form_signup'] = 'Signup_Controller/submit_form_signup';
 // NAVIGATION
 $route['Home'] = 'Home_Controller/home';
 $route['LATEST'] = 'Airdrops_Controller/airdrops';
+$route['Featured_Airdrops'] = 'Airdrops_Controller/featured_airdrops';
 $route['HOT'] = 'HotAirdrops_Controller/hot_airdrops';
 $route['Airdrop_Details'] = 'Airdrops_Controller/airdrops_details';
 $route['Bounties'] = 'Bounties_Controller/bounties';
-$route['ApplyToList'] = 'LYCT_Controller/lyct_view';
+$route['atl_regular'] = 'LYCT_Controller/lyct_view';
+$route['atl_hot'] = 'LYCT_Controller/request_as_hot';
+$route['atl_featured'] = 'LYCT_Controller/request_as_featured';
 $route['BuyWEBN_Token'] = 'BuyWebnToken_Controller/buywebn_token';
 $route['Contact'] = 'Contact_Controller/contact';
 $route['FAQs'] = 'Faqs_Controller/faqs';
@@ -85,7 +88,12 @@ $route['RegisterHydroVerify'] = 'HydroMessage_Controller/RegisterHydroVerify';
 // FUNCTIONS
 $route['Postthisrate'] = 'Airdrops_Controller/Post_this_rate';
 $route['RequestForListing'] = 'LYCT_Controller/RequestForListing';
+$route['RequestForHotlisting'] = 'LYCT_Controller/RequestForHotlisting';
+$route['RequestForFeaturedlisting'] = 'LYCT_Controller/RequestForFeaturedlisting';
+
 $route['SendtxidForApporval'] = 'LYCT_Controller/SendtxidForApporval';
+$route['SendtxidForApporval2'] = 'LYCT_Controller/SendtxidForApporval2';
+$route['SendtxidForApporval3'] = 'LYCT_Controller/SendtxidForApporval3';
 $route['SubmitHydroID'] = 'AccountSettings_Controller/SubmitHydroID';
 $route['UnregisterHydro'] = 'AccountSettings_Controller/UnregisterHydro';
 $route['VerifyHydroAuth'] = 'AccountSettings_Controller/VerifyHydroAuth';
@@ -104,3 +112,32 @@ $route['AlredyMappedUser'] = 'Error_PageController/AlredyMappedUser';
 $route['NoUserExist'] = 'Error_PageController/NoUserExist';
 $route['AccountLimited'] = 'PageNotFound/apply_to_listprompt';
 $route['NeedToLogin'] = 'PageNotFound/NeedToLogin';
+
+// ADMIN ROUTES
+$route['Admin'] = 'admin/Admin_Controller';
+$route['step2login'] = 'admin/Admin_Controller/step2login';
+$route['Admin-Dashboard'] = 'admin/Admin_Controller/Dashboard';
+$route['Admin-AAirdrops'] = 'admin/Admin_Controller/Airdrops';
+$route['Admin-FeaturedAirdrops'] = 'admin/Admin_Controller/FeaturedAirdrops';
+$route['Admin-Bounty_List'] = 'admin/Admin_Controller/bounty_list';
+$route['Admin-AllUsers'] = 'admin/Admin_Controller/all_users';
+$route['Admin-New_Entry'] = 'admin/Admin_Controller/Add_New_Entry';
+$route['Admin-Requests'] = 'admin/Admin_Controller/Admin_Request';
+$route['Admin-Platforms'] = 'admin/Admin_Controller/Option_Platform';
+$route['Admin-list'] = 'admin/Admin_Controller/Option_Admin';
+$route['Admin-Faqs'] = 'admin/Admin_Controller/all_faqs';
+$route['Admin-Details'] = 'admin/Admin_Controller/Request_details';
+$route['Admin-Expired-Airdrops'] = 'admin/Admin_Controller/Expired_Airdrops';
+
+
+// Functions
+$route['Admin_Validation'] = 'admin/admin/LoginController/Admin_Validation';
+$route['ValidateCP'] = 'admin/admin/LoginController/ValidateCP_Functions';
+$route['Approve_Request'] = 'admin/admin/UpdateController/Approve_Request';
+$route['AddAirdrops'] = 'admin/admin/InsertController/AddAirdrops';
+$route['AddAdmin'] = 'admin/admin/InsertController/AddAdmin';
+$route['AddFaqs'] = 'admin/admin/InsertController/AddFaqs';
+$route['aLogout'] = 'admin/admin/LogoutController';
+$route['Remove_Airdrop'] = 'admin/admin/DeleteController/RemoveAirdrop';
+$route['RemoveUser'] = 'admin/admin/DeleteController/RemoveUser';
+$route['Removeadmin'] = 'admin/admin/DeleteController/RemovedAdmin';

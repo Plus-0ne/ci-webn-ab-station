@@ -8,6 +8,7 @@ class Signup_Controller extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Model_Signup');
 		$this->load->helper('security');
+		$this->load->helper('string');
 	}
 
 	// ---------------- LOAD SIGNUP VIEW
@@ -103,6 +104,12 @@ class Signup_Controller extends CI_Controller {
 			        		{
 			        			// Register User
 			        			$verificationCode = $this->GenerateVerificationCode();
+
+			        			// do {
+			        			// 	$UserID = random_string('alnum', 11);
+			        			// 	$getUserID = $this->Model_Signup->getUserID($UserID);
+			        			// } while ($getUserID->num_rows >= 1);
+
 			        			$hashed = $this->input->post('rePassword',true);
 			        			$Password = password_hash($hashed, PASSWORD_BCRYPT);
 
@@ -112,6 +119,7 @@ class Signup_Controller extends CI_Controller {
 
 			        			$data = array
 			        			(
+			        				// 'User_No' => $UserID,
 			        				'Email_Address' => $EmailAddress,
 			        				'Password' => $Password,
 			        				'Is_Telegram_Member' => $TelegramID,
@@ -122,7 +130,6 @@ class Signup_Controller extends CI_Controller {
 			        				'Account_Status' => "0",
 			        				'VerificationCode' => $verificationCode,
 			        				'VerifyStatus' => "0",
-			        				'isICO' => "no",
 			        			);
 			        			$result = $this->Model_Signup->register_user($data);
 			        			if ($result == true) {

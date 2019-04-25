@@ -26,14 +26,19 @@
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
 						<h4 class="text-center pb-4">
-							<i class="fas fa-parachute-box" style="color: green;"></i> &nbsp Latest Airdrops
+							<i class="fas fa-parachute-box" style="color: green; margin-right: 5px;"></i> Latest Airdrops
 						</h4>
 					</div>
 					<?php if ($GetAirdrops->num_rows() >= 1) { ?>
 						<?php foreach ($GetAirdrops->result_array() as $row) { ?>
 							<div class="col-lg-3 col-sm-12 pt-4 pb-4">
 								<a href="<?=base_url()?>Airdrop_Details?aide=<?php echo $row['airdrop_id'];?>" style="text-decoration: none; color: #323232;">
-									<div class="content-widget animated fadeIn">
+									<div class="content-widget animated fadeIn" style="height: 100%;">
+										<?php if ($row['isFeatured'] == 'yes') { ?>
+											<?php echo '<span style="position: relative; top: 10px; left: 10px; font-size: 16px; color: #12DF17;"><i class="far fa-star">&nbsp</i>Featured</span>'; ?>
+										<?php } else { ?>
+											<?php echo '<span style="position: relative; top: 10px; left: 10px; font-size: 16px; color: #12DF17;">&nbsp</span>';?>
+										<?php } ?>
 										<div class="content-image">
 											<img class="ratio rounded-circle" src="" style="background-image: url('<?php echo $row['TokenImage'];?>')">
 										</div>
@@ -98,10 +103,12 @@
 											}
 											?>
 											<?php
-											$data = array(
-												'ApproveDate' => $row['ApproveDate'],
-											);
-											$this->load->view('pages/users/_template/_datetime_approved',$data);
+											if ($row['ApproveDate'] != 'Not Set') {
+												$data = array(
+													'ApproveDate' => $row['ApproveDate'],
+												);
+												$this->load->view('pages/users/_template/_datetime_approved',$data);
+											}
 											?>
 										</div>
 									</div>

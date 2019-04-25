@@ -30,7 +30,7 @@ class Login_Controller extends CI_Controller {
 		$UserPass = $this->input->post('Password',true);
 
 		if ($Email_Address == false || $UserPass == false) {
-			$this->session->set_flashdata('LoginResponse', '<div class="prompt-error animated heartBeat"><i class="fas fa-times-circle"></i> Error ! Empty Fields</div>');
+			$this->session->set_flashdata('LoginResponse', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Empty fields </div>');
 			redirect('Login');
 		}
 		else
@@ -71,13 +71,13 @@ class Login_Controller extends CI_Controller {
 					}
 				}
 				else {
-					$this->session->set_flashdata('LoginResponse', '<div class="prompt-error animated heartBeat"><i class="fas fa-times-circle"></i> Error ! Wrong password</div>');
+					$this->session->set_flashdata('LoginResponse', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Wrong password </div>');
 					redirect('Login');
 				}
 			}
 			else
 			{
-				$this->session->set_flashdata('LoginResponse', '<div class="prompt-error animated heartBeat"><i class="fas fa-times-circle"></i> Error ! Wrong email</div>');
+				$this->session->set_flashdata('LoginResponse', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Email doesn\'t exist </div>');
 				redirect('Login');
 			}
 		}

@@ -13,9 +13,14 @@ class Model_Signup extends CI_Model {
 	{
 		extract($data);
 		
-		$sqlq = "INSERT INTO ab_users (Email_Address,Password,Is_Telegram_Member,Is_Subscriber,Hydro_ID,Hydro_Auth,Active_Status,Account_Status,VerificationCode,VerifyStatus,isICO) 
-				VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-		$sqlresult = $this->db->query($sqlq,array($Email_Address,$Password,$Is_Telegram_Member,$Is_Subscriber,$Hydro_ID,$Hydro_Auth,$Active_Status,$Account_Status,$VerificationCode,$VerifyStatus,$isICO));
-		return $sqlresult;
+		$sqlq = "INSERT INTO ab_users (Email_Address , Password , Is_Telegram_Member , Is_Subscriber , Hydro_ID , Hydro_Auth , Active_Status , Account_Status , VerificationCode , VerifyStatus) VALUES (?,?,?,?,?,?,?,?,?,?)";
+		$result = $this->db->query($sqlq,array($Email_Address,$Password,$Is_Telegram_Member,$Is_Subscriber,$Hydro_ID,$Hydro_Auth,$Active_Status,$Account_Status,$VerificationCode,$VerifyStatus));
+		return $result;
+	}
+	public function getUserID($UserID)
+	{
+		$query = "SELECT User_No FROM ab_users WHERE Email_Address = ?";
+		$result = $this->db->query($query,$UserID);
+		return $result;
 	}
 }

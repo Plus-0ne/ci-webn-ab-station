@@ -26,7 +26,7 @@
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
 						<h3 class="text-center">
-							<i class="fas fa-money-check" style="color: #18D7BE;"></i> &nbsp Payments
+							<i class="fas fa-money-check" style="color: #18D7BE; margin-right: 5px;"></i> Payments
 						</h3>
 						<br>
 					</div>

@@ -26,7 +26,7 @@
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
 						<h4 class="text-center pb-4">
-							<i class="fas fa-question" style="color: #EA861B;"></i> &nbsp Frequently Asked Questions
+							<i class="fas fa-question" style="color: #EA861B; margin-right: 5px;"></i> Frequently Asked Questions
 						</h4>
 						<br>
 						<?php foreach ($GetAllfaqs->result() as $result) { ?>

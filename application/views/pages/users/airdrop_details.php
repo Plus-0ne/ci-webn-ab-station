@@ -25,7 +25,7 @@
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
 						<h4 class="text-center">
-							<i class="fas fa-info" style="color: #195CCB;"></i> &nbsp Details
+							<i class="fas fa-info" style="color: #195CCB; margin-right: 5px;"></i> Details
 						</h4>
 						<br>
 					</div>
@@ -38,162 +38,98 @@
 						<h3>
 							<?php echo $ai_details->ProjectName;?> is Airdropping
 						</h3>
-						<p class="text-justify">
+						<p class="text-justify" style="text-indent: 50px;">
 							<?php echo $ai_details->Description;?>
 						</p>
 					</div>
-					<style type="text/css">
-						.tableairdrops
-						{
-							width: 100%;
-						}
-						.tableairdrops > tr > td
-						{
-							text-overflow: ellipsis;
-							word-wrap: break-word;
-						}
-					</style>
-					<div class="col-sm-12 col-md-12 pt-5 pb-5">
+					<div class="col-sm-12">
 						<div id="message"></div>
-						<table class="table tableairdrops">
-							<tr>
-								<td>
-									Rate
-								</td>
-								<td>
-									&nbsp<i class="fas fa-chevron-right"></i>&nbsp 
-									<?php if ($ai_details->Rate == 1) {	
-										echo '&nbsp 
-											<span id="span1" class="fa fa-star ratebutton" style="color: red;"></span>
-											<span id="span2" class="fa fa-star ratebutton"></span>
-											<span id="span3" class="fa fa-star ratebutton"></span>
-											<span id="span4" class="fa fa-star ratebutton"></span>
-											<span id="span5" class="fa fa-star ratebutton"></span>
-											';
-									}
-									elseif ($ai_details->Rate == 2) {
-										echo '&nbsp 
-											<span id="span1" class="fa fa-star ratebutton" style="color: red;"></span>
-											<span id="span2" class="fa fa-star ratebutton" style="color: red;"></span>
-											<span id="span3" class="fa fa-star ratebutton"></span>
-											<span id="span4" class="fa fa-star ratebutton"></span>
-											<span id="span5" class="fa fa-star ratebutton"></span>
-											';
-									}
-									elseif ($ai_details->Rate == 3) {
-										echo '&nbsp 
-											<span id="span1" class="fa fa-star ratebutton" style="color: red;"></span>
-											<span id="span2" class="fa fa-star ratebutton" style="color: red;"></span>
-											<span id="span3" class="fa fa-star ratebutton" style="color: red;"></span>
-											<span id="span4" class="fa fa-star ratebutton"></span>
-											<span id="span5" class="fa fa-star ratebutton"></span>
-											';
-									}
-									elseif ($ai_details->Rate == 4) {
-										echo '&nbsp 
-											<span id="span1" class="fa fa-star ratebutton" style="color: red;"></span>
-											<span id="span2" class="fa fa-star ratebutton" style="color: red;"></span>
-											<span id="span3" class="fa fa-star ratebutton" style="color: red;"></span>
-											<span id="span4" class="fa fa-star ratebutton" style="color: red;"></span>
-											<span id="span5" class="fa fa-star ratebutton"></span>
-											';
-									}
-									elseif ($ai_details->Rate == 5) {
-										echo '&nbsp 
-											<span id="span1" class="fa fa-star ratebutton" style="color: red;"></span>
-											<span id="span2" class="fa fa-star ratebutton" style="color: red;"></span>
-											<span id="span3" class="fa fa-star ratebutton" style="color: red;"></span>
-											<span id="span4" class="fa fa-star ratebutton" style="color: red;"></span>
-											<span id="span5" class="fa fa-star ratebutton" style="color: red;"></span>
-											';
-									}
-									else
-									{
-										echo '&nbsp 
-											<span id="span1" class="fa fa-star ratebutton"></span>
-											<span id="span2" class="fa fa-star ratebutton"></span>
-											<span id="span3" class="fa fa-star ratebutton"></span>
-											<span id="span4" class="fa fa-star ratebutton"></span>
-											<span id="span5" class="fa fa-star ratebutton"></span>
-											';
-									}
-									?>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									Date Start
-								</td>
-								<td>
-									&nbsp<i class="fas fa-chevron-right"></i>&nbsp <?php echo $ai_details->DateStart;?>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									Date End
-								</td>
-								<td>
-									&nbsp<i class="fas fa-chevron-right"></i>&nbsp <?php echo $ai_details->DateEnd;?>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									Link
-								</td>
-								<td>
-									&nbsp<i class="fas fa-chevron-right"></i>&nbsp <a href="<?php echo $ai_details->Link;?>"> <?php echo $ai_details->Link;?> </a>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									Website
-								</td>
-								<td>
-									&nbsp<i class="fas fa-chevron-right"></i>&nbsp <a href="<?php echo $ai_details->WebsiteUrl;?>"> <?php echo $ai_details->WebsiteUrl;?> </a>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									Days Remaining
-								</td>
-								<td>
-									<?php
-										date_default_timezone_set("Asia/Manila");
-										
-										$today = date("Y-m-d h:i:s a");
-										$endDate = $ai_details->DateEnd;
-										$cdate = new DateTime($today);
+					</div>
+					<div class="col-sm-12 col-md-3 ard_title">
+						Rate
+					</div>
+					<div class="col-sm-12 col-md-9 ard_descrip">
+						<?php switch ($ai_details->Rate) {
+							case '1':
+							echo '<span id="span1" class="fa fa-star ratebutton" style="color: red;"></span>
+							<span id="span2" class="fa fa-star ratebutton"></span>
+							<span id="span3" class="fa fa-star ratebutton"></span>
+							<span id="span4" class="fa fa-star ratebutton"></span>
+							<span id="span5" class="fa fa-star ratebutton"></span>
+							';
+							break;
+							
+							case '2':
+							echo '<span id="span1" class="fa fa-star ratebutton" style="color: red;"></span>
+							<span id="span2" class="fa fa-star ratebutton" style="color: red;"></span>
+							<span id="span3" class="fa fa-star ratebutton"></span>
+							<span id="span4" class="fa fa-star ratebutton"></span>
+							<span id="span5" class="fa fa-star ratebutton"></span>
+							';
+							break;
+							
+							case '3':
+							echo '<span id="span1" class="fa fa-star ratebutton" style="color: red;"></span>
+							<span id="span2" class="fa fa-star ratebutton" style="color: red;"></span>
+							<span id="span3" class="fa fa-star ratebutton" style="color: red;"></span>
+							<span id="span4" class="fa fa-star ratebutton"></span>
+							<span id="span5" class="fa fa-star ratebutton"></span>
+							';
+							break;
+							
+							case '4':
+							echo '<span id="span1" class="fa fa-star ratebutton" style="color: red;"></span>
+							<span id="span2" class="fa fa-star ratebutton" style="color: red;"></span>
+							<span id="span3" class="fa fa-star ratebutton" style="color: red;"></span>
+							<span id="span4" class="fa fa-star ratebutton" style="color: red;"></span>
+							<span id="span5" class="fa fa-star ratebutton"></span>
+							';
+							break;
+							
+							case '5':
+							echo '<span id="span1" class="fa fa-star ratebutton" style="color: red;"></span>
+							<span id="span2" class="fa fa-star ratebutton" style="color: red;"></span>
+							<span id="span3" class="fa fa-star ratebutton" style="color: red;"></span>
+							<span id="span4" class="fa fa-star ratebutton" style="color: red;"></span>
+							<span id="span5" class="fa fa-star ratebutton" style="color: red;"></span>
+							';
+							break;
 
-										$enddate = new DateTime($endDate);
-
-										$interval = $cdate->diff($enddate);
-
-
-										if ($enddate < $cdate) {
-											echo '&nbsp<i class="fas fa-chevron-right"></i>&nbsp <span style="color: red;"><strong> Expired </strong></span>';
-										}
-										else
-										{
-											if ($interval->d == 0) {
-												$timeremaining = $interval->format('%h : %i : %s remaning');
-												echo '&nbsp<i class="fas fa-chevron-right"></i>&nbsp '.$timeremaining;
-											}
-											else
-											{
-												if ($interval->days == 1) {
-													echo '&nbsp<i class="fas fa-chevron-right"></i>&nbsp '.$interval->days.' day remaining';
-												}
-												else
-												{
-													echo '&nbsp<i class="fas fa-chevron-right"></i>&nbsp '.$interval->days.' days remaining';
-												}
-											}
-										}
-									?>
-									 
-								</td>
-							</tr>
-						</table>
+							default:
+							echo '<span id="span1" class="fa fa-star ratebutton"></span>
+							<span id="span2" class="fa fa-star ratebutton"></span>
+							<span id="span3" class="fa fa-star ratebutton"></span>
+							<span id="span4" class="fa fa-star ratebutton"></span>
+							<span id="span5" class="fa fa-star ratebutton"></span>
+							';
+							break;
+						} ?>
+					</div>
+					<div class="col-sm-12 col-md-3 ard_title">
+						Date Start
+					</div>
+					<div class="col-sm-12 col-md-9 ard_descrip">
+						<?php echo $ai_details->DateStart;?>
+					</div>
+					<div class="col-sm-12 col-md-3 ard_title">
+						Date End
+					</div>
+					<div class="col-sm-12 col-md-9 ard_descrip">
+						<?php echo $ai_details->DateEnd;?>
+					</div>
+					<div class="col-sm-12 col-md-3 ard_title">
+						Link
+					</div>
+					<div class="col-sm-12 col-md-9 ard_descrip">
+						<a class="cls_weburl" href="<?php echo $ai_details->Link;?>" target="_blank"><?php echo $ai_details->Link;?></a>
+					</div>
+					<div class="col-sm-12 col-md-3 ard_title">
+						Website
+					</div>
+					<div class="col-sm-12 col-md-9 ard_descrip">
+						<a class="cls_weburl" href="<?php echo $ai_details->WebsiteUrl;?>" target="_blank"><?php echo $ai_details->WebsiteUrl;?></a>
+					</div>
+					<div class="col-sm-12 pt-4 pb-4 text-center">
 					</div>
 					<div class="col-sm-12 col-md-4 pt-5 pb-5 text-center">
 						<h3>
@@ -230,14 +166,14 @@
 					} ?>
 					<?php if (!isset($_SESSION['isActive'])) {
 						echo '<div class="col-sm-12 col-md-12 text-center">
-								<a href="'.base_url().'Login" class="btn btn-primary" style="text-decoration: none; color: #FFFFFF; font-size: 19px;">
+								<a href="'.base_url().'Login" class="btn btn-primary" style="text-decoration: none; color: #FFFFFF; font-size: 16px;">
 								<i class="fas fa-sign-in-alt"></i> Login to learn How
 								</a>
 							</div>';
 					}
 					elseif (isset($_SESSION['isActive']) AND $_SESSION['VerifyStatus'] == 0) {
 						echo '<div class="col-sm-12 col-md-12 text-center">
-								<a href="'.base_url().'AccountSettings" class="btn btn-primary" style="text-decoration: none; color: #FFFFFF; font-size: 19px;">
+								<a href="'.base_url().'AccountSettings" class="btn btn-primary" style="text-decoration: none; color: #FFFFFF; font-size: 16px;">
 								<i class="fas fa-envelope"></i> Verify Email Address
 								</a>
 							</div>';

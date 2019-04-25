@@ -3,29 +3,45 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Model_Select extends CI_Model {
 	
+	//  HOME 
 	public function GetAirdropsHot()
 	{
-		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus ='Approved' AND PostPrio ='hot' ORDER BY Rate DESC LIMIT 8";
+		$sql = "SELECT * FROM ab_airdrops WHERE PostPrio IN ('hot','featured') AND RequestStatus ='Approved' ORDER BY DateAdded DESC LIMIT 8";
 		$result = $this->db->query($sql);
 		return $result;
 	}
 	public function GetAirdropsLatest()
 	{
-		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus ='Approved' AND PostPrio ='latest' ORDER BY DateAdded DESC LIMIT 8";
+		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus ='Approved' ORDER BY DateAdded DESC LIMIT 8";
 		$result = $this->db->query($sql);
 		return $result;
 	}
+	public function GetFeatured()
+	{
+		$sql = "SELECT * FROM ab_airdrops WHERE PostPrio = 'featured' AND RequestStatus ='Approved' ORDER BY DateAdded DESC";
+		$result = $this->db->query($sql);
+		return $result;
+	}
+	// HOT AIRDROPS
 	public function getHotairdrops()
 	{
-		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus ='Approved' AND PostPrio ='hot' ORDER BY Rate DESC";
+		$sql = "SELECT * FROM ab_airdrops WHERE PostPrio IN ('hot','featured') AND RequestStatus ='Approved' ORDER BY DateAdded DESC";
 		$sqlres = $this->db->query($sql);
 		return $sqlres;
 	}
+	// LATEST AIRDROPS
 	public function GetAirdrops()
 	{
-		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus ='Approved' AND PostPrio ='latest' ORDER BY DateAdded DESC";
+		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus ='Approved' ORDER BY DateAdded DESC";
 		$sqlres = $this->db->query($sql);
 		return $sqlres;
+	}
+	// FEATURED AIRDROPS
+	public function getFeaturedAirdrops()
+	{
+		$sql = "SELECT * FROM ab_airdrops WHERE PostPrio = 'featured' AND RequestStatus ='Approved' ORDER BY DateAdded DESC";
+		$result = $this->db->query($sql);
+		return $result;
 	}
 	public function ai_details($airdrop_id)
 	{

@@ -26,7 +26,7 @@
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
 						<h4 class="text-center pb-4">
-							<img src="<?=base_url()?>assets/users/img/3744.png" width="28">  &nbsp Buy WEBN Token
+							<img src="<?=base_url()?>assets/users/img/3744.png" width="28" style=" margin-right: 5px;"> Buy WEBN Token
 						</h4>
 					</div>
 					<div class="col-sm-12 col-md-6 p-5 text-center">

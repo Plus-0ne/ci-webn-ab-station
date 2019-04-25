@@ -27,6 +27,17 @@ class Airdrops_Controller extends CI_Controller {
 		$data['GetAirdrops'] = $this->Model_Select->GetAirdrops();
 		$this->load->view('pages/users/airdrops',$data);
 	}
+	public function featured_airdrops()
+	{
+		$navdata['title'] = "Featured Airdrops | WEBN Airdrops and Bounty Station";
+		
+		$data = array(
+			'user_header' => $this->load->view('pages/users/_template/_header',$navdata), 
+		);
+		$data['GetFeat'] = $this->Model_Select->getFeaturedAirdrops();
+
+		$this->load->view('pages/users/featured_airdrops',$data);
+	}
 	// ---------------- AIRDROPS DETAILS VIEW
 	public function airdrops_details()
 	{

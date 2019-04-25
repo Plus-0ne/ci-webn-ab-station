@@ -21,7 +21,7 @@
 				<div class="col-md-12 col-lg-5 m-auto p-5">
 					<div class="login-container">
 						<h4 class="text-center p-5">
-							<i class="fas fa-user-plus" style="color: #1C9C16;"></i> &nbsp Register
+							<i class="fas fa-user-plus" style="color: #1C9C16; margin-right: 5px;"></i> Register
 						</h4>
 						<?php echo form_open(base_url().'submit_form_signup','method="POST"','id="sform"');?>
 						<div class="signup-holder text-center">
@@ -50,7 +50,7 @@
 								Join our Telegram Channel
 							</div>
 							<div class="text-center">
-								<a href="https://t.me/joinchat/AAAAAE9QPMta208WboZq0w" target="_blank">&nbsp<i class="fas fa-external-link-square-alt"></i> link</a>
+								<a class="cls_weburl" href="https://t.me/joinchat/AAAAAE9QPMta208WboZq0w" target="_blank">&nbsp<i class="fas fa-external-link-square-alt"></i> link</a>
 							</div>
 						</div>
 						<div style="padding: 15px;">
@@ -58,7 +58,7 @@
 								To get your Telegram ID
 							</div>
 							<div class="text-center">
-								<a href="https://telegram.me/userinfobot" target="_blank">&nbsp<i class="fas fa-external-link-square-alt"></i> link</a>
+								<a class="cls_weburl" href="https://telegram.me/userinfobot" target="_blank">&nbsp<i class="fas fa-external-link-square-alt"></i> link</a>
 							</div>
 						</div>
 						<div class="input-holder">
@@ -83,7 +83,7 @@
 						<br>
 						<div class="signup-holder text-center" style="">
 							<p>
-								<label> Already registered ?</label><a href="<?=base_url()?>Login"> Sign-in </a>
+								<label> Already registered ?</label><a class="cls_weburl" href="<?=base_url()?>Login"> Sign-in </a>
 							</p>
 						</div>
 						<?php echo form_close()?>

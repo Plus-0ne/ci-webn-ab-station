@@ -1,0 +1,112 @@
+.butt
+{
+	padding: 12px;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	transition: box-shadow ease-in-out 0.2s;
+	border-radius: 1px;
+	min-width: 100px;
+}
+.outbtn
+{
+	padding: 12px;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	transition: border ease-in-out 0.2s;
+	border-radius: 1px;
+	min-width: 100px;
+}
+.butt:hover
+{
+	-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.butt:active , .butt:focus
+{
+	outline: none;
+}
+.butt:active
+{
+	-webkit-box-shadow: inset 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	-moz-box-shadow: inset 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	box-shadow: inset 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.button-primary
+{
+	background-color: #2394C3;
+	color: #FFFFFF;
+}
+.outlined-primary
+{
+	background-color: transparent;
+	color: #2394C3;
+	border: 1px solid #2394C3;
+	outline-color: #2394C3;
+}
+.button-secondary
+{
+	background-color: #24C2B1;
+	color: #FFFFFF;
+}
+.outlined-secondary
+{
+	background-color: transparent;
+	color: #24C2B1;
+	border: 1px solid #24C2B1;
+	outline-color: #24C2B1;
+}
+.button-warning
+{
+	background-color: #E49E17;
+	color: #FFFFFF;
+}
+.outlined-warning
+{
+	background-color: transparent;
+	color: #E49E17;
+	border: 1px solid #E49E17;
+	outline-color: #E49E17;
+}
+.button-danger
+{
+	background-color: #E45B17;
+	color: #FFFFFF;
+}
+.outlined-danger
+{
+	background-color: transparent;
+	color: #E45B17;
+	border: 1px solid #E45B17;
+	outline-color: #E45B17;
+}
+.button-info
+{
+	background-color: #13C0CF;
+	color: #FFFFFF;
+}
+.outlined-info
+{
+	background-color: transparent;
+	color: #13C0CF;
+	border: 1px solid #13C0CF;
+	outline-color: #13C0CF;
+}
+.fsmall
+{
+	font-size: 15px;
+}
+.fmedium
+{
+	font-size: 18px;
+}
+.flarge
+{
+	font-size: 21px;
+}
+.fxlarge
+{
+	font-size: 24px;
+}

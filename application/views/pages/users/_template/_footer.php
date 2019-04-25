@@ -7,19 +7,31 @@
 					<a class="f-nav-link" href="<?=base_url()?>Home"><i class="fas fa-angle-right"></i> Home </a>
 				</li>
 				<li class="f-nav-item">
+					<a class="f-nav-link" href="<?=base_url()?>Featured_Airdrops"><i class="fas fa-angle-right"></i> Featured </a>
+				</li>
+				<li class="f-nav-item">
 					<a class="f-nav-link" href="<?=base_url()?>HOT"><i class="fas fa-angle-right"></i> Hot </a>
 				</li>
 				<li class="f-nav-item">
 					<a class="f-nav-link" href="<?=base_url()?>LATEST"><i class="fas fa-angle-right"></i> Latest </a>
 				</li>
 				<li class="f-nav-item">
-					<a class="f-nav-link" href="<?=base_url()?>ApplyToList"><i class="fas fa-angle-right"></i> Appy to list </a>
+					<a class="f-nav-link" href="<?=base_url()?>atl_regular"><i class="fas fa-angle-right"></i> Apply to Regular List </a>
 				</li>
 				<li class="f-nav-item">
-					<a class="f-nav-link" href="#"><i class="fas fa-angle-right"></i> Buy WEBN token </a>
+					<a class="f-nav-link" href="<?=base_url()?>atl_hot"><i class="fas fa-angle-right"></i> Apply to Hot List </a>
 				</li>
 				<li class="f-nav-item">
-					<a class="f-nav-link" href="#"><i class="fas fa-angle-right"></i> Contact </a>
+					<a class="f-nav-link" href="<?=base_url()?>atl_featured"><i class="fas fa-angle-right"></i> Apply to Featured List </a>
+				</li>
+				<li class="f-nav-item">
+					<a class="f-nav-link" href="<?=base_url()?>BuyWEBN_Token"><i class="fas fa-angle-right"></i> Buy WEBN token </a>
+				</li>
+				<li class="f-nav-item">
+					<a class="f-nav-link" href="https://freewebn.com/" target="_blank"><i class="fas fa-angle-right"></i> WEBN Faucet </a>
+				</li>
+				<li class="f-nav-item">
+					<a class="f-nav-link" href="<?=base_url()?>Contact"><i class="fas fa-angle-right"></i> Contact </a>
 				</li>
 				<li class="f-nav-item">
 					<a class="f-nav-link" href="<?=base_url()?>FAQs"><i class="fas fa-angle-right"></i> FAQs </a>

@@ -26,7 +26,7 @@
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
 						<h4 class="text-center pb-4">
-							<i class="fab fa-btc" style="color: #EA861B;"></i> &nbsp List your Coin / Token
+							<i class="fab fa-btc" style="color: #EA861B; margin-right: 5px;"></i> Apply to regular list
 						</h4>
 					</div>
 					<div class="col-sm-12 p-5">
@@ -150,7 +150,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-sm-12 col-md-7 m-auto p-5">
+					<!-- <div class="col-sm-12 col-md-7 m-auto p-5">
 						<div id="listhot" class="pricing-card bgcolor-hot text-center">
 							<div class="pricing-header">
 								<h2>
@@ -166,16 +166,11 @@
 								</h1>
 							</div>
 						</div>
-					</div>
-					<div class="col-sm-12 p-5" style="border-bottom: 2px solid #D1D1D1"></div>
+					</div> -->
 					<div class="col-sm-12 p-5">
 						<div class="form-row">
 							<div class="form-group col-sm-12 col-md-9">
-								<button type="submit" class="btn btn-primary">
-									<h5>
-										<i class="fas fa-paper-plane"></i> &nbsp Request for Listing
-									</h5>
-								</button>
+								<button type="submit" class="butt button-primary fsmall"><i class="fas fa-paper-plane">&nbsp</i> Request for Listing </button>
 							</div>
 						</div>
 					</div>
@@ -201,7 +196,7 @@ $(document).ready(function () {
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLongTitle"> Payment details </h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
+					<i class="fas fa-times"></i>
 				</button>
 			</div>
 			<?php echo form_open(base_url().'SendtxidForApporval', 'method="POST"');?>
