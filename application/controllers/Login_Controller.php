@@ -52,8 +52,7 @@ class Login_Controller extends CI_Controller {
 							'Account_Status' => $result->Account_Status,
 							'VerificationCode' => $result->VerificationCode,
 							'VerifyStatus' => $result->VerifyStatus,
-							'isICO' => $result->isICO,
-							'isActive' => $result->Account_Status,
+							'isActive' => 1,
 						);
 						$this->session->set_userdata($userdata);
 
@@ -129,8 +128,7 @@ class Login_Controller extends CI_Controller {
 						'Account_Status' => $result->Account_Status,
 						'VerificationCode' => $result->VerificationCode,
 						'VerifyStatus' => $result->VerifyStatus,
-						'isICO' => $result->isICO,
-						'isActive' => $result->Account_Status,
+						'isActive' => 1,
 					);
 
 					$this->session->set_userdata($userdata);

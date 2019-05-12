@@ -95,7 +95,7 @@ class A_ModelSelect extends CI_Model {
 	}
 	public function GetAirdropTopRated()
 	{
-		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus = 'Approved' ORDER BY Rate DESC";
+		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus = 'Approved' ORDER BY ApproveDate DESC";
 		$result = $this->db->query($sql);
 		return $result;
 	}
@@ -110,6 +110,36 @@ class A_ModelSelect extends CI_Model {
 		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus = 'Expired'";
 		$result = $this->db->query($sql);
 		return $result;
+	}
+	public function getTotallikes($airdopid)
+	{
+		$sql = "SELECT * FROM ab_rates WHERE ratepostid = ? AND ratepoints = 'like'";
+		$result = $this->db->query($sql,$airdopid);
+		return $result;
+	}
+	public function getTotaldislike($airdopid)
+	{
+		$sql = "SELECT * FROM ab_rates WHERE ratepostid = ? AND ratepoints = 'dislike'";
+		$result = $this->db->query($sql,$airdopid);
+		return $result;
+	}
+	public function priceforday()
+	{
+		$sql = "SELECT * FROM ab_prices";
+		$result = $this->db->query($sql);
+		return $result;
+	}
+	public function addPricefor()
+	{
+		$sql = "SELECT * FROM ab_adprices";
+		$result = $this->db->query($sql);
+		return $result;
+	}
+	public function addDaysss($Daysss)
+	{
+		$sql = "SELECT * FROM ab_prices WHERE Days = '$Daysss'";
+		$result = $this->db->query($sql);
+		return $result->row();
 	}
 }
 

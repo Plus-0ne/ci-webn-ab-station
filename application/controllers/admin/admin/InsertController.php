@@ -160,5 +160,108 @@ class InsertController extends CI_Controller {
 			redirect('Admin');
 		}
 	}
+	public function addPayment()
+	{
+		if (isset($_SESSION['is_Active'])) {
+			
+			
+			
+			$Days = $this->input->post('Days',true);
+			$Price = $this->input->post('Price',true);
+			$color = $this->input->post('color',true);
+			if ($Days == null || $Price == null || $color == null) {
+				$this->session->set_flashdata('promptInfo', '<div class="alert alert-danger alert-dismissible" role="alert"><strong>Error saving.</strong> Error saving. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+				redirect('Admin-Pricing');
+			}
+			else
+			{
+				if ($Days <= 1) {
+					$nday = $Days. ' Day';
+				}
+				elseif ($Days < 7) {
+					$nday = $Days. ' Days';
+				}
+				elseif ($Days >= 7) {
+					$divv = $Days / 7;
+					$remainder = $Days % 7;
+					if ($remainder < 1) {
+						$rema = '';
+					}
+					else
+					{
+						$rema = '.'.$remainder;
+					}
+					if ($divv <= 1) {
+						$nday = round($divv) .''.$rema. ' Week';
+					}
+					else
+					{
+						$nday = round($divv) .''.$rema. ' Weeks';
+					}
+				}
+				$data = array(
+					'Days' => $nday,
+					'Price' => $Price,
+					'DCount' => $Days,
+					'color' => $color,
+					 );
+
+				$addNewPayments = $this->amInsert->addNewPayments($data);
+				if ($addNewPayments == true) {
+					$this->session->set_flashdata('promptInfo', '<div class="alert alert-success alert-dismissible" role="alert"><strong>New Payment saved.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+					redirect('Admin-Pricing');
+				}
+				else
+				{
+					$this->session->set_flashdata('promptInfo', '<div class="alert alert-danger alert-dismissible" role="alert"><strong>Error saving.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+					redirect('Admin-Pricing');
+				}
+			}
+		}
+		else
+		{
+			redirect('Admin');
+		}
+	}
+	public function AddAddPayment()
+	{
+		if (isset($_SESSION['is_Active'])) {
+			
+			
+			
+			$AdditionalFor = $this->input->post('AdditionalFor',true);
+			$adPrice = $this->input->post('adPrice',true);
+			$color = $this->input->post('color',true);
+
+			if ($AdditionalFor == null || $adPrice == null || $color == null) {
+				$this->session->set_flashdata('promptInfo', '<div class="alert alert-danger alert-dismissible" role="alert"><strong>Error saving.</strong> Error saving. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+				redirect('Admin-Pricing');
+			}
+			else
+			{
+				
+				$data = array(
+					'AdditionalFor' => ucfirst($AdditionalFor),
+					'adPrice' => $adPrice,
+					'color' => $color,
+					 );
+
+				$addAddPayments = $this->amInsert->addAddPayments($data);
+				if ($addAddPayments == true) {
+					$this->session->set_flashdata('promptInfo', '<div class="alert alert-success alert-dismissible" role="alert"><strong>New Payment saved.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+					redirect('Admin-Pricing');
+				}
+				else
+				{
+					$this->session->set_flashdata('promptInfo', '<div class="alert alert-danger alert-dismissible" role="alert"><strong>Error saving.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+					redirect('Admin-Pricing');
+				}
+			}
+		}
+		else
+		{
+			redirect('Admin');
+		}
+	}
 }
 

@@ -22,9 +22,6 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="#"> </a>
                                         </li>
-                                        <!-- <li class="nav-item">
-                                            <a class="nav-link" href="#"> Profile </a>
-                                        </li> -->
                                         <li class="nav-item">
                                             <a class="nav-link" href="<?=base_url()?>aLogout"> Logout </a>
                                         </li>
@@ -99,6 +96,8 @@
                                         <td style="text-align: center; vertical-align: middle;"><?php echo $row->RewardQuantity;?></td>
                                         <td style="vertical-align: middle;">
                                             <a href="<?=base_url()?>Admin-Details?aide=<?php echo $row->airdrop_id;?>">Details</a>
+                                            <br>
+                                            <a href="<?=base_url()?>Remove_Airdrop?aide=<?php echo $row->airdrop_id;?>"> Remove </a>
                                         </td>
                                     </tr>
                                 <?php } ?>

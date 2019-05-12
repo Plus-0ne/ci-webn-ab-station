@@ -28,4 +28,20 @@ class A_ModelInsert extends CI_Model {
 		$result = $this->db->query($sql,array($Question,$Answer));
 		return $result;
 	}
+	public function addNewPayments($data)
+	{
+		extract($data);
+		
+		$sql = "INSERT INTO ab_prices(Days,Price,DCount,color) VALUES (?,?,?,?)";
+		$result = $this->db->query($sql,array($Days,$Price,$DCount,$color));
+		return $result;
+	}
+	public function addAddPayments($data)
+	{
+		extract($data);
+		
+		$sql = "INSERT INTO ab_adprices(AdditionalFor,AdPrice,color) VALUES (?,?,?)";
+		$result = $this->db->query($sql,array($AdditionalFor,$adPrice,$color));
+		return $result;
+	}
 }

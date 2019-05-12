@@ -56,6 +56,20 @@ class Model_Insert extends CI_Model {
 		$result = $this->db->query($sql);
 		return $result;
 	}
+	public function inLike($data)
+	{
+		extract($data);
+		$sql = "INSERT INTO ab_rates(userid,ratepoints,ratepostid) VALUES ('$userid','$like','$postid')";
+		$result = $this->db->query($sql);
+		return $result;
+	}
+	public function DisLike($data)
+	{
+		extract($data);
+		$sql = "INSERT INTO ab_rates(userid,ratepoints,ratepostid) VALUES ('$userid','$dislike','$postid')";
+		$result = $this->db->query($sql);
+		return $result;
+	}
 	public function savePayment($data)
 	{
 		extract($data);

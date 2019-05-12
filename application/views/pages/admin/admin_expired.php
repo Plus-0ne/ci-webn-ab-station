@@ -23,9 +23,6 @@
                                             <a class="nav-link" href="#"> </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#"> Profile </a>
-                                        </li>
-                                        <li class="nav-item">
                                             <a class="nav-link" href="<?=base_url()?>aLogout"> Logout </a>
                                         </li>
                                     </ul>
@@ -71,7 +68,6 @@
                         <h3>
                             <i class="fas fa-calendar-times" style="color: #EF0F0F;">&nbsp</i> Expired
                         </h3>
-                        <?php echo $this->session->flashdata('promptInfo');?>
                         <br>
                         <br>
                         <table id="dtPop" class="table table-bordered">

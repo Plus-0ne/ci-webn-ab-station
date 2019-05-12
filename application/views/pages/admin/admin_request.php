@@ -23,9 +23,6 @@
                                             <a class="nav-link" href="#"> </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#"> Profile </a>
-                                        </li>
-                                        <li class="nav-item">
                                             <a class="nav-link" href="<?=base_url()?>aLogout"> Logout </a>
                                         </li>
                                     </ul>
@@ -71,7 +68,6 @@
                         <h3>
                             <i class="fas fa-book-open" style="color: #25CDAF;">&nbsp</i> For Approval
                         </h3>
-                        <?php echo $this->session->flashdata('promptInfo');?>
                         <br>
                         <br>
                         <div class="table-responsive">
@@ -95,15 +91,24 @@
                                             <td style="text-align: center; vertical-align: middle;"><?php echo $row->AddedBy;?></td>
                                             <td style="text-align: center; vertical-align: middle;"><?php echo '<span style="color: #F1980D;">'.$row->RequestStatus.'</span>';?></td>
                                             <td style="text-align: center; vertical-align: middle;"><?php echo $row->PaymentDetails;?></td>
-                                            <td style="text-align: center; vertical-align: middle;"><?php if ($row->PostPrio == 'hot') {
-                                                echo '<span style="color: #D24717;"> Hot </span>';
-                                            } else {
-                                                echo '<span style="color: #359B15;"> Latest </span>';
-                                            } ?></td>
-                                            <td style="vertical-align: middle;">
+                                            <td style="text-align: center; vertical-align: middle;">
+                                                <?php switch ($row->PostPrio) {
+                                                    case 'hot':
+                                                        echo '<span style="color: #D24717;"> Hot </span>';
+                                                        break;
+                                                    case 'latest':
+                                                        echo '<span style="color: #359B15;"> Latest </span>';
+                                                        break;
+                                                    case 'featured':
+                                                        echo '<span style="color: #E7BD2A;"> Featured </span>';
+                                                        break;
+                                                    default:
+                                                        # code...
+                                                        break;
+                                                }?>
+                                            </td>
+                                            <td style="text-align: center;vertical-align: middle;">
                                                 <a href="<?=base_url()?>Admin-Details?aide=<?php echo $row->airdrop_id;?>">Details</a>
-                                                <br>
-                                                <a href="<?=base_url()?>Approve_Request?aide=<?php echo $row->airdrop_id;?>">Approve</a>
                                             </td>
                                         </tr>
                                     <?php } ?>

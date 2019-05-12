@@ -17,30 +17,14 @@ class UpdateController extends CI_Controller {
 
 			$airdrop_id = $this->input->get('aide');
 			$AirdropDetails = $this->amSelect->getAirdropsFields($airdrop_id);
-
-			date_default_timezone_set("Asia/Manila");
-
+			$Daysss = $AirdropDetails->PaymentDetails;
+			$addDaysss = $this->amSelect->addDaysss($Daysss);
+			$DCount = $addDaysss->DCount;
 			$today = date("Y-m-d h:i:s a");
 
 			$currentDate = $today;
 
-			switch ($AirdropDetails->PaymentDetails) {
-				case '24hrs':
-					$ExpirationDate = date('Y-m-d h:i:s a', strtotime($currentDate . ' +1 day'));
-					break;
-				case '48hrs':
-					$ExpirationDate = date('Y-m-d h:i:s a', strtotime($currentDate . ' +2 day'));
-					break;
-				case '1week':
-					$ExpirationDate = date('Y-m-d h:i:s a', strtotime($currentDate . ' +7 day'));
-					break;
-
-				default:
-					$ExpirationDate = date('Y-m-d h:i:s a', strtotime($currentDate . ' +1 day'));
-					break;
-			}
-
-	        
+			$ExpirationDate = date('Y-m-d h:i:s a', strtotime($currentDate . ' +'.$DCount.' day'));
 
 			$data = array(
 				'airdrop_id' => $airdrop_id,
@@ -60,6 +44,62 @@ class UpdateController extends CI_Controller {
 			}
 		}
 	}
-	
+	public function UpdatePrices()
+	{
+		$PriceNo = $this->input->post('PriceNo',true);
+		$Days = $this->input->post('Days',true);
+		$Price = $this->input->post('Price',true);
+
+		if ($PriceNo == null || $Price == null) {
+			$this->session->set_flashdata('promptInfo', '<div class="alert alert-danger alert-dismissible" role="alert"><strong>Empty value</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+			redirect('Admin-Pricing');
+		}
+		else
+		{
+			$data = array(
+				'PriceNo' => $PriceNo,
+				'Days' => $Days,
+				'Price' => $Price,
+			);
+			$UpdateThisPrices = $this->amUpdate->UpdateThisPrices($data);
+			if ($UpdateThisPrices == TRUE) {
+				$this->session->set_flashdata('promptInfo', '<div class="alert alert-success alert-dismissible" role="alert"><strong>Price Updated</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+				redirect('Admin-Pricing');
+			}
+			else
+			{
+				$this->session->set_flashdata('promptInfo', '<div class="alert alert-danger alert-dismissible" role="alert"><strong>Error Updating</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+				redirect('Admin-Pricing');
+			}
+		}
+	}
+	public function UpdateAdPrice()
+	{
+		$ad_PriceNo = $this->input->post('ad_PriceNo',true);
+		$AdPrice = $this->input->post('AdPrice',true);
+
+		if ($ad_PriceNo == null || $AdPrice == null) {
+			$this->session->set_flashdata('promptInfo', '<div class="alert alert-danger alert-dismissible" role="alert"><strong>Empty value</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+			redirect('Admin-Pricing');
+		}
+		else
+		{
+			$data = array(
+				'ad_PriceNo' => $ad_PriceNo,
+				'AdPrice' => $AdPrice,
+			);
+
+			$updatethisaddPrice = $this->amUpdate->updatethisaddPrice($data);
+			if ($updatethisaddPrice == TRUE) {
+				$this->session->set_flashdata('promptInfo', '<div class="alert alert-success alert-dismissible" role="alert"><strong>Price Updated</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+				redirect('Admin-Pricing');
+			}
+			else
+			{
+				$this->session->set_flashdata('promptInfo', '<div class="alert alert-danger alert-dismissible" role="alert"><strong>Error Updating</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+				redirect('Admin-Pricing');
+			}
+		}
+	}
 }
 

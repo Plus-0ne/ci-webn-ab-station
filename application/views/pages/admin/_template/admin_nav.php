@@ -32,6 +32,9 @@
                 }
                 ?>
                 <li class="nav-item">
+                    <a href="<?=base_url()?>Admin-Pricing"><i class="fas fa-barcode">&nbsp</i> Pricing </a>
+                </li>
+                <li class="nav-item">
                     <a href="<?=base_url()?>Admin-AllUsers"><i class="fas fa-users">&nbsp</i> Users </a>
                 </li>
                 <li class="nav-item">
@@ -40,7 +43,7 @@
             </ul>
         </li>
         <li class="nav-item">
-            <a href="https://localdev.test/webn-ab-station/" target="_blank"><i class="fas fa-link">&nbsp</i> Visit Website </a>
+            <a href="https://airdropcoinstation.com/" target="_blank"><i class="fas fa-link">&nbsp</i> Visit Website </a>
         </li>
     </ul>
 </nav>

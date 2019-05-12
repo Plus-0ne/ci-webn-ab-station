@@ -4,7 +4,7 @@
 		<div id="header-container" class="header-container">
 			<div class="container">
 				<div class="row">
-					<div id="cccc" class="cccc col-lg-12 col-sm-12 pt-5 pb-5">
+					<div id="cccc" class="cccc col-lg-12 col-sm-12 nav-pad">
 						<?php $this->load->view('pages/users/_template/_navbar'); ?>
 					</div>	
 				</div>
@@ -26,7 +26,7 @@
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
 						<h4 class="text-center pb-4">
-							<i class="fab fa-btc" style="color: #EA861B; margin-right: 5px;"></i> Apply to Featured list (Additional 1M WEBN Tokens)
+							<i class="fab fa-btc" style="color: #EA861B; margin-right: 5px;"></i> Apply to Featured list
 						</h4>
 					</div>
 					<div class="col-sm-12 p-5">
@@ -94,83 +94,59 @@
 								</p>
 							</div>
 						</div>
-						<input id="input24" type="radio" name="PaymentDetails" value="24hrs" style="display: none;">
-						<input id="input48" type="radio" name="PaymentDetails" value="48hrs" style="display: none;">
-						<input id="input1w" type="radio" name="PaymentDetails" value="1week" style="display: none;">
-						<input id="inputlisthot" type="radio" name="ListAsHot" value="hot" style="display: none;">
 					</div>
-					<div class="col-sm-12 col-md-4 p-5">
-						<div id="payment24" class="pricing-card bgcolor-24 text-center">
-							<div class="pricing-header">
-								<h2>
-									<i class="far fa-clock"></i> 24 hrs
-								</h2>
+					<?php foreach ($getPricetags->result_array() as $row) { ?>
+						<div class="col-sm-12 col-md-4 p-5">
+							<input id="input<?php echo $row['DCount'];?>" type="radio" name="PaymentDetails" value="<?php echo $row['Days'];?>" class="hasdh">
+							<div id="payment<?php echo $row['DCount'];?>" class="pricing-card text-center" style="background-color: <?php echo $row['color'];?>;">
+								<div class="pricing-header">
+									<h2>
+										<i class="far fa-clock"></i> <?php echo $row['Days'];?>
+									</h2>
+								</div>
+								<div class="pricingbody">
+									<?php echo $row['Price'];?> + Additional <?php if ($getFeaturePrice !== null) {
+										echo $getFeaturePrice->AdPrice;
+									} else { echo ''; } ?> WEBN Tokens per day
+								</div>
+								<div id="checked-icon<?php echo $row['DCount'];?>" class="checked-payments">
+									<h1>
+										<i class="fas fa-check-circle icon-size"></i>
+									</h1>
+								</div>
 							</div>
-							<div class="pricingbody">
-								500k WEBN Tokens
-							</div>
-							<div id="checked-icon1" class="checked-payments">
-								<h1>
-									<i class="fas fa-check-circle icon-size"></i>
-								</h1>
+						</div>
+					<?php } ?>
+					<div class="modal fade animated fadeInUp faster" id="modalpaymentdetails" tabindex="-1" data-backdrop="false" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered" role="document">
+							<div class="modal-content" style="box-shadow: 0px 0px 10px 4px rgb(0,0,0,0.2);">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLongTitle"> Payment details </h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<i class="fas fa-times"></i>
+									</button>
+								</div>
+								<div class="modal-body">
+									<p>
+										Send your WEBN Payment to this Address: 0xc06f5144cd4e0deefc5336f04f8d05ffc47035cb
+									</p>
+									<p>
+										After you send your payment, paste your TXID here for checking:
+									</p>
+									<div class="form-group">
+										<input type="text" name="txid" class="form-control" required="">
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="submit" class="btn btn-primary"> Continue </button>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-sm-12 col-md-4 p-5">
-						<div id="payment48" class="pricing-card bgcolor-48 text-center">
-							<div class="pricing-header">
-								<h2>
-									<i class="far fa-clock"></i> 48 hrs
-								</h2>
-							</div>
-							<div class="pricingbody">
-								1M WEBN Tokens
-							</div>
-							<div id="checked-icon2" class="checked-payments">
-								<h1>
-									<i class="fas fa-check-circle icon-size"></i>
-								</h1>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-12 col-md-4 p-5">
-						<div id="payment1w" class="pricing-card bgcolor-1w text-center">
-							<div class="pricing-header">
-								<h2>
-									<i class="far fa-calendar-alt"></i> 1 Week
-								</h2>
-							</div>
-							<div class="pricingbody">
-								2M WEBN Tokens
-							</div>
-							<div id="checked-icon3" class="checked-payments">
-								<h1>
-									<i class="fas fa-check-circle icon-size"></i>
-								</h1>
-							</div>
-						</div>
-					</div>
-					<!-- <div class="col-sm-12 col-md-7 m-auto p-5">
-						<div id="listhot" class="pricing-card bgcolor-hot text-center">
-							<div class="pricing-header">
-								<h2>
-									List as Hot Airdrop
-								</h2>
-							</div>
-							<div class="pricingbody">
-								Additional 500K WEBN Tokens per day (Optional)
-							</div>
-							<div id="checked-icon4" class="checked-payments">
-								<h1>
-									<i class="fas fa-check-circle icon-size"></i>
-								</h1>
-							</div>
-						</div>
-					</div> -->
 					<div class="col-sm-12 p-5">
 						<div class="form-row">
 							<div class="form-group col-sm-12 col-md-9">
-								<button type="submit" class="butt button-primary fsmall"><i class="fas fa-paper-plane">&nbsp</i> Request for Listing </button>
+								<button type="button" id="" class="butt button-primary fsmall" data-toggle="modal" data-target="#modalpaymentdetails"><i class="fas fa-paper-plane">&nbsp</i> Request for Listing </button>
 							</div>
 						</div>
 					</div>

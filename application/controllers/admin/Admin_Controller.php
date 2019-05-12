@@ -15,7 +15,7 @@ class Admin_Controller extends CI_Controller {
 		}
 		else
 		{
-			$data['title'] = "Login | WEBN Airdrops and Bounty Station";
+			$data['title'] = "Login | Airdrop Coin Station";
 			$data = array
 			(
 				'admin_header' => $this->load->view('pages/admin/_template/admin_header',$data),
@@ -31,7 +31,7 @@ class Admin_Controller extends CI_Controller {
 		}
 		else
 		{
-			$data['title'] = "Login | WEBN Airdrops and Bounty Station";
+			$data['title'] = "Login | Airdrop Coin Station";
 			$data = array
 			(
 				'admin_header' => $this->load->view('pages/admin/_template/admin_header',$data),
@@ -44,7 +44,7 @@ class Admin_Controller extends CI_Controller {
 	public function Dashboard()
 	{
 		if (isset($_SESSION['is_Active'])) {
-			$title['title'] = "Dashboard | WEBN Airdrops and Bounty Station";
+			$title['title'] = "Dashboard | Airdrop Coin Station";
 
 			$data['GetUserCounts'] = $this->amSelect->GetUserCounts();
 			$data['GetAirdropApproved'] = $this->amSelect->GetAirdropApproved();
@@ -69,7 +69,7 @@ class Admin_Controller extends CI_Controller {
 		if (isset($_SESSION['is_Active'])) {
 
 
-			$title['title'] = "List of Airdrops | WEBN Airdrops and Bounty Station";
+			$title['title'] = "List of Airdrops | Airdrop Coin Station";
 
 			$data['GetAirdrops'] = $this->amSelect->GetAirdrops();
 			$data['admin_header'] = $this->load->view('pages/admin/_template/admin_header',$title);
@@ -86,7 +86,7 @@ class Admin_Controller extends CI_Controller {
 		if (isset($_SESSION['is_Active'])) {
 
 
-			$title['title'] = "Featured Airdrops | WEBN Airdrops and Bounty Station";
+			$title['title'] = "Featured Airdrops | Airdrop Coin Station";
 
 			$data['getFeaturedairdrops'] = $this->amSelect->getFeaturedairdrops();
 			$data['admin_header'] = $this->load->view('pages/admin/_template/admin_header',$title);
@@ -103,7 +103,7 @@ class Admin_Controller extends CI_Controller {
 	public function bounty_list()
 	{
 		if (isset($_SESSION['is_Active'])) {
-			$title['title'] = "List of Bounties | WEBN Airdrops and Bounty Station";
+			$title['title'] = "List of Bounties | Airdrop Coin Station";
 
 			$data['admin_header'] = $this->load->view('pages/admin/_template/admin_header',$title);
 			$data['admin_nav'] = $this->load->view('admin/_template/admin_nav');
@@ -121,7 +121,7 @@ class Admin_Controller extends CI_Controller {
 	public function Add_New_Entry()
 	{
 		if (isset($_SESSION['is_Active'])) {
-			$title['title'] = "New Entry | WEBN Airdrops and Bounty Station";
+			$title['title'] = "New Entry | Airdrop Coin Station";
 
 			$data['admin_header'] = $this->load->view('pages/admin/_template/admin_header',$title);
 			$data['admin_nav'] = $this->load->view('admin/_template/admin_nav');
@@ -141,7 +141,7 @@ class Admin_Controller extends CI_Controller {
 		if (isset($_SESSION['is_Active'])) {
 
 
-			$title['title'] = "Requests  | WEBN Airdrops and Bounty Station";
+			$title['title'] = "Requests  | Airdrop Coin Station";
 
 			$data['GetRequest'] = $this->amSelect->GetRequest();
 
@@ -161,11 +161,14 @@ class Admin_Controller extends CI_Controller {
 		if (isset($_SESSION['is_Active'])) {
 
 
-			$title['title'] = "Requests Details | WEBN Airdrops and Bounty Station";
+			$title['title'] = "Requests Details | Airdrop Coin Station";
 
 			$data['admin_header'] = $this->load->view('pages/admin/_template/admin_header',$title);
 			
 			$airdopid = $this->input->get('aide');
+
+			$data['TotalLikes'] = $this->amSelect->getTotallikes($airdopid);
+			$data['TotalDislike'] = $this->amSelect->getTotaldislike($airdopid);
 
 			$data['GetAirdopDetails'] = $this->amSelect->GetAirdopDetails($airdopid);
 			$data['GetRequestDetails'] = $this->amSelect->GetRequestDetails($airdopid);
@@ -183,7 +186,7 @@ class Admin_Controller extends CI_Controller {
 		if (isset($_SESSION['is_Active'])) {
 
 
-			$title['title'] = " Expired Airdrops  | WEBN Airdrops and Bounty Station";
+			$title['title'] = " Expired Airdrops  | Airdrop Coin Station";
 
 			$data['GetExpireAirdrops'] = $this->amSelect->GetExpireAirdrops();
 
@@ -202,7 +205,7 @@ class Admin_Controller extends CI_Controller {
 	public function all_users()
 	{
 		if (isset($_SESSION['is_Active'])) {
-			$title['title'] = "List of Users | WEBN Airdrops and Bounty Station";
+			$title['title'] = "List of Users | Airdrop Coin Station";
 
 			$data['GetUsers'] = $this->amSelect->getUsers();
 			
@@ -222,7 +225,7 @@ class Admin_Controller extends CI_Controller {
 	public function Option_Platform()
 	{
 		if (isset($_SESSION['is_Active'])) {
-			$title['title'] = "Platforms | WEBN Airdrops and Bounty Station";
+			$title['title'] = "Platforms | Airdrop Coin Station";
 
 			$data['admin_header'] = $this->load->view('pages/admin/_template/admin_header',$title);
 
@@ -240,7 +243,7 @@ class Admin_Controller extends CI_Controller {
 	public function Option_Admin()
 	{
 		if ($this->session->userdata('is_Admin') == 1) {
-			$title['title'] = "Admins | WEBN Airdrops and Bounty Station";
+			$title['title'] = "Admins | Airdrop Coin Station";
 
 			$data['GetAdmins'] = $this->amSelect->GetAdmins();
 
@@ -257,10 +260,27 @@ class Admin_Controller extends CI_Controller {
 		}
 		
 	}
+	public function pricing()
+	{
+		if ($this->session->userdata('is_Admin') == 1) {
+			$title['title'] = "Prices | Airdrop Coin Station";
+
+			$data['admin_header'] = $this->load->view('pages/admin/_template/admin_header',$title);
+			$data['priceforday'] = $this->amSelect->priceforday();
+			$data['addPricefor'] = $this->amSelect->addPricefor();
+			$this->load->view('pages/admin/admin_pricing',$data);
+		}
+		else
+		{
+			$this->session->set_flashdata('promptInfo', '<div class="alert alert-danger alert-dismissible" role="alert"><strong>You need to login.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+			redirect('Admin');
+		}
+		
+	}
 	public function all_faqs()
 	{
 		if (isset($_SESSION['is_Active'])) {
-			$title['title'] = "List of Frequently asked question | WEBN Airdrops and Bounty Station";
+			$title['title'] = "List of Frequently asked question | Airdrop Coin Station";
 
 			$data['GetFaqs'] = $this->amSelect->GetFaqs();
 			

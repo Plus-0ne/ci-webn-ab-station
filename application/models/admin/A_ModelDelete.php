@@ -22,4 +22,23 @@ class A_ModelDelete extends CI_Model {
 		$result = $this->db->query($sql,$UserID);
 		return $result;
 	}
+	public function removeFAQs($FaqNo)
+	{
+		$sql = "DELETE FROM ab_faqs WHERE FaqNo = ?";
+		$result = $this->db->query($sql,$FaqNo);
+		return $result;
+	}
+	public function RemovePayments($PriceNo)
+	{
+		$sql = "DELETE FROM ab_prices WHERE PriceNo = ?";
+		$result = $this->db->query($sql,$PriceNo);
+		return $result;
+	}
+	public function removeaddPay($ad_PriceNo)
+	{
+		$sql = "DELETE FROM ab_adprices WHERE ad_PriceNo = ?";
+		$result = $this->db->query($sql,$ad_PriceNo);
+		return $result;
+	}
+	
 }

@@ -4,29 +4,29 @@
 		<div id="header-container" class="header-container">
 			<div class="container">
 				<div class="row">
-					<div id="cccc" class="cccc col-lg-12 col-sm-12 pt-5 pb-5">
+					<div id="cccc" class="cccc col-lg-12 col-sm-12 nav-pad">
 						<?php $this->load->view('pages/users/_template/_navbar'); ?>
 					</div>	
 				</div>
 			</div>
 		</div>
+
+		<!-- For ads -->
 		<div class="ads-container">
 			<div class="container">
-
 			</div>
 		</div>
+		
 		<div class="content-container">
 			<div class="container animated fadeIn">
 				<div class="row">
 					<div class="col-lg-12 col-sm-12 p-5">
-
-
 					</div>
 				</div>
 				<div class="row mt-5">
 					<div class="col-lg-12 title-page-here">
 						<h4 class="text-center pb-4">
-							<i class="far fa-star" style="color: #12DF17; margin-right: 5px;"></i> Featured Airdrops
+							<i class="far fa-star" style="color: #f1c410; margin-right: 5px;"></i> Featured Airdrops
 						</h4>
 					</div>
 					<?php if ($GetFeat->num_rows() >= 1) { ?>
@@ -35,9 +35,9 @@
 								<a href="<?=base_url()?>Airdrop_Details?aide=<?php echo $row['airdrop_id'];?>" style="text-decoration: none; color: #323232;">
 									<div class="content-widget animated fadeIn" style="height: 100%;">
 										<?php if ($row['isFeatured'] == 'yes') { ?>
-											<?php echo '<span style="position: relative; top: 10px; left: 10px; font-size: 16px; color: #12DF17;"><i class="far fa-star">&nbsp</i>Featured</span>'; ?>
+											<?php echo '<span style="position: relative; top: 10px; left: 10px; font-size: 16px; color: #e74c3c;"><i class="far fa-star">&nbsp</i>Featured</span>'; ?>
 										<?php } else { ?>
-											<?php echo '<span style="position: relative; top: 10px; left: 10px; font-size: 16px; color: #12DF17;">&nbsp</span>';?>
+											<?php echo '<span style="position: relative; top: 10px; left: 10px; font-size: 16px; color: #e74c3c;">&nbsp</span>';?>
 										<?php } ?>
 										<div class="content-image">
 											<img class="ratio rounded-circle" src="" style="background-image: url('<?php echo $row['TokenImage'];?>')">
@@ -45,63 +45,8 @@
 										<div class="content-details">
 											<?php echo $row['ProjectName'];?>
 											<br>
-											<?php 
-											if ($row['Rate'] == 1) {	
-												echo ' 
-												<span id="star1" class="fa fa-star" style="color: #FF8400;"></span>
-												<span id="star2" class="fa fa-star"></span>
-												<span id="star3" class="fa fa-star"></span>
-												<span id="star4" class="fa fa-star"></span>
-												<span id="star5" class="fa fa-star"></span>
-												';
-											}
-											elseif ($row['Rate'] == 2) {
-												echo ' 
-												<span class="fa fa-star" style="color: #FF8400;"></span>
-												<span class="fa fa-star" style="color: #FF8400;"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												';
-											}
-											elseif ($row['Rate'] == 3) {
-												echo ' 
-												<span class="fa fa-star" style="color: #FF8400;"></span>
-												<span class="fa fa-star" style="color: #FF8400;"></span>
-												<span class="fa fa-star" style="color: #FF8400;"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												';
-											}
-											elseif ($row['Rate'] == 4) {
-												echo ' 
-												<span class="fa fa-star" style="color: #FF8400;"></span>
-												<span class="fa fa-star" style="color: #FF8400;"></span>
-												<span class="fa fa-star" style="color: #FF8400;"></span>
-												<span class="fa fa-star" style="color: #FF8400;"></span>
-												<span class="fa fa-star"></span>
-												';
-											}
-											elseif ($row['Rate'] == 5) {
-												echo ' 
-												<span class="fa fa-star" style="color: #FF8400;"></span>
-												<span class="fa fa-star" style="color: #FF8400;"></span>
-												<span class="fa fa-star" style="color: #FF8400;"></span>
-												<span class="fa fa-star" style="color: #FF8400;"></span>
-												<span class="fa fa-star" style="color: #FF8400;"></span>
-												';
-											}
-											else
-											{
-												echo ' 
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												';
-											}
-											?>
+											<br>
+											<i class="fas fa-users" style="color: #353535;"></i> Participants : <?php echo $row['MaxParticipants'];?>
 											<?php
 											if ($row['ApproveDate'] != 'Not Set') {
 												$data = array(

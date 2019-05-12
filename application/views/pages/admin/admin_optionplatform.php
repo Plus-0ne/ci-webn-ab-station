@@ -23,9 +23,6 @@
                                             <a class="nav-link" href="#"> </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#"> Profile </a>
-                                        </li>
-                                        <li class="nav-item">
                                             <a class="nav-link" href="<?=base_url()?>aLogout"> Logout </a>
                                         </li>
                                     </ul>

@@ -69,115 +69,123 @@ class Signup_Controller extends CI_Controller {
 					// Check Telegram
 					$TelegramID = $this->input->post('TelegramID',true);
 
-			        $botToken =  '872531119:AAGj0NvKGg1bTO-jovePbO8c-B553jhS6Ok';
-			        $url= 'https://api.telegram.org/bot'.$botToken;
-			        $chatId= '-1001330658507';
-			                        
-			        $params=[
-			            'chat_id'=>$chatId,
-			            'user_id'=>$TelegramID,
-			        ];
+					$botToken = '872531119:AAGj0NvKGg1bTO-jovePbO8c-B553jhS6Ok';
+					$url= 'https://api.telegram.org/bot'.$botToken;
+					$chatId= '-1001330658507';
 
-			        $ch = curl_init($url . '/getChatMember?');
-			        curl_setopt($ch, CURLOPT_HEADER, false);
-			        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-			        curl_setopt($ch, CURLOPT_POST, 1);
-			        curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
-			        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-			        $result = curl_exec($ch);
-			                        
-			        $getUserData = json_decode($result ,true);
-			        if (is_array($getUserData)) {
+					$params=[
+						'chat_id'=>$chatId,
+						'user_id'=>$TelegramID,
+					];
 
-			        	$chkID = $getUserData['result']['user']['id'];
-			        	$chkStatus = $getUserData['result']['status'];
-			        	if ($chkID == $TelegramID && $chkStatus == "member") {
+					$ch = curl_init($url . '/getChatMember?');
+					curl_setopt($ch, CURLOPT_HEADER, false);
+					curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+					curl_setopt($ch, CURLOPT_POST, 1);
+					curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
+					curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+					$result = curl_exec($ch);
 
-			        		$Email_Add = $this->input->post('Email_Address',true);
-			        		$EmailCheck = $this->Model_Signup->Check_EmailAdd($Email_Add);
+					$getUserData = json_decode($result ,true);
+					if (is_array($getUserData)) {
+						if ($getUserData['ok'] == 'true') {
 
-			        		if ($EmailCheck->num_rows() == true) {
-			        			$this->session->set_flashdata('promptInfo', '<div class="prompt-warning"><i class="fas fa-exclamation-circle"></i> Warning ! Email exist</div>');
-			        			redirect('Sign-Up');
-			        		}
-			        		else
-			        		{
+							$chkID = $getUserData['result']['user']['id'];
+							$chkStatus = $getUserData['result']['status'];
+							if ($chkID == $TelegramID && $chkStatus == "member") {
+
+								$Email_Add = $this->input->post('Email_Address',true);
+								$EmailCheck = $this->Model_Signup->Check_EmailAdd($Email_Add);
+
+								if ($EmailCheck->num_rows() == true) {
+									$this->session->set_flashdata('promptInfo', '<div class="prompt-warning"><i class="fas fa-exclamation-circle"></i> Warning ! Email exist</div>');
+									redirect('Sign-Up');
+								}
+								else
+								{
 			        			// Register User
-			        			$verificationCode = $this->GenerateVerificationCode();
+									$verificationCode = $this->GenerateVerificationCode();
 
 			        			// do {
 			        			// 	$UserID = random_string('alnum', 11);
 			        			// 	$getUserID = $this->Model_Signup->getUserID($UserID);
 			        			// } while ($getUserID->num_rows >= 1);
 
-			        			$hashed = $this->input->post('rePassword',true);
-			        			$Password = password_hash($hashed, PASSWORD_BCRYPT);
+									$hashed = $this->input->post('rePassword',true);
+									$Password = password_hash($hashed, PASSWORD_BCRYPT);
 
-			        			$EmailAddress = $this->input->post('Email_Address',true);
-			        			$TelegramID = $this->input->post('TelegramID',true);
-			        			
+									$EmailAddress = $this->input->post('Email_Address',true);
+									$TelegramID = $this->input->post('TelegramID',true);
 
-			        			$data = array
-			        			(
+
+									$data = array
+									(
 			        				// 'User_No' => $UserID,
-			        				'Email_Address' => $EmailAddress,
-			        				'Password' => $Password,
-			        				'Is_Telegram_Member' => $TelegramID,
-			        				'Is_Subscriber' => 1,
-			        				'Hydro_ID' => "0",
-			        				'Hydro_Auth' => "0",
-			        				'Active_Status' => "0",
-			        				'Account_Status' => "0",
-			        				'VerificationCode' => $verificationCode,
-			        				'VerifyStatus' => "0",
-			        			);
-			        			$result = $this->Model_Signup->register_user($data);
-			        			if ($result == true) {
+										'Email_Address' => $EmailAddress,
+										'Password' => $Password,
+										'Is_Telegram_Member' => $TelegramID,
+										'Is_Subscriber' => 1,
+										'Hydro_ID' => "0",
+										'Hydro_Auth' => "0",
+										'Active_Status' => "0",
+										'Account_Status' => "0",
+										'VerificationCode' => $verificationCode,
+										'VerifyStatus' => "0",
+									);
+									$result = $this->Model_Signup->register_user($data);
+									if ($result == true) {
 
-			        				$this->email->from('webndrops@gmail.com');
-			        				$this->email->to($this->input->post('Email_Address')); 
-			        				$this->email->subject('Message from Web Innovation PH INC.');
-			        				$this->email->set_mailtype('html');
+										$this->email->from('webndrops@gmail.com');
+										$this->email->to($this->input->post('Email_Address')); 
+										$this->email->subject('Message from Web Innovation PH INC.');
+										$this->email->set_mailtype('html');
 
-			        				$data['CODE'] = $verificationCode;
-			        				$msg = $this->load->view('verify_email',$data,TRUE);
-			        				$this->email->message($msg);
+										$data['CODE'] = $verificationCode;
+										$msg = $this->load->view('verify_email',$data,TRUE);
+										$this->email->message($msg);
 
-			        				if ($this->email->send()) {
-			        					$this->session->set_flashdata('LoginResponse', '<div class="prompt-success"><i class="fas fa-check-circle"></i> You can login now. Verify Email in account settings</div>');
-			        					redirect('Login');
-			        				}
-			        				else
-			        				{
-			        					$this->session->set_flashdata('LoginResponse', '<div class="prompt-success"><i class="fas fa-check-circle"></i> You can login now. Verify Email in account settings</div>');
-			        					redirect('Login');
-			        				}
-			        			}
-			        			else
-			        			{
-			        				$this->session->set_flashdata('promptInfo', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Somesthing\'s wrong! </div>');
-									redirect('Sign-Up');
-			        			}
-			        		}
-			        	}
-			        	else
-			        	{
-			        		$this->session->set_flashdata('promptInfo', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Join our Telegram Channel <a href="https://t.me/WEBN_Airdrop_Station" target="_blank"> Here </a> </div>');
+										if ($this->email->send()) {
+											$this->session->set_flashdata('LoginResponse', '<div class="prompt-success"><i class="fas fa-check-circle"></i> You can login now. Verify Email in account settings</div>');
+											redirect('Login');
+										}
+										else
+										{
+											$this->session->set_flashdata('LoginResponse', '<div class="prompt-success"><i class="fas fa-check-circle"></i> You can login now. Verify Email in account settings</div>');
+											redirect('Login');
+										}
+									}
+									else
+									{
+										$this->session->set_flashdata('promptInfo', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Somesthing\'s wrong! </div>');
+										redirect('Sign-Up');
+									}
+								}
+							}
+							else
+							{
+								$this->session->set_flashdata('promptInfo', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Join our Telegram Channel <a href="https://t.me/WEBN_Airdrop_Station" target="_blank"> Here </a> </div>');
+								redirect('Sign-Up');
+							}
+
+						}
+						else
+						{
+							$this->session->set_flashdata('promptInfo', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Join our Telegram Channel <a href="https://t.me/WEBN_Airdrop_Station" target="_blank"> Here </a> </div>');
 							redirect('Sign-Up');
-			        	}
-			        }
-			        else
-			        {
-			        	$this->session->set_flashdata('promptInfo', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Telegram Error </div>');
+						}
+					}
+					else
+					{
+						$this->session->set_flashdata('promptInfo', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Telegram Error </div>');
 						redirect('Sign-Up');
-			        }
-			    curl_close($ch);
+					}
 				}
 				else
 				{
 					$this->session->set_flashdata('promptInfo', '<div class="prompt-error"><i class="fas fa-times-circle"></i> Captcha failed</div>');
 					redirect('Sign-Up');
 				}
+				curl_close($ch);
 			}
 		}
 	}

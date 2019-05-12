@@ -82,10 +82,10 @@ $(document).ready(function () {
 		height : 150
 	});
 	
-	$('#payment24').click(function(){
-		if($('#input24').prop('checked'))
+	$('#payment1').click(function(){
+		if($('#input1').prop('checked'))
 		{
-			$('#input24').prop("checked", false);
+			$('#input1').prop("checked", false);
 			$(this).removeClass('paymentselected');
 			$('#checked-icon1').removeClass('checked-payments-colored');
 			$('#checked-icon2').removeClass('checked-payments-colored');
@@ -93,18 +93,18 @@ $(document).ready(function () {
 		}
 		else
 		{
-			$('#input24').prop("checked", true);
+			$('#input1').prop("checked", true);
 			$(this).addClass('paymentselected');
 			$('#checked-icon1').addClass('checked-payments-colored');
 			$('#checked-icon2').removeClass('checked-payments-colored');
 			$('#checked-icon3').removeClass('checked-payments-colored');
-			$('#payment48').removeClass('paymentselected');
-			$('#payment1w').removeClass('paymentselected');
+			$('#payment2').removeClass('paymentselected');
+			$('#payment3').removeClass('paymentselected');
 		}
 	});
-	$('#payment48').click(function(){
-		if($('#input48').prop('checked')){
-			$('#input48').prop("checked", false);
+	$('#payment2').click(function(){
+		if($('#input2').prop('checked')){
+			$('#input2').prop("checked", false);
 			$(this).removeClass('paymentselected');
 			$('#checked-icon1').removeClass('checked-payments-colored');
 			$('#checked-icon2').removeClass('checked-payments-colored');
@@ -112,19 +112,19 @@ $(document).ready(function () {
 		}
 		else
 		{
-			$('#input48').prop("checked", true);
+			$('#input2').prop("checked", true);
 			$(this).addClass('paymentselected');
 			$('#checked-icon1').removeClass('checked-payments-colored');
 			$('#checked-icon2').addClass('checked-payments-colored');
 			$('#checked-icon3').removeClass('checked-payments-colored');
-			$('#payment24').removeClass('paymentselected');
-			$('#payment1w').removeClass('paymentselected');
+			$('#payment1').removeClass('paymentselected');
+			$('#payment3').removeClass('paymentselected');
 			
 		}
 	});
-	$('#payment1w').click(function(){
-		if($('#input1w').prop('checked')){
-			$('#input1w').prop("checked", false);
+	$('#payment3').click(function(){
+		if($('#input3').prop('checked')){
+			$('#input3').prop("checked", false);
 			$(this).removeClass('paymentselected');
 			$('#checked-icon1').removeClass('checked-payments-colored');
 			$('#checked-icon2').removeClass('checked-payments-colored');
@@ -132,32 +132,13 @@ $(document).ready(function () {
 		}
 		else
 		{
-			$('#input1w').prop("checked", true);
+			$('#input3').prop("checked", true);
 			$(this).addClass('paymentselected');
 			$('#checked-icon1').removeClass('checked-payments-colored');
 			$('#checked-icon2').removeClass('checked-payments-colored');
 			$('#checked-icon3').addClass('checked-payments-colored');
-			$('#payment24').removeClass('paymentselected');
-			$('#payment48').removeClass('paymentselected');
-			
-
+			$('#payment1').removeClass('paymentselected');
+			$('#payment3').removeClass('paymentselected');
 		}
-	});
-    $('#listhot').on('click', function() {
-    	if ($('#inputlisthot').prop("checked")) 
-    	{
-    		$('#inputlisthot').prop("checked", false);
-    		$(this).removeClass('paymentselected');
-    		$('#checked-icon4').removeClass('checked-payments-colored');
-    	}
-    	else
-    	{
-    		$('#inputlisthot').prop("checked", true);
-    		$(this).addClass('paymentselected');
-    		$('#checked-icon4').addClass('checked-payments-colored');
-    	}
-    });
-    $('#SubmitPayment').click(function(){
-    	alert('Hello');
-    });
+	});	
 });

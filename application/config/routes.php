@@ -65,6 +65,7 @@ $route['submit_form_signup'] = 'Signup_Controller/submit_form_signup';
 // NAVIGATION
 $route['Home'] = 'Home_Controller/home';
 $route['LATEST'] = 'Airdrops_Controller/airdrops';
+$route['Regular'] = 'Airdrops_Controller/Regular';
 $route['Featured_Airdrops'] = 'Airdrops_Controller/featured_airdrops';
 $route['HOT'] = 'HotAirdrops_Controller/hot_airdrops';
 $route['Airdrop_Details'] = 'Airdrops_Controller/airdrops_details';
@@ -87,6 +88,9 @@ $route['RegisterHydroVerify'] = 'HydroMessage_Controller/RegisterHydroVerify';
 
 // FUNCTIONS
 $route['Postthisrate'] = 'Airdrops_Controller/Post_this_rate';
+$route['LikeThisPost'] = 'Airdrops_Controller/LikeThisPost';
+$route['DislikeThisPost'] = 'Airdrops_Controller/DislikeThisPost';
+
 $route['RequestForListing'] = 'LYCT_Controller/RequestForListing';
 $route['RequestForHotlisting'] = 'LYCT_Controller/RequestForHotlisting';
 $route['RequestForFeaturedlisting'] = 'LYCT_Controller/RequestForFeaturedlisting';
@@ -129,6 +133,8 @@ $route['Admin-Faqs'] = 'admin/Admin_Controller/all_faqs';
 $route['Admin-Details'] = 'admin/Admin_Controller/Request_details';
 $route['Admin-Expired-Airdrops'] = 'admin/Admin_Controller/Expired_Airdrops';
 
+// updated
+$route['Admin-Pricing'] = 'admin/Admin_Controller/pricing';
 
 // Functions
 $route['Admin_Validation'] = 'admin/admin/LoginController/Admin_Validation';
@@ -141,3 +147,10 @@ $route['aLogout'] = 'admin/admin/LogoutController';
 $route['Remove_Airdrop'] = 'admin/admin/DeleteController/RemoveAirdrop';
 $route['RemoveUser'] = 'admin/admin/DeleteController/RemoveUser';
 $route['Removeadmin'] = 'admin/admin/DeleteController/RemovedAdmin';
+$route['removeFAQs'] = 'admin/admin/DeleteController/removeFAQs';
+$route['UpdatePrices'] = 'admin/admin/UpdateController/UpdatePrices';
+$route['RemovePayment'] = 'admin/admin/DeleteController/RemovePayment';
+$route['addPayment'] = 'admin/admin/InsertController/addPayment';
+$route['AddAddPayment'] = 'admin/admin/InsertController/AddAddPayment';
+$route['RemovaAddPayment'] = 'admin/admin/DeleteController/RemovaAddPayment';
+$route['UpdateAdPrice'] = 'admin/admin/UpdateController/UpdateAdPrice';

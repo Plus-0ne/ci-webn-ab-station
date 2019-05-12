@@ -23,9 +23,6 @@
                                             <a class="nav-link" href="#"> </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#"> Profile </a>
-                                        </li>
-                                        <li class="nav-item">
                                             <a class="nav-link" href="<?=base_url()?>aLogout"> Logout </a>
                                         </li>
                                     </ul>
@@ -75,7 +72,7 @@
                     </div>
                     <div class="col-sm-12 col-md-12 col-lg-3 p-2" style="">
                         <div  class="card text-right" style="width: 100%; display: inline-block;">
-                            <a href="<?=base_url()?>Expired-Airdrops">
+                            <a href="<?=base_url()?>Admin-Expired-Airdrops">
                                 <div class="card-body" style="background-color: #DE7121;">
                                     <h5 class="card-title"><i class="fas fa-calendar-times"></i> Expired </h5>
                                     <p class="card-text">
@@ -103,7 +100,7 @@
                     </div>
                     <div class="col-sm-12 col-md-12 col-lg-3 p-2" style="">
                         <div  class="card text-right" style="width: 100%; display: inline-block;">
-                            <a href="<?=base_url()?>Featured_Airdrops">
+                            <a href="<?=base_url()?>Admin-FeaturedAirdrops">
                                 <div class="card-body" style="background-color: #E5AF2D;">
                                     <h5 class="card-title"><i class="far fa-star"></i> Featured </h5>
                                     <p class="card-text">
@@ -120,7 +117,7 @@
                 <div class="row p-5" style="box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);">
                     <div class="col-sm-12">
                         <h3>
-                            TOP RATED
+                            New Airdrops
                         </h3>
                         <br>
                         <div class="table-responsive">

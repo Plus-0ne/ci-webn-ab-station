@@ -118,4 +118,11 @@ class Model_Update extends CI_Model {
 		$result = $this->db->update('ab_airdrops', $data);
 		return $result;
 	}
+
+	public function updatedlike($postid,$like,$userid)
+	{
+		$sql = "UPDATE ab_rates SET ratepoints = '$like' WHERE userid = '$userid' AND ratepostid = '$postid'";
+		$result = $this->db->query($sql);
+		return $result;
+	}
 }

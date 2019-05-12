@@ -94,3 +94,8 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
+// 'hostname' => 'box5767',
+// 'username' => 'webinno3_airdrop',
+// 'password' => '!db2019.webn',
+// 'database' => 'webinno3_airdrop',

@@ -16,7 +16,7 @@
 		<div id="header-container" class="header-container">
 			<div class="container">
 				<div class="row">
-					<div id="cccc" class="cccc col-lg-12 col-sm-12 pt-5 pb-5">
+					<div id="cccc" class="cccc col-lg-12 col-sm-12 nav-pad">
 						<?php $this->load->view('pages/users/_template/_navbar'); ?>
 					</div>	
 				</div>
@@ -206,22 +206,7 @@
 															}?>
 														</td>
 														<td>
-															<?php
-															switch ($row->PaymentDetails) {
-																case '24hrs':
-																echo '<span style="color: #3BAA19;"> 24 Hrs (500K WEBN Tokens)</span>';
-																break;
-																case '48hrs':
-																echo '<span style="color: #3BAA19;"> 48 Hrs (1M WEBN Tokens)</span>';
-																break;
-																case '1week':
-																echo '<span style="color: #3BAA19;"> 1 Week (2M WEBN Tokens)</span>';
-																break;
-																default:
-																	# code...
-																break;
-															}
-															?>
+															<?php echo $row->PaymentDetails;?>
 														</td>
 														<td>
 															<?php switch ($row->PostPrio) {
@@ -263,11 +248,6 @@
 															<a href="<?=base_url()?>Payments?aide=<?php echo $row->airdrop_id;?>">
 																Details
 															</a>
-															<br>
-															<?php
-															if ($row->ApproveDate == 'Not Set') {
-																echo '<a href="'.base_url().'Submit_Txid?aide='.$row->airdrop_id.'">Submit TXID</a>';
-															} ?>
 														</td>
 													</tr>
 												<?php } ?>

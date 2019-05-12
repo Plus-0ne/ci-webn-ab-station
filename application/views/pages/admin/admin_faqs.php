@@ -23,9 +23,6 @@
                                             <a class="nav-link" href="#"> </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#"> Profile </a>
-                                        </li>
-                                        <li class="nav-item">
                                             <a class="nav-link" href="<?=base_url()?>aLogout"> Logout </a>
                                         </li>
                                     </ul>
@@ -46,7 +43,6 @@
                     <div class="col-sm-12" style="padding: 21px;">
                     </div>
                     <div class="col-sm-12 col-lg-12">
-                        <?php echo $this->session->flashdata('promptInfo');?>
                         <h3>
                             <i class="fas fa-question" style="color: #E48D1C;">&nbsp</i> Frequently Asked Questions
                         </h3>
@@ -61,19 +57,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($GetFaqs->result() as $row) { ?>
+                                <?php foreach ($GetFaqs->result_array() as $row) { ?>
                                     <tr>
                                         <td>
-                                            <?php echo $row->Question;?>
+                                            <?php echo $row['Question'];?>
                                         </td>
                                         <td>
-                                            <?php echo $row->Answer;?>
+                                            <?php echo $row['Answer'];?>
                                         </td>
                                         <td>
-                                            <a href=""> Update </a>
-                                            <br>
-                                            <a href=""> Remove </a>
-                                            <br>
+                                            <a href="<?=base_url()?>removeFAQs?aide=<?php echo $row['FaqNo'];?>">Remove</a>
                                         </td>
                                     </tr>
                                 <?php } ?>

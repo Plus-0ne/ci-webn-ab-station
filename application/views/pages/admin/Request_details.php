@@ -23,9 +23,6 @@
                                             <a class="nav-link" href="#"> </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#"> Profile </a>
-                                        </li>
-                                        <li class="nav-item">
                                             <a class="nav-link" href="<?=base_url()?>aLogout"> Logout </a>
                                         </li>
                                     </ul>
@@ -84,63 +81,7 @@
                                     Rate
                                 </td>
                                 <td>
-                                    &nbsp<i class="fas fa-chevron-right"></i>&nbsp 
-                                    <?php if ($GetAirdopDetails->Rate == 1) { 
-                                        echo '&nbsp 
-                                        <span id="span1" class="fa fa-star ratebutton" style="color: red;"></span>
-                                        <span id="span2" class="fa fa-star ratebutton"></span>
-                                        <span id="span3" class="fa fa-star ratebutton"></span>
-                                        <span id="span4" class="fa fa-star ratebutton"></span>
-                                        <span id="span5" class="fa fa-star ratebutton"></span>
-                                        ';
-                                    }
-                                    elseif ($GetAirdopDetails->Rate == 2) {
-                                        echo '&nbsp 
-                                        <span id="span1" class="fa fa-star ratebutton" style="color: red;"></span>
-                                        <span id="span2" class="fa fa-star ratebutton" style="color: red;"></span>
-                                        <span id="span3" class="fa fa-star ratebutton"></span>
-                                        <span id="span4" class="fa fa-star ratebutton"></span>
-                                        <span id="span5" class="fa fa-star ratebutton"></span>
-                                        ';
-                                    }
-                                    elseif ($GetAirdopDetails->Rate == 3) {
-                                        echo '&nbsp 
-                                        <span id="span1" class="fa fa-star ratebutton" style="color: red;"></span>
-                                        <span id="span2" class="fa fa-star ratebutton" style="color: red;"></span>
-                                        <span id="span3" class="fa fa-star ratebutton" style="color: red;"></span>
-                                        <span id="span4" class="fa fa-star ratebutton"></span>
-                                        <span id="span5" class="fa fa-star ratebutton"></span>
-                                        ';
-                                    }
-                                    elseif ($GetAirdopDetails->Rate == 4) {
-                                        echo '&nbsp 
-                                        <span id="span1" class="fa fa-star ratebutton" style="color: red;"></span>
-                                        <span id="span2" class="fa fa-star ratebutton" style="color: red;"></span>
-                                        <span id="span3" class="fa fa-star ratebutton" style="color: red;"></span>
-                                        <span id="span4" class="fa fa-star ratebutton" style="color: red;"></span>
-                                        <span id="span5" class="fa fa-star ratebutton"></span>
-                                        ';
-                                    }
-                                    elseif ($GetAirdopDetails->Rate == 5) {
-                                        echo '&nbsp 
-                                        <span id="span1" class="fa fa-star ratebutton" style="color: red;"></span>
-                                        <span id="span2" class="fa fa-star ratebutton" style="color: red;"></span>
-                                        <span id="span3" class="fa fa-star ratebutton" style="color: red;"></span>
-                                        <span id="span4" class="fa fa-star ratebutton" style="color: red;"></span>
-                                        <span id="span5" class="fa fa-star ratebutton" style="color: red;"></span>
-                                        ';
-                                    }
-                                    else
-                                    {
-                                        echo '&nbsp 
-                                        <span id="span1" class="fa fa-star ratebutton"></span>
-                                        <span id="span2" class="fa fa-star ratebutton"></span>
-                                        <span id="span3" class="fa fa-star ratebutton"></span>
-                                        <span id="span4" class="fa fa-star ratebutton"></span>
-                                        <span id="span5" class="fa fa-star ratebutton"></span>
-                                        ';
-                                    }
-                                    ?>
+                                    <span id="crLike" class="crLike"><i class="far fa-thumbs-up"></i> <?php echo $TotalLikes->num_rows(); ?></span> &nbsp&nbsp&nbsp <span id="crDLike" class="crDLike"><i class="far fa-thumbs-down"></i> <?php echo $TotalDislike->num_rows(); ?></span>
                                 </td>
                             </tr>
                             <tr>
@@ -259,6 +200,19 @@
                             </table>
                         </div>
                     </div>
+                    <?php 
+                    if (isset($_SERVER['HTTP_REFERER']) !== false) {
+                        $urlCur = $_SERVER['HTTP_REFERER'];
+                        if (strpos($urlCur, 'Admin-Requests') == true) { 
+                            echo '<div class="col-sm-12 col-md-2 mr-auto">
+                                <a href="'.base_url().'Approve_Request?aide='.$GetAirdopDetails->airdrop_id.'"> <h4><i class="fas fa-check"></i> Approve </h4> </a>
+                            </div>';
+                        }
+                    }
+                    else
+                    {
+                        redirect('Admin-Dashboard');
+                    } ?>                      
                     <div class="col-sm-12 col-md-1 ml-auto">
                         <a href="<?php echo $_SERVER['HTTP_REFERER'];?>"> <h4><i class="fas fa-chevron-circle-left">&nbsp</i> Back</h4> </a>
                     </div>

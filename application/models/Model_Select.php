@@ -6,40 +6,53 @@ class Model_Select extends CI_Model {
 	//  HOME 
 	public function GetAirdropsHot()
 	{
-		$sql = "SELECT * FROM ab_airdrops WHERE PostPrio IN ('hot','featured') AND RequestStatus ='Approved' ORDER BY DateAdded DESC LIMIT 8";
+		$sql = "SELECT * FROM ab_airdrops WHERE PostPrio IN ('Hot','Featured') AND RequestStatus ='Approved' ORDER BY ApproveDate DESC LIMIT 4";
+		$result = $this->db->query($sql);
+		return $result;
+	}
+	public function GetRegular()
+	{
+		$sql = "SELECT * FROM ab_airdrops WHERE PostPrio IN ('Hot','Regular','Featured') AND RequestStatus ='Approved' ORDER BY ApproveDate DESC LIMIT 4";
 		$result = $this->db->query($sql);
 		return $result;
 	}
 	public function GetAirdropsLatest()
 	{
-		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus ='Approved' ORDER BY DateAdded DESC LIMIT 8";
+		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus ='Approved' ORDER BY ApproveDate DESC LIMIT 4";
 		$result = $this->db->query($sql);
 		return $result;
 	}
 	public function GetFeatured()
 	{
-		$sql = "SELECT * FROM ab_airdrops WHERE PostPrio = 'featured' AND RequestStatus ='Approved' ORDER BY DateAdded DESC";
+		$sql = "SELECT * FROM ab_airdrops WHERE PostPrio = 'Featured' AND RequestStatus ='Approved' ORDER BY ApproveDate DESC";
 		$result = $this->db->query($sql);
 		return $result;
 	}
 	// HOT AIRDROPS
 	public function getHotairdrops()
 	{
-		$sql = "SELECT * FROM ab_airdrops WHERE PostPrio IN ('hot','featured') AND RequestStatus ='Approved' ORDER BY DateAdded DESC";
+		$sql = "SELECT * FROM ab_airdrops WHERE PostPrio IN ('Hot','Featured') AND RequestStatus ='Approved' ORDER BY ApproveDate DESC";
 		$sqlres = $this->db->query($sql);
 		return $sqlres;
 	}
 	// LATEST AIRDROPS
 	public function GetAirdrops()
 	{
-		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus ='Approved' ORDER BY DateAdded DESC";
+		$sql = "SELECT * FROM ab_airdrops WHERE RequestStatus ='Approved' ORDER BY ApproveDate DESC";
 		$sqlres = $this->db->query($sql);
 		return $sqlres;
 	}
 	// FEATURED AIRDROPS
 	public function getFeaturedAirdrops()
 	{
-		$sql = "SELECT * FROM ab_airdrops WHERE PostPrio = 'featured' AND RequestStatus ='Approved' ORDER BY DateAdded DESC";
+		$sql = "SELECT * FROM ab_airdrops WHERE PostPrio = 'featured' AND RequestStatus ='Approved' ORDER BY ApproveDate DESC";
+		$result = $this->db->query($sql);
+		return $result;
+	}
+	// REGULAR AIRDROPS
+	public function getRegAirdrops()
+	{
+		$sql = "SELECT * FROM ab_airdrops WHERE PostPrio IN ('Hot','Regular','Featured') AND RequestStatus ='Approved' ORDER BY ApproveDate";
 		$result = $this->db->query($sql);
 		return $result;
 	}
@@ -63,6 +76,18 @@ class Model_Select extends CI_Model {
 		$sql = "SELECT * FROM ab_airdrops WHERE airdrop_id = ?";
 		$result = $this->db->query($sql,$ratepostid);
 		return $result->row();
+	}
+	public function getTotallikes($airdrop_id)
+	{
+		$sql = "SELECT * FROM ab_rates WHERE ratepostid = ? AND ratepoints = 'like'";
+		$result = $this->db->query($sql,$airdrop_id);
+		return $result;
+	}
+	public function getTotaldislike($airdrop_id)
+	{
+		$sql = "SELECT * FROM ab_rates WHERE ratepostid = ? AND ratepoints = 'dislike'";
+		$result = $this->db->query($sql,$airdrop_id);
+		return $result;
 	}
 	public function UserHasRate($userid,$ratepostid)
 	{
@@ -151,6 +176,39 @@ class Model_Select extends CI_Model {
 		$this->db->from('ab_payments');
 		$this->db->where(array('AirdropID' => $ses_paymentid,'EmailAddress' => $EmailAddress, ));
 		$result = $this->db->get();
+		return $result->row();
+	}
+	public function UserLiked($data)
+	{
+		extract($data);
+
+		$sql = "SELECT * FROM ab_rates WHERE userid = '$userid' AND ratepostid = '$postid'";
+		$result = $this->db->query($sql);
+		return $result->row();
+
+	}
+	public function getPricetags()
+	{
+		$sql = "SELECT * FROM ab_prices";
+		$result = $this->db->query($sql);
+		return $result;
+	}
+	public function getHotPrice()
+	{
+		$sql = "SELECT * FROM ab_adprices WHERE AdditionalFor = 'Hot'";
+		$result = $this->db->query($sql);
+		return $result->row();
+	}
+	public function getFeaturePrice()
+	{
+		$sql = "SELECT * FROM ab_adprices WHERE AdditionalFor = 'Featured'";
+		$result = $this->db->query($sql);
+		return $result->row();
+	}
+	public function getPricingRange($PaymentDetails)
+	{
+		$sql = "SELECT * FROM ab_prices WHERE Days = '$PaymentDetails'";
+		$result = $this->db->query($sql);
 		return $result->row();
 	}
 }
